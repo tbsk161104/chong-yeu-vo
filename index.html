@@ -526,8 +526,8 @@
   <div class="ambient-glow glow-1"></div>
   <div class="ambient-glow glow-2"></div>
 
-  <!-- Audio Element (CONGB - Chờ Chút) -->
-  <audio id="bgMusic" src="song.mp3" preload="auto" loop></audio>
+  <!-- Audio Element (TikTok @_djatom: Chờ Chút... x Nơi Này Có Anh) -->
+  <audio id="bgMusic" src="song.mp3?v=tiktok_exact_v3" preload="auto" loop playsinline></audio>
 
   <!-- Top Minimalist Music Bar -->
   <div class="music-bar" id="musicBar" title="Bật/Tắt nhạc">
@@ -625,14 +625,30 @@
     let isMusicPlaying = false;
 
     function playSong() {
-      bgMusic.volume = 0.85;
-      bgMusic.play().then(() => {
-        isMusicPlaying = true;
-        musicBar.classList.add('playing');
-        musicBar.classList.add('visible');
-      }).catch(err => {
-        console.log('Audio autoplay blocked, will play on next touch:', err);
-      });
+      bgMusic.muted = false;
+      bgMusic.volume = 0.95;
+      const playPromise = bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          isMusicPlaying = true;
+          musicBar.classList.add('playing');
+          musicBar.classList.add('visible');
+        }).catch(err => {
+          console.log('Audio autoplay blocked, will play on next touch:', err);
+          // Retry on next user touch anywhere
+          const unlockAudio = () => {
+            bgMusic.play().then(() => {
+              isMusicPlaying = true;
+              musicBar.classList.add('playing');
+              musicBar.classList.add('visible');
+            });
+            document.removeEventListener('touchstart', unlockAudio);
+            document.removeEventListener('click', unlockAudio);
+          };
+          document.addEventListener('touchstart', unlockAudio, { once: true });
+          document.addEventListener('click', unlockAudio, { once: true });
+        });
+      }
     }
 
     function toggleMusic() {
