@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Petal Gradients -->
+    <linearGradient id="petalGradWhite" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#fff8f0"/>
+      <stop offset="75%" stop-color="#ffb6d9"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="petalGradPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#ffaec9"/>
+      <stop offset="70%" stop-color="#e91e63"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4caf50"/>
+      <stop offset="60%" stop-color="#2e7d32"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </linearGradient>
+    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#388e3c"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </linearGradient>
+    <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="40%" stop-color="#ffb300"/>
+      <stop offset="80%" stop-color="#ff8f00"/>
+      <stop offset="100%" stop-color="#ffe082"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(250, 270)">
+    <!-- Stems -->
+    <path d="M-25,60 Q-40,140 -30,210" stroke="url(#stemGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M0,70 Q-10,150 0,220" stroke="url(#stemGrad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M25,65 Q35,145 25,215" stroke="url(#stemGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+    <!-- Leaves -->
+    <path d="M-30,110 Q-110,80 -140,120 Q-100,140 -25,125" fill="url(#leafGrad)"/>
+    <path d="M30,120 Q110,90 145,130 Q100,150 25,135" fill="url(#leafGrad)"/>
+    <path d="M-15,160 Q-80,180 -110,210 Q-60,215 -10,180" fill="url(#leafGrad)"/>
+    <path d="M20,165 Q85,185 115,215 Q65,220 15,185" fill="url(#leafGrad)"/>
+
+    <!-- Left Bloom -->
+    <g transform="translate(-75, -20) rotate(-22) scale(0.78)">
+      <!-- 6 Petals -->
+      <path d="M0,0 Q-40,-80 0,-120 Q40,-80 0,0" fill="url(#petalGradPink)" opacity="0.95"/>
+      <path d="M0,0 Q-70,-30 -110,-40 Q-80,15 0,0" fill="url(#petalGradWhite)"/>
+      <path d="M0,0 Q70,-30 110,-40 Q80,15 0,0" fill="url(#petalGradWhite)"/>
+      <path d="M0,0 Q-75,50 -100,85 Q-45,70 0,0" fill="url(#petalGradPink)"/>
+      <path d="M0,0 Q75,50 100,85 Q45,70 0,0" fill="url(#petalGradPink)"/>
+      <path d="M0,0 Q-25,80 0,115 Q25,80 0,0" fill="url(#petalGradWhite)"/>
+      <!-- Stamens -->
+      <circle cx="0" cy="0" r="14" fill="#8bc34a"/>
+      <line x1="0" y1="0" x2="-25" y2="-45" stroke="#ffeb3b" stroke-width="2.5"/>
+      <ellipse cx="-25" cy="-45" rx="5" ry="2" fill="#d84315"/>
+      <line x1="0" y1="0" x2="25" y2="-45" stroke="#ffeb3b" stroke-width="2.5"/>
+      <ellipse cx="25" cy="-45" rx="5" ry="2" fill="#d84315"/>
+      <line x1="0" y1="0" x2="0" y2="-55" stroke="#ffeb3b" stroke-width="2.5"/>
+      <ellipse cx="0" cy="-55" rx="5" ry="2" fill="#d84315"/>
+    </g>
+
+    <!-- Right Bloom -->
+    <g transform="translate(80, -25) rotate(24) scale(0.78)">
+      <path d="M0,0 Q-40,-80 0,-120 Q40,-80 0,0" fill="url(#petalGradPink)" opacity="0.95"/>
+      <path d="M0,0 Q-70,-30 -110,-40 Q-80,15 0,0" fill="url(#petalGradWhite)"/>
+      <path d="M0,0 Q70,-30 110,-40 Q80,15 0,0" fill="url(#petalGradWhite)"/>
+      <path d="M0,0 Q-75,50 -100,85 Q-45,70 0,0" fill="url(#petalGradPink)"/>
+      <path d="M0,0 Q75,50 100,85 Q45,70 0,0" fill="url(#petalGradPink)"/>
+      <path d="M0,0 Q-25,80 0,115 Q25,80 0,0" fill="url(#petalGradWhite)"/>
+      <circle cx="0" cy="0" r="14" fill="#8bc34a"/>
+      <line x1="0" y1="0" x2="-25" y2="-45" stroke="#ffeb3b" stroke-width="2.5"/>
+      <ellipse cx="-25" cy="-45" rx="5" ry="2" fill="#d84315"/>
+      <line x1="0" y1="0" x2="25" y2="-45" stroke="#ffeb3b" stroke-width="2.5"/>
+      <ellipse cx="25" cy="-45" rx="5" ry="2" fill="#d84315"/>
+      <line x1="0" y1="0" x2="0" y2="-55" stroke="#ffeb3b" stroke-width="2.5"/>
+      <ellipse cx="0" cy="-55" rx="5" ry="2" fill="#d84315"/>
+    </g>
+
+    <!-- Top Flower Bud -->
+    <g transform="translate(0, -115) scale(0.65)">
+      <path d="M0,0 Q-25,-60 0,-95 Q25,-60 0,0" fill="url(#leafGrad)"/>
+      <path d="M-8,-15 Q-15,-55 0,-85 Q5,-55 -8,-15" fill="#ffb6d9" opacity="0.8"/>
+    </g>
+
+    <!-- Center Main Grand Lily Bloom -->
+    <g transform="translate(0, -10) scale(1.1)" filter="url(#softGlow)">
+      <!-- 6 Spectacular Recurved Lily Petals -->
+      <!-- Back Petals -->
+      <path d="M0,0 Q-50,-100 0,-155 Q50,-100 0,0" fill="url(#petalGradPink)"/>
+      <path d="M0,0 Q-95,-50 -145,-75 Q-105,5 0,0" fill="url(#petalGradWhite)"/>
+      <path d="M0,0 Q95,-50 145,-75 Q105,5 0,0" fill="url(#petalGradWhite)"/>
+      
+      <!-- Front Petals -->
+      <path d="M0,0 Q-105,55 -135,115 Q-60,95 0,0" fill="url(#petalGradPink)"/>
+      <path d="M0,0 Q105,55 135,115 Q60,95 0,0" fill="url(#petalGradPink)"/>
+      <path d="M0,0 Q-35,105 0,150 Q35,105 0,0" fill="url(#petalGradWhite)"/>
+
+      <!-- Delicate Pink/Magenta Speckles on Petals -->
+      <circle cx="-15" cy="-40" r="2.5" fill="#c2185b" opacity="0.8"/>
+      <circle cx="15" cy="-45" r="2.5" fill="#c2185b" opacity="0.8"/>
+      <circle cx="-8" cy="-65" r="2" fill="#c2185b" opacity="0.7"/>
+      <circle cx="8" cy="-70" r="2" fill="#c2185b" opacity="0.7"/>
+      <circle cx="-35" cy="-20" r="2" fill="#c2185b" opacity="0.8"/>
+      <circle cx="35" cy="-22" r="2" fill="#c2185b" opacity="0.8"/>
+      <circle cx="-25" cy="40" r="2" fill="#c2185b" opacity="0.7"/>
+      <circle cx="25" cy="42" r="2" fill="#c2185b" opacity="0.7"/>
+
+      <!-- Center Lime Heart -->
+      <circle cx="0" cy="0" r="22" fill="#aed581"/>
+      <circle cx="0" cy="0" r="10" fill="#7cb342"/>
+
+      <!-- Long Stamens radiating with Golden-Orange Pollen -->
+      <!-- Stamen 1 -->
+      <path d="M0,0 Q-18,-35 -30,-65" stroke="#dcedc8" stroke-width="3" fill="none"/>
+      <ellipse cx="-30" cy="-65" rx="7" ry="3.5" fill="#e65100" transform="rotate(-30, -30, -65)"/>
+      <!-- Stamen 2 -->
+      <path d="M0,0 Q18,-35 30,-65" stroke="#dcedc8" stroke-width="3" fill="none"/>
+      <ellipse cx="30" cy="-65" rx="7" ry="3.5" fill="#e65100" transform="rotate(30, 30, -65)"/>
+      <!-- Stamen 3 -->
+      <path d="M0,0 Q-35,-15 -68,-25" stroke="#dcedc8" stroke-width="3" fill="none"/>
+      <ellipse cx="-68" cy="-25" rx="7" ry="3.5" fill="#e65100" transform="rotate(-65, -68, -25)"/>
+      <!-- Stamen 4 -->
+      <path d="M0,0 Q35,-15 68,-25" stroke="#dcedc8" stroke-width="3" fill="none"/>
+      <ellipse cx="68" cy="-25" rx="7" ry="3.5" fill="#e65100" transform="rotate(65, 68, -25)"/>
+      <!-- Stamen 5 -->
+      <path d="M0,0 Q-25,25 -45,55" stroke="#dcedc8" stroke-width="3" fill="none"/>
+      <ellipse cx="-45" cy="55" rx="7" ry="3.5" fill="#e65100" transform="rotate(-120, -45, 55)"/>
+      <!-- Stamen 6 -->
+      <path d="M0,0 Q25,25 45,55" stroke="#dcedc8" stroke-width="3" fill="none"/>
+      <ellipse cx="45" cy="55" rx="7" ry="3.5" fill="#e65100" transform="rotate(120, 45, 55)"/>
+
+      <!-- Pistil (Stigma) in Center -->
+      <path d="M0,0 Q0,-45 0,-78" stroke="#81c784" stroke-width="4" fill="none"/>
+      <ellipse cx="0" cy="-78" rx="6" ry="5" fill="#558b2f"/>
+    </g>
+
+    <!-- Silk Satin Golden Ribbon Bow tying the bouquet -->
+    <g transform="translate(0, 135)">
+      <!-- Ribbon Tails -->
+      <path d="M-10,10 Q-45,65 -60,115 Q-40,110 -25,75 Q-15,45 -5,10" fill="url(#ribbonGrad)"/>
+      <path d="M10,10 Q45,65 60,115 Q40,110 25,75 Q15,45 5,10" fill="url(#ribbonGrad)"/>
+      <!-- Ribbon Left Loop -->
+      <path d="M0,0 C-60,-40 -70,25 0,10" fill="url(#ribbonGrad)"/>
+      <!-- Ribbon Right Loop -->
+      <path d="M0,0 C60,-40 70,25 0,10" fill="url(#ribbonGrad)"/>
+      <!-- Knot -->
+      <ellipse cx="0" cy="5" rx="14" ry="11" fill="#ffb300" stroke="#ffd700" stroke-width="2"/>
+    </g>
+  </g>
+</svg>
