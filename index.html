@@ -167,44 +167,7 @@
             50% { transform: translateY(-12px) rotate(1.5deg); }
         }
 
-        /* Floating Memory Polaroid Cards */
-        .floating-cards-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 15;
-            overflow: hidden;
-            display: none;
-        }
 
-        .memory-card {
-            position: absolute;
-            pointer-events: auto;
-            cursor: grab;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.45));
-            border-radius: 12px;
-            animation: floatCard 6s ease-in-out infinite;
-        }
-
-        .memory-card img {
-            width: 105px;
-            border-radius: 10px;
-            display: block;
-        }
-
-        .memory-card:hover {
-            transform: scale(1.15) !important;
-            z-index: 50;
-        }
-
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
-            50% { transform: translateY(-18px) rotate(calc(var(--rot, 0deg) + 3deg)); }
-        }
 
         /* Romantic Message Modal (Popup Card) */
         .modal-overlay {
@@ -401,21 +364,7 @@
         <!-- Subtitle Hint -->
         <div class="hint-text" id="hintText">Chạm vào trái tim nha ❤️</div>
 
-        <!-- Floating Polaroid Memory Cards Layer -->
-        <div class="floating-cards-layer" id="cardsLayer">
-            <div class="memory-card" id="card1" style="top: 25%; left: 10%; --rot: -8deg;">
-                <img src="card_anime_girl.png" alt="Ảnh kỷ niệm">
-            </div>
-            <div class="memory-card" id="card2" style="top: 22%; right: 12%; --rot: 7deg;">
-                <img src="card_bunny.png" alt="Thỏ hoa">
-            </div>
-            <div class="memory-card" id="card3" style="bottom: 24%; left: 14%; --rot: 5deg;">
-                <img src="card_sofia_hydrangea.png" alt="Hoa Sofia">
-            </div>
-            <div class="memory-card" id="card4" style="bottom: 22%; right: 10%; --rot: -6deg;">
-                <img src="card_anime_girl.png" alt="Kỷ niệm đôi">
-            </div>
-        </div>
+
     </div>
 
     <!-- Romantic Modal Popup (Card lời nhắn) -->
@@ -449,7 +398,6 @@
         const hintText = document.getElementById('hintText');
         const modalOverlay = document.getElementById('modalOverlay');
         const btnCloseModal = document.getElementById('btnCloseModal');
-        const cardsLayer = document.getElementById('cardsLayer');
         const flowerStage = document.getElementById('flowerStage');
         const viewport = document.getElementById('viewport');
         const modalHeader = document.getElementById('modalHeader');
@@ -634,8 +582,6 @@
 
         function closeModal() {
             modalOverlay.classList.remove('active');
-            // Release floating memory cards (y hệt video Dev Pan)
-            cardsLayer.style.display = 'block';
         }
 
         // Tap heart or flower or hint opens modal
