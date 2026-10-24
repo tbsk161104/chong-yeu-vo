@@ -1,1114 +1,886 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>Cố lên vợ iuu , chồng yêu em ❤️</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cố lên vợ iuu , chồng yêu em ❤️</title>
+    
+    <!-- Meta tags chống lưu đệm (Anti-cache) -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta property="og:title" content="Cố lên vợ iuu , chồng yêu em ❤️">
+    <meta property="og:description" content="Trái tim tình yêu 3D phát sáng & món quà dành tặng vợ yêu">
 
-    body {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      background: radial-gradient(ellipse at 50% 25%, #181222 0%, #0f0b17 50%, #07050a 100%);
-      font-family: 'Montserrat', sans-serif;
-      color: #fffbf7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,500;0,700;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
-    /* Ambient Warm Cinematic Glow */
-    .ambient-glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(90px);
-      pointer-events: none;
-      opacity: 0.38;
-      animation: ambientBreathe 10s ease-in-out infinite alternate;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-    .glow-1 {
-      width: 440px;
-      height: 440px;
-      background: radial-gradient(circle, rgba(160, 190, 235, 0.22), transparent 70%);
-      top: 15%;
-      left: 10%;
-    }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            background-color: #06020a;
+            color: #fff;
+        }
 
-    .glow-2 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(235, 185, 205, 0.22), transparent 70%);
-      bottom: 10%;
-      right: 10%;
-      animation-delay: -4s;
-    }
+        /* Top Navigation Tabs (Y hệt video Dev Pan) */
+        .top-nav {
+            position: fixed;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            background: rgba(25, 12, 35, 0.7);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 5px 8px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 105, 180, 0.25);
+            z-index: 100;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
 
-    @keyframes ambientBreathe {
-      0% { transform: scale(0.95); opacity: 0.30; }
-      100% { transform: scale(1.1); opacity: 0.45; }
-    }
+        .nav-tab {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Mali', cursive;
+            color: #d1b8d8;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    /* Floating Canvases */
-    #flowerCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      pointer-events: none;
-    }
+        .nav-tab:hover {
+            color: #fff;
+        }
 
-    #touchCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 25;
-      pointer-events: auto;
-    }
+        .nav-tab.active {
+            background: linear-gradient(135deg, #ff4b72, #ff758c);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 75, 114, 0.45);
+        }
 
-    /* Modern Aesthetic Music Bar (Top) */
-    .music-bar {
-      position: absolute;
-      top: 18px;
-      z-index: 40;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 16px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(-10px);
-    }
+        /* Main View Container */
+        #viewport {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.6s ease;
+        }
 
-    .music-bar.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        #viewport.flower-mode {
+            background: radial-gradient(circle at center, #fff0f3 0%, #fde4ea 50%, #fcd2dc 100%);
+        }
 
-    .music-bar:hover {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(200, 215, 245, 0.4);
-    }
+        /* Canvas for 3D Heart & Stars */
+        #heartCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            cursor: grab;
+        }
 
-    .music-waves {
-      display: flex;
-      align-items: flex-end;
-      gap: 3px;
-      height: 14px;
-    }
+        #heartCanvas:active {
+            cursor: grabbing;
+        }
 
-    .music-waves span {
-      width: 2.5px;
-      height: 4px;
-      background: #b0c8ec;
-      border-radius: 2px;
-      transition: height 0.2s;
-    }
+        /* Subtitle Hint under Heart / Flower */
+        .hint-text {
+            position: absolute;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Mali', cursive;
+            font-size: 17px;
+            font-weight: 600;
+            color: #ff9ebd;
+            text-shadow: 0 0 12px rgba(255, 110, 160, 0.65);
+            z-index: 10;
+            cursor: pointer;
+            animation: breatheHint 2.4s ease-in-out infinite;
+            pointer-events: auto;
+            text-align: center;
+            white-space: nowrap;
+        }
 
-    .music-bar.playing .music-waves span:nth-child(1) { animation: wave 1.1s infinite ease-in-out; }
-    .music-bar.playing .music-waves span:nth-child(2) { animation: wave 0.8s infinite 0.2s ease-in-out; }
-    .music-bar.playing .music-waves span:nth-child(3) { animation: wave 1.3s infinite 0.4s ease-in-out; }
-    .music-bar.playing .music-waves span:nth-child(4) { animation: wave 0.9s infinite 0.1s ease-in-out; }
+        .flower-mode .hint-text {
+            color: #d84570;
+            text-shadow: 0 2px 8px rgba(216, 69, 112, 0.3);
+        }
 
-    @keyframes wave {
-      0%, 100% { height: 3px; }
-      50% { height: 14px; }
-    }
+        @keyframes breatheHint {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.85; }
+            50% { transform: translateX(-50%) scale(1.08); opacity: 1; }
+        }
 
-    .music-text {
-      font-size: 0.78rem;
-      letter-spacing: 0.8px;
-      color: rgba(255, 251, 247, 0.9);
-      font-weight: 400;
-    }
+        /* Flower Mode: Tulip Bouquet Center */
+        .flower-stage {
+            display: none;
+            position: absolute;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            cursor: pointer;
+            text-align: center;
+        }
 
-    /* Minimalist Romantic Intro Screen */
-    .intro-screen {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 50;
-      background: radial-gradient(ellipse at center, rgba(22, 16, 30, 0.96) 0%, rgba(9, 6, 14, 0.98) 100%);
-      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
-      padding: 24px;
-      text-align: center;
-    }
+        .flower-stage img {
+            width: 270px;
+            max-width: 80vw;
+            filter: drop-shadow(0 15px 30px rgba(230, 80, 120, 0.3));
+            animation: floatBouquet 4s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
 
-    .intro-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+        .flower-stage:hover img {
+            transform: scale(1.05);
+        }
 
-    .intro-card {
-      max-width: 380px;
-      padding: 38px 28px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(180, 205, 240, 0.28);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.03);
-      cursor: pointer;
-      transition: transform 0.4s ease, border-color 0.4s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        @keyframes floatBouquet {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1.5deg); }
+        }
 
-    .intro-card:active {
-      transform: scale(0.97);
-    }
+        /* Floating Memory Polaroid Cards */
+        .floating-cards-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 15;
+            overflow: hidden;
+            display: none;
+        }
 
-    .intro-icon {
-      width: 66px;
-      height: 66px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(180, 205, 240, 0.35);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 22px;
-      box-shadow: 0 0 25px rgba(180, 205, 240, 0.18);
-    }
+        .memory-card {
+            position: absolute;
+            pointer-events: auto;
+            cursor: grab;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.45));
+            border-radius: 12px;
+            animation: floatCard 6s ease-in-out infinite;
+        }
 
-    .intro-icon svg {
-      width: 30px;
-      height: 30px;
-      fill: #f5c6d8;
-    }
+        .memory-card img {
+            width: 105px;
+            border-radius: 10px;
+            display: block;
+        }
 
-    .intro-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      color: #fffbf7;
-      margin-bottom: 12px;
-    }
+        .memory-card:hover {
+            transform: scale(1.15) !important;
+            z-index: 50;
+        }
 
-    .intro-subtitle {
-      font-size: 0.88rem;
-      font-weight: 300;
-      line-height: 1.6;
-      color: rgba(255, 240, 245, 0.75);
-      margin-bottom: 24px;
-    }
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+            50% { transform: translateY(-18px) rotate(calc(var(--rot, 0deg) + 3deg)); }
+        }
 
-    .intro-btn-open {
-      padding: 10px 26px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(160, 190, 235, 0.25), rgba(235, 180, 205, 0.25));
-      border: 1px solid rgba(180, 205, 240, 0.4);
-      color: #fffbf7;
-      font-size: 0.84rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        /* Romantic Message Modal (Popup Card) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
 
-    /* Main Showcase Container */
-    .content-container {
-      position: relative;
-      z-index: 20;
-      width: 100%;
-      height: 100%;
-      max-width: 580px;
-      padding: 60px 22px 24px 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      text-align: center;
-      pointer-events: none;
-      opacity: 0;
-      transform: translateY(15px);
-      transition: opacity 1.4s ease, transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
-    .content-container.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
+        .modal-box {
+            background: rgba(28, 14, 38, 0.92);
+            border: 1.5px solid rgba(255, 110, 160, 0.35);
+            box-shadow: 0 20px 60px rgba(255, 45, 117, 0.35);
+            border-radius: 28px;
+            padding: 32px 28px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            transform: scale(0.85) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
 
-    /* Header */
-    .header-box {
-      margin-top: 5px;
-      z-index: 22;
-    }
+        .flower-mode-modal .modal-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1.5px solid rgba(255, 180, 200, 0.5);
+            box-shadow: 0 20px 60px rgba(230, 80, 120, 0.25);
+        }
 
-    .love-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.3rem;
-      font-weight: 600;
-      line-height: 1.3;
-      letter-spacing: 0.5px;
-      background: linear-gradient(135deg, #ffffff 0%, #e2ecf9 40%, #fbd5e5 80%, #ffd9e8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 14px rgba(180, 200, 240, 0.35));
-      margin-bottom: 8px;
-    }
+        .flower-mode-modal .modal-msg {
+            color: #4a2d38;
+        }
 
-    @media (max-width: 480px) {
-      .love-title {
-        font-size: 1.95rem;
-      }
-    }
+        .flower-mode-modal .modal-subtitle {
+            color: #8c5b6e;
+        }
 
-    .love-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.35rem;
-      color: #d6e2f5;
-      letter-spacing: 0.5px;
-    }
+        .modal-overlay.active .modal-box {
+            transform: scale(1) translateY(0);
+        }
 
-    /* Central Flower Showcase */
-    .bouquet-stage {
-      position: relative;
-      width: 100%;
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-height: 44vh;
-      margin: 10px 0;
-    }
+        .modal-title {
+            font-family: 'Mali', cursive;
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff758c, #ff4b72);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
 
-    .bouquet-wrapper {
-      position: relative;
-      width: 290px;
-      height: 290px;
-      max-width: 78vw;
-      max-height: 78vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: floatGentle 6s ease-in-out infinite;
-    }
+        .modal-subtitle {
+            font-size: 14px;
+            color: #d8b8e0;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
 
-    .bouquet-glow-circle {
-      position: absolute;
-      width: 95%;
-      height: 95%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(160, 190, 235, 0.22) 0%, rgba(235, 185, 205, 0.15) 50%, transparent 70%);
-      filter: blur(25px);
-      z-index: 1;
-    }
+        .modal-msg {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #f7e8f5;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
 
-    .bouquet-img {
-      position: relative;
-      z-index: 3;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.65));
-      transition: transform 0.4s ease;
-    }
+        .modal-btn-close {
+            font-family: 'Mali', cursive;
+            font-size: 16px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff4b72, #ff758c);
+            color: #fff;
+            border: none;
+            outline: none;
+            padding: 11px 36px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 75, 114, 0.45);
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .bouquet-img:hover {
-      transform: scale(1.03);
-    }
+        .modal-btn-close:hover {
+            transform: scale(1.06);
+            box-shadow: 0 8px 25px rgba(255, 75, 114, 0.65);
+        }
 
-    @keyframes floatGentle {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+        .modal-btn-close:active {
+            transform: scale(0.96);
+        }
 
-    /* Sincere Love Message Card */
-    .message-card {
-      position: relative;
-      z-index: 22;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(180, 205, 240, 0.28);
-      border-radius: 18px;
-      padding: 16px 22px;
-      max-width: 95%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-      margin-bottom: 12px;
-    }
+        /* Play Music Pill (Bottom Left) */
+        .music-pill {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(25, 12, 35, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            border-radius: 50px;
+            padding: 8px 18px 8px 10px;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
 
-    .message-text {
-      font-size: 0.94rem;
-      line-height: 1.65;
-      color: rgba(255, 251, 247, 0.95);
-      font-weight: 300;
-    }
+        .music-pill:hover {
+            border-color: rgba(255, 105, 180, 0.6);
+            transform: scale(1.04);
+        }
 
-    .message-highlight {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #f7c5d7;
-      display: block;
-      margin-top: 6px;
-    }
+        .music-icon-wrap {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff4b72, #ff758c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            box-shadow: 0 2px 10px rgba(255, 75, 114, 0.5);
+            transition: transform 0.3s ease;
+        }
 
-    /* Actions Bar */
-    .action-bar {
-      z-index: 25;
-      display: flex;
-      gap: 12px;
-      margin-bottom: 6px;
-    }
+        .music-pill.playing .music-icon-wrap {
+            animation: pulseIcon 1.2s infinite;
+        }
 
-    .btn-action {
-      border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 9px 20px;
-      border-radius: 25px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.5px;
-      color: #fffbf7;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(180, 205, 240, 0.3);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      pointer-events: auto;
-    }
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
 
-    .btn-action:hover, .btn-action:active {
-      background: rgba(255, 255, 255, 0.16);
-      border-color: rgba(180, 205, 240, 0.5);
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, rgba(160, 190, 235, 0.35), rgba(220, 170, 200, 0.4));
-      border-color: rgba(180, 205, 240, 0.45);
-    }
-
-    .footer-note {
-      font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.4);
-      letter-spacing: 0.5px;
-      font-weight: 300;
-    }
-
-    /* Minimalist Letter Modal */
-    .letter-modal {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 60;
-      background: rgba(10, 7, 15, 0.88);
-      backdrop-filter: blur(15px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 22px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s ease;
-    }
-
-    .letter-modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .parchment {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      background: #faf7f2;
-      color: #322a36;
-      border-radius: 16px;
-      padding: 34px 26px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(180, 205, 240, 0.4);
-      transform: translateY(15px) scale(0.97);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .letter-modal.active .parchment {
-      transform: translateY(0) scale(1);
-    }
-
-    .parchment-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      color: #3b2844;
-      text-align: center;
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-
-    .parchment-body {
-      font-size: 0.92rem;
-      line-height: 1.75;
-      color: #3f3346;
-      text-align: justify;
-      font-weight: 300;
-    }
-
-    .parchment-body p {
-      margin-bottom: 12px;
-    }
-
-    .parchment-signature {
-      text-align: right;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: #a45378;
-      margin-top: 18px;
-    }
-
-    .close-letter-btn {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 32px;
-      height: 32px;
-      background: transparent;
-      color: #6a5372;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  </style>
+        .music-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffe6ef;
+            font-family: 'Mali', cursive;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Background Lighting -->
-  <div class="ambient-glow glow-1"></div>
-  <div class="ambient-glow glow-2"></div>
+    <!-- Audio Element: TikTok song from video (CONGB - Chờ chút remix) -->
+    <audio id="bgMusic" src="panbap_tiktok_song.mp3" preload="auto" loop></audio>
 
-  <!-- Audio Element (DJ ATOM Remix: Chờ Chút... x Nơi Này Có Anh) -->
-  <audio id="bgMusic" src="cho_chut_remix.mp3" preload="auto" loop playsinline></audio>
+    <!-- Top Navigation Bar (Tabs y hệt video) -->
+    <nav class="top-nav">
+        <div class="nav-tab active" data-mode="myheart">
+            <span>✨</span> Myheart
+        </div>
+        <div class="nav-tab" data-mode="lovely">
+            <span>💖</span> Lovely
+        </div>
+        <div class="nav-tab" data-mode="flower">
+            <span>🌷</span> Flower
+        </div>
+    </nav>
 
-  <!-- Top Minimalist Music Bar -->
-  <div class="music-bar" id="musicBar" title="Bật/Tắt nhạc">
-    <div class="music-waves">
-      <span></span><span></span><span></span><span></span>
-    </div>
-    <span class="music-text">chờ chút thôi... — CONGB (TikTok Remix)</span>
-  </div>
+    <!-- Main Viewport -->
+    <div id="viewport">
+        <!-- 3D Heart Canvas -->
+        <canvas id="heartCanvas"></canvas>
 
-  <!-- Canvases -->
-  <canvas id="flowerCanvas"></canvas>
-  <canvas id="touchCanvas"></canvas>
+        <!-- Flower Mode Center Bouquet -->
+        <div class="flower-stage" id="flowerStage">
+            <img src="tulip_bouquet_clean.png" alt="Bó hoa tulip">
+        </div>
 
-  <!-- INTRO SCREEN -->
-  <div class="intro-screen" id="introScreen">
-    <div class="intro-card" id="openBtn">
-      <div class="intro-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-      </div>
-      <h1 class="intro-title">Gửi Vợ Iuu Của Anh</h1>
-      <p class="intro-subtitle">Có một món quà nhỏ từ tận đáy lòng anh muốn gửi đến em...</p>
-      <div class="intro-btn-open">Chạm nhẹ để mở ✦</div>
-    </div>
-  </div>
+        <!-- Subtitle Hint -->
+        <div class="hint-text" id="hintText">Chạm vào trái tim nha ❤️</div>
 
-  <!-- MAIN SHOWCASE -->
-  <div class="content-container" id="mainContent">
-    <!-- Header -->
-    <div class="header-box">
-      <h1 class="love-title">Cố lên vợ iuu , chồng yêu em ❤️</h1>
-      <p class="love-subtitle">Luôn có anh ở phía sau đồng hành cùng em</p>
-    </div>
-
-    <!-- Center Bouquet Stage (Hoa Sofia & Cẩm Tú Cầu) -->
-    <div class="bouquet-stage">
-      <div class="bouquet-wrapper" id="bouquetWrapper">
-        <div class="bouquet-glow-circle"></div>
-        <img class="bouquet-img" id="bouquetImg" src="sofia_hydrangea_blended.png" alt="Bó hoa Sofia & Cẩm Tú Cầu" onerror="this.onerror=null; this.src='sofia_hydrangea_svg.svg';">
-      </div>
+        <!-- Floating Polaroid Memory Cards Layer -->
+        <div class="floating-cards-layer" id="cardsLayer">
+            <div class="memory-card" id="card1" style="top: 25%; left: 10%; --rot: -8deg;">
+                <img src="card_anime_girl.png" alt="Ảnh kỷ niệm">
+            </div>
+            <div class="memory-card" id="card2" style="top: 22%; right: 12%; --rot: 7deg;">
+                <img src="card_bunny.png" alt="Thỏ hoa">
+            </div>
+            <div class="memory-card" id="card3" style="bottom: 24%; left: 14%; --rot: 5deg;">
+                <img src="card_sofia_hydrangea.png" alt="Hoa Sofia">
+            </div>
+            <div class="memory-card" id="card4" style="bottom: 22%; right: 10%; --rot: -6deg;">
+                <img src="card_anime_girl.png" alt="Kỷ niệm đôi">
+            </div>
+        </div>
     </div>
 
-    <!-- Message Card -->
-    <div class="message-card">
-      <p class="message-text">
-        "Dù công việc hay cuộc sống có áp lực thế nào, em hãy luôn nhớ rằng phía sau luôn có anh sẵn sàng ôm em vào lòng và cùng em vượt qua tất cả."
-      </p>
-      <span class="message-highlight">Cố lên vợ iuu , chồng yêu em! 🌸</span>
+    <!-- Romantic Modal Popup (Card lời nhắn) -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <h2 class="modal-title" id="modalHeader">Chào Công Chúa</h2>
+            <p class="modal-subtitle">Gửi người anh yêu thương nhất ✨</p>
+            <p class="modal-msg" id="modalBody">
+                Cố lên vợ iuu , chồng yêu em ❤️<br>
+                Mãi yêu công chúa của anh! Lúc nào cũng có chồng ở đây bên cạnh vợ.
+            </p>
+            <button class="modal-btn-close" id="btnCloseModal">
+                Đóng <span>❤️</span>
+            </button>
+        </div>
     </div>
 
-    <!-- Actions Bar -->
-    <div class="action-bar">
-      <button class="btn-action btn-primary" id="readLetterBtn">
-        <span>💌</span> Đọc tâm thư
-      </button>
-      <button class="btn-action" id="burstMoreBtn">
-        <span>✦</span> Thả hoa tràn màn hình
-      </button>
+    <!-- Play Music Pill Button -->
+    <div class="music-pill" id="btnMusic">
+        <div class="music-icon-wrap">❤️</div>
+        <span class="music-label" id="musicLabel">Play Music</span>
     </div>
 
-    <div class="footer-note">
-      Chạm nhẹ bất kỳ đâu để thả hoa cẩm tú cầu & sofia ✨
-    </div>
-  </div>
+    <!-- Canvas 3D Heart & Galaxy Script -->
+    <script>
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        const audio = document.getElementById('bgMusic');
+        const btnMusic = document.getElementById('btnMusic');
+        const musicLabel = document.getElementById('musicLabel');
+        const hintText = document.getElementById('hintText');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const btnCloseModal = document.getElementById('btnCloseModal');
+        const cardsLayer = document.getElementById('cardsLayer');
+        const flowerStage = document.getElementById('flowerStage');
+        const viewport = document.getElementById('viewport');
+        const modalHeader = document.getElementById('modalHeader');
 
-  <!-- LETTER MODAL -->
-  <div class="letter-modal" id="letterModal">
-    <div class="parchment">
-      <button class="close-letter-btn" id="closeLetterBtn">&times;</button>
-      <h2 class="parchment-title">Cố lên vợ iuu , chồng yêu em ❤️</h2>
-      <div class="parchment-body">
-        <p>
-          Vợ iuu à, những ngày qua nhìn em phải vất vả, lo toan nhiều việc, lòng anh thương em nhiều lắm. 
-        </p>
-        <p>
-          Bó hoa Sofia dịu dàng kết hợp cùng những đóa Cẩm Tú Cầu ngát hương này là tất cả sự trân trọng và tình yêu chân thành nhất mà anh dành riêng cho em. Cẩm tú cầu tượng trưng cho lòng biết ơn và sự gắn bó bền chặt, còn hoa Sofia là nét đẹp kiêu sa, ngọt ngào của riêng em.
-        </p>
-        <p>
-          Đừng tự tạo áp lực cho mình quá nhé. Hãy cứ vững tin bước tiếp, vì vòng tay của anh sẽ luôn là nơi bình yên nhất che chở cho em.
-        </p>
-      </div>
-      <div class="parchment-signature">
-        Chồng yêu em rất nhiều ❤️
-      </div>
-    </div>
-  </div>
+        let currentMode = 'myheart'; // 'myheart', 'lovely', 'flower'
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
 
-  <script>
-    /* =====================================================================
-       1. TIKTOK DJ ATOM REMIX AUDIO PLAYER
-       ===================================================================== */
-    const bgMusic = document.getElementById('bgMusic');
-    const musicBar = document.getElementById('musicBar');
-    let isMusicPlaying = false;
-
-    function playSong() {
-      bgMusic.src = 'cho_chut_remix.mp3?t=' + Date.now();
-      bgMusic.load();
-      bgMusic.muted = false;
-      bgMusic.volume = 0.95;
-      const playPromise = bgMusic.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          isMusicPlaying = true;
-          musicBar.classList.add('playing');
-          musicBar.classList.add('visible');
-        }).catch(err => {
-          console.log('Audio autoplay blocked, will play on next touch:', err);
-          const unlockAudio = () => {
-            bgMusic.play().then(() => {
-              isMusicPlaying = true;
-              musicBar.classList.add('playing');
-              musicBar.classList.add('visible');
-            });
-            document.removeEventListener('touchstart', unlockAudio);
-            document.removeEventListener('click', unlockAudio);
-          };
-          document.addEventListener('touchstart', unlockAudio, { once: true });
-          document.addEventListener('click', unlockAudio, { once: true });
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
         });
-      }
-    }
 
-    function toggleMusic() {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        musicBar.classList.add('playing');
-        isMusicPlaying = true;
-      } else {
-        bgMusic.pause();
-        musicBar.classList.remove('playing');
-        isMusicPlaying = false;
-      }
-    }
+        // ==========================================
+        // 3D PARAMETRIC HEART GENERATION
+        // ==========================================
+        const HEART_PARTICLES_COUNT = 2800;
+        const heartPoints = [];
 
-    musicBar.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMusic();
-    });
-
-    /* =====================================================================
-       2. CANVAS PARTICLES: HOA SOFIA & CẨM TÚ CẦU SIMULATION
-       ===================================================================== */
-    const flowerCanvas = document.getElementById('flowerCanvas');
-    const touchCanvas = document.getElementById('touchCanvas');
-    const fCtx = flowerCanvas.getContext('2d');
-    const tCtx = touchCanvas.getContext('2d');
-
-    let width = 0;
-    let height = 0;
-
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      flowerCanvas.width = width;
-      flowerCanvas.height = height;
-      touchCanvas.width = width;
-      touchCanvas.height = height;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    // 1. Cẩm Tú Cầu Floret (4-petaled delicate pastel blossom)
-    const hydrangeaColors = [
-      ['#e3f2fd', '#90caf9', '#42a5f5'], // Baby Blue
-      ['#f3e5f5', '#ce93d8', '#ab47bc'], // Soft Lavender
-      ['#fce4ec', '#f48fb1', '#ec407a'], // Blush Pink
-      ['#ffffff', '#f5f5f5', '#b0bec5']  // Pure White
-    ];
-
-    class HydrangeaFloret {
-      constructor(burst = false, originX = width / 2, originY = height * 0.42) {
-        this.reset(burst, originX, originY);
-      }
-
-      reset(burst = false, originX = width / 2, originY = height * 0.42) {
-        this.burst = burst;
-        if (burst) {
-          this.x = originX;
-          this.y = originY;
-          const angle = Math.random() * Math.PI * 2;
-          const speed = 2.4 + Math.random() * 5.8;
-          this.vx = Math.cos(angle) * speed;
-          this.vy = Math.sin(angle) * speed - (1.2 + Math.random() * 2.2);
-          this.friction = 0.965;
-        } else {
-          this.x = Math.random() * width;
-          this.y = -30 - Math.random() * 90;
-          this.vx = (Math.random() - 0.5) * 1.2;
-          this.vy = 1.0 + Math.random() * 1.8;
-          this.friction = 1;
+        function heartParametric(t) {
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+            return { x, y };
         }
 
-        this.size = 11 + Math.random() * 13;
-        this.angle = Math.random() * Math.PI * 2;
-        this.angleSpeed = (Math.random() - 0.5) * 0.04;
-        this.flip = Math.random() * Math.PI;
-        this.flipSpeed = 0.025 + Math.random() * 0.035;
-        this.opacity = 0.7 + Math.random() * 0.3;
-        this.decay = burst ? 0.005 + Math.random() * 0.007 : 0;
-        this.colorSet = hydrangeaColors[Math.floor(Math.random() * hydrangeaColors.length)];
-      }
+        // Generate dense volume of 3D points in heart shape
+        for (let i = 0; i < HEART_PARTICLES_COUNT; i++) {
+            const t = Math.random() * Math.PI * 2;
+            const hp = heartParametric(t);
+            const scaleFactor = 12 + Math.random() * 2.5;
 
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.angle += this.angleSpeed;
-        this.flip += this.flipSpeed;
+            // Depth calculation: thickness is proportional to heart contour
+            const maxZ = Math.max(3, 16 - Math.abs(hp.y * 0.7));
+            const z = (Math.random() - 0.5) * 2 * maxZ;
+            
+            // Random distribution through heart volume
+            const r = Math.pow(Math.random(), 0.5);
+            const x = hp.x * scaleFactor * r;
+            const y = hp.y * scaleFactor * r;
 
-        if (this.burst) {
-          this.vx *= this.friction;
-          this.vy = this.vy * this.friction + 0.11;
-          this.opacity -= this.decay;
-        } else {
-          this.vx += Math.sin(this.y * 0.012) * 0.05;
-          if (this.y > height + 40 || this.x < -50 || this.x > width + 50) {
-            this.reset(false);
-          }
-        }
-      }
+            // Palette of glowing pinks, crimson, and bright star white
+            const colors = ['#ffffff', '#ff758c', '#ff2e93', '#ff4b72', '#ffb3c6', '#e02479'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const size = Math.random() < 0.25 ? (2.2 + Math.random() * 1.5) : (1.0 + Math.random() * 1.2);
 
-      draw(ctx) {
-        if (this.opacity <= 0) return;
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-        ctx.scale(Math.cos(this.flip), 1);
-        ctx.globalAlpha = Math.max(0, this.opacity);
-
-        // Draw 4-petal Hydrangea flower
-        for (let p = 0; p < 4; p++) {
-          ctx.save();
-          ctx.rotate((p * Math.PI) / 2);
-          ctx.beginPath();
-          ctx.ellipse(0, -this.size * 0.55, this.size * 0.42, this.size * 0.55, 0, 0, Math.PI * 2);
-          
-          const grad = ctx.createLinearGradient(0, 0, 0, -this.size);
-          grad.addColorStop(0, this.colorSet[0]);
-          grad.addColorStop(0.5, this.colorSet[1]);
-          grad.addColorStop(1, this.colorSet[2]);
-          ctx.fillStyle = grad;
-          ctx.fill();
-          ctx.restore();
+            heartPoints.push({
+                x, y, z: z * scaleFactor * 0.65,
+                baseX: x, baseY: y, baseZ: z * scaleFactor * 0.65,
+                color, size,
+                speed: 0.8 + Math.random() * 0.4,
+                phase: Math.random() * Math.PI * 2
+            });
         }
 
-        // Center tiny seed
-        ctx.beginPath();
-        ctx.arc(0, 0, 2, 0, Math.PI * 2);
-        ctx.fillStyle = '#fff9c4';
-        ctx.fill();
-
-        ctx.restore();
-      }
-    }
-
-    // 2. Hoa Sofia Petal (Curved, ruffled layered peony/rose petal)
-    class SofiaPetal {
-      constructor(burst = false, originX = width / 2, originY = height * 0.42) {
-        this.reset(burst, originX, originY);
-      }
-
-      reset(burst = false, originX = width / 2, originY = height * 0.42) {
-        this.burst = burst;
-        if (burst) {
-          this.x = originX;
-          this.y = originY;
-          const angle = Math.random() * Math.PI * 2;
-          const speed = 2.0 + Math.random() * 5.2;
-          this.vx = Math.cos(angle) * speed;
-          this.vy = Math.sin(angle) * speed - (1.0 + Math.random() * 2.0);
-          this.friction = 0.965;
-        } else {
-          this.x = Math.random() * width;
-          this.y = -35 - Math.random() * 80;
-          this.vx = (Math.random() - 0.5) * 1.1;
-          this.vy = 0.9 + Math.random() * 1.6;
-          this.friction = 1;
+        // ==========================================
+        // BACKGROUND STARS
+        // ==========================================
+        const STAR_COUNT = 180;
+        const stars = [];
+        for (let i = 0; i < STAR_COUNT; i++) {
+            stars.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                size: Math.random() * 1.8 + 0.5,
+                alpha: Math.random(),
+                dAlpha: (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1),
+                color: Math.random() < 0.4 ? '#ffb6c1' : '#ffffff'
+            });
         }
 
-        this.length = 26 + Math.random() * 22;
-        this.width = this.length * (0.55 + Math.random() * 0.2);
-        this.angle = Math.random() * Math.PI * 2;
-        this.angleSpeed = (Math.random() - 0.5) * 0.035;
-        this.flip = Math.random() * Math.PI;
-        this.flipSpeed = 0.02 + Math.random() * 0.03;
-        this.opacity = 0.65 + Math.random() * 0.3;
-        this.decay = burst ? 0.005 + Math.random() * 0.006 : 0;
-        this.isBlush = Math.random() > 0.4;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.angle += this.angleSpeed;
-        this.flip += this.flipSpeed;
-
-        if (this.burst) {
-          this.vx *= this.friction;
-          this.vy = this.vy * this.friction + 0.10;
-          this.opacity -= this.decay;
-        } else {
-          this.vx += Math.sin(this.y * 0.015) * 0.04;
-          if (this.y > height + 45 || this.x < -60 || this.x > width + 60) {
-            this.reset(false);
-          }
+        // ==========================================
+        // GALAXY RING & 3D ORBITING TEXT (MYHEART MODE)
+        // ==========================================
+        const GALAXY_STARS_COUNT = 450;
+        const galaxyStars = [];
+        for (let i = 0; i < GALAXY_STARS_COUNT; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const rad = 140 + Math.random() * 170;
+            galaxyStars.push({
+                angle,
+                radius: rad,
+                speed: 0.003 + Math.random() * 0.004,
+                yOffset: (Math.random() - 0.5) * 35,
+                size: Math.random() * 1.6 + 0.6,
+                color: Math.random() < 0.6 ? '#ff758c' : '#ffffff'
+            });
         }
-      }
 
-      draw(ctx) {
-        if (this.opacity <= 0) return;
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-        ctx.scale(Math.cos(this.flip), 1);
-        ctx.globalAlpha = Math.max(0, this.opacity);
+        // Orbiting phrases along the disk
+        const orbitPhrases = ["Yêu em", "Cố lên vợ iuu", "Mãi bên nhau", "Yêu em", "Chồng yêu vợ", "Hạnh phúc nhé"];
+        const phraseObjects = orbitPhrases.map((text, idx) => ({
+            text,
+            angle: (idx / orbitPhrases.length) * Math.PI * 2,
+            radius: 200,
+            speed: 0.006
+        }));
 
-        // Ruffled scalloped Sofia petal
-        ctx.beginPath();
-        ctx.moveTo(0, -this.length / 2);
-        ctx.bezierCurveTo(this.width * 1.2, -this.length * 0.25, this.width * 0.9, this.length * 0.35, 0, this.length / 2);
-        ctx.bezierCurveTo(-this.width * 0.9, this.length * 0.35, -this.width * 1.2, -this.length * 0.25, 0, -this.length / 2);
+        // ==========================================
+        // 3D ROTATION & INTERACTION
+        // ==========================================
+        let rotX = 0.15;
+        let rotY = 0;
+        let targetRotX = 0.15;
+        let targetRotY = 0;
+        let isDragging = false;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
 
-        const grad = ctx.createLinearGradient(0, -this.length / 2, 0, this.length / 2);
-        if (this.isBlush) {
-          grad.addColorStop(0, '#ffffff');
-          grad.addColorStop(0.35, '#ffd6e7');
-          grad.addColorStop(0.75, '#f7a8c4');
-          grad.addColorStop(1, '#ffffff');
-        } else {
-          grad.addColorStop(0, '#ffffff');
-          grad.addColorStop(0.4, '#fff5ea');
-          grad.addColorStop(0.8, '#ffe4ec');
-          grad.addColorStop(1, '#ffffff');
+        function onPointerDown(e) {
+            isDragging = true;
+            lastMouseX = e.clientX || (e.touches && e.touches[0].clientX);
+            lastMouseY = e.clientY || (e.touches && e.touches[0].clientY);
+            tryPlayAudio();
         }
-        ctx.fillStyle = grad;
-        ctx.fill();
 
-        ctx.restore();
-      }
-    }
-
-    // 3. Blooming Sofia Peony Blossom
-    class SofiaBlossom {
-      constructor(ox = width / 2, oy = height * 0.42) {
-        this.x = ox;
-        this.y = oy;
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 1.8 + Math.random() * 4.5;
-        this.vx = Math.cos(angle) * speed;
-        this.vy = Math.sin(angle) * speed - (1.0 + Math.random() * 1.8);
-        this.maxScale = 0.4 + Math.random() * 0.5;
-        this.scale = 0.05;
-        this.growSpeed = 0.016 + Math.random() * 0.022;
-        this.rotation = Math.random() * Math.PI * 2;
-        this.rotSpeed = (Math.random() - 0.5) * 0.02;
-        this.opacity = 0.95;
-        this.decay = 0.006 + Math.random() * 0.005;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.vx *= 0.965;
-        this.vy = this.vy * 0.965 + 0.05;
-        this.rotation += this.rotSpeed;
-        if (this.scale < this.maxScale) {
-          this.scale += this.growSpeed;
-        } else {
-          this.opacity -= this.decay;
+        function onPointerMove(e) {
+            if (!isDragging) return;
+            const curX = e.clientX || (e.touches && e.touches[0].clientX);
+            const curY = e.clientY || (e.touches && e.touches[0].clientY);
+            const deltaX = curX - lastMouseX;
+            const deltaY = curY - lastMouseY;
+            targetRotY += deltaX * 0.008;
+            targetRotX -= deltaY * 0.008;
+            targetRotX = Math.max(-0.6, Math.min(0.6, targetRotX));
+            lastMouseX = curX;
+            lastMouseY = curY;
         }
-      }
 
-      draw(ctx) {
-        if (this.opacity <= 0) return;
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation);
-        ctx.scale(this.scale, this.scale);
-        ctx.globalAlpha = Math.max(0, this.opacity);
-
-        // Layered Peony petals
-        for (let layer = 0; layer < 3; layer++) {
-          const count = 5 + layer * 2;
-          const radius = 40 - layer * 10;
-          for (let p = 0; p < count; p++) {
-            ctx.save();
-            ctx.rotate((p * Math.PI * 2) / count + layer * 0.4);
-            ctx.beginPath();
-            ctx.ellipse(0, -radius * 0.6, radius * 0.45, radius * 0.6, 0, 0, Math.PI * 2);
-            ctx.fillStyle = layer === 0 ? '#fccedf' : (layer === 1 ? '#fee4ee' : '#ffffff');
-            ctx.fill();
-            ctx.restore();
-          }
+        function onPointerUp() {
+            isDragging = false;
         }
-        ctx.restore();
-      }
-    }
 
-    // Touch Starlight Particle
-    class TouchParticle {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 1.2 + Math.random() * 3.2;
-        this.vx = Math.cos(angle) * speed;
-        this.vy = Math.sin(angle) * speed - 0.7;
-        this.size = 7 + Math.random() * 11;
-        this.color = ['#b0c8ec', '#f5c6d8', '#ffffff', '#d6b8e8'][Math.floor(Math.random() * 4)];
-        this.opacity = 0.9;
-        this.rotation = Math.random() * Math.PI * 2;
-      }
+        window.addEventListener('mousedown', onPointerDown);
+        window.addEventListener('mousemove', onPointerMove);
+        window.addEventListener('mouseup', onPointerUp);
+        window.addEventListener('touchstart', onPointerDown, { passive: true });
+        window.addEventListener('touchmove', onPointerMove, { passive: true });
+        window.addEventListener('touchend', onPointerUp);
 
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.vy += 0.03;
-        this.opacity -= 0.022;
-        this.size = Math.max(0, this.size - 0.12);
-      }
+        // ==========================================
+        // AUDIO CONTROLS
+        // ==========================================
+        let isAudioPlaying = false;
 
-      draw(ctx) {
-        if (this.opacity <= 0) return;
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation);
-        ctx.globalAlpha = Math.max(0, this.opacity);
-        ctx.fillStyle = this.color;
-
-        const s = this.size;
-        ctx.beginPath();
-        ctx.moveTo(0, -s);
-        ctx.quadraticCurveTo(0, 0, s, 0);
-        ctx.quadraticCurveTo(0, 0, 0, s);
-        ctx.quadraticCurveTo(0, 0, -s, 0);
-        ctx.quadraticCurveTo(0, 0, 0, -s);
-        ctx.fill();
-
-        ctx.restore();
-      }
-    }
-
-    const hydrangeas = [];
-    const sofiaPetals = [];
-    const sofiaBlossoms = [];
-    const touchParticles = [];
-
-    // Initialize regular floating petals
-    for (let i = 0; i < 24; i++) {
-      hydrangeas.push(new HydrangeaFloret(false));
-    }
-    for (let i = 0; i < 16; i++) {
-      sofiaPetals.push(new SofiaPetal(false));
-    }
-
-    function burstFlowers(count = 55, ox = width / 2, oy = height * 0.42) {
-      for (let i = 0; i < count; i++) {
-        if (Math.random() > 0.45) {
-          hydrangeas.push(new HydrangeaFloret(true, ox, oy));
-        } else {
-          sofiaPetals.push(new SofiaPetal(true, ox, oy));
+        function tryPlayAudio() {
+            if (isAudioPlaying) return;
+            audio.play().then(() => {
+                isAudioPlaying = true;
+                btnMusic.classList.add('playing');
+                musicLabel.textContent = "Pause Music";
+            }).catch(() => {});
         }
-      }
-      for (let i = 0; i < 8; i++) {
-        sofiaBlossoms.push(new SofiaBlossom(ox, oy));
-      }
-      for (let i = 0; i < 20; i++) {
-        touchParticles.push(new TouchParticle(ox, oy));
-      }
-    }
 
-    function handleTouch(x, y) {
-      for (let i = 0; i < 7; i++) {
-        touchParticles.push(new TouchParticle(x, y));
-      }
-      hydrangeas.push(new HydrangeaFloret(true, x, y));
-      sofiaPetals.push(new SofiaPetal(true, x, y));
-    }
+        btnMusic.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isAudioPlaying) {
+                audio.pause();
+                isAudioPlaying = false;
+                btnMusic.classList.remove('playing');
+                musicLabel.textContent = "Play Music";
+            } else {
+                audio.play().then(() => {
+                    isAudioPlaying = true;
+                    btnMusic.classList.add('playing');
+                    musicLabel.textContent = "Pause Music";
+                });
+            }
+        });
 
-    touchCanvas.addEventListener('pointerdown', (e) => {
-      handleTouch(e.clientX, e.clientY);
-    });
-
-    touchCanvas.addEventListener('pointermove', (e) => {
-      if (Math.random() > 0.78) {
-        touchParticles.push(new TouchParticle(e.clientX, e.clientY));
-      }
-    });
-
-    function animate() {
-      fCtx.clearRect(0, 0, width, height);
-      tCtx.clearRect(0, 0, width, height);
-
-      for (let i = sofiaBlossoms.length - 1; i >= 0; i--) {
-        const sb = sofiaBlossoms[i];
-        sb.update();
-        sb.draw(fCtx);
-        if (sb.opacity <= 0) {
-          sofiaBlossoms.splice(i, 1);
+        // ==========================================
+        // MODAL & CARDS INTERACTION
+        // ==========================================
+        function openModal() {
+            tryPlayAudio();
+            if (currentMode === 'flower') {
+                modalOverlay.classList.add('flower-mode-modal');
+            } else {
+                modalOverlay.classList.remove('flower-mode-modal');
+            }
+            modalOverlay.classList.add('active');
         }
-      }
 
-      for (let i = hydrangeas.length - 1; i >= 0; i--) {
-        const h = hydrangeas[i];
-        h.update();
-        h.draw(fCtx);
-        if (h.burst && h.opacity <= 0) {
-          hydrangeas.splice(i, 1);
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            // Release floating memory cards (y hệt video Dev Pan)
+            cardsLayer.style.display = 'block';
         }
-      }
 
-      for (let i = sofiaPetals.length - 1; i >= 0; i--) {
-        const sp = sofiaPetals[i];
-        sp.update();
-        sp.draw(fCtx);
-        if (sp.burst && sp.opacity <= 0) {
-          sofiaPetals.splice(i, 1);
+        // Tap heart or flower or hint opens modal
+        hintText.addEventListener('click', openModal);
+        flowerStage.addEventListener('click', openModal);
+        canvas.addEventListener('click', (e) => {
+            if (currentMode !== 'flower') {
+                const dx = e.clientX - width / 2;
+                const dy = e.clientY - height / 2;
+                if (Math.hypot(dx, dy) < 180) {
+                    openModal();
+                }
+            }
+        });
+
+        btnCloseModal.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        // ==========================================
+        // TOP NAVIGATION TAB SWITCHING
+        // ==========================================
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentMode = tab.dataset.mode;
+                applyMode(currentMode);
+            });
+        });
+
+        function applyMode(mode) {
+            tryPlayAudio();
+            if (mode === 'myheart') {
+                viewport.classList.remove('flower-mode');
+                canvas.style.display = 'block';
+                flowerStage.style.display = 'none';
+                hintText.textContent = "Cố lên vợ iuu , chồng yêu em ❤️";
+                modalHeader.textContent = "Cố lên vợ iuu";
+            } else if (mode === 'lovely') {
+                viewport.classList.remove('flower-mode');
+                canvas.style.display = 'block';
+                flowerStage.style.display = 'none';
+                hintText.textContent = "Chạm vào trái tim nha ❤️";
+                modalHeader.textContent = "Chào Công Chúa";
+            } else if (mode === 'flower') {
+                viewport.classList.add('flower-mode');
+                canvas.style.display = 'block';
+                flowerStage.style.display = 'block';
+                hintText.textContent = "Chạm vào hoa nhé 🌷";
+                modalHeader.textContent = "Chào em";
+            }
         }
-      }
 
-      for (let i = touchParticles.length - 1; i >= 0; i--) {
-        const tp = touchParticles[i];
-        tp.update();
-        tp.draw(tCtx);
-        if (tp.opacity <= 0 || tp.size <= 0) {
-          touchParticles.splice(i, 1);
+        // Flower Mode falling petals
+        const FLOWER_PETALS_COUNT = 45;
+        const flowerPetals = [];
+        for (let i = 0; i < FLOWER_PETALS_COUNT; i++) {
+            flowerPetals.push({
+                x: Math.random() * width,
+                y: Math.random() * height - height,
+                vx: (Math.random() - 0.5) * 1.5,
+                vy: Math.random() * 2 + 1.2,
+                rot: Math.random() * 360,
+                vRot: (Math.random() - 0.5) * 2,
+                size: Math.random() * 12 + 10,
+                color: Math.random() < 0.6 ? '#ffb3c6' : '#ffd1dc'
+            });
         }
-      }
 
-      requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
+        // ==========================================
+        // ANIMATION LOOP (60 FPS 3D ENGINE)
+        // ==========================================
+        let clock = 0;
 
-    /* =====================================================================
-       3. INTERACTIVE TRANSITIONS
-       ===================================================================== */
-    const introScreen = document.getElementById('introScreen');
-    const openBtn = document.getElementById('openBtn');
-    const mainContent = document.getElementById('mainContent');
-    const readLetterBtn = document.getElementById('readLetterBtn');
-    const burstMoreBtn = document.getElementById('burstMoreBtn');
-    const letterModal = document.getElementById('letterModal');
-    const closeLetterBtn = document.getElementById('closeLetterBtn');
+        function animate() {
+            requestAnimationFrame(animate);
+            clock += 0.035;
 
-    openBtn.addEventListener('click', () => {
-      playSong();
-      introScreen.classList.add('hidden');
+            // In Flower Mode: draw falling petals on canvas
+            if (currentMode === 'flower') {
+                ctx.clearRect(0, 0, width, height);
+                for (let p of flowerPetals) {
+                    p.y += p.vy;
+                    p.x += Math.sin(clock + p.rot) * 0.8;
+                    p.rot += p.vRot;
+                    if (p.y > height + 30) {
+                        p.y = -30;
+                        p.x = Math.random() * width;
+                    }
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rot * Math.PI / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = 0.7;
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+                return;
+            }
 
-      setTimeout(() => {
-        mainContent.classList.add('visible');
-        burstFlowers(65, width / 2, height * 0.42);
-      }, 400);
+            ctx.clearRect(0, 0, width, height);
 
-      setTimeout(() => {
-        burstFlowers(35, width / 2, height * 0.42);
-      }, 1200);
-    });
+            // 1. Draw Twinkling Background Stars
+            for (let s of stars) {
+                s.alpha += s.dAlpha;
+                if (s.alpha > 1 || s.alpha < 0.15) s.dAlpha = -s.dAlpha;
+                ctx.fillStyle = s.color;
+                ctx.globalAlpha = Math.max(0.1, Math.min(1, s.alpha));
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
 
-    readLetterBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      letterModal.classList.add('active');
-    });
+            // 2. Smooth Rotations (Slow auto-rotate + inertia)
+            targetRotY += 0.0035;
+            rotX += (targetRotX - rotX) * 0.08;
+            rotY += (targetRotY - rotY) * 0.08;
 
-    closeLetterBtn.addEventListener('click', () => {
-      letterModal.classList.remove('active');
-    });
+            const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+            const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
 
-    letterModal.addEventListener('click', (e) => {
-      if (e.target === letterModal) {
-        letterModal.classList.remove('active');
-      }
-    });
+            // Realistic Human Double-Pulse Heartbeat
+            // lub-dub beat cycle: beat 1, pause, beat 2, long pause
+            const beatCycle = (clock * 1.8) % (Math.PI * 2);
+            let pulse = 0;
+            if (beatCycle < 0.8) {
+                pulse = Math.sin(beatCycle * Math.PI / 0.8) * 0.14;
+            } else if (beatCycle > 1.0 && beatCycle < 1.6) {
+                pulse = Math.sin((beatCycle - 1.0) * Math.PI / 0.6) * 0.09;
+            }
+            const heartScale = 1 + pulse;
 
-    burstMoreBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      burstFlowers(60, width / 2, height * 0.42);
-    });
+            const cx = width / 2;
+            const cy = height / 2 - 25;
+            const focalLength = 650;
 
-  </script>
+            // 3. Draw Galaxy Ring (Only in Myheart Mode)
+            if (currentMode === 'myheart') {
+                // Galaxy Star Ring
+                for (let gs of galaxyStars) {
+                    gs.angle += gs.speed;
+                    const gx = Math.cos(gs.angle) * gs.radius;
+                    const gz = Math.sin(gs.angle) * gs.radius;
+                    const gy = gs.yOffset + 140;
+
+                    // 3D Rotation
+                    const x1 = gx * cosY + gz * sinY;
+                    const z1 = -gx * sinY + gz * cosY;
+                    const y2 = gy * cosX - z1 * sinX;
+                    const z2 = gy * sinX + z1 * cosX;
+
+                    const scale = focalLength / (focalLength + z2 + 200);
+                    const screenX = cx + x1 * scale;
+                    const screenY = cy + y2 * scale;
+
+                    ctx.fillStyle = gs.color;
+                    ctx.globalAlpha = Math.max(0.2, Math.min(0.9, (z2 + 250) / 450));
+                    ctx.beginPath();
+                    ctx.arc(screenX, screenY, gs.size * scale, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // 3D Orbiting Text along the ring
+                ctx.font = "bold 14px 'Mali', cursive";
+                ctx.textAlign = "center";
+                for (let p of phraseObjects) {
+                    p.angle += p.speed;
+                    const px = Math.cos(p.angle) * p.radius;
+                    const pz = Math.sin(p.angle) * p.radius;
+                    const py = 135;
+
+                    const x1 = px * cosY + pz * sinY;
+                    const z1 = -px * sinY + pz * cosY;
+                    const y2 = py * cosX - z1 * sinX;
+                    const z2 = py * sinX + z1 * cosX;
+
+                    const scale = focalLength / (focalLength + z2 + 200);
+                    const screenX = cx + x1 * scale;
+                    const screenY = cy + y2 * scale;
+
+                    const alpha = Math.max(0.2, Math.min(1.0, (z2 + 220) / 400));
+                    ctx.fillStyle = `rgba(255, 175, 205, ${alpha})`;
+                    ctx.shadowColor = "rgba(255, 105, 180, 0.8)";
+                    ctx.shadowBlur = 10 * scale;
+                    ctx.save();
+                    ctx.translate(screenX, screenY);
+                    ctx.scale(scale, scale);
+                    ctx.fillText(p.text, 0, 0);
+                    ctx.restore();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            // 4. Draw 3D Particle Heart
+            // Render particles sorted by depth Z for correct layering
+            const projectedPoints = [];
+            for (let i = 0; i < heartPoints.length; i++) {
+                const p = heartPoints[i];
+
+                // Flutter / pulsation
+                const curX = p.baseX * heartScale;
+                const curY = p.baseY * heartScale;
+                const curZ = p.baseZ * heartScale;
+
+                // 3D Rotate around Y then X
+                const x1 = curX * cosY + curZ * sinY;
+                const z1 = -curX * sinY + curZ * cosY;
+                const y2 = curY * cosX - z1 * sinX;
+                const z2 = curY * sinX + z1 * cosX;
+
+                const scale = focalLength / (focalLength + z2 + 120);
+                const screenX = cx + x1 * scale;
+                const screenY = cy + y2 * scale;
+
+                projectedPoints.push({
+                    screenX, screenY, z2, scale,
+                    color: p.color,
+                    size: p.size * scale * (1 + pulse * 1.5)
+                });
+            }
+
+            // Depth sorting
+            projectedPoints.sort((a, b) => a.z2 - b.z2);
+
+            // Draw composite glow
+            ctx.globalCompositeOperation = 'lighter';
+            for (let i = 0; i < projectedPoints.length; i++) {
+                const pt = projectedPoints[i];
+                const alpha = Math.max(0.25, Math.min(1, (pt.z2 + 180) / 360));
+
+                ctx.fillStyle = pt.color;
+                ctx.globalAlpha = alpha;
+                ctx.beginPath();
+                ctx.arc(pt.screenX, pt.screenY, pt.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.globalAlpha = 1;
+        }
+
+        animate();
+    </script>
 </body>
 </html>
