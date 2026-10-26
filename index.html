@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tiệm hoa chỉ mở một ngày trong năm 🌸</title>
+    <title>Vương Quốc Tình Yêu — Cố lên vợ iuu , chồng yêu em ❤️</title>
     
     <!-- Anti-cache meta tags -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta property="og:title" content="Tiệm hoa của Bé Iu - Món quà ngọt ngào">
-    <meta property="og:description" content="Tự tay chọn 5 bông hoa xinh đẹp dành tặng người thương nhất">
+    <meta property="og:title" content="Vương Quốc Tình Yêu Dành Riêng Cho Vợ Iuu 💕">
+    <meta property="og:description" content="Cố lên vợ iuu , chồng yêu em ❤️ Tuyển tập tất cả 9 món quà lãng mạn bất ngờ">
 
-    <!-- Google Fonts: Playfair Display, Mali, Quicksand -->
+    <!-- Google Fonts: Mali, Playfair Display, Quicksand, Great Vibes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Mali:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --primary-pink: #ff4b72;
+            --soft-pink: #ffe4eb;
+            --deep-rose: #d81b60;
+            --accent-gold: #f5af19;
+            --cream-bg: #faf6f0;
+            --glass-bg: rgba(255, 255, 255, 0.86);
+            --glass-border: rgba(255, 255, 255, 0.75);
+            --glass-shadow: 0 10px 32px rgba(216, 27, 96, 0.12);
+            --text-dark: #2d2624;
+            --text-sub: #6d5b57;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -32,29 +45,74 @@
             height: 100%;
             overflow-x: hidden;
             font-family: 'Quicksand', sans-serif;
-            background-color: #faf6f0;
+            background-color: var(--cream-bg);
             background-image: 
-                radial-gradient(#e8decb 1px, transparent 1px),
-                radial-gradient(#e8decb 1px, #faf6f0 1px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
-            color: #38312e;
+                radial-gradient(#ebd9d0 1.2px, transparent 1.2px),
+                radial-gradient(#ebd9d0 1.2px, #faf6f0 1.2px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
+            color: var(--text-dark);
         }
 
-        /* Top Music & Mode Bar */
+        /* Ambient floating particles in background */
+        #bgAmbientCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Top Bar: Navigation & Music Controller */
         .top-bar {
             position: fixed;
             top: 14px;
-            right: 18px;
+            left: 0;
+            width: 100%;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .top-left-actions, .top-right-actions {
             display: flex;
             align-items: center;
             gap: 10px;
-            z-index: 100;
+            pointer-events: auto;
+        }
+
+        .btn-hub-home {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(216, 27, 96, 0.25);
+            border-radius: 50px;
+            padding: 8px 14px;
+            display: none;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.25s ease;
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--deep-rose);
+        }
+
+        .btn-hub-home:hover {
+            transform: scale(1.05);
+            background: #fff;
+            box-shadow: 0 6px 20px rgba(216, 27, 96, 0.2);
         }
 
         .music-btn {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(216, 27, 96, 0.25);
             border-radius: 50px;
             padding: 8px 16px;
@@ -67,7 +125,8 @@
             font-family: 'Mali', cursive;
             font-size: 13px;
             font-weight: 700;
-            color: #d81b60;
+            color: var(--deep-rose);
+            max-width: 220px;
         }
 
         .music-btn:hover {
@@ -76,201 +135,494 @@
         }
 
         .music-disc {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background: #d81b60;
+            background: linear-gradient(135deg, #d81b60, #ff4b72);
             display: flex;
             justify-content: center;
             align-items: center;
             color: #fff;
             font-size: 10px;
+            flex-shrink: 0;
         }
 
         .music-btn.playing .music-disc {
             animation: spin 3s linear infinite;
         }
 
+        .music-title-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 130px;
+        }
+
         @keyframes spin {
             100% { transform: rotate(360deg); }
         }
 
-        /* App Main Stage Wrapper */
-        .stage-wrapper {
+        /* Bottom Floating Dock Bar */
+        .bottom-dock {
+            position: fixed;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 40px;
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 12px 36px rgba(216, 27, 96, 0.22), 0 2px 8px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            max-width: 96vw;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .bottom-dock::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 9px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            color: #7d6b67;
+            min-width: 50px;
+            flex-shrink: 0;
+        }
+
+        .dock-item:hover {
+            color: var(--deep-rose);
+            transform: translateY(-2px);
+        }
+
+        .dock-item.active {
+            color: var(--deep-rose);
+            background: linear-gradient(135deg, rgba(255, 75, 114, 0.14), rgba(216, 27, 96, 0.09));
+        }
+
+        .dock-icon {
+            font-size: 19px;
+            line-height: 1;
+            margin-bottom: 2px;
+            transition: transform 0.2s ease;
+        }
+
+        .dock-item.active .dock-icon {
+            transform: scale(1.18);
+        }
+
+        .dock-label {
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'Mali', cursive;
+            white-space: nowrap;
+        }
+
+        .dock-indicator {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--primary-pink);
+            position: absolute;
+            bottom: 1.5px;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.25s ease;
+        }
+
+        .dock-item.active .dock-indicator {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Main View Wrapper */
+        .app-view {
+            display: none;
             width: 100%;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            padding-bottom: 96px;
+        }
+
+        .app-view.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Common Buttons */
+        .btn-action-primary {
+            background: linear-gradient(135deg, #ff4b72, #d81b60);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 11px 26px;
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(216, 27, 96, 0.35);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
             align-items: center;
-            padding: 30px 20px;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .btn-action-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 26px rgba(216, 27, 96, 0.5);
+        }
+
+        /* ========================================================
+           VIEW 1: LOVE PORTAL HUB (TRANG CHỦ 9 DỰ ÁN)
+        ======================================================== */
+        #view-hub {
+            padding-top: 75px;
+            padding-left: 18px;
+            padding-right: 18px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .hub-hero {
+            text-align: center;
+            margin-bottom: 35px;
             position: relative;
         }
 
-        /* Step Section Container */
+        .hub-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(216, 27, 96, 0.3);
+            border-radius: 50px;
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--deep-rose);
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.1);
+            margin-bottom: 12px;
+            animation: pulseSoft 2.5s infinite;
+        }
+
+        @keyframes pulseSoft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); box-shadow: 0 6px 22px rgba(216, 27, 96, 0.22); }
+        }
+
+        .hub-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(26px, 5.2vw, 42px);
+            font-weight: 700;
+            color: #b71540;
+            line-height: 1.25;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(183, 21, 64, 0.15);
+        }
+
+        .hub-subtitle {
+            font-family: 'Mali', cursive;
+            font-size: clamp(14.5px, 3.2vw, 18px);
+            color: #4a3834;
+            max-width: 680px;
+            margin: 0 auto 16px;
+            line-height: 1.55;
+        }
+
+        .hub-signature {
+            display: inline-block;
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(28px, 6vw, 38px);
+            color: #d81b60;
+            padding: 4px 22px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .hub-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .gift-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gift-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4.5px;
+            background: linear-gradient(90deg, #ff758c, #ff4b72, #f5af19);
+            opacity: 0.85;
+        }
+
+        .gift-card:hover {
+            transform: translateY(-7px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(216, 27, 96, 0.22);
+            border-color: rgba(255, 75, 114, 0.4);
+            background: rgba(255, 255, 255, 0.96);
+        }
+
+        .card-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Mali', cursive;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(216, 27, 96, 0.1);
+            color: var(--deep-rose);
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .card-icon-wrap {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255, 228, 235, 0.8), rgba(255, 182, 193, 0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gift-card:hover .card-icon-wrap {
+            transform: rotate(-8deg) scale(1.1);
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d2624;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 13.5px;
+            color: var(--text-sub);
+            line-height: 1.55;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        .card-btn {
+            background: linear-gradient(135deg, #ff4b72, #d81b60);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 9px 18px;
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 5px 16px rgba(216, 27, 96, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        .gift-card:hover .card-btn {
+            box-shadow: 0 8px 22px rgba(216, 27, 96, 0.45);
+            transform: translateY(-2px);
+        }
+
+        /* ========================================================
+           VIEW 2: TIỆM HOA CỦA BÉ IU (TIKTOK @ng_thanhslt19)
+        ======================================================== */
+        #view-tiem-hoa {
+            padding-top: 70px;
+            padding-left: 14px;
+            padding-right: 14px;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .tiem-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
         .step-container {
             display: none;
             width: 100%;
-            max-width: 950px;
-            margin: auto;
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.45s ease forwards;
         }
 
         .step-container.active {
             display: flex;
-            opacity: 1;
-            transform: translateY(0);
         }
 
-        /* ----------------------------------------------------
-           STEP 1: CỬA TIỆM HOA (STOREFRONT)
-           ---------------------------------------------------- */
-        #step1 {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .storefront-text-col {
-            flex: 1;
-            max-width: 440px;
-        }
-
-        .badge-date {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #7d8b76;
-            margin-bottom: 24px;
-            display: inline-block;
-            text-transform: uppercase;
-        }
-
-        .storefront-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 46px;
-            font-weight: 700;
-            line-height: 1.25;
-            color: #2b2623;
-            margin-bottom: 24px;
-        }
-
-        .highlight-script {
-            font-family: 'Mali', cursive;
-            font-style: italic;
-            color: #d81b60;
-            font-weight: 700;
-        }
-
-        .storefront-subtext {
-            font-size: 11.5px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #8c837b;
-            text-transform: uppercase;
-            line-height: 1.8;
-        }
-
-        .storefront-visual-col {
-            flex: 1;
-            max-width: 440px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .storefront-card {
+            width: 100%;
+            max-width: 480px;
+            background: #fff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 16px 45px rgba(216, 27, 96, 0.16);
+            border: 2px solid rgba(255, 230, 238, 0.9);
             position: relative;
         }
 
-        .shop-illustration-wrap {
+        .storefront-img-wrap {
+            position: relative;
             width: 100%;
-            max-width: 410px;
-            cursor: pointer;
-            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            filter: drop-shadow(0 15px 35px rgba(100, 80, 60, 0.12));
+            background: #fdfaf6;
         }
 
-        .shop-illustration-wrap:hover {
-            transform: translateY(-6px) scale(1.02);
-        }
-
-        .shop-illustration-wrap:active {
-            transform: scale(0.98);
-        }
-
-        /* Subtitle Lyric Bar (y hệt video) */
-        .lyric-caption {
-            position: fixed;
-            bottom: 24px;
+        .door-click-area {
+            position: absolute;
+            bottom: 6%;
             left: 50%;
             transform: translateX(-50%);
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 13.5px;
-            letter-spacing: 2.5px;
-            color: #756a63;
-            text-transform: uppercase;
-            text-align: center;
-            z-index: 50;
-            opacity: 0.9;
+            width: 32%;
+            height: 38%;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .door-pulse-btn {
+            position: absolute;
+            bottom: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2b7a4b;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 9px 20px;
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(43, 122, 75, 0.45);
+            animation: pulseBtn 1.8s infinite;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 12;
             white-space: nowrap;
         }
 
-        /* ----------------------------------------------------
-           STEP 2: BÉ IU CHỌN HOA (PICK 5 FLOWERS)
-           ---------------------------------------------------- */
-        #step2 {
-            flex-direction: column;
-            align-items: center;
+        @keyframes pulseBtn {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.08); }
+        }
+
+        .storefront-caption {
+            padding: 16px 20px;
             text-align: center;
+            background: #fff;
         }
 
-        .step-header {
-            margin-bottom: 30px;
-        }
-
-        .step-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 38px;
-            font-weight: 700;
-            color: #2b2623;
-            margin-bottom: 8px;
-        }
-
-        .step-desc {
+        .storefront-sub {
+            font-family: 'Mali', cursive;
             font-size: 14px;
-            color: #7a7068;
-            font-weight: 600;
+            color: #8c7873;
         }
 
-        .picking-arena {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 60px;
+        .shelf-header {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .shelf-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: #3b2a26;
+            margin-bottom: 4px;
+        }
+
+        .shelf-subtitle {
+            font-family: 'Mali', cursive;
+            font-size: 13.5px;
+            color: #8c7873;
+        }
+
+        .shelf-counter {
+            display: inline-block;
+            background: #fff;
+            border: 1.5px solid #d81b60;
+            color: #d81b60;
+            border-radius: 30px;
+            padding: 4px 14px;
+            font-size: 12.5px;
+            font-weight: 700;
+            font-family: 'Mali', cursive;
+            margin-top: 6px;
+        }
+
+        .flower-shelf-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
             width: 100%;
-            max-width: 880px;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 14px 10px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 220, 230, 0.8);
+            margin-bottom: 22px;
         }
 
-        /* Flowers Shelf (Left) */
-        .flower-shelf-box {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .flower-shelf-row {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 14px;
-            padding-bottom: 12px;
-            border-bottom: 4px solid #d9be9b;
-            border-radius: 2px;
-            position: relative;
-        }
-
-        .flower-item {
+        .shelf-flower-item {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -279,42 +631,31 @@
             position: relative;
         }
 
-        .flower-item:hover {
-            transform: translateY(-12px) scale(1.1);
+        .shelf-flower-item:hover, .shelf-flower-item:active {
+            transform: translateY(-8px) scale(1.12);
         }
 
-        .flower-item:active {
-            transform: scale(0.92);
-        }
-
-        .flower-item img, .flower-item svg {
-            width: 60px;
-            height: 140px;
+        .shelf-flower-item img {
+            width: 52px;
+            height: 72px;
             object-fit: contain;
-            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
         }
 
-        .flower-name {
-            font-size: 11px;
+        .shelf-flower-item span {
+            font-size: 10.5px;
             font-weight: 700;
-            color: #8c7e72;
-            margin-top: 6px;
+            font-family: 'Mali', cursive;
+            color: #594742;
+            margin-top: 4px;
+            text-align: center;
         }
 
-        /* Bouquet Wrapper (Right) */
-        .bouquet-wrapper-box {
-            flex: 1;
-            max-width: 340px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .bouquet-stage-wrap {
             position: relative;
-        }
-
-        .wrapping-cone-container {
-            position: relative;
-            width: 250px;
-            height: 270px;
+            width: 280px;
+            height: 330px;
+            margin: 0 auto 16px;
             display: flex;
             justify-content: center;
             align-items: flex-end;
@@ -323,741 +664,2744 @@
         .wrapping-cone-img {
             position: absolute;
             bottom: 0;
-            width: 230px;
+            width: 240px;
+            z-index: 10;
+            filter: drop-shadow(0 12px 25px rgba(120, 80, 50, 0.25));
+        }
+
+        .picked-flowers-container {
+            position: absolute;
+            bottom: 85px;
+            width: 220px;
+            height: 220px;
             z-index: 5;
-            pointer-events: none;
-            filter: drop-shadow(0 12px 25px rgba(100, 70, 40, 0.15));
-        }
-
-        /* Container where picked flowers nestle inside */
-        .picked-flowers-nest {
-            position: absolute;
-            bottom: 65px;
-            width: 210px;
-            height: 180px;
-            z-index: 2;
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-            pointer-events: none;
-        }
-
-        .nested-flower {
-            position: absolute;
-            bottom: 10px;
-            width: 65px;
-            height: 140px;
-            transform-origin: bottom center;
-            animation: popInFlower 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes popInFlower {
-            0% { transform: scale(0) translateY(40px); opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .bouquet-status-text {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
-            font-size: 15px;
-            color: #8c7e75;
-            margin-top: 15px;
-            text-align: center;
-            line-height: 1.5;
-        }
-
-        .counter-badge {
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 2.5px;
-            color: #d81b60;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
-
-        /* ----------------------------------------------------
-           STEP 3: THẮT CHIẾC NƠ (TIE THE RIBBON)
-           ---------------------------------------------------- */
-        #step3 {
-            flex-direction: column;
             align-items: center;
-            text-align: center;
         }
 
-        .ribbon-stage-box {
-            position: relative;
-            width: 270px;
-            height: 310px;
-            margin: 20px auto;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-        }
-
-        .ribbon-prompt-btn {
+        .picked-flower-in-bouquet {
             position: absolute;
-            bottom: 60px;
-            z-index: 20;
-            background: linear-gradient(135deg, #ff4081, #f50057);
-            color: #fff;
-            padding: 9px 20px;
-            border-radius: 30px;
-            font-family: 'Mali', cursive;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 18px rgba(245, 0, 87, 0.4);
-            animation: pulseBtn 1.8s infinite ease-in-out;
-            border: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            width: 72px;
+            height: 110px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.18));
+            animation: flowerFlyIn 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
         }
 
-        @keyframes pulseBtn {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); box-shadow: 0 6px 25px rgba(245, 0, 87, 0.6); }
+        @keyframes flowerFlyIn {
+            0% { transform: translateY(-70px) scale(0.3); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
         }
 
         .ribbon-bow-img {
             position: absolute;
-            bottom: 45px;
-            width: 150px;
-            z-index: 10;
-            animation: popRibbon 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: none;
+            bottom: 50px;
+            width: 170px;
+            z-index: 20;
+            filter: drop-shadow(0 8px 16px rgba(216, 27, 96, 0.3));
             cursor: pointer;
+            transition: transform 0.25s ease;
         }
 
-        @keyframes popRibbon {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        .ribbon-bow-img:hover {
+            transform: scale(1.08);
         }
 
-        /* ----------------------------------------------------
-           STEP 4: BỨC THƯ & BỨC ẢNH KỶ NIỆM (LOVE LETTER)
-           ---------------------------------------------------- */
-        #step4 {
+        .polaroid-card {
+            background: #fff;
+            padding: 12px 12px 18px;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            width: 250px;
+            transform: rotate(-3deg);
+            margin-bottom: 20px;
+            border: 1px solid #f0e6e0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid-card:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .polaroid-note {
+            font-family: 'Mali', cursive;
+            font-size: 12px;
+            color: #554440;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .letter-scroll-card {
+            background: #fffdfa;
+            border: 2px dashed #e8c7c0;
+            border-radius: 20px;
+            padding: 22px;
+            max-width: 460px;
+            width: 100%;
+            box-shadow: 0 12px 32px rgba(216, 27, 96, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .letter-scroll-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #b71540;
+            margin-bottom: 12px;
+        }
+
+        .letter-scroll-card p {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 14.5px;
+            color: #3b2f2d;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .letter-highlight {
+            font-family: 'Mali', cursive;
+            font-size: 17px;
+            font-weight: 700;
+            color: #d81b60;
+            background: rgba(255, 75, 114, 0.1);
+            padding: 8px 14px;
+            border-radius: 14px;
+            display: inline-block;
+        }
+
+        .lyric-sub-bar {
+            margin-top: 18px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 30px;
+            font-family: 'Mali', cursive;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #d81b60;
+            border: 1px solid rgba(216, 27, 96, 0.2);
+            text-align: center;
+            max-width: 440px;
+            animation: pulseSoft 2.5s infinite;
+        }
+
+        /* ========================================================
+           VIEW 3: TRÁI TIM 3D DEVPAN & BÓ TULIP (TIKTOK @panbap369)
+        ======================================================== */
+        #view-heart-3d {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            padding-bottom: 0;
+            background: radial-gradient(circle at center, #261122 0%, #110714 65%, #080309 100%);
+        }
+
+        #heartCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: grab;
+            z-index: 5;
+        }
+
+        #heartCanvas:active {
+            cursor: grabbing;
+        }
+
+        .heart-overlay-content {
+            position: absolute;
+            bottom: 85px;
+            left: 0;
+            width: 100%;
+            display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            z-index: 20;
+            pointer-events: none;
         }
 
-        .card-preview-btn {
-            position: relative;
-            display: inline-block;
+        .heart-hint-pill {
+            pointer-events: auto;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 182, 193, 0.35);
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            font-weight: 700;
+            color: #ff9ebd;
             cursor: pointer;
-            margin-top: 15px;
-            animation: bounceCard 3s infinite ease-in-out;
+            box-shadow: 0 4px 20px rgba(255, 75, 114, 0.35);
+            transition: all 0.25s ease;
         }
 
-        @keyframes bounceCard {
+        /* ========================================================
+           VIEW 4: MÀN HÌNH KHÓA MẬT MÃ 30/06
+        ======================================================== */
+        #view-lock {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 70px 20px 100px;
+            background: radial-gradient(circle at center, #231226 0%, #140817 60%, #0a030d 100%);
+        }
+
+        .lock-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 330px;
+            z-index: 20;
+        }
+
+        .lock-icon-wrap {
+            font-size: 42px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.6));
+            animation: floatLock 3s ease-in-out infinite;
+        }
+
+        @keyframes floatLock {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
 
-        /* Parchment Love Letter Modal */
-        .letter-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(30, 22, 18, 0.65);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            z-index: 2000;
+        .lock-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #ffe4eb;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .lock-subtitle {
+            font-family: 'Mali', cursive;
+            font-size: 12.5px;
+            color: #ff9ebd;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .pin-dots {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .pin-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 130, 175, 0.65);
+            background: transparent;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .pin-dot.filled {
+            background: linear-gradient(135deg, #ff4b72, #ff758c);
+            border-color: #ff4b72;
+            box-shadow: 0 0 14px rgba(255, 75, 114, 0.85);
+            transform: scale(1.18);
+        }
+
+        .pin-dot.error {
+            background: #ff3344;
+            border-color: #ff3344;
+            box-shadow: 0 0 14px rgba(255, 50, 70, 0.9);
+        }
+
+        .pin-dots.shake {
+            animation: shakeDots 0.45s ease-in-out;
+        }
+
+        @keyframes shakeDots {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-14px); }
+            40% { transform: translateX(12px); }
+            60% { transform: translateX(-8px); }
+            80% { transform: translateX(6px); }
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px 22px;
+            width: 100%;
+        }
+
+        .key-btn {
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-
-        .letter-modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .letter-card {
-            background: #fffdf9;
-            border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-            border: 1px solid #ebd9c8;
-            max-width: 680px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 36px 32px;
-            position: relative;
-            transform: scale(0.9) translateY(20px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: row;
-            gap: 28px;
-            text-align: left;
-        }
-
-        .letter-modal-overlay.active .letter-card {
-            transform: scale(1) translateY(0);
-        }
-
-        .letter-close-btn {
-            position: absolute;
-            top: 14px;
-            right: 18px;
-            font-size: 22px;
-            color: #9c8a7c;
-            background: none;
-            border: none;
+            font-size: 25px;
+            font-weight: 600;
+            color: #fff;
             cursor: pointer;
-            transition: color 0.2s;
+            transition: all 0.15s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            margin: 0 auto;
         }
 
-        .letter-close-btn:hover {
-            color: #d81b60;
+        .key-btn:active {
+            background: rgba(255, 105, 180, 0.4);
+            border-color: #ff69b4;
+            transform: scale(0.92);
         }
 
-        .letter-content-col {
-            flex: 1.4;
+        .key-empty {
+            visibility: hidden;
+            pointer-events: none;
         }
 
-        .letter-title {
+        .key-del {
+            font-size: 20px;
+            color: #ff9ebd;
+            background: transparent;
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        .lock-toast {
+            margin-top: 18px;
             font-family: 'Mali', cursive;
-            font-size: 24px;
+            font-size: 13.5px;
             font-weight: 700;
-            color: #c2185b;
-            margin-bottom: 16px;
+            color: #ff7597;
+            text-align: center;
+            min-height: 22px;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: all 0.3s ease;
         }
 
-        .letter-body {
-            font-size: 14.5px;
-            line-height: 1.8;
-            color: #4a3e38;
-            font-weight: 500;
+        .lock-toast.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .letter-body p {
-            margin-bottom: 14px;
+        #fireworksCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
         }
 
-        .letter-sign {
-            font-family: 'Mali', cursive;
-            font-size: 18px;
-            font-weight: 700;
-            color: #c2185b;
-            text-align: right;
-            margin-top: 20px;
-        }
-
-        /* Polaroid Photo Column */
-        .letter-photo-col {
-            flex: 1;
+        /* ========================================================
+           VIEW 5: VƯỜN HOA SOFIA & CẨM TÚ CẦU
+        ======================================================== */
+        #view-sofia {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 80px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        .polaroid-frame {
-            background: #ffffff;
-            padding: 10px 10px 18px 10px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-            border: 1px solid #ebd9c8;
-            transform: rotate(3deg);
-            transition: transform 0.3s ease;
-            text-align: center;
-            max-width: 220px;
-        }
-
-        .polaroid-frame:hover {
-            transform: rotate(0deg) scale(1.04);
-        }
-
-        .polaroid-frame img {
+        #sofiaCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 4px;
-            display: block;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .sofia-center-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            border: 2px solid rgba(255, 220, 235, 0.9);
+            border-radius: 28px;
+            padding: 24px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 16px 45px rgba(216, 27, 96, 0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .sofia-bouquet-img {
+            width: 240px;
+            height: 240px;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 24px rgba(216, 27, 96, 0.2));
+            margin-bottom: 14px;
+            animation: floatLock 4s ease-in-out infinite;
+        }
+
+        /* ========================================================
+           VIEW 6: VƯỜN HOA LY HỒNG PHA LÊ 3D
+        ======================================================== */
+        #view-lily {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lilyCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .lily-center-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            border: 2px solid rgba(255, 220, 235, 0.9);
+            border-radius: 28px;
+            padding: 24px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 16px 45px rgba(216, 27, 96, 0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .lily-bouquet-img {
+            width: 240px;
+            height: 240px;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 24px rgba(216, 27, 96, 0.2));
+            margin-bottom: 14px;
+            animation: floatLock 4s ease-in-out infinite;
+        }
+
+        /* ========================================================
+           VIEW 7: 🏹 CUNG TÊN CUPID & BÁNH KEM 3D (TIKTOK @chadlop_code)
+        ======================================================== */
+        #view-cupid {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 70px;
+            background: radial-gradient(circle at center, #2e1022 0%, #170712 65%, #0d0309 100%);
+        }
+
+        #cupidCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .cupid-hud {
+            position: absolute;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 20;
+            gap: 10px;
+        }
+
+        .cupid-cake-wrapper {
+            position: absolute;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 15;
+            transition: transform 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            pointer-events: none;
+            cursor: pointer;
+        }
+
+        .cupid-cake-wrapper.active {
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .cake-glow-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(38px, 8vw, 62px);
+            color: #ffe4eb;
+            text-shadow: 0 0 20px #ff2e93, 0 0 40px #ff758c;
             margin-bottom: 10px;
+            text-align: center;
         }
 
-        .polaroid-caption {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
-            font-size: 12px;
-            color: #7a6a5d;
+        .cake-svg-box {
+            width: 200px;
+            height: 200px;
+            filter: drop-shadow(0 15px 30px rgba(255, 46, 147, 0.45));
+            animation: floatLock 3s ease-in-out infinite;
         }
 
-        /* Reset Button */
-        .btn-restart {
-            margin-top: 25px;
-            background: #fff;
-            border: 1.5px solid #d9be9b;
-            border-radius: 30px;
-            padding: 9px 24px;
+        /* ========================================================
+           VIEW 8: 🌀 TRÁI TIM TOÁN HỌC DỆT ÁNH SÁNG (TIKTOK @vibes.code)
+        ======================================================== */
+        #view-spirograph {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: #060208;
+            padding-bottom: 0;
+        }
+
+        #spiroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .spiro-hud {
+            position: absolute;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 20;
+        }
+
+        .spiro-tag {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            border-radius: 40px;
+            padding: 8px 20px;
             font-family: 'Mali', cursive;
-            font-size: 13.5px;
+            font-size: 13px;
             font-weight: 700;
-            color: #68574c;
+            color: #ff9ebd;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.25);
+        }
+
+        /* ========================================================
+           VIEW 9: 🏮 ĐÊM HỘI THẢ ĐÈN TRỜI 3D (TIKTOK @panbap369)
+        ======================================================== */
+        #view-lanterns {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #1b0e27 0%, #0d0615 65%, #050209 100%);
+            padding-bottom: 0;
+        }
+
+        #lanternCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .floating-island-svg {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(340px, 85vw);
+            z-index: 8;
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7));
+            pointer-events: none;
+        }
+
+        .lantern-hud {
+            position: absolute;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            z-index: 20;
+        }
+
+        /* ========================================================
+           VIEW 10: 🌳 CÂY TÌNH YÊU & 3D CAROUSEL (TIKTOK @frontiend)
+        ======================================================== */
+        #view-love-tree {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 70px;
+            padding-bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #fff5f8 0%, #ffeaf0 100%);
+        }
+
+        #treeCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .tree-stage-content {
+            position: relative;
+            z-index: 10;
+            width: 92%;
+            max-width: 580px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tree-action-banner {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 10px 24px;
+            border: 1px solid rgba(216, 27, 96, 0.25);
+            box-shadow: 0 6px 20px rgba(216, 27, 96, 0.15);
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            font-weight: 700;
+            color: #d81b60;
+            margin-bottom: 16px;
             cursor: pointer;
             transition: all 0.25s ease;
         }
 
-        .btn-restart:hover {
-            background: #fdf8eb;
+        .tree-action-banner:hover {
+            transform: scale(1.05);
+            background: #fff;
+        }
+
+        .love-tree-letter-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            border-radius: 26px;
+            padding: 24px;
+            border: 2px solid rgba(255, 220, 235, 0.9);
+            box-shadow: 0 16px 45px rgba(216, 27, 96, 0.15);
+            width: 100%;
+            margin-bottom: 24px;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.45s ease forwards;
+        }
+
+        .love-tree-letter-card.active {
+            display: block;
+        }
+
+        .typewriter-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 14.5px;
+            line-height: 1.7;
+            color: #3b2a26;
+            min-height: 80px;
+            margin-bottom: 14px;
+            text-align: left;
+            background: #fff9fb;
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid #ffd6e2;
+        }
+
+        .carousel-3d-wrap {
+            perspective: 1000px;
+            width: 200px;
+            height: 150px;
+            margin: 10px auto;
+            position: relative;
+        }
+
+        .carousel-3d-inner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            animation: spinCarousel 14s infinite linear;
+        }
+
+        @keyframes spinCarousel {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .carousel-card {
+            position: absolute;
+            width: 110px;
+            height: 140px;
+            left: 45px;
+            top: 5px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(216, 27, 96, 0.2);
+            border: 2px solid #ffccd9;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-card:nth-child(1) { transform: rotateY(0deg) translateZ(140px); }
+        .carousel-card:nth-child(2) { transform: rotateY(90deg) translateZ(140px); }
+        .carousel-card:nth-child(3) { transform: rotateY(180deg) translateZ(140px); }
+        .carousel-card:nth-child(4) { transform: rotateY(270deg) translateZ(140px); }
+
+        .carousel-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Universal Romantic Modal Popup */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 8, 16, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #fff;
+            border-radius: 26px;
+            padding: 26px;
+            max-width: 440px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            border: 2px solid #ffe0ea;
+            text-align: center;
+            position: relative;
+            animation: popModal 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        @keyframes popModal {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: #b71540;
+            margin-bottom: 6px;
+        }
+
+        .modal-subtitle {
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            color: #8c7873;
+            margin-bottom: 16px;
+        }
+
+        .modal-msg {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 15px;
+            color: #3b2f2d;
+            line-height: 1.65;
+            margin-bottom: 22px;
+            background: #fff9fb;
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid #ffd6e2;
+        }
+
+        .modal-btn-close {
+            background: linear-gradient(135deg, #ff4b72, #d81b60);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 26px;
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(216, 27, 96, 0.3);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .modal-btn-close:hover {
             transform: scale(1.05);
         }
 
-        /* Responsive Layout for Mobile */
-        @media (max-width: 768px) {
-            #step1 {
-                flex-direction: column;
-                text-align: center;
-                gap: 25px;
-                padding-top: 20px;
+        /* Responsive tweaks */
+        @media (max-width: 480px) {
+            .hub-cards-grid {
+                grid-template-columns: 1fr;
             }
-
-            .storefront-title {
-                font-size: 34px;
+            .dock-label {
+                font-size: 9.5px;
             }
-
-            .picking-arena {
-                flex-direction: column;
-                gap: 30px;
+            .dock-item {
+                padding: 5px 7px;
+                min-width: 44px;
             }
-
-            .flower-shelf-row {
-                gap: 8px;
-            }
-
-            .flower-item img, .flower-item svg {
-                width: 50px;
-                height: 120px;
-            }
-
-            .letter-card {
-                flex-direction: column;
-                padding: 26px 20px;
-            }
-
-            .polaroid-frame {
-                margin: auto;
+            .dock-icon {
+                font-size: 17px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Audio Element: TikTok song from video ("Là Người Con Gái Đứng Trước Mặt Anh Lúc Này") -->
+    <!-- Ambient floating particles background -->
+    <canvas id="bgAmbientCanvas"></canvas>
+
+    <!-- Background Audio Element -->
     <audio id="bgMusic" src="flower_shop_song.mp3" preload="auto" loop></audio>
 
-    <!-- Top Music Button -->
-    <div class="top-bar">
-        <div class="music-btn" id="btnMusic">
-            <div class="music-disc">🎵</div>
-            <span id="musicText">Bật nhạc</span>
+    <!-- Top Bar: Navigation & Music Controller -->
+    <header class="top-bar">
+        <div class="top-left-actions">
+            <button class="btn-hub-home" id="btnTopHome">
+                <span>🏠</span> Về Hub
+            </button>
         </div>
-    </div>
-
-    <!-- Main App Stage -->
-    <div class="stage-wrapper">
-
-        <!-- ==========================================
-             BƯỚC 1: CỬA TIỆM HOA (STOREFRONT)
-             ========================================== -->
-        <div class="step-container active" id="step1">
-            <div class="storefront-text-col">
-                <span class="badge-date">20 THÁNG 10 · MỘT NGÀY THẬT ĐẶC BIỆT</span>
-                <h1 class="storefront-title">
-                    Tiệm hoa<br>
-                    chỉ mở<br>
-                    <span class="highlight-script">một ngày</span><br>
-                    trong năm.
-                </h1>
-                <p class="storefront-subtext">MỘT CHÚT HOA · MỘT CHÚT THƯƠNG · THẬT NHIỀU YÊU</p>
-            </div>
-
-            <div class="storefront-visual-col">
-                <div class="shop-illustration-wrap" id="shopDoorTrigger" title="Chạm vào để mở cửa tiệm hoa">
-                    <img src="storefront.svg" alt="Tiệm hoa của Bé Iu" style="width:100%; display:block;">
-                </div>
-            </div>
+        <div class="top-right-actions">
+            <button class="music-btn" id="btnMusicToggle">
+                <div class="music-disc">♫</div>
+                <div class="music-title-wrap" id="musicTitleLabel">Bật Nhạc</div>
+            </button>
         </div>
+    </header>
 
-        <!-- ==========================================
-             BƯỚC 2: BÉ IU CHỌN HOA (PICK 5 FLOWERS)
-             ========================================== -->
-        <div class="step-container" id="step2">
-            <div class="step-header">
-                <h2 class="step-title">
-                    Bé Iu chọn hoa,<br>
-                    <span class="highlight-script">Anh gửi yêu thương.</span>
-                </h2>
-                <p class="step-desc">Chạm từng bông hoa để đặt vào bó. Chọn đủ 5 bông để hoàn thành bó hoa của Bé Iu.</p>
+    <!-- ========================================================
+       VIEW 1: LOVE PORTAL HUB (TRANG CHỦ 9 DỰ ÁN)
+    ======================================================== -->
+    <section class="app-view active" id="view-hub">
+        <div class="hub-hero">
+            <div class="hub-badge">
+                <span>💕</span> VƯƠNG QUỐC TÌNH YÊU DÀNH CHO VỢ IUU
             </div>
-
-            <div class="picking-arena">
-                <!-- Left Flower Shelf -->
-                <div class="flower-shelf-box">
-                    <div class="flower-shelf-row">
-                        <div class="flower-item" data-type="tulip">
-                            <img src="flower_tulip.svg" alt="Tulip">
-                            <span class="flower-name">Tulip</span>
-                        </div>
-                        <div class="flower-item" data-type="sunflower">
-                            <img src="flower_sunflower.svg" alt="Hướng dương">
-                            <span class="flower-name">Hướng dương</span>
-                        </div>
-                        <div class="flower-item" data-type="rose">
-                            <img src="flower_rose.svg" alt="Hoa hồng">
-                            <span class="flower-name">Hoa hồng</span>
-                        </div>
-                        <div class="flower-item" data-type="daisy">
-                            <img src="flower_daisy.svg" alt="Cúc hoạ mi">
-                            <span class="flower-name">Cúc hoạ mi</span>
-                        </div>
-                        <div class="flower-item" data-type="baby">
-                            <img src="flower_baby.svg" alt="Baby trắng">
-                            <span class="flower-name">Baby trắng</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Bouquet Cone -->
-                <div class="bouquet-wrapper-box">
-                    <div class="wrapping-cone-container">
-                        <div class="picked-flowers-nest" id="pickedFlowersNest">
-                            <!-- Selected flowers appear here -->
-                        </div>
-                        <img src="wrapping_paper.svg" alt="Giấy gói hoa" class="wrapping-cone-img">
-                    </div>
-                    <p class="bouquet-status-text" id="bouquetStatusText">Bó hoa của Bé Iu<br>đang chờ những điều dịu dàng.</p>
-                    <div class="counter-badge"><span id="flowerCount">0</span> / 5 BÔNG HOA</div>
-                </div>
+            <h1 class="hub-title">Cố lên vợ iuu , chồng yêu em ❤️</h1>
+            <p class="hub-subtitle">
+                Chào công chúa của anh! Tất cả những món quà ngọt ngào dưới đây là điều đặc biệt chồng đã chuẩn bị riêng cho em. Hãy chạm vào từng món quà để khám phá nhé! ✨
+            </p>
+            <div class="hub-signature">
+                Mãi yêu em ♡
             </div>
         </div>
 
-        <!-- ==========================================
-             BƯỚC 3: THẮT CHIẾC NƠ (TIE THE RIBBON)
-             ========================================== -->
-        <div class="step-container" id="step3">
-            <div class="step-header">
-                <h2 class="step-title">
-                    Thắt một chiếc nơ,<br>
-                    <span class="highlight-script">gửi trọn yêu thương.</span>
-                </h2>
-                <p class="step-desc">Chạm vào dải ruy băng để hoàn thành bó hoa của người anh thương.</p>
-            </div>
-
-            <div class="ribbon-stage-box">
-                <div class="wrapping-cone-container">
-                    <div class="picked-flowers-nest" id="ribbonFlowersNest">
-                        <!-- Cloned 5 flowers -->
-                    </div>
-                    <img src="wrapping_paper.svg" alt="Giấy gói hoa" class="wrapping-cone-img">
+        <div class="hub-cards-grid">
+            <!-- Card 1: Tiệm hoa của Bé Iu -->
+            <div class="gift-card" data-target="view-tiem-hoa" data-song="flower_shop_song.mp3" data-title="Là Người Con Gái...">
+                <div>
+                    <span class="card-header-badge">🌸 Viral TikTok • Tương Tác 4 Bước</span>
+                    <div class="card-icon-wrap">💐</div>
+                    <h2 class="card-title">Tiệm Hoa Của Bé Iu</h2>
+                    <p class="card-desc">
+                        Tiệm hoa chỉ mở một ngày trong năm! Tự tay em chọn 5 bông hoa xinh đẹp, gói nón kraft, thắt nơ satin hồng và mở thư tình cùng ảnh polaroid kỷ niệm.
+                    </p>
                 </div>
-
-                <!-- Pulsing Ribbon Prompt Button -->
-                <button class="ribbon-prompt-btn" id="btnTieRibbon">
-                    <span>🎀</span> Thắt nơ xinh
+                <button class="card-btn">
+                    <span>Vào tiệm hoa ngay</span> ➔
                 </button>
+            </div>
 
-                <!-- Tied Ribbon Bow Image -->
-                <img src="ribbon_bow.svg" alt="Nơ ruy băng" class="ribbon-bow-img" id="tiedRibbonBow">
+            <!-- Card 2: Trái Tim 3D DevPan -->
+            <div class="gift-card" data-target="view-heart-3d" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix">
+                <div>
+                    <span class="card-header-badge">💖 3D Particle Galaxy</span>
+                    <div class="card-icon-wrap">✨</div>
+                    <h2 class="card-title">Trái Tim 3D Ngàn Hạt Sáng</h2>
+                    <p class="card-desc">
+                        Không gian dải ngân hà với 2800 hạt sáng 3D xoay quanh trái tim đang đập nhịp nhàng, dải chữ thì thầm yêu thương và bó hoa Tulip hồng kiêu sa.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Khám phá trái tim 3D</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 3: Cung Tên Cupid & Bánh Kem 3D -->
+            <div class="gift-card" data-target="view-cupid" data-song="cupid_cake_song.mp3" data-title="Love Story">
+                <div>
+                    <span class="card-header-badge">🏹 Viral TikTok • Bắn Cung Nhắm Tim</span>
+                    <div class="card-icon-wrap">🎯</div>
+                    <h2 class="card-title">Cung Tên Cupid & Bánh Kem 3D</h2>
+                    <p class="card-desc">
+                        Nhắm và bắn mũi tên tình yêu xuyên qua hồng tâm trái tim. Bùng nổ pháo hoa hạt sáng và nâng bổng chiếc bánh kem 3D lung linh chúc mừng vợ yêu!
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Bắn cung thần ái</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 4: Trái Tim Toán Học Dệt Sáng -->
+            <div class="gift-card" data-target="view-spirograph" data-song="spirograph_heart_song.mp3" data-title="Piano Romance">
+                <div>
+                    <span class="card-header-badge">🌀 Spirograph Cardioid Line Art</span>
+                    <div class="card-icon-wrap">🎨</div>
+                    <h2 class="card-title">Trái Tim Toán Học Dệt Sáng</h2>
+                    <p class="card-desc">
+                        Tuyệt tác đồ họa toán học: Từng sợi tơ ánh sáng chuyển màu cầu vồng và hồng neon đan dệt nên hình hài trái tim hoàn mỹ chuyển động thôi miên.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Thưởng thức nghệ thuật</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 5: Đêm Hội Thả Đèn Trời 3D -->
+            <div class="gift-card" data-target="view-lanterns" data-song="lantern_sky_song.mp3" data-title="Đêm Hội Trăng Rằm">
+                <div>
+                    <span class="card-header-badge">🏮 Cổ Tích 3D • Lồng Đèn Bay</span>
+                    <div class="card-icon-wrap">🌕</div>
+                    <h2 class="card-title">Đêm Hội Thả Đèn Trời 3D</h2>
+                    <p class="card-desc">
+                        Hòn đảo cổ tích lơ lửng giữa vũ trụ với cây hoa anh đào phát sáng và đàn thỏ ngắm trăng. Chạm vào từng chiếc đèn trời bay bồng bềnh để đọc lời chúc yêu thương.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Thả đèn ước nguyện</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 6: Cây Tình Yêu & Carousel -->
+            <div class="gift-card" data-target="view-love-tree" data-song="thousand_years_song.mp3" data-title="A Thousand Years">
+                <div>
+                    <span class="card-header-badge">🌳 Fractal Tree & 3D Carousel</span>
+                    <div class="card-icon-wrap">🐾</div>
+                    <h2 class="card-title">Cây Tình Yêu & Carousel Đôi Bạn</h2>
+                    <p class="card-desc">
+                        Cây tình yêu sinh trưởng nở bung ngàn chiếc lá trái tim, kết hợp thư tình đánh chữ tự động và vòng quay 3D các sticker cặp đôi siêu đáng yêu.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Tưới cây tình yêu</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 7: Màn Hình Khóa 30/06 -->
+            <div class="gift-card" data-target="view-lock" data-song="cho_chut_remix.mp3" data-title="Pháo Hoa Tình Yêu">
+                <div>
+                    <span class="card-header-badge">🔐 Mật Mã Bí Mật 30/06</span>
+                    <div class="card-icon-wrap">🔒</div>
+                    <h2 class="card-title">Mật Mã Tình Yêu 30/06</h2>
+                    <p class="card-desc">
+                        Màn hình khóa iPhone với ngày định mệnh của tụi mình. Nhập đúng mật khẩu để kích hoạt pháo hoa trái tim rực sáng toàn màn hình!
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Thử mở khóa quà</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 8: Vườn Sofia & Cẩm Tú Cầu -->
+            <div class="gift-card" data-target="view-sofia" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix">
+                <div>
+                    <span class="card-header-badge">💐 Muôn Hoa Bung Nở</span>
+                    <div class="card-icon-wrap">🌷</div>
+                    <h2 class="card-title">Vườn Sofia & Cẩm Tú Cầu</h2>
+                    <p class="card-desc">
+                        Những đóa Sofia kiêu sa và cẩm tú cầu dịu dàng bung nở tràn ngập không gian, kết hợp cùng thiệp chúc ngọt ngào trên nền nhạc remix sôi động.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Thưởng hoa ngát hương</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 9: Vườn Hoa Ly 3D -->
+            <div class="gift-card" data-target="view-lily" data-song="panbap_audio.mp3" data-title="Melody Tình Yêu">
+                <div>
+                    <span class="card-header-badge">🌺 Quý Phái & Lãng Mạn</span>
+                    <div class="card-icon-wrap">💎</div>
+                    <h2 class="card-title">Vườn Hoa Ly Hồng Pha Lê</h2>
+                    <p class="card-desc">
+                        Bó hoa ly 3D sang trọng giữa màn mưa cánh hoa rơi lãng mạn. Tượng trưng cho tình yêu chân thành, thanh khiết và bền lâu mà anh dành cho em.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Ngắm hoa ly 3D</span> ➔
+                </button>
             </div>
         </div>
+    </section>
 
-        <!-- ==========================================
-             BƯỚC 4: BỨC THƯ TÌNH & THIỆP KỶ NIỆM (FINAL)
-             ========================================== -->
-        <div class="step-container" id="step4">
-            <div class="step-header">
-                <h2 class="step-title">
-                    Một bó hoa,<br>
-                    <span class="highlight-script">cho người Anh thương nhất.</span>
-                </h2>
-                <p class="step-desc">Chạm vào tấm thiệp nhỏ trên bó hoa để mở lời nhắn bí mật.</p>
+    <!-- ========================================================
+       VIEW 2: TIỆM HOA CỦA BÉ IU (TIKTOK @ng_thanhslt19)
+    ======================================================== -->
+    <section class="app-view" id="view-tiem-hoa">
+        <div class="tiem-stage">
+            <div class="step-container active" id="step1-storefront">
+                <div class="storefront-card">
+                    <div class="storefront-img-wrap">
+                        <img src="storefront.svg" alt="Tiệm hoa của Bé Iu" style="width:100%; display:block;">
+                        <div class="door-click-area" id="doorClickArea" title="Bấm để mở cửa"></div>
+                        <button class="door-pulse-btn" id="btnOpenDoor">
+                            <span>🚪</span> Mở cửa ♡
+                        </button>
+                    </div>
+                    <div class="storefront-caption">
+                        <div class="storefront-sub">Tiệm hoa chỉ mở một ngày trong năm ♡</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="ribbon-stage-box">
-                <div class="wrapping-cone-container">
-                    <div class="picked-flowers-nest" id="finalFlowersNest"></div>
+            <div class="step-container" id="step2-picking">
+                <div class="shelf-header">
+                    <h2 class="shelf-title">Tiệm Hoa Của Bé Iu</h2>
+                    <p class="shelf-subtitle">Chạm vào từng bông hoa xinh để tự tay cắm vào nón giấy nhé ♡</p>
+                    <div class="shelf-counter" id="shelfCounter">0 / 5 BÔNG HOA</div>
+                </div>
+
+                <div class="flower-shelf-grid">
+                    <div class="shelf-flower-item" data-flower="tulip" data-name="Tulip" data-img="flower_tulip.svg">
+                        <img src="flower_tulip.svg" alt="Tulip">
+                        <span>Tulip</span>
+                    </div>
+                    <div class="shelf-flower-item" data-flower="sunflower" data-name="Hướng dương" data-img="flower_sunflower.svg">
+                        <img src="flower_sunflower.svg" alt="Hướng dương">
+                        <span>Hướng dương</span>
+                    </div>
+                    <div class="shelf-flower-item" data-flower="rose" data-name="Hoa hồng" data-img="flower_rose.svg">
+                        <img src="flower_rose.svg" alt="Hoa hồng">
+                        <span>Hoa hồng</span>
+                    </div>
+                    <div class="shelf-flower-item" data-flower="daisy" data-name="Cúc hoạ mi" data-img="flower_daisy.svg">
+                        <img src="flower_daisy.svg" alt="Cúc hoạ mi">
+                        <span>Cúc hoạ mi</span>
+                    </div>
+                    <div class="shelf-flower-item" data-flower="baby" data-name="Baby trắng" data-img="flower_baby.svg">
+                        <img src="flower_baby.svg" alt="Baby trắng">
+                        <span>Baby</span>
+                    </div>
+                </div>
+
+                <div class="bouquet-stage-wrap">
+                    <div class="picked-flowers-container" id="bouquetFlowers"></div>
                     <img src="wrapping_paper.svg" alt="Giấy gói hoa" class="wrapping-cone-img">
                 </div>
-                <img src="ribbon_bow.svg" alt="Nơ ruy băng" class="ribbon-bow-img" style="display:block;" id="finalRibbonBow">
+
+                <button class="btn-action-primary" id="btnFinishPicking" style="display:none;">
+                    <span>✨</span> Tiếp tục gói hoa xinh ➔
+                </button>
             </div>
 
-            <button class="btn-restart" id="btnRestart">💐 Cắm lại bó hoa mới</button>
-        </div>
+            <div class="step-container" id="step3-ribbon">
+                <div class="shelf-header">
+                    <h2 class="shelf-title">Bó Hoa Hoàn Hảo Của Bé Iu</h2>
+                    <p class="shelf-subtitle">Chạm vào nơ ruy băng để thắt chặt yêu thương ♡</p>
+                </div>
 
+                <div class="bouquet-stage-wrap">
+                    <div class="picked-flowers-container" id="bouquetFlowersStep3"></div>
+                    <img src="wrapping_paper.svg" alt="Giấy gói hoa" class="wrapping-cone-img">
+                    <img src="ribbon_bow.svg" alt="Nơ ruy băng" class="ribbon-bow-img" id="tiedRibbonBow">
+                </div>
+
+                <p class="shelf-subtitle" style="margin-top: 10px; font-weight:700; color:#d81b60;">
+                    Chạm vào nơ ruy băng để mở thiệp gửi em ♡
+                </p>
+            </div>
+
+            <div class="step-container" id="step4-card">
+                <div class="polaroid-card">
+                    <img src="tulip_bouquet_clean.png" alt="Hoa tặng em" id="polaroidImg" onerror="this.src='card_sofia_hydrangea.png'">
+                    <div class="polaroid-note">Người anh luôn muốn tặng hoa. ♡</div>
+                </div>
+
+                <div class="letter-scroll-card">
+                    <h3>Gửi người Anh thương ♡</h3>
+                    <p>
+                        Cảm ơn em vì đã xuất hiện và mang đến cho anh những điều ngọt ngào nhất. Từng bông hoa này tượng trưng cho tình yêu chân thành và sự trân trọng anh dành cho em.
+                    </p>
+                    <div class="letter-highlight">
+                        Cố lên vợ iuu , chồng yêu em ❤️
+                    </div>
+                    <p style="margin-top:14px; font-size:13px; color:#8c7873; font-family:'Mali', cursive;">
+                        Mãi bên cạnh và yêu thương em mỗi ngày! ♡
+                    </p>
+                </div>
+
+                <button class="btn-action-primary" id="btnRestartFlorist" style="margin-top: 20px;">
+                    <span>🔄</span> Trải nghiệm lại tiệm hoa
+                </button>
+            </div>
+
+            <div class="lyric-sub-bar" id="tiemLyricBar">
+                ♫ "ĐI QUA BÃO GIÔNG ĐANG CUỘN XOAY..." ♡
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 3: TRÁI TIM 3D DEVPAN & BÓ TULIP (TIKTOK @panbap369)
+    ======================================================== -->
+    <section class="app-view" id="view-heart-3d">
+        <canvas id="heartCanvas"></canvas>
+        <div class="heart-overlay-content">
+            <div class="heart-hint-pill" id="btnHeartHint">
+                <span>💖</span> Cố lên vợ iuu , chồng yêu em ❤️ (Chạm vào trái tim)
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 4: MÀN HÌNH KHÓA MẬT MÃ 30/06
+    ======================================================== -->
+    <section class="app-view" id="view-lock">
+        <canvas id="fireworksCanvas"></canvas>
+        <div class="lock-box">
+            <div class="lock-icon-wrap">🔒</div>
+            <h2 class="lock-title">Nhập ngày định mệnh của tụi mình 💕</h2>
+            <p class="lock-subtitle">Gợi ý: Ngày bắt đầu câu chuyện tình yêu (DD/MM)</p>
+
+            <div class="pin-dots" id="pinDots">
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+            </div>
+
+            <div class="keypad" id="keypad">
+                <div class="key-btn" data-val="1">1</div>
+                <div class="key-btn" data-val="2">2</div>
+                <div class="key-btn" data-val="3">3</div>
+                <div class="key-btn" data-val="4">4</div>
+                <div class="key-btn" data-val="5">5</div>
+                <div class="key-btn" data-val="6">6</div>
+                <div class="key-btn" data-val="7">7</div>
+                <div class="key-btn" data-val="8">8</div>
+                <div class="key-btn" data-val="9">9</div>
+                <div class="key-btn key-empty"></div>
+                <div class="key-btn" data-val="0">0</div>
+                <div class="key-btn key-del" id="btnDel">⌫</div>
+            </div>
+
+            <div class="lock-toast" id="lockToast">Quên ngày là bị phạt nha bà xã 😜</div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 5: VƯỜN HOA SOFIA & CẨM TÚ CẦU
+    ======================================================== -->
+    <section class="app-view" id="view-sofia">
+        <canvas id="sofiaCanvas"></canvas>
+        <div class="sofia-center-card">
+            <img src="sofia_hydrangea_blended.png" alt="Hoa Sofia & Cẩm Tú Cầu" class="sofia-bouquet-img" onerror="this.src='sofia_hydrangea.jpg'">
+            <h2 class="modal-title" style="margin-bottom:8px;">Vườn Hoa Sofia & Cẩm Tú Cầu</h2>
+            <p class="modal-subtitle">Dịu dàng, ngát hương và đằm thắm dành riêng tặng em</p>
+            <div class="modal-msg">
+                Bó hoa Sofia quý phái kết hợp cùng những đóa Cẩm Tú Cầu ngát hương tượng trưng cho lòng biết ơn và sự gắn kết bền chặt.
+                <br><br>
+                <strong style="color:#d81b60; font-family:'Mali', cursive;">Cố lên vợ iuu , chồng yêu em ❤️</strong>
+            </div>
+            <button class="btn-action-primary" id="btnSofiaHeartPop">
+                <span>🌸</span> Thả thêm ngàn cánh hoa rơi
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 6: VƯỜN HOA LY HỒNG PHA LÊ 3D
+    ======================================================== -->
+    <section class="app-view" id="view-lily">
+        <canvas id="lilyCanvas"></canvas>
+        <div class="lily-center-card">
+            <img src="lily_bouquet_blended.png" alt="Bó Hoa Ly Hồng 3D" class="lily-bouquet-img" onerror="this.src='lily_bouquet.jpg'">
+            <h2 class="modal-title" style="margin-bottom:8px;">Bó Hoa Ly Hồng Pha Lê</h2>
+            <p class="modal-subtitle">Thanh khiết, kiêu sa và ngập tràn tình yêu thương</p>
+            <div class="modal-msg">
+                Hoa ly hồng mang thông điệp về sự vĩnh cửu và ngọt ngào. Anh mong mỗi ngày thức dậy vợ đều luôn mỉm cười thật rạng rỡ.
+                <br><br>
+                <strong style="color:#d81b60; font-family:'Mali', cursive;">Cố lên vợ iuu , chồng yêu em ❤️</strong>
+            </div>
+            <button class="btn-action-primary" id="btnLilyHeartPop">
+                <span>🌺</span> Thả cánh hoa ly bay
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 7: 🏹 CUNG TÊN CUPID & BÁNH KEM 3D (TIKTOK @chadlop_code)
+    ======================================================== -->
+    <section class="app-view" id="view-cupid">
+        <canvas id="cupidCanvas"></canvas>
+        <div class="cupid-cake-wrapper" id="cupidCakeBox" title="Chạm vào bánh kem">
+            <h2 class="cake-glow-title">Happy Birthday Vợ Iuu ❤️</h2>
+            <!-- 3D Layered Birthday Cake SVG -->
+            <svg class="cake-svg-box" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Plate -->
+                <ellipse cx="100" cy="175" rx="85" ry="18" fill="#4a2c3a" />
+                <ellipse cx="100" cy="172" rx="80" ry="15" fill="#f5af19" />
+                <!-- Bottom Cake Layer -->
+                <path d="M 35 130 C 35 150 165 150 165 130 L 165 160 C 165 175 35 175 35 160 Z" fill="#ff4b72" />
+                <ellipse cx="100" cy="130" rx="65" ry="18" fill="#ff758c" />
+                <!-- Icing Drips -->
+                <path d="M 35 130 Q 50 145 65 130 Q 80 148 100 130 Q 120 146 135 130 Q 150 145 165 130" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" />
+                <!-- Top Cake Layer -->
+                <path d="M 55 90 C 55 105 145 105 145 90 L 145 115 C 145 125 55 125 55 115 Z" fill="#ffe4eb" />
+                <ellipse cx="100" cy="90" rx="45" ry="12" fill="#fff" />
+                <!-- Strawberries / Toppings -->
+                <circle cx="80" cy="88" r="6" fill="#ff2e93" />
+                <circle cx="100" cy="85" r="7" fill="#ff2e93" />
+                <circle cx="120" cy="88" r="6" fill="#ff2e93" />
+                <!-- Candle -->
+                <rect x="97" y="55" width="6" height="25" fill="#f5af19" rx="2" />
+                <ellipse cx="100" cy="48" rx="4" ry="7" fill="#ff4b72">
+                    <animate attributeName="ry" values="7;9;6;8;7" dur="0.8s" repeatCount="indefinite" />
+                </ellipse>
+                <circle cx="100" cy="48" r="2.5" fill="#fff">
+                    <animate attributeName="r" values="2.5;3.5;2;3;2.5" dur="0.8s" repeatCount="indefinite" />
+                </circle>
+            </svg>
+            <p style="color:#ffe4eb; font-family:'Mali', cursive; font-size:16px; margin-top:12px; font-weight:700; text-shadow:0 2px 8px rgba(0,0,0,0.6);">
+                Cố lên vợ iuu , chồng yêu em ❤️
+            </p>
+        </div>
+        <div class="cupid-hud">
+            <button class="btn-action-primary" id="btnShootCupid">
+                <span>🏹</span> Bắn Mũi Tên Tình Yêu ♡
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 8: 🌀 TRÁI TIM TOÁN HỌC DỆT ÁNH SÁNG (TIKTOK @vibes.code)
+    ======================================================== -->
+    <section class="app-view" id="view-spirograph">
+        <canvas id="spiroCanvas"></canvas>
+        <div class="spiro-hud">
+            <div class="spiro-tag" id="spiroInfoTag">
+                ✨ Đang dệt từng sợi ánh sáng vào trái tim em...
+            </div>
+            <button class="btn-action-primary" id="btnRedrawSpiro">
+                <span>🔄</span> Vẽ Lại Từ Đầu
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 9: 🏮 ĐÊM HỘI THẢ ĐÈN TRỜI 3D (TIKTOK @panbap369)
+    ======================================================== -->
+    <section class="app-view" id="view-lanterns">
+        <canvas id="lanternCanvas"></canvas>
+        <svg class="floating-island-svg" viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="40,150 170,230 300,150 260,135 80,135" fill="#2d1d36" />
+            <polygon points="70,145 170,215 270,145 170,165" fill="#1f1326" />
+            <ellipse cx="170" cy="140" rx="130" ry="22" fill="#3a2547" />
+            <ellipse cx="170" cy="138" rx="120" ry="18" fill="#4d305e" />
+            <path d="M 165 140 Q 168 100 160 85 Q 165 70 172 65 Q 170 85 175 140 Z" fill="#29141f" />
+            <circle cx="170" cy="65" r="46" fill="#ffb3c6" opacity="0.85" />
+            <circle cx="140" cy="68" r="32" fill="#ffd1dc" opacity="0.8" />
+            <circle cx="200" cy="68" r="32" fill="#ff9ebd" opacity="0.8" />
+            <circle cx="170" cy="45" r="28" fill="#fff" opacity="0.75" />
+            <ellipse cx="150" cy="138" rx="6" ry="8" fill="#fff" />
+            <circle cx="150" cy="132" r="5" fill="#fff" />
+            <ellipse cx="190" cy="138" rx="6" ry="8" fill="#fff" />
+            <circle cx="190" cy="132" r="5" fill="#fff" />
+        </svg>
+        <div class="lantern-hud">
+            <p style="color:#ffd700; font-family:'Mali', cursive; font-size:13.5px; font-weight:700; text-shadow:0 2px 10px rgba(0,0,0,0.8);">
+                Chạm vào lồng đèn để xem câu chúc gửi vợ ♡
+            </p>
+            <button class="btn-action-primary" id="btnReleaseLantern">
+                <span>🏮</span> Thả Thêm Lồng Đèn Ước Nguyện
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 10: 🌳 CÂY TÌNH YÊU & 3D CAROUSEL (TIKTOK @frontiend)
+    ======================================================== -->
+    <section class="app-view" id="view-love-tree">
+        <canvas id="treeCanvas"></canvas>
+        <div class="tree-stage-content">
+            <div class="tree-action-banner" id="btnToggleTreeLetter">
+                <span>💌</span> Chạm để mở thư tình & quà tặng ♡
+            </div>
+
+            <div class="love-tree-letter-card" id="loveTreeLetterCard">
+                <h2 class="modal-title" style="margin-bottom:6px;">Bức Thư Tình Gửi Vợ Iuu 💕</h2>
+                <p class="modal-subtitle">A Thousand Years — Ngàn năm yêu thương</p>
+                <div class="typewriter-text" id="treeTypewriter"></div>
+                <div class="letter-highlight" style="margin-bottom:16px;">
+                    Cố lên vợ iuu , chồng yêu em ❤️
+                </div>
+
+                <div class="carousel-3d-wrap">
+                    <div class="carousel-3d-inner">
+                        <div class="carousel-card">
+                            <img src="sticker_pair1.png" alt="Couple 1" onerror="this.src='card_bunny.png'">
+                        </div>
+                        <div class="carousel-card">
+                            <img src="sticker_pair2.png" alt="Couple 2" onerror="this.src='card_anime_girl.png'">
+                        </div>
+                        <div class="carousel-card">
+                            <img src="sticker_pair3.png" alt="Couple 3" onerror="this.src='card_bunny.png'">
+                        </div>
+                        <div class="carousel-card">
+                            <img src="card_bunny.png" alt="Couple 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-action-primary" id="btnRegrowTree">
+                <span>🌱</span> Nuôi Cây Tình Yêu Nở Hoa Lại
+            </button>
+        </div>
+    </section>
+
+    <!-- Universal Romantic Modal Popup -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <h2 class="modal-title" id="modalHeader">Cố lên vợ iuu ❤️</h2>
+            <p class="modal-subtitle" id="modalSub">Gửi người anh yêu thương nhất ✨</p>
+            <div id="modalImgWrap" style="margin-bottom:12px; display:none;">
+                <img id="modalImg" src="" alt="Photo" style="width:100%; max-height:160px; object-fit:cover; border-radius:12px;">
+            </div>
+            <p class="modal-msg" id="modalBody">
+                Cố lên vợ iuu , chồng yêu em ❤️<br>
+                Lúc nào cũng có chồng ở đây bên cạnh che chở và yêu thương vợ!
+            </p>
+            <button class="modal-btn-close" id="btnCloseModal">
+                Đóng <span>♡</span>
+            </button>
+        </div>
     </div>
 
-    <!-- Parchment Love Letter Modal -->
-    <div class="letter-modal-overlay" id="letterModal">
-        <div class="letter-card">
-            <button class="letter-close-btn" id="btnCloseLetter">&times;</button>
-            
-            <div class="letter-content-col">
-                <h3 class="letter-title">Gửi Bé Iu của Anh,</h3>
-                <div class="letter-body">
-                    <p>Chúc mừng ngày đặc biệt của người anh thương nhất!</p>
-                    <p>Anh muốn tặng em một bó hoa thật đặc biệt. Mỗi bông là một điều anh mong cho em: bình an, niềm vui, những ước mơ thành hiện thực và thật nhiều yêu thương.</p>
-                    <p>Cảm ơn em vì những quan tâm nhỏ bé, những lần lắng nghe và nụ cười khiến anh thấy một ngày bình thường cũng trở nên đáng nhớ.</p>
-                    <p>Em cứ tự tin làm những điều mình thích nhé. Có ngày nào mệt thì nghỉ một chút, đừng quên dành sự dịu dàng cho chính mình.</p>
-                    <p>Nếu hôm nay có ai hỏi anh muốn tặng em điều gì, anh sẽ nói: một ngày thật vui, luôn bình an, và thật nhiều ngày sau vẫn luôn được ở bên em.</p>
-                    <p style="font-weight: 700; color: #d81b60;">Cố lên vợ iuu , chồng yêu em ❤️</p>
-                    <p>Anh yêu em rất nhiều. ♡</p>
-                </div>
-                <div class="letter-sign">Thương Bé Iu, Anh ♡</div>
-            </div>
-
-            <div class="letter-photo-col">
-                <div class="polaroid-frame">
-                    <img src="tulip_bouquet_clean.png" alt="Hoa tặng em" id="polaroidImg">
-                    <div class="polaroid-caption">Người anh luôn muốn tặng hoa. ♡</div>
-                </div>
-            </div>
+    <!-- Bottom Floating Dock Bar (Tất cả 9 Dự Án) -->
+    <nav class="bottom-dock" id="bottomDock">
+        <div class="dock-item active" data-target="view-hub" data-song="flower_shop_song.mp3" data-title="Là Người Con Gái..." title="Trang chủ Hub">
+            <div class="dock-icon">🏠</div>
+            <div class="dock-label">Hub</div>
+            <div class="dock-indicator"></div>
         </div>
-    </div>
+        <div class="dock-item" data-target="view-tiem-hoa" data-song="flower_shop_song.mp3" data-title="Tiệm Hoa Bé Iu" title="Tiệm hoa của Bé Iu">
+            <div class="dock-icon">🌸</div>
+            <div class="dock-label">Tiệm Hoa</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-heart-3d" data-song="cho_chut_remix.mp3" data-title="Trái Tim 3D" title="Trái tim 3D DevPan">
+            <div class="dock-icon">💖</div>
+            <div class="dock-label">Trái Tim</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-cupid" data-song="cupid_cake_song.mp3" data-title="Love Story" title="Cung Tên Cupid & Bánh Kem 3D">
+            <div class="dock-icon">🏹</div>
+            <div class="dock-label">Cung Tên</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-spirograph" data-song="spirograph_heart_song.mp3" data-title="Piano Romance" title="Trái Tim Toán Học">
+            <div class="dock-icon">🌀</div>
+            <div class="dock-label">Dệt Sáng</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-lanterns" data-song="lantern_sky_song.mp3" data-title="Đêm Hội Trăng Rằm" title="Đèn Trời 3D">
+            <div class="dock-icon">🏮</div>
+            <div class="dock-label">Đèn Trời</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-love-tree" data-song="thousand_years_song.mp3" data-title="A Thousand Years" title="Cây Tình Yêu & Carousel">
+            <div class="dock-icon">🌳</div>
+            <div class="dock-label">Cây Yêu</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-lock" data-song="cho_chut_remix.mp3" data-title="Mật Mã 30/06" title="Mật mã khóa 30/06">
+            <div class="dock-icon">🔐</div>
+            <div class="dock-label">Mật Mã</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-sofia" data-song="cho_chut_remix.mp3" data-title="Vườn Sofia" title="Vườn hoa Sofia & Cẩm Tú Cầu">
+            <div class="dock-icon">💐</div>
+            <div class="dock-label">Sofia</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-lily" data-song="panbap_audio.mp3" data-title="Hoa Ly 3D" title="Vườn hoa Ly pha lê 3D">
+            <div class="dock-icon">🌺</div>
+            <div class="dock-label">Hoa Ly</div>
+            <div class="dock-indicator"></div>
+        </div>
+    </nav>
 
-    <!-- Fixed Subtitle Lyric Caption (y hệt video) -->
-    <div class="lyric-caption" id="lyricCaption">"ĐI QUA BÃO GIÔNG ĐANG CUỘN XOAY"</div>
-
-    <!-- Application Script -->
+    <!-- Main JavaScript Logic -->
     <script>
-        const audio = document.getElementById('bgMusic');
-        const btnMusic = document.getElementById('btnMusic');
-        const musicText = document.getElementById('musicText');
-        const lyricCaption = document.getElementById('lyricCaption');
+        // ==========================================
+        // 1. SMART AUDIO MANAGER
+        // ==========================================
+        const bgMusic = document.getElementById('bgMusic');
+        const btnMusicToggle = document.getElementById('btnMusicToggle');
+        const musicTitleLabel = document.getElementById('musicTitleLabel');
+        let isAudioPlaying = false;
+        let currentSongSrc = 'flower_shop_song.mp3';
 
-        // Navigation steps
-        const step1 = document.getElementById('step1');
-        const step2 = document.getElementById('step2');
-        const step3 = document.getElementById('step3');
-        const step4 = document.getElementById('step4');
-
-        // Flower picking elements
-        const flowerItems = document.querySelectorAll('.flower-item');
-        const pickedFlowersNest = document.getElementById('pickedFlowersNest');
-        const ribbonFlowersNest = document.getElementById('ribbonFlowersNest');
-        const finalFlowersNest = document.getElementById('finalFlowersNest');
-        const flowerCountEl = document.getElementById('flowerCount');
-        const bouquetStatusText = document.getElementById('bouquetStatusText');
-
-        // Ribbon & Letter
-        const btnTieRibbon = document.getElementById('btnTieRibbon');
-        const tiedRibbonBow = document.getElementById('tiedRibbonBow');
-        const finalRibbonBow = document.getElementById('finalRibbonBow');
-        const letterModal = document.getElementById('letterModal');
-        const btnCloseLetter = document.getElementById('btnCloseLetter');
-        const btnRestart = document.getElementById('btnRestart');
-
-        let isPlaying = false;
-        let pickedFlowers = [];
-        const MAX_FLOWERS = 5;
-
-        // Subtitles synced with audio lyrics
-        const lyrics = [
-            { time: 0, text: '"ĐI QUA BÃO GIÔNG ĐANG CUỘN XOAY"' },
-            { time: 3, text: '"NHỮNG TÂM TƯ BỦA VÂY NGƯỜI ĐÃ VÌ ANH MÀ ÔM"' },
-            { time: 7, text: '"VÀ GIỜ THÌ CẢ THẾ GIỚI CỦA ANH ĐANG Ở ĐÂY"' },
-            { time: 11, text: '"LÀ NGƯỜI CON GÁI ĐỨNG TRƯỚC MẶT ANH LÚC NÀY"' },
-            { time: 16, text: '"THỜI GIAN NHƯ NGỪNG TRÔI KHI BÊN EM"' }
-        ];
-
-        audio.addEventListener('timeupdate', () => {
-            const cur = audio.currentTime;
-            for (let i = lyrics.length - 1; i >= 0; i--) {
-                if (cur >= lyrics[i].time) {
-                    lyricCaption.textContent = lyrics[i].text;
-                    break;
+        function switchSong(src, title) {
+            if (!src) return;
+            const isDifferent = !bgMusic.src.endsWith(src);
+            if (isDifferent) {
+                currentSongSrc = src;
+                bgMusic.src = src;
+                musicTitleLabel.textContent = title || "Nhạc Tình Yêu";
+                if (isAudioPlaying) {
+                    bgMusic.play().catch(() => {});
                 }
+            } else {
+                musicTitleLabel.textContent = title || "Nhạc Tình Yêu";
             }
+        }
+
+        function togglePlayMusic() {
+            if (isAudioPlaying) {
+                bgMusic.pause();
+                isAudioPlaying = false;
+                btnMusicToggle.classList.remove('playing');
+                musicTitleLabel.textContent = "Tạm dừng";
+            } else {
+                bgMusic.play().then(() => {
+                    isAudioPlaying = true;
+                    btnMusicToggle.classList.add('playing');
+                }).catch(() => {});
+            }
+        }
+
+        function ensureAudioPlaying() {
+            if (!isAudioPlaying) {
+                bgMusic.play().then(() => {
+                    isAudioPlaying = true;
+                    btnMusicToggle.classList.add('playing');
+                }).catch(() => {});
+            }
+        }
+
+        btnMusicToggle.addEventListener('click', togglePlayMusic);
+
+        // ==========================================
+        // 2. VIEW SWITCHING & NAVIGATION
+        // ==========================================
+        const appViews = document.querySelectorAll('.app-view');
+        const dockItems = document.querySelectorAll('.dock-item');
+        const btnTopHome = document.getElementById('btnTopHome');
+
+        function switchView(targetViewId, songSrc, songTitle) {
+            appViews.forEach(view => {
+                view.classList.remove('active');
+            });
+
+            const activeView = document.getElementById(targetViewId);
+            if (activeView) {
+                activeView.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            dockItems.forEach(item => {
+                if (item.dataset.target === targetViewId) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            if (targetViewId === 'view-hub') {
+                btnTopHome.style.display = 'none';
+            } else {
+                btnTopHome.style.display = 'flex';
+            }
+
+            if (songSrc) {
+                switchSong(songSrc, songTitle);
+            }
+
+            ensureAudioPlaying();
+
+            if (targetViewId === 'view-spirograph') startSpiroDraw();
+            if (targetViewId === 'view-love-tree') startTreeGrowth();
+        }
+
+        dockItems.forEach(item => {
+            item.addEventListener('click', () => {
+                switchView(item.dataset.target, item.dataset.song, item.dataset.title);
+            });
         });
 
-        // Web Audio Synthesizer for soft chime
+        btnTopHome.addEventListener('click', () => {
+            switchView('view-hub', 'flower_shop_song.mp3', 'Là Người Con Gái...');
+        });
+
+        document.querySelectorAll('.gift-card').forEach(card => {
+            card.addEventListener('click', () => {
+                switchView(card.dataset.target, card.dataset.song, card.dataset.title);
+            });
+        });
+
+        // ==========================================
+        // 3. AMBIENT BACKGROUND PARTICLES
+        // ==========================================
+        const ambientCanvas = document.getElementById('bgAmbientCanvas');
+        const actx = ambientCanvas.getContext('2d');
+        let aw = ambientCanvas.width = window.innerWidth;
+        let ah = ambientCanvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            aw = ambientCanvas.width = window.innerWidth;
+            ah = ambientCanvas.height = window.innerHeight;
+            if (typeof resizeHeart === 'function') resizeHeart();
+            if (typeof resizeSofia === 'function') resizeSofia();
+            if (typeof resizeLily === 'function') resizeLily();
+            if (typeof resizeCupid === 'function') resizeCupid();
+            if (typeof resizeSpiro === 'function') resizeSpiro();
+            if (typeof resizeLantern === 'function') resizeLantern();
+            if (typeof resizeTree === 'function') resizeTree();
+        });
+
+        const ambientParticles = [];
+        for (let i = 0; i < 35; i++) {
+            ambientParticles.push({
+                x: Math.random() * aw,
+                y: Math.random() * ah,
+                size: Math.random() * 5 + 3,
+                speedY: -(Math.random() * 0.8 + 0.3),
+                speedX: (Math.random() - 0.5) * 0.5,
+                alpha: Math.random() * 0.4 + 0.2,
+                color: Math.random() < 0.6 ? '#ffb3c6' : '#ffd1dc'
+            });
+        }
+
+        function animateAmbient() {
+            actx.clearRect(0, 0, aw, ah);
+            for (let p of ambientParticles) {
+                p.y += p.speedY;
+                p.x += p.speedX;
+                if (p.y < -10) {
+                    p.y = ah + 10;
+                    p.x = Math.random() * aw;
+                }
+                actx.save();
+                actx.translate(p.x, p.y);
+                actx.fillStyle = p.color;
+                actx.globalAlpha = p.alpha;
+                actx.beginPath();
+                actx.arc(0, 0, p.size, 0, Math.PI * 2);
+                actx.fill();
+                actx.restore();
+            }
+            requestAnimationFrame(animateAmbient);
+        }
+        animateAmbient();
+
+        // Web Audio Synthesized Chime & Effects
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        function playChime(freq = 600) {
+        function playChimeTone(freq, duration = 0.3) {
             try {
                 if (audioCtx.state === 'suspended') audioCtx.resume();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.35);
+                osc.stop(audioCtx.currentTime + duration);
             } catch(e) {}
         }
 
-        function playDoorChime() {
-            [523.25, 659.25, 783.99].forEach((f, i) => {
-                setTimeout(() => playChime(f), i * 120);
+        function playStoreChime() {
+            [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+                setTimeout(() => playChimeTone(f, 0.4), i * 90);
             });
         }
 
-        function playMusic() {
-            audio.play().then(() => {
-                isPlaying = true;
-                btnMusic.classList.add('playing');
-                musicText.textContent = "Tắt nhạc";
-            }).catch(() => {});
+        // ==========================================
+        // 4. TIỆM HOA CỦA BÉ IU LOGIC
+        // ==========================================
+        let floristStep = 1;
+        let pickedFlowerCount = 0;
+        const maxFlowers = 5;
+        const pickedFlowers = [];
+
+        const step1 = document.getElementById('step1-storefront');
+        const step2 = document.getElementById('step2-picking');
+        const step3 = document.getElementById('step3-ribbon');
+        const step4 = document.getElementById('step4-card');
+
+        const btnOpenDoor = document.getElementById('btnOpenDoor');
+        const doorClickArea = document.getElementById('doorClickArea');
+        const shelfCounter = document.getElementById('shelfCounter');
+        const bouquetFlowers = document.getElementById('bouquetFlowers');
+        const bouquetFlowersStep3 = document.getElementById('bouquetFlowersStep3');
+        const btnFinishPicking = document.getElementById('btnFinishPicking');
+        const tiedRibbonBow = document.getElementById('tiedRibbonBow');
+        const btnRestartFlorist = document.getElementById('btnRestartFlorist');
+        const tiemLyricBar = document.getElementById('tiemLyricBar');
+
+        const floristLyrics = [
+            '♫ "LÀ NGƯỜI CON GÁI ĐỨNG TRƯỚC MẶT ANH LÚC NÀY..." ♡',
+            '♫ "ĐI QUA BÃO GIÔNG ĐANG CUỘN XOAY..." ♡',
+            '♫ "NẮM LẤY TAY ANH ĐI QUA MUÔN TRÙNG KHƠI..." ♡',
+            '♫ "CỐ LÊN VỢ IUU , CHỒNG YÊU EM ❤️" ♡'
+        ];
+        let lyricIdx = 0;
+        setInterval(() => {
+            lyricIdx = (lyricIdx + 1) % floristLyrics.length;
+            if (tiemLyricBar) tiemLyricBar.textContent = floristLyrics[lyricIdx];
+        }, 4000);
+
+        function openStorefront() {
+            playStoreChime();
+            ensureAudioPlaying();
+            step1.classList.remove('active');
+            step2.classList.add('active');
+            floristStep = 2;
         }
 
-        btnMusic.addEventListener('click', () => {
-            if (isPlaying) {
-                audio.pause();
-                isPlaying = false;
-                btnMusic.classList.remove('playing');
-                musicText.textContent = "Bật nhạc";
-            } else {
-                playMusic();
-            }
-        });
+        btnOpenDoor.addEventListener('click', openStorefront);
+        doorClickArea.addEventListener('click', openStorefront);
 
-        // ----------------------------------------------------
-        // BƯỚC 1: Chạm vào cửa tiệm hoa -> Mở cửa sang bước 2
-        // ----------------------------------------------------
-        document.getElementById('shopDoorTrigger').addEventListener('click', () => {
-            playDoorChime();
-            playMusic();
-
-            step1.classList.remove('active');
-            setTimeout(() => {
-                step1.style.display = 'none';
-                step2.style.display = 'flex';
-                setTimeout(() => step2.classList.add('active'), 40);
-            }, 500);
-        });
-
-        // ----------------------------------------------------
-        // BƯỚC 2: Bé Iu chọn hoa (5 bông)
-        // ----------------------------------------------------
-        const flowerSVGs = {
-            tulip: 'flower_tulip.svg',
-            sunflower: 'flower_sunflower.svg',
-            rose: 'flower_rose.svg',
-            daisy: 'flower_daisy.svg',
-            baby: 'flower_baby.svg'
-        };
-
-        const flowerAngles = [-24, -12, 0, 12, 24];
-
-        flowerItems.forEach(item => {
+        document.querySelectorAll('.shelf-flower-item').forEach(item => {
             item.addEventListener('click', () => {
-                if (pickedFlowers.length >= MAX_FLOWERS) return;
+                if (pickedFlowerCount >= maxFlowers) return;
+                playChimeTone(650 + pickedFlowerCount * 80, 0.25);
+                pickedFlowerCount++;
+                pickedFlowers.push(item.dataset.img);
 
-                const type = item.dataset.type;
-                pickedFlowers.push(type);
-                playChime(500 + pickedFlowers.length * 70);
+                shelfCounter.textContent = `${pickedFlowerCount} / ${maxFlowers} BÔNG HOA`;
 
-                renderBouquetFlowers();
+                const flImg = document.createElement('img');
+                flImg.src = item.dataset.img;
+                flImg.className = 'picked-flower-in-bouquet';
+                
+                const offsets = [-50, -25, 0, 25, 50];
+                const rotations = [-18, -9, 0, 9, 18];
+                const offX = offsets[pickedFlowerCount - 1] || 0;
+                const rot = rotations[pickedFlowerCount - 1] || 0;
+                flImg.style.left = `calc(50% + ${offX}px - 36px)`;
+                flImg.style.transform = `rotate(${rot}deg)`;
+                bouquetFlowers.appendChild(flImg);
 
-                flowerCountEl.textContent = pickedFlowers.length;
-
-                if (pickedFlowers.length === MAX_FLOWERS) {
-                    bouquetStatusText.innerHTML = "Bó hoa đã đủ 5 bông rực rỡ!<br>Hãy thắt chiếc nơ gửi yêu thương.";
-                    
-                    // Transition to Step 3 after 0.8s
-                    setTimeout(() => {
-                        step2.classList.remove('active');
-                        setTimeout(() => {
-                            step2.style.display = 'none';
-                            step3.style.display = 'flex';
-                            renderRibbonFlowers();
-                            setTimeout(() => step3.classList.add('active'), 40);
-                        }, 500);
-                    }, 850);
+                if (pickedFlowerCount === maxFlowers) {
+                    btnFinishPicking.style.display = 'inline-flex';
+                    shelfCounter.textContent = "ĐÃ ĐỦ 5 BÔNG HOA XINH ♡";
+                    shelfCounter.style.background = "#ffe0ea";
                 }
             });
         });
 
-        function renderBouquetFlowers() {
-            pickedFlowersNest.innerHTML = '';
-            pickedFlowers.forEach((fType, idx) => {
-                const img = document.createElement('img');
-                img.src = flowerSVGs[fType];
-                img.className = 'nested-flower';
-                const angle = flowerAngles[idx] || 0;
-                img.style.transform = `rotate(${angle}deg) translateY(-${Math.abs(angle)*0.5}px)`;
-                img.style.zIndex = idx + 1;
-                pickedFlowersNest.appendChild(img);
+        btnFinishPicking.addEventListener('click', () => {
+            step2.classList.remove('active');
+            step3.classList.add('active');
+            floristStep = 3;
+            bouquetFlowersStep3.innerHTML = bouquetFlowers.innerHTML;
+        });
+
+        tiedRibbonBow.addEventListener('click', () => {
+            playStoreChime();
+            step3.classList.remove('active');
+            step4.classList.add('active');
+            floristStep = 4;
+        });
+
+        btnRestartFlorist.addEventListener('click', () => {
+            floristStep = 1;
+            pickedFlowerCount = 0;
+            pickedFlowers.length = 0;
+            bouquetFlowers.innerHTML = '';
+            bouquetFlowersStep3.innerHTML = '';
+            btnFinishPicking.style.display = 'none';
+            shelfCounter.textContent = "0 / 5 BÔNG HOA";
+            shelfCounter.style.background = "#fff";
+            step4.classList.remove('active');
+            step1.classList.add('active');
+        });
+
+        // ==========================================
+        // 5. TRÁI TIM 3D DEVPAN & BÓ TULIP (CANVAS 3D)
+        // ==========================================
+        const heartCanvas = document.getElementById('heartCanvas');
+        const hctx = heartCanvas.getContext('2d');
+        let hw = heartCanvas.width = window.innerWidth;
+        let hh = heartCanvas.height = window.innerHeight;
+        function resizeHeart() {
+            hw = heartCanvas.width = window.innerWidth;
+            hh = heartCanvas.height = window.innerHeight;
+        }
+
+        const HEART_PARTICLES_COUNT = 2400;
+        const heartPoints = [];
+        function heartParametric(t) {
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+            return { x, y };
+        }
+
+        for (let i = 0; i < HEART_PARTICLES_COUNT; i++) {
+            const t = Math.random() * Math.PI * 2;
+            const hp = heartParametric(t);
+            const scaleFactor = 11 + Math.random() * 2.2;
+            const maxZ = Math.max(3, 16 - Math.abs(hp.y * 0.7));
+            const z = (Math.random() - 0.5) * 2 * maxZ;
+            const r = Math.pow(Math.random(), 0.5);
+            const x = hp.x * scaleFactor * r;
+            const y = hp.y * scaleFactor * r;
+            const colors = ['#ffffff', '#ff758c', '#ff2e93', '#ff4b72', '#ffb3c6', '#e02479'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const size = Math.random() < 0.25 ? (2.0 + Math.random() * 1.5) : (1.0 + Math.random() * 1.0);
+            heartPoints.push({
+                x, y, z: z * scaleFactor * 0.65,
+                baseX: x, baseY: y, baseZ: z * scaleFactor * 0.65,
+                color, size
             });
         }
 
-        function renderRibbonFlowers() {
-            ribbonFlowersNest.innerHTML = pickedFlowersNest.innerHTML;
+        const phrases = ["Yêu em", "Cố lên vợ iuu", "Mãi bên nhau", "Chồng yêu vợ", "Hạnh phúc nhé"];
+        const phraseObjects = phrases.map((text, idx) => ({
+            text,
+            angle: (idx / phrases.length) * Math.PI * 2,
+            radius: 190,
+            speed: 0.006
+        }));
+
+        let rotX = 0.15, rotY = 0;
+        let targetRotX = 0.15, targetRotY = 0;
+        let isHeartDragging = false;
+        let lastHX = 0, lastHY = 0;
+
+        function onHDown(e) {
+            isHeartDragging = true;
+            lastHX = e.clientX || (e.touches && e.touches[0].clientX);
+            lastHY = e.clientY || (e.touches && e.touches[0].clientY);
+            ensureAudioPlaying();
+        }
+        function onHMove(e) {
+            if (!isHeartDragging) return;
+            const curX = e.clientX || (e.touches && e.touches[0].clientX);
+            const curY = e.clientY || (e.touches && e.touches[0].clientY);
+            targetRotY += (curX - lastHX) * 0.008;
+            targetRotX -= (curY - lastHY) * 0.008;
+            targetRotX = Math.max(-0.6, Math.min(0.6, targetRotX));
+            lastHX = curX;
+            lastHY = curY;
+        }
+        function onHUp() { isHeartDragging = false; }
+
+        heartCanvas.addEventListener('mousedown', onHDown);
+        window.addEventListener('mousemove', onHMove);
+        window.addEventListener('mouseup', onHUp);
+        heartCanvas.addEventListener('touchstart', onHDown, { passive: true });
+        window.addEventListener('touchmove', onHMove, { passive: true });
+        window.addEventListener('touchend', onHUp);
+
+        // Click center of heart opens modal
+        heartCanvas.addEventListener('click', (e) => {
+            const dx = e.clientX - hw / 2;
+            const dy = e.clientY - (hh / 2 - 20);
+            if (Math.hypot(dx, dy) < 160) {
+                playStoreChime();
+                openModal("Cố lên vợ iuu ❤️", "Trái tim 3D ngàn hạt sáng ✨", "Cố lên vợ iuu , chồng yêu em ❤️<br>Mãi yêu công chúa của anh! Lúc nào cũng có chồng ở đây bên cạnh che chở cho em.");
+            }
+        });
+
+        let heartClock = 0;
+        function animateHeart() {
+            if (document.getElementById('view-heart-3d').classList.contains('active')) {
+                heartClock += 0.03;
+                hctx.clearRect(0, 0, hw, hh);
+
+                targetRotY += 0.0035;
+                rotX += (targetRotX - rotX) * 0.08;
+                rotY += (targetRotY - rotY) * 0.08;
+
+                const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+                const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+
+                const beatCycle = (heartClock * 1.8) % (Math.PI * 2);
+                let pulse = 0;
+                if (beatCycle < 0.8) {
+                    pulse = Math.sin(beatCycle * Math.PI / 0.8) * 0.14;
+                } else if (beatCycle > 1.0 && beatCycle < 1.6) {
+                    pulse = Math.sin((beatCycle - 1.0) * Math.PI / 0.6) * 0.09;
+                }
+                const heartScale = 1 + pulse;
+                const cx = hw / 2, cy = hh / 2 - 20, focalLength = 620;
+
+                hctx.font = "bold 13.5px 'Mali', cursive";
+                hctx.textAlign = "center";
+                for (let p of phraseObjects) {
+                    p.angle += p.speed;
+                    const px = Math.cos(p.angle) * p.radius;
+                    const pz = Math.sin(p.angle) * p.radius;
+                    const py = 125;
+                    const x1 = px * cosY + pz * sinY;
+                    const z1 = -px * sinY + pz * cosY;
+                    const y2 = py * cosX - z1 * sinX;
+                    const z2 = py * sinX + z1 * cosX;
+                    const scale = focalLength / (focalLength + z2 + 200);
+                    const screenX = cx + x1 * scale;
+                    const screenY = cy + y2 * scale;
+                    const alpha = Math.max(0.2, Math.min(1.0, (z2 + 220) / 400));
+                    hctx.fillStyle = `rgba(255, 175, 205, ${alpha})`;
+                    hctx.save();
+                    hctx.translate(screenX, screenY);
+                    hctx.scale(scale, scale);
+                    hctx.fillText(p.text, 0, 0);
+                    hctx.restore();
+                }
+
+                const pts = [];
+                for (let i = 0; i < heartPoints.length; i++) {
+                    const p = heartPoints[i];
+                    const curX = p.baseX * heartScale;
+                    const curY = p.baseY * heartScale;
+                    const curZ = p.baseZ * heartScale;
+                    const x1 = curX * cosY + curZ * sinY;
+                    const z1 = -curX * sinY + curZ * cosY;
+                    const y2 = curY * cosX - z1 * sinX;
+                    const z2 = curY * sinX + z1 * cosX;
+                    const scale = focalLength / (focalLength + z2 + 120);
+                    pts.push({
+                        sx: cx + x1 * scale,
+                        sy: cy + y2 * scale,
+                        z2, color: p.color,
+                        size: p.size * scale * (1 + pulse * 1.5)
+                    });
+                }
+                pts.sort((a, b) => a.z2 - b.z2);
+
+                hctx.globalCompositeOperation = 'lighter';
+                for (let pt of pts) {
+                    const alpha = Math.max(0.25, Math.min(1, (pt.z2 + 180) / 360));
+                    hctx.fillStyle = pt.color;
+                    hctx.globalAlpha = alpha;
+                    hctx.beginPath();
+                    hctx.arc(pt.sx, pt.sy, pt.size, 0, Math.PI * 2);
+                    hctx.fill();
+                }
+                hctx.globalCompositeOperation = 'source-over';
+                hctx.globalAlpha = 1;
+            }
+            requestAnimationFrame(animateHeart);
+        }
+        animateHeart();
+
+        // ==========================================
+        // 6. VIEW 7: 🏹 CUNG TÊN CUPID & BÁNH KEM 3D
+        // ==========================================
+        const cupidCanvas = document.getElementById('cupidCanvas');
+        const cpctx = cupidCanvas.getContext('2d');
+        let cpw = cupidCanvas.width = window.innerWidth;
+        let cph = cupidCanvas.height = window.innerHeight;
+        function resizeCupid() {
+            cpw = cupidCanvas.width = window.innerWidth;
+            cph = cupidCanvas.height = window.innerHeight;
         }
 
-        // ----------------------------------------------------
-        // BƯỚC 3: Thắt nơ ruy băng
-        // ----------------------------------------------------
-        btnTieRibbon.addEventListener('click', () => {
-            playChime(880);
-            btnTieRibbon.style.display = 'none';
-            tiedRibbonBow.style.display = 'block';
+        let arrowState = 'ready'; // 'ready', 'flying', 'hit'
+        let arrowX = 80, arrowY = cph / 2;
+        let arrowSpeed = 18;
+        const cupidBalloons = [];
+        const cupidConfetti = [];
+        const btnShootCupid = document.getElementById('btnShootCupid');
+        const cupidCakeBox = document.getElementById('cupidCakeBox');
 
-            // Transition to Step 4 after 0.9s
-            setTimeout(() => {
-                step3.classList.remove('active');
-                setTimeout(() => {
-                    step3.style.display = 'none';
-                    step4.style.display = 'flex';
-                    finalFlowersNest.innerHTML = pickedFlowersNest.innerHTML;
-                    setTimeout(() => step4.classList.add('active'), 40);
-                }, 500);
-            }, 900);
-        });
-
-        // ----------------------------------------------------
-        // BƯỚC 4: Chạm vào tấm thiệp mở thư tình
-        // ----------------------------------------------------
-        finalRibbonBow.addEventListener('click', openLetter);
-        document.querySelector('#step4 .wrapping-cone-container').addEventListener('click', openLetter);
-
-        function openLetter() {
-            playDoorChime();
-            letterModal.classList.add('active');
+        function triggerCupidShot() {
+            if (arrowState === 'ready') {
+                arrowState = 'flying';
+                arrowX = 60;
+                arrowY = cph / 2 - 30;
+                playChimeTone(850, 0.15);
+                ensureAudioPlaying();
+            } else if (arrowState === 'hit') {
+                arrowState = 'ready';
+                cupidCakeBox.classList.remove('active');
+                btnShootCupid.innerHTML = "<span>🏹</span> Bắn Mũi Tên Tình Yêu ♡";
+            }
         }
 
-        btnCloseLetter.addEventListener('click', () => {
-            letterModal.classList.remove('active');
+        btnShootCupid.addEventListener('click', triggerCupidShot);
+        cupidCanvas.addEventListener('click', triggerCupidShot);
+        cupidCakeBox.addEventListener('click', () => {
+            playStoreChime();
+            openModal("Chúc Mừng Sinh Nhật Vợ Iuu! 🎂", "Món quà ngọt ngào nhất thế gian ✨", "Chúc vợ yêu luôn xinh đẹp, rạng rỡ và tràn ngập tiếng cười hạnh phúc bên chồng!<br><br><strong style='color:#d81b60; font-family:Mali;'>Cố lên vợ iuu , chồng yêu em ❤️</strong>");
         });
 
-        letterModal.addEventListener('click', (e) => {
-            if (e.target === letterModal) letterModal.classList.remove('active');
+        function spawnCupidCelebration() {
+            playStoreChime();
+            cupidCakeBox.classList.add('active');
+            btnShootCupid.innerHTML = "<span>🔄</span> Bắn Lại Mũi Tên";
+
+            for (let i = 0; i < 28; i++) {
+                cupidBalloons.push({
+                    x: Math.random() * cpw,
+                    y: cph + Math.random() * 120,
+                    size: Math.random() * 18 + 14,
+                    vy: -(Math.random() * 2.2 + 1.2),
+                    vx: (Math.random() - 0.5) * 1.0,
+                    color: ['#ff758c', '#ffb3c6', '#ffd1dc', '#f5af19', '#d8b4e2'][Math.floor(Math.random() * 5)]
+                });
+            }
+            for (let i = 0; i < 70; i++) {
+                cupidConfetti.push({
+                    x: cpw / 2 + (Math.random() - 0.5) * 80,
+                    y: cph / 2 - 40 + (Math.random() - 0.5) * 80,
+                    vx: (Math.random() - 0.5) * 10,
+                    vy: -(Math.random() * 8 + 2),
+                    size: Math.random() * 8 + 4,
+                    rot: Math.random() * 360,
+                    vrot: (Math.random() - 0.5) * 15,
+                    color: ['#ff4b72', '#ffd700', '#ff85a2', '#ffffff'][Math.floor(Math.random() * 4)]
+                });
+            }
+        }
+
+        function animateCupid() {
+            if (document.getElementById('view-cupid').classList.contains('active')) {
+                cpctx.clearRect(0, 0, cpw, cph);
+                const targetX = cpw / 2;
+                const targetY = cph / 2 - 30;
+
+                if (arrowState !== 'hit') {
+                    cpctx.save();
+                    cpctx.translate(60, targetY);
+                    cpctx.strokeStyle = '#d81b60';
+                    cpctx.lineWidth = 4;
+                    cpctx.beginPath();
+                    cpctx.arc(0, 0, 50, -Math.PI / 2.5, Math.PI / 2.5);
+                    cpctx.stroke();
+
+                    cpctx.strokeStyle = '#ffe4eb';
+                    cpctx.lineWidth = 1.5;
+                    cpctx.beginPath();
+                    const topY = -50 * Math.sin(Math.PI / 2.5);
+                    const botY = 50 * Math.sin(Math.PI / 2.5);
+                    const bowX = 50 * Math.cos(Math.PI / 2.5);
+                    const pullX = arrowState === 'ready' ? 10 : 30;
+                    cpctx.moveTo(bowX, topY);
+                    cpctx.lineTo(pullX, 0);
+                    cpctx.lineTo(bowX, botY);
+                    cpctx.stroke();
+                    cpctx.restore();
+
+                    // Heart Target
+                    cpctx.save();
+                    cpctx.translate(targetX, targetY);
+                    const tscale = 1 + Math.sin(Date.now() * 0.005) * 0.08;
+                    cpctx.scale(tscale, tscale);
+                    cpctx.fillStyle = '#ff2e93';
+                    cpctx.shadowColor = '#ff758c';
+                    cpctx.shadowBlur = 18;
+                    cpctx.beginPath();
+                    const r = 24;
+                    cpctx.moveTo(0, r * 0.7);
+                    cpctx.bezierCurveTo(-r * 1.5, -r * 0.8, -r * 1.8, -r * 1.8, 0, -r * 2.8);
+                    cpctx.bezierCurveTo(r * 1.8, -r * 1.8, r * 1.5, -r * 0.8, 0, r * 0.7);
+                    cpctx.fill();
+                    cpctx.restore();
+                }
+
+                if (arrowState === 'ready') {
+                    cpctx.save();
+                    cpctx.translate(60, targetY);
+                    cpctx.strokeStyle = '#ffd700';
+                    cpctx.lineWidth = 3;
+                    cpctx.beginPath();
+                    cpctx.moveTo(10, 0);
+                    cpctx.lineTo(65, 0);
+                    cpctx.stroke();
+                    cpctx.fillStyle = '#ff4b72';
+                    cpctx.beginPath();
+                    cpctx.moveTo(70, 0);
+                    cpctx.lineTo(58, -6);
+                    cpctx.lineTo(58, 6);
+                    cpctx.fill();
+                    cpctx.restore();
+                } else if (arrowState === 'flying') {
+                    arrowX += arrowSpeed;
+                    cpctx.save();
+                    cpctx.translate(arrowX, targetY);
+                    cpctx.strokeStyle = '#ffd700';
+                    cpctx.lineWidth = 3;
+                    cpctx.shadowColor = '#ffea79';
+                    cpctx.shadowBlur = 10;
+                    cpctx.beginPath();
+                    cpctx.moveTo(-35, 0);
+                    cpctx.lineTo(20, 0);
+                    cpctx.stroke();
+                    cpctx.fillStyle = '#ff4b72';
+                    cpctx.beginPath();
+                    cpctx.moveTo(25, 0);
+                    cpctx.lineTo(13, -6);
+                    cpctx.lineTo(13, 6);
+                    cpctx.fill();
+                    cpctx.restore();
+
+                    if (arrowX >= targetX - 10) {
+                        arrowState = 'hit';
+                        spawnCupidCelebration();
+                    }
+                }
+
+                for (let i = cupidBalloons.length - 1; i >= 0; i--) {
+                    const b = cupidBalloons[i];
+                    b.y += b.vy;
+                    b.x += b.vx;
+                    cpctx.save();
+                    cpctx.translate(b.x, b.y);
+                    cpctx.fillStyle = b.color;
+                    cpctx.globalAlpha = 0.85;
+                    cpctx.beginPath();
+                    cpctx.ellipse(0, 0, b.size, b.size * 1.25, 0, 0, Math.PI * 2);
+                    cpctx.fill();
+                    cpctx.strokeStyle = 'rgba(255,255,255,0.4)';
+                    cpctx.lineWidth = 1;
+                    cpctx.beginPath();
+                    cpctx.moveTo(0, b.size * 1.25);
+                    cpctx.lineTo(0, b.size * 1.25 + 24);
+                    cpctx.stroke();
+                    cpctx.restore();
+                }
+
+                for (let i = cupidConfetti.length - 1; i >= 0; i--) {
+                    const c = cupidConfetti[i];
+                    c.x += c.vx;
+                    c.y += c.vy;
+                    c.vy += 0.2;
+                    c.rot += c.vrot;
+                    cpctx.save();
+                    cpctx.translate(c.x, c.y);
+                    cpctx.rotate(c.rot * Math.PI / 180);
+                    cpctx.fillStyle = c.color;
+                    cpctx.fillRect(-c.size / 2, -c.size / 2, c.size, c.size * 0.7);
+                    cpctx.restore();
+                    if (c.y > cph + 20) cupidConfetti.splice(i, 1);
+                }
+            }
+            requestAnimationFrame(animateCupid);
+        }
+        animateCupid();
+
+        // ==========================================
+        // 7. VIEW 8: 🌀 TRÁI TIM TOÁN HỌC DỆT ÁNH SÁNG
+        // ==========================================
+        const spiroCanvas = document.getElementById('spiroCanvas');
+        const spctx = spiroCanvas.getContext('2d');
+        let spw = spiroCanvas.width = window.innerWidth;
+        let sph = spiroCanvas.height = window.innerHeight;
+        function resizeSpiro() {
+            spw = spiroCanvas.width = window.innerWidth;
+            sph = spiroCanvas.height = window.innerHeight;
+            if (document.getElementById('view-spirograph').classList.contains('active')) {
+                startSpiroDraw();
+            }
+        }
+
+        const totalSpiroSteps = 380;
+        let currentSpiroStep = 0;
+        let isSpiroDrawing = false;
+        const spiroInfoTag = document.getElementById('spiroInfoTag');
+
+        function getHeartPoint(t, scale) {
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+            return { x: x * scale, y: y * scale };
+        }
+
+        function startSpiroDraw() {
+            spctx.clearRect(0, 0, spw, sph);
+            currentSpiroStep = 0;
+            isSpiroDrawing = true;
+            spiroInfoTag.textContent = "✨ Đang dệt từng sợi ánh sáng vào trái tim em...";
+        }
+
+        document.getElementById('btnRedrawSpiro').addEventListener('click', () => {
+            playStoreChime();
+            startSpiroDraw();
         });
 
-        // Restart button
-        btnRestart.addEventListener('click', () => {
-            pickedFlowers = [];
-            pickedFlowersNest.innerHTML = '';
-            flowerCountEl.textContent = '0';
-            bouquetStatusText.innerHTML = 'Bó hoa của Bé Iu<br>đang chờ những điều dịu dàng.';
-            btnTieRibbon.style.display = 'flex';
-            tiedRibbonBow.style.display = 'none';
-            letterModal.classList.remove('active');
-
-            step4.classList.remove('active');
-            setTimeout(() => {
-                step4.style.display = 'none';
-                step2.style.display = 'flex';
-                setTimeout(() => step2.classList.add('active'), 40);
-            }, 450);
+        spiroCanvas.addEventListener('click', () => {
+            playStoreChime();
+            openModal("Trái Tim Toán Học Hoàn Mỹ 💕", "Spirograph Cardioid Art ✨", "Từng sợi tơ ánh sáng chuyển động đan dệt nên hình hài trái tim hoàn mỹ dành riêng tặng em.<br><br><strong style='color:#d81b60; font-family:Mali;'>Cố lên vợ iuu , chồng yêu em ❤️</strong>");
         });
 
-        // First click anywhere starts audio
-        window.addEventListener('click', () => {
-            if (!isPlaying) playMusic();
-        }, { once: true });
+        function animateSpiro() {
+            if (document.getElementById('view-spirograph').classList.contains('active') && isSpiroDrawing) {
+                const cx = spw / 2;
+                const cy = sph / 2 - 25;
+                const scale = Math.min(spw, sph) / 40;
+
+                for (let k = 0; k < 3; k++) {
+                    if (currentSpiroStep >= totalSpiroSteps) {
+                        isSpiroDrawing = false;
+                        spiroInfoTag.textContent = "💖 Trái tim hoàn mỹ — Cố lên vợ iuu , chồng yêu em ❤️";
+                        break;
+                    }
+                    const t1 = (currentSpiroStep / totalSpiroSteps) * Math.PI * 2;
+                    const t2 = ( (currentSpiroStep * 3) / totalSpiroSteps) * Math.PI * 2;
+
+                    const p1 = getHeartPoint(t1, scale);
+                    const p2 = getHeartPoint(t2, scale);
+
+                    const hue = (currentSpiroStep * 2 + 300) % 360;
+                    spctx.strokeStyle = `hsl(${hue}, 100%, 70%)`;
+                    spctx.shadowColor = `hsl(${hue}, 100%, 50%)`;
+                    spctx.shadowBlur = 8;
+                    spctx.lineWidth = 1.2;
+                    spctx.globalAlpha = 0.75;
+
+                    spctx.beginPath();
+                    spctx.moveTo(cx + p1.x, cy + p1.y);
+                    spctx.lineTo(cx + p2.x, cy + p2.y);
+                    spctx.stroke();
+
+                    currentSpiroStep++;
+                }
+            }
+            requestAnimationFrame(animateSpiro);
+        }
+        animateSpiro();
+
+        // ==========================================
+        // 8. VIEW 9: 🏮 ĐÊM HỘI THẢ ĐÈN TRỜI 3D
+        // ==========================================
+        const lanternCanvas = document.getElementById('lanternCanvas');
+        const lnctx = lanternCanvas.getContext('2d');
+        let lnw = lanternCanvas.width = window.innerWidth;
+        let lnh = lanternCanvas.height = window.innerHeight;
+        function resizeLantern() {
+            lnw = lanternCanvas.width = window.innerWidth;
+            lnh = lanternCanvas.height = window.innerHeight;
+        }
+
+        const lanterns = [];
+        for (let i = 0; i < 22; i++) {
+            lanterns.push({
+                x: Math.random() * lnw,
+                y: Math.random() * lnh,
+                size: Math.random() * 16 + 14,
+                speedY: -(Math.random() * 0.9 + 0.4),
+                swaySpeed: Math.random() * 0.02 + 0.01,
+                swayDist: Math.random() * 20 + 10,
+                phase: Math.random() * Math.PI * 2
+            });
+        }
+
+        function animateLanterns() {
+            if (document.getElementById('view-lanterns').classList.contains('active')) {
+                lnctx.clearRect(0, 0, lnw, lnh);
+                const time = Date.now() * 0.002;
+
+                for (let l of lanterns) {
+                    l.y += l.speedY;
+                    const swayX = l.x + Math.sin(time * l.swaySpeed + l.phase) * l.swayDist;
+
+                    if (l.y < -40) {
+                        l.y = lnh + 30;
+                        l.x = Math.random() * lnw;
+                    }
+
+                    lnctx.save();
+                    lnctx.translate(swayX, l.y);
+
+                    const grad = lnctx.createRadialGradient(0, 0, l.size * 0.2, 0, 0, l.size * 2);
+                    grad.addColorStop(0, 'rgba(255, 220, 80, 0.7)');
+                    grad.addColorStop(0.5, 'rgba(255, 170, 30, 0.25)');
+                    grad.addColorStop(1, 'transparent');
+                    lnctx.fillStyle = grad;
+                    lnctx.beginPath();
+                    lnctx.arc(0, 0, l.size * 2, 0, Math.PI * 2);
+                    lnctx.fill();
+
+                    lnctx.fillStyle = '#ffb300';
+                    lnctx.beginPath();
+                    lnctx.moveTo(-l.size * 0.6, -l.size);
+                    lnctx.lineTo(l.size * 0.6, -l.size);
+                    lnctx.lineTo(l.size * 0.45, l.size);
+                    lnctx.lineTo(-l.size * 0.45, l.size);
+                    lnctx.closePath();
+                    lnctx.fill();
+
+                    lnctx.fillStyle = '#fff9d2';
+                    lnctx.beginPath();
+                    lnctx.arc(0, l.size * 0.3, l.size * 0.3, 0, Math.PI * 2);
+                    lnctx.fill();
+
+                    lnctx.strokeStyle = '#d81b60';
+                    lnctx.lineWidth = 2;
+                    lnctx.beginPath();
+                    lnctx.moveTo(0, l.size);
+                    lnctx.lineTo(0, l.size + 14);
+                    lnctx.stroke();
+
+                    lnctx.restore();
+                }
+            }
+            requestAnimationFrame(animateLanterns);
+        }
+        animateLanterns();
+
+        function addSkyLantern(atX, atY) {
+            playStoreChime();
+            lanterns.push({
+                x: atX || (lnw / 2 + (Math.random() - 0.5) * 160),
+                y: atY || (lnh - 20),
+                size: Math.random() * 20 + 16,
+                speedY: -(Math.random() * 1.4 + 0.8),
+                swaySpeed: 0.02,
+                swayDist: 15,
+                phase: Math.random() * Math.PI * 2
+            });
+        }
+        document.getElementById('btnReleaseLantern').addEventListener('click', () => addSkyLantern());
+
+        lanternCanvas.addEventListener('click', (e) => {
+            const rect = lanternCanvas.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const clickY = e.clientY - rect.top;
+
+            let hit = false;
+            for (let l of lanterns) {
+                if (Math.hypot(clickX - l.x, clickY - l.y) < l.size * 2) {
+                    hit = true;
+                    playStoreChime();
+                    openModal(
+                        "Gửi Vợ Iuu ❤️",
+                        "Đêm Hội Trăng Rằm An Lành ✨",
+                        "Trăng tròn trọc trăng soi bóng nước, chúc vợ luôn bình an, mạnh khỏe và thật nhiều hạnh phúc!<br><br><strong style='color:#d81b60; font-family:Mali;'>Cố lên vợ iuu , chồng yêu em ❤️</strong>",
+                        "lantern_night_sky.jpg"
+                    );
+                    break;
+                }
+            }
+            if (!hit) {
+                addSkyLantern(clickX, clickY);
+            }
+        });
+
+        // ==========================================
+        // 9. VIEW 10: 🌳 CÂY TÌNH YÊU & 3D CAROUSEL
+        // ==========================================
+        const treeCanvas = document.getElementById('treeCanvas');
+        const trctx = treeCanvas.getContext('2d');
+        let trw = treeCanvas.width = window.innerWidth;
+        let trh = treeCanvas.height = window.innerHeight;
+        function resizeTree() {
+            trw = treeCanvas.width = window.innerWidth;
+            trh = treeCanvas.height = window.innerHeight;
+            if (document.getElementById('view-love-tree').classList.contains('active')) {
+                startTreeGrowth();
+            }
+        }
+
+        const treeHearts = [];
+        const btnToggleTreeLetter = document.getElementById('btnToggleTreeLetter');
+        const loveTreeLetterCard = document.getElementById('loveTreeLetterCard');
+
+        function startTreeGrowth() {
+            trctx.clearRect(0, 0, trw, trh);
+            treeHearts.length = 0;
+            growTreeFractal(trw / 2, trh - 85, -Math.PI / 2, 75, 8);
+        }
+
+        function growTreeFractal(startX, startY, angle, branchLength, depth) {
+            if (depth <= 0) {
+                treeHearts.push({
+                    x: startX,
+                    y: startY,
+                    size: Math.random() * 9 + 6,
+                    color: ['#ff4b72', '#ff758c', '#ffa4b6', '#ffd1dc', '#f5af19'][Math.floor(Math.random() * 5)],
+                    alpha: 0
+                });
+                return;
+            }
+
+            const endX = startX + Math.cos(angle) * branchLength;
+            const endY = startY + Math.sin(angle) * branchLength;
+
+            trctx.strokeStyle = '#5a3825';
+            trctx.lineWidth = depth * 1.3;
+            trctx.beginPath();
+            trctx.moveTo(startX, startY);
+            trctx.lineTo(endX, endY);
+            trctx.stroke();
+
+            const subBranchCount = 2;
+            for (let i = 0; i < subBranchCount; i++) {
+                const subAngle = angle + (i === 0 ? -0.38 : 0.38) + (Math.random() - 0.5) * 0.15;
+                const subLength = branchLength * (0.75 + Math.random() * 0.1);
+                growTreeFractal(endX, endY, subAngle, subLength, depth - 1);
+            }
+        }
+
+        function drawHeartShape(ctx, x, y, size, color, alpha) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.fillStyle = color;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.moveTo(0, size * 0.3);
+            ctx.bezierCurveTo(-size, -size * 0.5, -size * 1.2, -size * 1.2, 0, -size * 1.8);
+            ctx.bezierCurveTo(size * 1.2, -size * 1.2, size, -size * 0.5, 0, size * 0.3);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animateTree() {
+            if (document.getElementById('view-love-tree').classList.contains('active')) {
+                for (let h of treeHearts) {
+                    if (h.alpha < 0.9) h.alpha += 0.02;
+                    drawHeartShape(trctx, h.x, h.y, h.size, h.color, h.alpha);
+                }
+            }
+            requestAnimationFrame(animateTree);
+        }
+        animateTree();
+
+        const fullLoveLetter = "Hi my love...\nAnh chỉ muốn gửi đôi dòng nhắc nhở vợ rằng em đặc biệt và quý giá đến nhường nào. Mỗi phút giây được bên em đều là món quà tuyệt vời nhất ngập tràn tiếng cười và yêu thương. Cảm ơn em vì tất cả tình yêu đã dành cho anh!";
+        const treeTypewriter = document.getElementById('treeTypewriter');
+        let typeIdx = 0;
+        let typeTimer = null;
+
+        function typeWriterLoveLetter() {
+            if (typeTimer) clearInterval(typeTimer);
+            typeIdx = 0;
+            treeTypewriter.textContent = '';
+            typeTimer = setInterval(() => {
+                if (typeIdx < fullLoveLetter.length) {
+                    treeTypewriter.textContent += fullLoveLetter.charAt(typeIdx);
+                    typeIdx++;
+                } else {
+                    clearInterval(typeTimer);
+                }
+            }, 35);
+        }
+
+        btnToggleTreeLetter.addEventListener('click', () => {
+            playStoreChime();
+            loveTreeLetterCard.classList.toggle('active');
+            if (loveTreeLetterCard.classList.contains('active')) {
+                typeWriterLoveLetter();
+                btnToggleTreeLetter.innerHTML = "<span>🌳</span> Thu gọn thư tình";
+            } else {
+                btnToggleTreeLetter.innerHTML = "<span>💌</span> Chạm để mở thư tình & quà tặng ♡";
+            }
+        });
+
+        treeCanvas.addEventListener('click', () => {
+            playStoreChime();
+            loveTreeLetterCard.classList.add('active');
+            typeWriterLoveLetter();
+            btnToggleTreeLetter.innerHTML = "<span>🌳</span> Thu gọn thư tình";
+        });
+
+        document.getElementById('btnRegrowTree').addEventListener('click', () => {
+            playStoreChime();
+            startTreeGrowth();
+        });
+
+        // ==========================================
+        // 10. MÀN HÌNH KHÓA MẬT MÃ 30/06
+        // ==========================================
+        const CORRECT_PIN = "3006";
+        let currentPin = "";
+        const dots = document.querySelectorAll('#pinDots .pin-dot');
+        const lockToast = document.getElementById('lockToast');
+        const btnDel = document.getElementById('btnDel');
+        const fireworksCanvas = document.getElementById('fireworksCanvas');
+        const fwCtx = fireworksCanvas.getContext('2d');
+        let fww = fireworksCanvas.width = window.innerWidth;
+        let fwh = fireworksCanvas.height = window.innerHeight;
+        const fireworks = [];
+
+        function updatePinDots() {
+            dots.forEach((dot, idx) => {
+                if (idx < currentPin.length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                    dot.classList.remove('error');
+                }
+            });
+        }
+
+        function triggerFireworks() {
+            for (let i = 0; i < 150; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 8 + 3;
+                fireworks.push({
+                    x: fww / 2,
+                    y: fwh / 2,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    alpha: 1,
+                    size: Math.random() * 4 + 2,
+                    color: Math.random() < 0.5 ? '#ff2e93' : '#ffd1dc'
+                });
+            }
+        }
+
+        function animateFireworks() {
+            if (fireworks.length > 0) {
+                fwCtx.clearRect(0, 0, fww, fwh);
+                for (let i = fireworks.length - 1; i >= 0; i--) {
+                    const fw = fireworks[i];
+                    fw.x += fw.vx;
+                    fw.y += fw.vy;
+                    fw.vy += 0.08;
+                    fw.vx *= 0.96;
+                    fw.alpha -= 0.015;
+                    if (fw.alpha <= 0) {
+                        fireworks.splice(i, 1);
+                        continue;
+                    }
+                    fwCtx.fillStyle = fw.color;
+                    fwCtx.globalAlpha = fw.alpha;
+                    fwCtx.beginPath();
+                    fwCtx.arc(fw.x, fw.y, fw.size, 0, Math.PI * 2);
+                    fwCtx.fill();
+                }
+            }
+            requestAnimationFrame(animateFireworks);
+        }
+        animateFireworks();
+
+        function handlePinPress(val) {
+            if (currentPin.length < 4) {
+                currentPin += val;
+                playChimeTone(520 + currentPin.length * 60, 0.05);
+                updatePinDots();
+
+                if (currentPin.length === 4) {
+                    setTimeout(() => {
+                        if (currentPin === CORRECT_PIN) {
+                            playStoreChime();
+                            triggerFireworks();
+                            ensureAudioPlaying();
+                            setTimeout(() => {
+                                openModal("Mở Khóa Thành Công! 💕", "Mật mã 30/06 kỷ niệm của tụi mình ✨", "Chúc mừng vợ yêu đã mở khóa thành công! Cố lên vợ iuu , chồng yêu em ❤️");
+                            }, 500);
+                        } else {
+                            playChimeTone(220, 0.18);
+                            dots.forEach(d => d.classList.add('error'));
+                            document.getElementById('pinDots').classList.add('shake');
+                            lockToast.textContent = "Quên ngày là bị phạt nha bà xã 😜 Hãy thử lại nè!";
+                            lockToast.classList.add('show');
+                            setTimeout(() => {
+                                document.getElementById('pinDots').classList.remove('shake');
+                                currentPin = "";
+                                updatePinDots();
+                            }, 750);
+                        }
+                    }, 180);
+                }
+            }
+        }
+
+        document.querySelectorAll('#keypad .key-btn[data-val]').forEach(btn => {
+            btn.addEventListener('click', () => handlePinPress(btn.dataset.val));
+        });
+
+        btnDel.addEventListener('click', () => {
+            if (currentPin.length > 0) {
+                currentPin = currentPin.slice(0, -1);
+                playChimeTone(380, 0.04);
+                updatePinDots();
+                lockToast.classList.remove('show');
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (document.getElementById('view-lock').classList.contains('active')) {
+                if (e.key >= '0' && e.key <= '9') {
+                    handlePinPress(e.key);
+                } else if (e.key === 'Backspace') {
+                    if (currentPin.length > 0) {
+                        currentPin = currentPin.slice(0, -1);
+                        playChimeTone(380, 0.04);
+                        updatePinDots();
+                        lockToast.classList.remove('show');
+                    }
+                }
+            }
+        });
+
+        // ==========================================
+        // 11. VƯỜN HOA SOFIA & CẨM TÚ CẦU (CANVAS)
+        // ==========================================
+        const sofiaCanvas = document.getElementById('sofiaCanvas');
+        const sctx = sofiaCanvas.getContext('2d');
+        let sw = sofiaCanvas.width = window.innerWidth;
+        let sh = sofiaCanvas.height = window.innerHeight;
+        function resizeSofia() {
+            sw = sofiaCanvas.width = window.innerWidth;
+            sh = sofiaCanvas.height = window.innerHeight;
+        }
+
+        const sofiaPetals = [];
+        for (let i = 0; i < 45; i++) {
+            sofiaPetals.push({
+                x: Math.random() * sw,
+                y: Math.random() * sh,
+                size: Math.random() * 14 + 10,
+                speedY: Math.random() * 1.5 + 0.8,
+                speedX: (Math.random() - 0.5) * 1.2,
+                rot: Math.random() * 360,
+                vRot: (Math.random() - 0.5) * 2,
+                color: Math.random() < 0.5 ? '#ffb3c6' : '#d8b4e2'
+            });
+        }
+
+        function animateSofia() {
+            if (document.getElementById('view-sofia').classList.contains('active')) {
+                sctx.clearRect(0, 0, sw, sh);
+                for (let p of sofiaPetals) {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.rot += p.vRot;
+                    if (p.y > sh + 20) {
+                        p.y = -20;
+                        p.x = Math.random() * sw;
+                    }
+                    sctx.save();
+                    sctx.translate(p.x, p.y);
+                    sctx.rotate(p.rot * Math.PI / 180);
+                    sctx.fillStyle = p.color;
+                    sctx.globalAlpha = 0.75;
+                    sctx.beginPath();
+                    sctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
+                    sctx.fill();
+                    sctx.restore();
+                }
+            }
+            requestAnimationFrame(animateSofia);
+        }
+        animateSofia();
+
+        function spawnSofiaBurst(ox, oy) {
+            playStoreChime();
+            const bx = ox || (sw / 2);
+            const by = oy || (sh / 2);
+            for (let i = 0; i < 20; i++) {
+                sofiaPetals.push({
+                    x: bx + (Math.random() - 0.5) * 120,
+                    y: by + (Math.random() - 0.5) * 120,
+                    size: Math.random() * 16 + 10,
+                    speedY: Math.random() * 2 + 1,
+                    speedX: (Math.random() - 0.5) * 2,
+                    rot: Math.random() * 360,
+                    vRot: (Math.random() - 0.5) * 3,
+                    color: '#ff4b72'
+                });
+            }
+        }
+        document.getElementById('btnSofiaHeartPop').addEventListener('click', () => spawnSofiaBurst());
+        sofiaCanvas.addEventListener('click', (e) => spawnSofiaBurst(e.clientX, e.clientY));
+
+        // ==========================================
+        // 12. VƯỜN HOA LY 3D (CANVAS)
+        // ==========================================
+        const lilyCanvas = document.getElementById('lilyCanvas');
+        const lctx = lilyCanvas.getContext('2d');
+        let lw = lilyCanvas.width = window.innerWidth;
+        let lh = lilyCanvas.height = window.innerHeight;
+        function resizeLily() {
+            lw = lilyCanvas.width = window.innerWidth;
+            lh = lilyCanvas.height = window.innerHeight;
+        }
+
+        const lilyPetals = [];
+        for (let i = 0; i < 40; i++) {
+            lilyPetals.push({
+                x: Math.random() * lw,
+                y: Math.random() * lh,
+                size: Math.random() * 16 + 12,
+                speedY: Math.random() * 1.3 + 0.6,
+                speedX: (Math.random() - 0.5) * 1.0,
+                rot: Math.random() * 360,
+                vRot: (Math.random() - 0.5) * 1.5,
+                color: Math.random() < 0.6 ? '#ffe4eb' : '#ffc0cb'
+            });
+        }
+
+        function animateLily() {
+            if (document.getElementById('view-lily').classList.contains('active')) {
+                lctx.clearRect(0, 0, lw, lh);
+                for (let p of lilyPetals) {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.rot += p.vRot;
+                    if (p.y > lh + 20) {
+                        p.y = -20;
+                        p.x = Math.random() * lw;
+                    }
+                    lctx.save();
+                    lctx.translate(p.x, p.y);
+                    lctx.rotate(p.rot * Math.PI / 180);
+                    lctx.fillStyle = p.color;
+                    lctx.globalAlpha = 0.8;
+                    lctx.beginPath();
+                    lctx.ellipse(0, 0, p.size, p.size * 0.45, 0, 0, Math.PI * 2);
+                    lctx.fill();
+                    lctx.restore();
+                }
+            }
+            requestAnimationFrame(animateLily);
+        }
+        animateLily();
+
+        function spawnLilyBurst(ox, oy) {
+            playStoreChime();
+            const bx = ox || (lw / 2);
+            const by = oy || (lh / 2);
+            for (let i = 0; i < 20; i++) {
+                lilyPetals.push({
+                    x: bx + (Math.random() - 0.5) * 120,
+                    y: by + (Math.random() - 0.5) * 120,
+                    size: Math.random() * 18 + 12,
+                    speedY: Math.random() * 2 + 1,
+                    speedX: (Math.random() - 0.5) * 2,
+                    rot: Math.random() * 360,
+                    vRot: (Math.random() - 0.5) * 3,
+                    color: '#ff758c'
+                });
+            }
+        }
+        document.getElementById('btnLilyHeartPop').addEventListener('click', () => spawnLilyBurst());
+        lilyCanvas.addEventListener('click', (e) => spawnLilyBurst(e.clientX, e.clientY));
+
+        // ==========================================
+        // 13. MODAL POPUP CONTROLLER
+        // ==========================================
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalHeader = document.getElementById('modalHeader');
+        const modalSub = document.getElementById('modalSub');
+        const modalBody = document.getElementById('modalBody');
+        const modalImgWrap = document.getElementById('modalImgWrap');
+        const modalImg = document.getElementById('modalImg');
+        const btnCloseModal = document.getElementById('btnCloseModal');
+
+        function openModal(title, subtitle, bodyHtml, imgSrc) {
+            if (title) modalHeader.textContent = title;
+            if (subtitle) modalSub.textContent = subtitle;
+            if (bodyHtml) modalBody.innerHTML = bodyHtml;
+            if (imgSrc) {
+                modalImg.src = imgSrc;
+                modalImgWrap.style.display = 'block';
+            } else {
+                modalImgWrap.style.display = 'none';
+            }
+            modalOverlay.classList.add('active');
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+        }
+
+        btnCloseModal.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        document.getElementById('btnHeartHint').addEventListener('click', () => {
+            openModal("Cố lên vợ iuu ❤️", "Trái tim 3D ngàn hạt sáng ✨", "Cố lên vợ iuu , chồng yêu em ❤️<br>Mãi yêu công chúa của anh! Lúc nào cũng có chồng ở đây bên cạnh che chở cho em.");
+        });
+
+        // ==========================================
+        // 14. URL HASH ROUTING SUPPORT
+        // ==========================================
+        function handleHashRouting() {
+            const hash = window.location.hash.replace('#', '') || (new URLSearchParams(window.location.search).get('v'));
+            if (hash === 'tiem_hoa') {
+                switchView('view-tiem-hoa', 'flower_shop_song.mp3', 'Là Người Con Gái...');
+            } else if (hash === 'heart') {
+                switchView('view-heart-3d', 'cho_chut_remix.mp3', 'Chờ Chút Thôi Remix');
+            } else if (hash === 'cupid') {
+                switchView('view-cupid', 'cupid_cake_song.mp3', 'Love Story');
+            } else if (hash === 'spiro') {
+                switchView('view-spirograph', 'spirograph_heart_song.mp3', 'Piano Romance');
+            } else if (hash === 'lanterns') {
+                switchView('view-lanterns', 'lantern_sky_song.mp3', 'Đêm Hội Trăng Rằm');
+            } else if (hash === 'tree') {
+                switchView('view-love-tree', 'thousand_years_song.mp3', 'A Thousand Years');
+            } else if (hash === 'lock') {
+                switchView('view-lock', 'cho_chut_remix.mp3', 'Mật Mã 30/06');
+            } else if (hash === 'sofia') {
+                switchView('view-sofia', 'cho_chut_remix.mp3', 'Chờ Chút Thôi Remix');
+            } else if (hash === 'lily') {
+                switchView('view-lily', 'panbap_audio.mp3', 'Melody Tình Yêu');
+            } else {
+                switchView('view-hub', 'flower_shop_song.mp3', 'Là Người Con Gái...');
+            }
+        }
+
+        window.addEventListener('load', handleHashRouting);
     </script>
 </body>
 </html>
