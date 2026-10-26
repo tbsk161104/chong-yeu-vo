@@ -274,7 +274,12 @@
         #view-scratch.active,
         #view-counter.active,
         #view-cassette.active,
-        #view-rose.active {
+        #view-rose.active,
+        #view-claw.active,
+        #view-wheel.active,
+        #view-escape.active,
+        #view-musicbox.active,
+        #view-fireworks.active {
             display: flex !important;
         }
 
@@ -2144,6 +2149,650 @@
             z-index: 20;
         }
 
+    
+        /* Top Bar Grid Menu Button */
+        .btn-grid-menu {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(216, 27, 96, 0.3);
+            border-radius: 50px;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.25s ease;
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--deep-rose);
+        }
+
+        .btn-grid-menu:hover {
+            transform: scale(1.06);
+            background: #fff;
+            box-shadow: 0 6px 20px rgba(216, 27, 96, 0.25);
+        }
+
+        /* Fullscreen Grid Menu Modal */
+        .grid-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 8, 16, 0.78);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            padding: 20px 14px;
+        }
+
+        .grid-modal-overlay.active {
+            display: flex;
+        }
+
+        .grid-modal-content {
+            background: #fff;
+            border-radius: 30px;
+            max-width: 680px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 26px 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            display: flex;
+            flex-direction: column;
+            border: 2px solid rgba(255, 182, 193, 0.5);
+            scrollbar-width: thin;
+        }
+
+        .grid-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .grid-modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #d81b60;
+        }
+
+        .grid-modal-sub {
+            font-size: 12px;
+            color: #8c7379;
+            margin-top: 2px;
+        }
+
+        .grid-tabs-bar {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            scrollbar-width: none;
+        }
+
+        .grid-tab-btn {
+            background: #fdf0f4;
+            border: 1px solid rgba(216, 27, 96, 0.2);
+            border-radius: 30px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #d81b60;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .grid-tab-btn.active {
+            background: linear-gradient(135deg, #ff4b72, #d81b60);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .grid-items-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .grid-project-card {
+            background: #fff8f9;
+            border: 1.5px solid #ffe0e8;
+            border-radius: 18px;
+            padding: 12px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .grid-project-card:hover {
+            transform: translateY(-4px);
+            background: #ffeef3;
+            border-color: #ff4b72;
+            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.15);
+        }
+
+        .grid-card-icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .grid-card-name {
+            font-family: 'Mali', cursive;
+            font-size: 12px;
+            font-weight: 700;
+            color: #4a2835;
+            line-height: 1.3;
+        }
+
+        .grid-card-num {
+            font-size: 10px;
+            color: #b08290;
+            margin-top: 4px;
+        }
+
+        /* ========================================================
+           VIEW 14: 🕹️ MÁY GẮP THÚ BÔNG TÌNH YÊU (LOVE CLAW MACHINE)
+        ======================================================== */
+        #view-claw {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 75px 16px 105px;
+            background: radial-gradient(circle at center, #2b1126 0%, #150614 70%, #0a020a 100%);
+        }
+
+        .claw-cabinet {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 380px;
+            background: linear-gradient(145deg, #ff94b4, #ff6b8b);
+            border-radius: 28px;
+            padding: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 105, 180, 0.35);
+            border: 4px solid #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .claw-roof {
+            background: #fff;
+            color: #d81b60;
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+        }
+
+        .claw-glass-booth {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .crane-rail {
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            right: 12px;
+            height: 8px;
+            background: #4a2835;
+            border-radius: 4px;
+        }
+
+        .crane-carriage {
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: left 0.2s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .crane-cable {
+            width: 3px;
+            height: 40px;
+            background: #8e7d83;
+            transition: height 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .crane-claw-svg {
+            width: 36px;
+            height: 36px;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s;
+        }
+
+        .balls-pile {
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+
+        .prize-ball {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0,0,0,0.2);
+            border: 1.5px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            animation: bobbleBall 2s infinite ease-in-out alternate;
+        }
+
+        @keyframes bobbleBall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-3px); }
+        }
+
+        .claw-controls {
+            width: 100%;
+            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #361726;
+            border-radius: 20px;
+            padding: 10px 16px;
+            border: 2px solid #5a2840;
+        }
+
+        .joystick-panel {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-joystick {
+            width: 38px;
+            height: 38px;
+            background: #fff;
+            border-radius: 50%;
+            border: none;
+            color: #d81b60;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #b38090;
+            transition: all 0.1s;
+        }
+
+        .btn-joystick:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #b38090;
+        }
+
+        .btn-claw-drop {
+            background: linear-gradient(135deg, #ffd700, #ff9f1a);
+            border: none;
+            color: #4a2800;
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            font-weight: 800;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #b87a00;
+            transition: all 0.1s;
+        }
+
+        .btn-claw-drop:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #b87a00;
+        }
+
+        /* ========================================================
+           VIEW 15: 🎡 VÒNG QUAY HẸN HÒ (DATE NIGHT WHEEL)
+        ======================================================== */
+        #view-wheel {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 75px 16px 105px;
+            background: radial-gradient(circle at center, #26172e 0%, #110817 70%, #060209 100%);
+        }
+
+        .wheel-container-box {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 32px;
+            border: 2px solid rgba(255, 182, 193, 0.4);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 105, 180, 0.2);
+            color: #fff;
+        }
+
+        .wheel-stage {
+            position: relative;
+            width: 290px;
+            height: 290px;
+            margin: 16px 0;
+        }
+
+        #wheelCanvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.4), 0 0 0 6px #fff, 0 0 0 10px #ff4b72;
+            transition: transform 4s cubic-bezier(0.15, 0.9, 0.25, 1);
+        }
+
+        .wheel-pointer {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 14px solid transparent;
+            border-right: 14px solid transparent;
+            border-top: 24px solid #ffd700;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+            z-index: 20;
+        }
+
+        .wheel-center-hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ffd700, #ff8da1);
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        /* ========================================================
+           VIEW 16: 😜 NÚT KHÔNG CHẠY TRỐN (LOVE QUIZ ESCAPE)
+        ======================================================== */
+        #view-escape {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 75px 16px 105px;
+            background: linear-gradient(135deg, #ffeef2 0%, #ffd6e0 100%);
+        }
+
+        .escape-card-box {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 32px;
+            padding: 36px 24px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(216, 27, 96, 0.15), 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 2px solid #ffd1dc;
+        }
+
+        .escape-gif-wrap {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            background: #fff0f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            box-shadow: 0 8px 24px rgba(255, 75, 114, 0.2);
+            animation: bounceMew 2s infinite ease-in-out;
+        }
+
+        @keyframes bounceMew {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+        }
+
+        .escape-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #d81b60;
+            margin-bottom: 26px;
+            line-height: 1.4;
+        }
+
+        .escape-btn-group {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            min-height: 90px;
+        }
+
+        #btnEscapeYes {
+            background: linear-gradient(135deg, #ff4b72, #d81b60);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 13px 30px;
+            font-family: 'Mali', cursive;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(216, 27, 96, 0.35);
+            transition: transform 0.25s, padding 0.25s, font-size 0.25s;
+            z-index: 20;
+        }
+
+        #btnEscapeNo {
+            background: #f1f2f6;
+            color: #747d8c;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease-out;
+            z-index: 15;
+            white-space: nowrap;
+        }
+
+        /* ========================================================
+           VIEW 17: 🎶 HỘP NHẠC CỔ TÍCH PHA LÊ (WIND-UP MUSIC BOX)
+        ======================================================== */
+        #view-musicbox {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 75px 16px 105px;
+            background: radial-gradient(circle at center, #261622 0%, #130811 70%, #060205 100%);
+        }
+
+        #musicNotesCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .music-box-frame {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 380px;
+            background: linear-gradient(to bottom, #542d1e, #31180f);
+            border-radius: 32px;
+            padding: 24px 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 3px 6px rgba(255, 215, 0, 0.4);
+            border: 3px solid #8e5836;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+        }
+
+        .music-box-mirror {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, #ffeef2 0%, #d8c2cb 80%, #7d6571 100%);
+            border-radius: 50%;
+            border: 6px solid #d4af37;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 14px 0;
+        }
+
+        .crystal-heart-3d {
+            font-size: 58px;
+            filter: drop-shadow(0 0 16px rgba(255, 75, 114, 0.8));
+            transition: transform 0.1s linear;
+        }
+
+        .crystal-heart-3d.rotating {
+            animation: spinHeart 4s infinite linear;
+        }
+
+        @keyframes spinHeart {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .wind-up-key-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .wind-up-key-svg {
+            width: 44px;
+            height: 44px;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        .wind-up-key-svg.winding {
+            animation: spinKey 1.5s infinite linear;
+        }
+
+        @keyframes spinKey {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ========================================================
+           VIEW 18: 🎆 BẦU TRỜI PHÁO HOA VIẾT CHỮ (TEXT FIREWORKS)
+        ======================================================== */
+        #view-fireworks {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: #040108;
+            padding-bottom: 0;
+            display: block;
+        }
+
+        #fireworksTextCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 5;
+            display: block;
+        }
+
+        .fireworks-hud {
+            position: absolute;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .fireworks-hud button, .fireworks-hud .spiro-tag {
+            pointer-events: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -2159,6 +2808,9 @@
         <div class="top-left-actions">
             <button class="btn-hub-home" id="btnTopHome">
                 <span>🏠</span> Về Hub
+            </button>
+            <button class="btn-grid-menu" id="btnOpenGridMenu">
+                <span>🗂️</span> 18 Món Quà
             </button>
         </div>
         <div class="top-right-actions">
@@ -2376,6 +3028,76 @@
                     <span>Khám phá đóa hồng</span> ➔
                 </button>
             </div>
+            <div class="gift-card" data-target="view-claw" data-song="cupid_cake_song.mp3" data-title="Love Story">
+                <div>
+                    <span class="card-header-badge">🕹️ Arcade & Hộp Mù</span>
+                    <div class="card-icon-wrap">🎮</div>
+                    <h2 class="card-title">Máy Gắp Thú & Blind Box</h2>
+                    <p class="card-desc">
+                        Cần gạt joystick điều khiển càng gắp bóng may mắn, bóc 6 hộp quà bí mật chứa đầy đặc quyền chiều vợ vô điều kiện!
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Gắp thú bông ngay</span> ➔
+                </button>
+            </div>
+
+            <div class="gift-card" data-target="view-wheel" data-song="flower_shop_song.mp3" data-title="Là Người Con Gái...">
+                <div>
+                    <span class="card-header-badge">🎡 May Mắn Cuối Tuần</span>
+                    <div class="card-icon-wrap">🎯</div>
+                    <h2 class="card-title">Vòng Quay Hẹn Hò Date Night</h2>
+                    <p class="card-desc">
+                        Vòng xoay may mắn chọn ngẫu nhiên kế hoạch hẹn hò đi chơi, ăn lẩu, xem phim rạp, hóng gió — chồng tài trợ 100%!
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Quay vòng hẹn hò</span> ➔
+                </button>
+            </div>
+
+            <div class="gift-card" data-target="view-escape" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix">
+                <div>
+                    <span class="card-header-badge">😜 Hài Hước & Đáng Yêu</span>
+                    <div class="card-icon-wrap">🐱</div>
+                    <h2 class="card-title">Trắc Nghiệm Nhớ Chồng</h2>
+                    <p class="card-desc">
+                        Thử thách "Công chúa có nhớ chồng không?" với nút 'Không' né tránh cực lầy lội và nút 'Có' nở to chiếm trọn trái tim!
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Trả lời trắc nghiệm</span> ➔
+                </button>
+            </div>
+
+            <div class="gift-card" data-target="view-musicbox" data-song="spirograph_heart_song.mp3" data-title="Piano Romance">
+                <div>
+                    <span class="card-header-badge">🎶 Giai Điệu Cổ Điển</span>
+                    <div class="card-icon-wrap">💎</div>
+                    <h2 class="card-title">Hộp Nhạc Cổ Tích Pha Lê</h2>
+                    <p class="card-desc">
+                        Hộp nhạc gỗ cẩm lai nắp kính viền vàng kim, vặn chìa khóa cót xoay tượng trái tim pha lê 3D phát nhạc thánh thót.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Vặn cót nghe nhạc</span> ➔
+                </button>
+            </div>
+
+            <div class="gift-card" data-target="view-fireworks" data-song="thousand_years_song.mp3" data-title="A Thousand Years">
+                <div>
+                    <span class="card-header-badge">🎆 Bầu Trời Sao Tương Tác</span>
+                    <div class="card-icon-wrap">✨</div>
+                    <h2 class="card-title">Bầu Trời Pháo Hoa Viết Chữ</h2>
+                    <p class="card-desc">
+                        Chạm vào bất kỳ vị trí nào trên bầu trời đêm để bắn pháo hoa hạt sáng nở bung thành chữ tình yêu ngọt ngào!
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Bắn pháo hoa chữ</span> ➔
+                </button>
+            </div>
+
 
         </div>
     </section>
@@ -2914,7 +3636,156 @@
         </div>
     </section>
 
-<!-- Universal Romantic Modal Popup -->
+
+    <!-- ========================================================
+       VIEW 14: 🕹️ MÁY GẮP THÚ BÔNG TÌNH YÊU (LOVE CLAW MACHINE)
+    ======================================================== -->
+    <section class="app-view" id="view-claw">
+        <div class="claw-cabinet">
+            <div class="claw-roof">★ Love Claw Arcade ★</div>
+            <div class="claw-glass-booth" id="clawBooth">
+                <div class="crane-rail">
+                    <div class="crane-carriage" id="craneCarriage">
+                        <div class="crane-cable" id="craneCable"></div>
+                        <svg class="crane-claw-svg" id="craneClaw" viewBox="0 0 40 40">
+                            <path d="M 12 10 Q 20 2 28 10 Q 34 26 26 36 M 12 10 Q 6 26 14 36" fill="none" stroke="#ffeaa7" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="20" cy="10" r="5" fill="#ffd700" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="balls-pile">
+                    <div class="prize-ball" style="background:#ff758c;">🧸</div>
+                    <div class="prize-ball" style="background:#ffd166;">🐱</div>
+                    <div class="prize-ball" style="background:#06d6a0;">🐰</div>
+                    <div class="prize-ball" style="background:#118ab2;">🛵</div>
+                    <div class="prize-ball" style="background:#a29bfe;">🧹</div>
+                    <div class="prize-ball" style="background:#fd79a8;">👑</div>
+                </div>
+            </div>
+
+            <div class="claw-controls">
+                <div class="joystick-panel">
+                    <button class="btn-joystick" id="btnClawLeft" title="Sang trái">◀</button>
+                    <button class="btn-joystick" id="btnClawRight" title="Sang phải">▶</button>
+                </div>
+                <button class="btn-claw-drop" id="btnClawDrop">
+                    <span>🎯</span> GẮP NGAY
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 15: 🎡 VÒNG QUAY HẸN HÒ (DATE NIGHT WHEEL)
+    ======================================================== -->
+    <section class="app-view" id="view-wheel">
+        <div class="wheel-container-box">
+            <div class="scratch-header-badge">✦ DATE NIGHT LUCKY WHEEL ✦</div>
+            <h2 class="scratch-card-title" style="color:#fff; margin-bottom:2px;">Vòng Quay Hẹn Hò Của Hai Đứa</h2>
+            <p class="scratch-card-subtitle" style="color:#ffd1dc; margin-bottom:10px;">Hôm nay chúng mình đi đâu? Chồng tài trợ 100%!</p>
+
+            <div class="wheel-stage">
+                <div class="wheel-pointer"></div>
+                <canvas id="wheelCanvas" width="300" height="300"></canvas>
+                <div class="wheel-center-hub">💖</div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:8px;">
+                <button class="btn-action-primary" id="btnSpinWheel" style="padding:10px 24px; font-size:14px;">
+                    <span>🎯</span> QUAY NGAY
+                </button>
+                <button class="btn-scratch-switch" id="btnEditWheel" style="padding:10px 18px; font-size:13px; border-color:#fff; color:#fff; background:rgba(255,255,255,0.15);">
+                    <span>✏️</span> Tùy Chỉnh
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 16: 😜 NÚT KHÔNG CHẠY TRỐN (LOVE QUIZ ESCAPE)
+    ======================================================== -->
+    <section class="app-view" id="view-escape">
+        <div class="escape-card-box">
+            <div class="escape-gif-wrap" id="escapeIconWrap">😻</div>
+            <h2 class="escape-question" id="escapeQuestion">Hôm nay công chúa có nhớ chồng nhiều không? 🥰</h2>
+
+            <div class="escape-btn-group" id="escapeBtnGroup">
+                <button id="btnEscapeYes">Có nha! 🥰</button>
+                <button id="btnEscapeNo">Không nhớ xíu nào 😜</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 17: 🎶 HỘP NHẠC CỔ TÍCH PHA LÊ (WIND-UP MUSIC BOX)
+    ======================================================== -->
+    <section class="app-view" id="view-musicbox">
+        <canvas id="musicNotesCanvas"></canvas>
+
+        <div class="music-box-frame">
+            <div class="brass-plaque" style="margin-bottom:10px;">
+                ✦ HỘP NHẠC TÌNH YÊU CỦA VỢ IUU ✦
+            </div>
+            <p style="font-size:12px; color:#ffd1dc; font-family:'Mali', cursive;">Mãi Bên Nhau Trọn Đời ♡</p>
+
+            <div class="music-box-mirror" id="musicBoxMirror">
+                <div class="crystal-heart-3d" id="crystalHeart">💖</div>
+            </div>
+
+            <div class="wind-up-key-box">
+                <svg class="wind-up-key-svg" id="windUpKey" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="14" fill="none" stroke="#ffd700" stroke-width="5" />
+                    <circle cx="25" cy="25" r="6" fill="#ffd700" />
+                    <rect x="22" y="32" width="6" height="15" fill="#ffd700" rx="3" />
+                </svg>
+                <button class="btn-action-primary" id="btnWindUpMusicBox" style="padding:9px 20px; font-size:13px;">
+                    <span>🔑</span> Vặn Dây Cót Nghe Nhạc
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 18: 🎆 BẦU TRỜI PHÁO HOA VIẾT CHỮ (TEXT FIREWORKS)
+    ======================================================== -->
+    <section class="app-view" id="view-fireworks">
+        <canvas id="fireworksTextCanvas"></canvas>
+        <div class="fireworks-hud">
+            <div class="spiro-tag" style="color:#ffd700; border-color:rgba(255,215,0,0.4);">
+                ✨ Chạm vào bầu trời đêm để bắn pháo hoa tình yêu...
+            </div>
+            <button class="btn-action-primary" id="btnBurstAllFireworks">
+                <span>🎆</span> Bắn Đại Tiệc Pháo Hoa
+            </button>
+        </div>
+    </section>
+
+<!-- Fullscreen Grid Menu Modal (Bản Đồ 18 Món Quà) -->
+    <div class="grid-modal-overlay" id="gridMenuModal">
+        <div class="grid-modal-content">
+            <div class="grid-modal-header">
+                <div>
+                    <h2 class="grid-modal-title">✦ Vương Quốc 18 Món Quà ✦</h2>
+                    <p class="grid-modal-sub">Chạm vào bất kỳ món quà nào để khám phá ngay ♡</p>
+                </div>
+                <button id="btnCloseGridMenu" style="background:#ffe4eb; border:none; border-radius:50%; width:36px; height:36px; font-size:18px; color:#d81b60; cursor:pointer;">✕</button>
+            </div>
+
+            <div class="grid-tabs-bar">
+                <button class="grid-tab-btn active" data-cat="all">Tất Cả (18)</button>
+                <button class="grid-tab-btn" data-cat="games">Trò Chơi (5)</button>
+                <button class="grid-tab-btn" data-cat="flowers">Hoa & Quà (5)</button>
+                <button class="grid-tab-btn" data-cat="cosmic">Vũ Trụ & Kỷ Niệm (8)</button>
+            </div>
+
+            <div class="grid-items-container" id="gridItemsContainer">
+                <!-- 18 Project Cards dynamically rendered or static -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Universal Romantic Modal Popup -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
             <h2 class="modal-title" id="modalHeader">Cố lên vợ iuu ❤️</h2>
@@ -3004,6 +3875,32 @@
             <div class="dock-label">Hồng Vĩnh Cửu</div>
             <div class="dock-indicator"></div>
         </div>
+        <div class="dock-item" data-target="view-claw" data-song="cupid_cake_song.mp3" data-title="Love Story" title="Máy Gắp Thú & Blind Box">
+            <div class="dock-icon">🕹️</div>
+            <div class="dock-label">Gắp Thú</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-wheel" data-song="flower_shop_song.mp3" data-title="Là Người Con Gái..." title="Vòng Quay Hẹn Hò">
+            <div class="dock-icon">🎡</div>
+            <div class="dock-label">Vòng Quay</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-escape" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix" title="Trắc Nghiệm Nhớ Chồng">
+            <div class="dock-icon">😜</div>
+            <div class="dock-label">Trắc Nghiệm</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-musicbox" data-song="spirograph_heart_song.mp3" data-title="Piano Romance" title="Hộp Nhạc Cổ Tích">
+            <div class="dock-icon">🎶</div>
+            <div class="dock-label">Hộp Nhạc</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-fireworks" data-song="thousand_years_song.mp3" data-title="A Thousand Years" title="Pháo Hoa Viết Chữ">
+            <div class="dock-icon">🎆</div>
+            <div class="dock-label">Pháo Hoa</div>
+            <div class="dock-indicator"></div>
+        </div>
+
 
     </nav>
 
@@ -3107,6 +4004,9 @@
             if (targetViewId === 'view-scratch') initScratchFoil();
             if (typeof resizeCounterOrbit === 'function' && targetViewId === 'view-counter') { resizeCounterOrbit(); updateTickerDisplay(); }
             if (typeof resizeRose === 'function' && targetViewId === 'view-rose') resizeRose();
+            if (targetViewId === 'view-wheel' && typeof drawDateNightWheel === 'function') drawDateNightWheel();
+            if (targetViewId === 'view-musicbox' && typeof resizeMusicNotes === 'function') resizeMusicNotes();
+            if (targetViewId === 'view-fireworks' && typeof resizeFireworksText === 'function') resizeFireworksText();
         }
 
         dockItems.forEach(item => {
@@ -3141,6 +4041,8 @@
             if (typeof resizeLily === 'function') resizeLily();
             if (typeof resizeCounterOrbit === 'function') resizeCounterOrbit();
             if (typeof resizeRose === 'function') resizeRose();
+            if (typeof resizeMusicNotes === 'function') resizeMusicNotes();
+            if (typeof resizeFireworksText === 'function') resizeFireworksText();
             if (typeof initScratchFoil === 'function' && document.getElementById('view-scratch') && document.getElementById('view-scratch').classList.contains('active')) initScratchFoil();
             if (typeof resizeCupid === 'function') resizeCupid();
             if (typeof resizeSpiro === 'function') resizeSpiro();
@@ -4682,6 +5584,547 @@
             openModal("Đóa Hồng Hồi Sinh Rực Rỡ! ✨", "Sắc Đỏ Vĩnh Hằng", "Đóa hồng đã được tiếp thêm ngàn tia sáng yêu thương. Mãi mãi tươi thắm dành riêng cho vợ yêu!");
         });
 
+        
+        // ==========================================
+        // 19. GRID MODAL MENU (BẢN ĐỒ 18 MÓN QUÀ)
+        // ==========================================
+        const allProjectsData = [
+            { id: "view-tiem-hoa", name: "Tiệm Hoa Bé Iu", icon: "🌸", cat: "flowers", song: "flower_shop_song.mp3", title: "Tiệm Hoa Bé Iu" },
+            { id: "view-heart-3d", name: "Trái Tim 3D DevPan", icon: "💖", cat: "cosmic", song: "cho_chut_remix.mp3", title: "Trái Tim 3D" },
+            { id: "view-cupid", name: "Cung Tên Cupid", icon: "🏹", cat: "games", song: "cupid_cake_song.mp3", title: "Love Story" },
+            { id: "view-spirograph", name: "Dệt Sáng Spirograph", icon: "🌀", cat: "cosmic", song: "spirograph_heart_song.mp3", title: "Piano Romance" },
+            { id: "view-lanterns", name: "Thả Đèn Trời 3D", icon: "🏮", cat: "cosmic", song: "lantern_sky_song.mp3", title: "Đêm Hội Trăng Rằm" },
+            { id: "view-love-tree", name: "Cây Yêu Fractal", icon: "🌳", cat: "flowers", song: "thousand_years_song.mp3", title: "A Thousand Years" },
+            { id: "view-lock", name: "Mật Mã 30/06", icon: "🔐", cat: "cosmic", song: "cho_chut_remix.mp3", title: "Mật Mã 30/06" },
+            { id: "view-sofia", name: "Vườn Hoa Sofia", icon: "💐", cat: "flowers", song: "cho_chut_remix.mp3", title: "Vườn Sofia" },
+            { id: "view-lily", name: "Vườn Hoa Ly 3D", icon: "🌺", cat: "flowers", song: "panbap_audio.mp3", title: "Hoa Ly 3D" },
+            { id: "view-scratch", name: "Thẻ Cào Tình Yêu", icon: "🎟️", cat: "games", song: "cupid_cake_song.mp3", title: "Love Story" },
+            { id: "view-counter", name: "Đồng Hồ Đếm Ngày", icon: "⏳", cat: "cosmic", song: "thousand_years_song.mp3", title: "A Thousand Years" },
+            { id: "view-cassette", name: "Máy Cassette & Ảnh", icon: "📻", cat: "cosmic", song: "panbap_audio.mp3", title: "Lofi Romance" },
+            { id: "view-rose", name: "Đóa Hồng Vĩnh Cửu", icon: "🌹", cat: "flowers", song: "spirograph_heart_song.mp3", title: "Piano Romance" },
+            { id: "view-claw", name: "Máy Gắp Thú Arcade", icon: "🕹️", cat: "games", song: "cupid_cake_song.mp3", title: "Love Story" },
+            { id: "view-wheel", name: "Vòng Quay Date Night", icon: "🎡", cat: "games", song: "flower_shop_song.mp3", title: "Là Người Con Gái..." },
+            { id: "view-escape", name: "Trắc Nghiệm Nhớ Chồng", icon: "😜", cat: "games", song: "cho_chut_remix.mp3", title: "Chờ Chút Thôi Remix" },
+            { id: "view-musicbox", name: "Hộp Nhạc Cổ Tích", icon: "🎶", cat: "cosmic", song: "spirograph_heart_song.mp3", title: "Piano Romance" },
+            { id: "view-fireworks", name: "Pháo Hoa Viết Chữ", icon: "🎆", cat: "cosmic", song: "thousand_years_song.mp3", title: "A Thousand Years" }
+        ];
+
+        const gridMenuModal = document.getElementById('gridMenuModal');
+        const btnOpenGridMenu = document.getElementById('btnOpenGridMenu');
+        const btnCloseGridMenu = document.getElementById('btnCloseGridMenu');
+        const gridItemsContainer = document.getElementById('gridItemsContainer');
+        const gridTabBtns = document.querySelectorAll('.grid-tab-btn');
+
+        function renderGridMenu(catFilter = 'all') {
+            if (!gridItemsContainer) return;
+            gridItemsContainer.innerHTML = '';
+            const filtered = catFilter === 'all' ? allProjectsData : allProjectsData.filter(p => p.cat === catFilter);
+
+            filtered.forEach((p, idx) => {
+                const card = document.createElement('div');
+                card.className = 'grid-project-card';
+                card.innerHTML = `
+                    <div class="grid-card-icon">${p.icon}</div>
+                    <div class="grid-card-name">${p.name}</div>
+                    <div class="grid-card-num">#${idx + 1}</div>
+                `;
+                card.addEventListener('click', () => {
+                    gridMenuModal.classList.remove('active');
+                    switchView(p.id, p.song, p.title);
+                });
+                gridItemsContainer.appendChild(card);
+            });
+        }
+
+        renderGridMenu('all');
+        if (btnOpenGridMenu) {
+            btnOpenGridMenu.addEventListener('click', () => {
+                renderGridMenu('all');
+                gridMenuModal.classList.add('active');
+            });
+        }
+
+        if (btnCloseGridMenu) {
+            btnCloseGridMenu.addEventListener('click', () => {
+                gridMenuModal.classList.remove('active');
+            });
+        }
+
+        if (gridMenuModal) {
+            gridMenuModal.addEventListener('click', (e) => {
+                if (e.target === gridMenuModal) gridMenuModal.classList.remove('active');
+            });
+        }
+
+        gridTabBtns.forEach(tab => {
+            tab.addEventListener('click', () => {
+                gridTabBtns.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderGridMenu(tab.dataset.cat);
+            });
+        });
+
+        // ==========================================
+        // 20. VIEW 14: MÁY GẮP THÚ BÔNG TÌNH YÊU (LOVE CLAW MACHINE)
+        // ==========================================
+        const craneCarriage = document.getElementById('craneCarriage');
+        const craneCable = document.getElementById('craneCable');
+        const btnClawLeft = document.getElementById('btnClawLeft');
+        const btnClawRight = document.getElementById('btnClawRight');
+        const btnClawDrop = document.getElementById('btnClawDrop');
+
+        let clawPosX = 50; // percentage
+        let isClawMoving = false;
+
+        const clawPrizes = [
+            { icon: "🧸", title: "Gấu Bông Ấm Áp", desc: "1 Ngày làm công chúa được chồng phục vụ tận giường từ A-Z!" },
+            { icon: "🐱", title: "Mèo Con Nũng Nịu", desc: "100 nụ hôn & cái ôm ấm áp bất cứ khi nào vợ muốn!" },
+            { icon: "🐰", title: "Thỏ Hồng May Mắn", desc: "1 Điều ước bất kỳ vợ yêu cầu, chồng lập tức thực hiện ngay!" },
+            { icon: "🛵", title: "Vé Cõng Đi Dạo", desc: "Vé chồng cõng vợ đi dạo hóng gió quanh phố đêm mát rượi!" },
+            { icon: "🧹", title: "Phiếu Miễn Việc Nhà", desc: "Miễn toàn bộ việc nhà trong 1 tuần, để chồng lo hết!" },
+            { icon: "👑", title: "Đặc Quyền Tối Thượng", desc: "Đặc quyền được dỗi vô cớ mà chồng vẫn phải ôm dỗ ngọt ngào!" }
+        ];
+
+        function updateClawPosition() {
+            if (craneCarriage) {
+                craneCarriage.style.left = clawPosX + '%';
+            }
+        }
+
+        if (btnClawLeft) {
+            btnClawLeft.addEventListener('click', () => {
+                if (isClawMoving) return;
+                clawPosX = Math.max(18, clawPosX - 12);
+                updateClawPosition();
+            });
+        }
+
+        if (btnClawRight) {
+            btnClawRight.addEventListener('click', () => {
+                if (isClawMoving) return;
+                clawPosX = Math.min(82, clawPosX + 12);
+                updateClawPosition();
+            });
+        }
+
+        if (btnClawDrop) {
+            btnClawDrop.addEventListener('click', () => {
+                if (isClawMoving) return;
+                isClawMoving = true;
+                btnClawDrop.disabled = true;
+
+                // 1. Drop cable down
+                if (craneCable) craneCable.style.height = '145px';
+
+                setTimeout(() => {
+                    playStoreChime();
+                    // 2. Retract cable
+                    if (craneCable) craneCable.style.height = '40px';
+
+                    setTimeout(() => {
+                        isClawMoving = false;
+                        btnClawDrop.disabled = false;
+                        triggerCupidConfetti();
+
+                        // Pick random prize from the 6 confirmed
+                        const randomPrize = clawPrizes[Math.floor(Math.random() * clawPrizes.length)];
+                        openModal(
+                            "🎉 GẮP TRÚNG HỘP MÙ BLIND BOX! " + randomPrize.icon,
+                            randomPrize.title,
+                            `Chúc mừng công chúa đã bóc được: <strong>${randomPrize.title}</strong>!<br><br>${randomPrize.desc}<br><br><span style="color:#d81b60; font-family:Mali; font-weight:700;">Chồng xin phục vụ vợ vô điều kiện! ❤️</span>`
+                        );
+                    }, 900);
+                }, 900);
+            });
+        }
+
+        // ==========================================
+        // 21. VIEW 15: VÒNG QUAY HẸN HÒ DATE NIGHT
+        // ==========================================
+        const wheelCanvas = document.getElementById('wheelCanvas');
+        const btnSpinWheel = document.getElementById('btnSpinWheel');
+        const btnEditWheel = document.getElementById('btnEditWheel');
+
+        let dateNightOptions = [
+            "🥩 Ăn nướng / Lẩu",
+            "🎬 Xem phim rạp",
+            "👩‍🍳 Cùng nấu ăn",
+            "🛵 Lượn phố ăn kem",
+            "☕ Cafe chill tâm sự",
+            "🏖️ Du lịch cuối tuần"
+        ];
+
+        const wheelColors = ['#ff9ebd', '#ffc6ff', '#caffbf', '#ffd6a5', '#fdffb6', '#a0c4ff'];
+        let wheelCurrentRotation = 0;
+        let isWheelSpinning = false;
+
+        function drawDateNightWheel() {
+            if (!wheelCanvas) return;
+            const ctx = wheelCanvas.getContext('2d');
+            const w = wheelCanvas.width;
+            const h = wheelCanvas.height;
+            const cx = w / 2;
+            const cy = h / 2;
+            const r = w / 2 - 10;
+            const numSegments = dateNightOptions.length;
+            const arc = (Math.PI * 2) / numSegments;
+
+            ctx.clearRect(0, 0, w, h);
+
+            for (let i = 0; i < numSegments; i++) {
+                const angle = i * arc;
+                ctx.beginPath();
+                ctx.fillStyle = wheelColors[i % wheelColors.length];
+                ctx.moveTo(cx, cy);
+                ctx.arc(cx, cy, r, angle, angle + arc);
+                ctx.closePath();
+                ctx.fill();
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+
+                // Draw Text
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.rotate(angle + arc / 2);
+                ctx.textAlign = 'right';
+                ctx.fillStyle = '#4a2835';
+                ctx.font = 'bold 12px Mali, sans-serif';
+                ctx.fillText(dateNightOptions[i], r - 16, 5);
+                ctx.restore();
+            }
+        }
+        drawDateNightWheel();
+
+        if (btnSpinWheel) {
+            btnSpinWheel.addEventListener('click', () => {
+                if (isWheelSpinning) return;
+                isWheelSpinning = true;
+                btnSpinWheel.disabled = true;
+
+                // Random spin (5-8 full spins + random slice)
+                const extraSpins = (5 + Math.floor(Math.random() * 4)) * 360;
+                const randomOffset = Math.floor(Math.random() * 360);
+                const totalDegree = extraSpins + randomOffset;
+                wheelCurrentRotation += totalDegree;
+
+                wheelCanvas.style.transform = `rotate(${wheelCurrentRotation}deg)`;
+
+                setTimeout(() => {
+                    isWheelSpinning = false;
+                    btnSpinWheel.disabled = false;
+                    playStoreChime();
+                    triggerCupidConfetti();
+
+                    // Calculate winning slice (pointer is at top 270 deg / -90 deg)
+                    const actualRotation = (wheelCurrentRotation % 360);
+                    const sliceAngle = 360 / dateNightOptions.length;
+                    const winningIdx = Math.floor((360 - actualRotation + 90) % 360 / sliceAngle) % dateNightOptions.length;
+                    const winningPlan = dateNightOptions[winningIdx];
+
+                    openModal(
+                        "💖 KẾ HOẠCH HẸN HÒ ĐỊNH MỆNH! 🎯",
+                        winningPlan,
+                        `Kế hoạch hẹn hò tuyệt vời của hai đứa hôm nay là: <strong>${winningPlan}</strong>!<br><br>Chồng xin tài trợ 100% chi phí và nụ cười cho công chúa của anh! Cố lên vợ iuu , chồng yêu em ❤️`
+                    );
+                }, 4000);
+            });
+        }
+
+        if (btnEditWheel) {
+            btnEditWheel.addEventListener('click', () => {
+                const currentStr = dateNightOptions.join(', ');
+                const newStr = prompt("Nhập danh sách kế hoạch hẹn hò (phân cách bằng dấu phẩy):", currentStr);
+                if (newStr) {
+                    const parsed = newStr.split(',').map(s => s.trim()).filter(s => s.length > 0);
+                    if (parsed.length >= 2) {
+                        dateNightOptions = parsed;
+                        drawDateNightWheel();
+                        openModal("Đã Cập Nhật Vòng Quay! ✨", "Sẵn Sàng Hẹn Hò", "Danh sách hẹn hò mới đã được lưu thành công!");
+                    }
+                }
+            });
+        }
+
+        // ==========================================
+        // 22. VIEW 16: NÚT KHÔNG CHẠY TRỐN (LOVE QUIZ ESCAPE)
+        // ==========================================
+        const btnEscapeNo = document.getElementById('btnEscapeNo');
+        const btnEscapeYes = document.getElementById('btnEscapeYes');
+        const escapeIconWrap = document.getElementById('escapeIconWrap');
+
+        const noEscapeQuotes = [
+            "Thật luôn á? 🥺",
+            "Suy nghĩ lại đi mà 😭",
+            "Đừng làm tim anh đau 💔",
+            "Chắc bấm nhầm đúng không? 😤",
+            "Bấm nút kia kìa công chúa 🥺",
+            "Thương anh đi mà ❤️"
+        ];
+
+        let escapeCount = 0;
+        let yesBtnScale = 1;
+
+        function runAwayButton(e) {
+            if (!btnEscapeNo) return;
+            const container = document.getElementById('view-escape');
+            if (!container) return;
+
+            const cRect = container.getBoundingClientRect();
+            const btnW = btnEscapeNo.offsetWidth || 100;
+            const btnH = btnEscapeNo.offsetHeight || 40;
+
+            const maxW = Math.max(50, cRect.width - btnW - 40);
+            const maxH = Math.max(50, cRect.height - btnH - 120);
+
+            const randomX = Math.floor(Math.random() * maxW) + 20;
+            const randomY = Math.floor(Math.random() * maxH) + 60;
+
+            btnEscapeNo.style.position = 'fixed';
+            btnEscapeNo.style.left = randomX + 'px';
+            btnEscapeNo.style.top = randomY + 'px';
+
+            // Change quote
+            btnEscapeNo.textContent = noEscapeQuotes[escapeCount % noEscapeQuotes.length];
+            escapeCount++;
+
+            // Grow YES button
+            yesBtnScale += 0.12;
+            if (btnEscapeYes) {
+                btnEscapeYes.style.transform = `scale(${yesBtnScale})`;
+            }
+        }
+
+        if (btnEscapeNo) {
+            btnEscapeNo.addEventListener('mouseover', runAwayButton);
+            btnEscapeNo.addEventListener('touchstart', (e) => { e.preventDefault(); runAwayButton(e); }, { passive: false });
+        }
+
+        if (btnEscapeYes) {
+            btnEscapeYes.addEventListener('click', () => {
+                playStoreChime();
+                triggerCupidConfetti();
+                if (escapeIconWrap) escapeIconWrap.textContent = '😽';
+                openModal(
+                    "BIẾT NGAY MÀ! 🥰",
+                    "Chồng Nhớ Vợ Phát Điên Lên Được! ❤️",
+                    "Cố lên vợ iuu , chồng yêu em ❤️<br>Lúc nào tâm trí của anh cũng ngập tràn hình bóng công chúa nhỏ đáng yêu nhất quả đất!"
+                );
+            });
+        }
+
+        // ==========================================
+        // 23. VIEW 17: HỘP NHẠC CỔ TÍCH PHA LÊ (WIND-UP MUSIC BOX)
+        // ==========================================
+        const windUpKey = document.getElementById('windUpKey');
+        const btnWindUpMusicBox = document.getElementById('btnWindUpMusicBox');
+        const crystalHeart = document.getElementById('crystalHeart');
+        const musicNotesCanvas = document.getElementById('musicNotesCanvas');
+        const mnctx = musicNotesCanvas ? musicNotesCanvas.getContext('2d') : null;
+
+        let mnw = musicNotesCanvas ? (musicNotesCanvas.width = window.innerWidth) : 0;
+        let mnh = musicNotesCanvas ? (musicNotesCanvas.height = window.innerHeight) : 0;
+
+        function resizeMusicNotes() {
+            if (!musicNotesCanvas) return;
+            mnw = musicNotesCanvas.width = window.innerWidth;
+            mnh = musicNotesCanvas.height = window.innerHeight;
+        }
+
+        const floatingNotes = [];
+        const noteSymbols = ['♪', '♫', '♩', '♬', '✨', '💖'];
+
+        function spawnMusicNote(x, y) {
+            floatingNotes.push({
+                x: x || (mnw / 2 + (Math.random() - 0.5) * 80),
+                y: y || (mnh / 2),
+                sym: noteSymbols[Math.floor(Math.random() * noteSymbols.length)],
+                size: Math.random() * 16 + 14,
+                speedY: Math.random() * 1.5 + 1,
+                speedX: (Math.random() - 0.5) * 1.5,
+                alpha: 1
+            });
+        }
+
+        function animateMusicNotes() {
+            if (document.getElementById('view-musicbox') && document.getElementById('view-musicbox').classList.contains('active') && mnctx) {
+                mnctx.clearRect(0, 0, mnw, mnh);
+                for (let i = floatingNotes.length - 1; i >= 0; i--) {
+                    const n = floatingNotes[i];
+                    n.y -= n.speedY;
+                    n.x += n.speedX;
+                    n.alpha -= 0.012;
+
+                    if (n.alpha <= 0) {
+                        floatingNotes.splice(i, 1);
+                        continue;
+                    }
+
+                    mnctx.save();
+                    mnctx.fillStyle = '#ffd700';
+                    mnctx.shadowColor = '#ff4b72';
+                    mnctx.shadowBlur = 10;
+                    mnctx.globalAlpha = n.alpha;
+                    mnctx.font = `bold ${n.size}px Mali, sans-serif`;
+                    mnctx.fillText(n.sym, n.x, n.y);
+                    mnctx.restore();
+                }
+            }
+            requestAnimationFrame(animateMusicNotes);
+        }
+        animateMusicNotes();
+
+        function triggerWindUp() {
+            playStoreChime();
+            if (windUpKey) windUpKey.classList.add('winding');
+            if (crystalHeart) crystalHeart.classList.add('rotating');
+
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => spawnMusicNote(), i * 150);
+            }
+
+            openModal(
+                "Hộp Nhạc Tình Yêu Của Vợ Iuu 🎶",
+                "Mãi Bên Nhau Trọn Đời ♡",
+                "Từng nốt nhạc thánh thót vang lên như chính nhịp tim của anh thổn thức vì em. Cố lên vợ iuu , chồng yêu em ❤️"
+            );
+
+            setTimeout(() => {
+                if (windUpKey) windUpKey.classList.remove('winding');
+            }, 3000);
+        }
+
+        if (windUpKey) windUpKey.addEventListener('click', triggerWindUp);
+        if (btnWindUpMusicBox) btnWindUpMusicBox.addEventListener('click', triggerWindUp);
+
+        // ==========================================
+        // 24. VIEW 18: BẦU TRỜI PHÁO HOA VIẾT CHỮ (TEXT FIREWORKS)
+        // ==========================================
+        const fireworksTextCanvas = document.getElementById('fireworksTextCanvas');
+        const ftx = fireworksTextCanvas ? fireworksTextCanvas.getContext('2d') : null;
+        let ftxW = fireworksTextCanvas ? (fireworksTextCanvas.width = window.innerWidth) : 0;
+        let ftxH = fireworksTextCanvas ? (fireworksTextCanvas.height = window.innerHeight) : 0;
+
+        function resizeFireworksText() {
+            if (!fireworksTextCanvas) return;
+            ftxW = fireworksTextCanvas.width = window.innerWidth;
+            ftxH = fireworksTextCanvas.height = window.innerHeight;
+        }
+
+        const customPhrases = [
+            "YÊU EM ❤️",
+            "VỢ IUU 💕",
+            "30/06 💍",
+            "CỐ LÊN VỢ IUU ✨",
+            "HẠNH PHÚC 💖",
+            "MÃI BÊN NHAU ♾️"
+        ];
+        let phraseIdx = 0;
+        const textParticles = [];
+
+        function createTextFirework(targetX, targetY) {
+            playStoreChime();
+            const phrase = customPhrases[phraseIdx % customPhrases.length];
+            phraseIdx++;
+
+            // Sample points from text
+            const offCanvas = document.createElement('canvas');
+            offCanvas.width = 300;
+            offCanvas.height = 80;
+            const oCtx = offCanvas.getContext('2d');
+            oCtx.font = 'bold 24px Mali, sans-serif';
+            oCtx.fillStyle = '#fff';
+            oCtx.textAlign = 'center';
+            oCtx.textBaseline = 'middle';
+            oCtx.fillText(phrase, 150, 40);
+
+            const imgData = oCtx.getImageData(0, 0, 300, 80).data;
+            const colors = ['#ff4b72', '#ffd700', '#ff9ebd', '#00f2fe', '#fff'];
+
+            for (let y = 0; y < 80; y += 4) {
+                for (let x = 0; x < 300; x += 4) {
+                    const idx = (y * 300 + x) * 4;
+                    if (imgData[idx + 3] > 128) {
+                        const posX = targetX + (x - 150) * 1.3;
+                        const posY = targetY + (y - 40) * 1.3;
+
+                        textParticles.push({
+                            x: targetX,
+                            y: targetY,
+                            tx: posX,
+                            ty: posY,
+                            vx: (Math.random() - 0.5) * 4,
+                            vy: (Math.random() - 0.5) * 4,
+                            color: colors[Math.floor(Math.random() * colors.length)],
+                            alpha: 1,
+                            state: 'burst',
+                            life: 0
+                        });
+                    }
+                }
+            }
+        }
+
+        function animateTextFireworks() {
+            if (document.getElementById('view-fireworks') && document.getElementById('view-fireworks').classList.contains('active') && ftx) {
+                ftx.clearRect(0, 0, ftxW, ftxH);
+
+                for (let i = textParticles.length - 1; i >= 0; i--) {
+                    const p = textParticles[i];
+                    p.life++;
+
+                    if (p.state === 'burst') {
+                        p.x += (p.tx - p.x) * 0.12;
+                        p.y += (p.ty - p.y) * 0.12;
+                        if (p.life > 20) p.state = 'float';
+                    } else {
+                        p.y += 0.35; // gentle fall
+                        p.alpha -= 0.015;
+                    }
+
+                    if (p.alpha <= 0) {
+                        textParticles.splice(i, 1);
+                        continue;
+                    }
+
+                    ftx.save();
+                    ftx.fillStyle = p.color;
+                    ftx.shadowColor = p.color;
+                    ftx.shadowBlur = 8;
+                    ftx.globalAlpha = p.alpha;
+                    ftx.beginPath();
+                    ftx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                    ftx.fill();
+                    ftx.restore();
+                }
+            }
+            requestAnimationFrame(animateTextFireworks);
+        }
+        animateTextFireworks();
+
+        if (fireworksTextCanvas) {
+            fireworksTextCanvas.addEventListener('click', (e) => {
+                createTextFirework(e.clientX, e.clientY);
+            });
+            fireworksTextCanvas.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                createTextFirework(touch.clientX, touch.clientY);
+            });
+        }
+
+        const btnBurstAllFireworks = document.getElementById('btnBurstAllFireworks');
+        if (btnBurstAllFireworks) {
+            btnBurstAllFireworks.addEventListener('click', () => {
+                for (let k = 0; k < 4; k++) {
+                    setTimeout(() => {
+                        const rx = ftxW * 0.2 + Math.random() * ftxW * 0.6;
+                        const ry = ftxH * 0.2 + Math.random() * ftxH * 0.4;
+                        createTextFirework(rx, ry);
+                    }, k * 450);
+                }
+            });
+        }
+
         // 14. URL HASH ROUTING SUPPORT
         // ==========================================
         function handleHashRouting() {
@@ -4712,6 +6155,16 @@
                 switchView('view-cassette', 'panbap_audio.mp3', 'Lofi Romance');
             } else if (hash === 'rose') {
                 switchView('view-rose', 'spirograph_heart_song.mp3', 'Piano Romance');
+            } else if (hash === 'claw') {
+                switchView('view-claw', 'cupid_cake_song.mp3', 'Love Story');
+            } else if (hash === 'wheel') {
+                switchView('view-wheel', 'flower_shop_song.mp3', 'Là Người Con Gái...');
+            } else if (hash === 'escape') {
+                switchView('view-escape', 'cho_chut_remix.mp3', 'Chờ Chút Thôi Remix');
+            } else if (hash === 'musicbox') {
+                switchView('view-musicbox', 'spirograph_heart_song.mp3', 'Piano Romance');
+            } else if (hash === 'fireworks') {
+                switchView('view-fireworks', 'thousand_years_song.mp3', 'A Thousand Years');
             } else {
                 switchView('view-hub', 'flower_shop_song.mp3', 'Là Người Con Gái...');
             }
@@ -4719,5 +6172,8 @@
 
         window.addEventListener('load', handleHashRouting);
     </script>
+
+    
+
 </body>
 </html>
