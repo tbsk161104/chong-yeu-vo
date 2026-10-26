@@ -2640,7 +2640,11 @@
             cursor: pointer;
             box-shadow: 0 8px 24px rgba(216, 27, 96, 0.35);
             transition: transform 0.25s, padding 0.25s, font-size 0.25s;
-            z-index: 20;
+            z-index: 100;
+            position: relative;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         #btnEscapeNo {
@@ -2653,9 +2657,12 @@
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.15s ease-out;
-            z-index: 15;
+            transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 50;
             white-space: nowrap;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         /* ========================================================
@@ -3651,6 +3658,7 @@
                             <path d="M 12 10 Q 20 2 28 10 Q 34 26 26 36 M 12 10 Q 6 26 14 36" fill="none" stroke="#ffeaa7" stroke-width="3" stroke-linecap="round"/>
                             <circle cx="20" cy="10" r="5" fill="#ffd700" />
                         </svg>
+                        <div id="clawPrizeBall" style="display:none; font-size:26px; line-height:1; margin-top:-6px; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5)); transform:scale(0); transition:transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);">🧸</div>
                     </div>
                 </div>
 
@@ -3784,6 +3792,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Global Universal Celebration Confetti Layer -->
+    <canvas id="globalConfettiCanvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:99999; display:none;"></canvas>
 
     <!-- Universal Romantic Modal Popup -->
     <div class="modal-overlay" id="modalOverlay">
@@ -4007,6 +4018,16 @@
             if (targetViewId === 'view-wheel' && typeof drawDateNightWheel === 'function') drawDateNightWheel();
             if (targetViewId === 'view-musicbox' && typeof resizeMusicNotes === 'function') resizeMusicNotes();
             if (targetViewId === 'view-fireworks' && typeof resizeFireworksText === 'function') resizeFireworksText();
+
+            // Reset Escape Quiz View
+            if (typeof resetEscapeQuiz === 'function') {
+                resetEscapeQuiz(targetViewId === 'view-escape');
+            }
+
+            // Reset Claw Machine View
+            if (typeof resetClawMachine === 'function' && targetViewId === 'view-claw') {
+                resetClawMachine();
+            }
         }
 
         dockItems.forEach(item => {
@@ -4107,6 +4128,127 @@
             [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
                 setTimeout(() => playChimeTone(f, 0.4), i * 90);
             });
+        }
+
+        // ==========================================
+        // 3.5 UNIVERSAL ROMANTIC CELEBRATION CONFETTI ENGINE
+        // ==========================================
+        const globalConfettiCanvas = document.getElementById('globalConfettiCanvas');
+        const gctx = globalConfettiCanvas ? globalConfettiCanvas.getContext('2d') : null;
+        let globalConfettiParticles = [];
+        let confettiAnimId = null;
+
+        function resizeGlobalConfetti() {
+            if (!globalConfettiCanvas) return;
+            globalConfettiCanvas.width = window.innerWidth;
+            globalConfettiCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeGlobalConfetti);
+        resizeGlobalConfetti();
+
+        window.triggerCupidConfetti = function(originX, originY) {
+            try {
+                if (!globalConfettiCanvas || !gctx) return;
+                resizeGlobalConfetti();
+                globalConfettiCanvas.style.display = 'block';
+
+                const w = globalConfettiCanvas.width;
+                const h = globalConfettiCanvas.height;
+                const cx = originX !== undefined ? originX : w / 2;
+                const cy = originY !== undefined ? originY : h * 0.45;
+
+                const confettiColors = ['#ff4b72', '#ff85a2', '#ffd700', '#ffb3c6', '#a29bfe', '#06d6a0', '#48cae4', '#ffffff'];
+                const confettiShapes = ['circle', 'rect', 'heart', 'star'];
+
+                for (let i = 0; i < 95; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 10 + 4;
+                    globalConfettiParticles.push({
+                        x: cx + (Math.random() - 0.5) * 60,
+                        y: cy + (Math.random() - 0.5) * 50,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed - (Math.random() * 5 + 3),
+                        color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+                        shape: confettiShapes[Math.floor(Math.random() * confettiShapes.length)],
+                        size: Math.random() * 9 + 6,
+                        rot: Math.random() * 360,
+                        vrot: (Math.random() - 0.5) * 14,
+                        wobble: Math.random() * 10,
+                        alpha: 1,
+                        decay: Math.random() * 0.009 + 0.007,
+                        gravity: 0.24
+                    });
+                }
+
+                if (!confettiAnimId) {
+                    animateGlobalConfetti();
+                }
+
+                // If Cupid view is active and has local balloons, spawn them too
+                const cupidView = document.getElementById('view-cupid');
+                if (cupidView && cupidView.classList.contains('active') && typeof spawnCupidCelebration === 'function') {
+                    spawnCupidCelebration();
+                }
+            } catch(e) {
+                console.error("Global confetti error:", e);
+            }
+        };
+
+        function animateGlobalConfetti() {
+            if (!globalConfettiCanvas || !gctx) return;
+            gctx.clearRect(0, 0, globalConfettiCanvas.width, globalConfettiCanvas.height);
+
+            const w = globalConfettiCanvas.width;
+            const h = globalConfettiCanvas.height;
+
+            for (let i = globalConfettiParticles.length - 1; i >= 0; i--) {
+                const p = globalConfettiParticles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += p.gravity;
+                p.vx *= 0.985;
+                p.rot += p.vrot;
+                p.wobble += 0.08;
+                p.alpha -= p.decay;
+
+                if (p.alpha <= 0 || p.y > h + 50) {
+                    globalConfettiParticles.splice(i, 1);
+                    continue;
+                }
+
+                gctx.save();
+                gctx.translate(p.x + Math.sin(p.wobble) * 4, p.y);
+                gctx.rotate((p.rot * Math.PI) / 180);
+                gctx.globalAlpha = Math.max(0, p.alpha);
+                gctx.fillStyle = p.color;
+
+                if (p.shape === 'rect') {
+                    gctx.fillRect(-p.size / 2, -p.size / 3, p.size, p.size * 0.6);
+                } else if (p.shape === 'circle') {
+                    gctx.beginPath();
+                    gctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+                    gctx.fill();
+                } else if (p.shape === 'heart') {
+                    gctx.font = `${Math.floor(p.size * 1.6)}px sans-serif`;
+                    gctx.textAlign = 'center';
+                    gctx.textBaseline = 'middle';
+                    gctx.fillText('💖', 0, 0);
+                } else if (p.shape === 'star') {
+                    gctx.font = `${Math.floor(p.size * 1.5)}px sans-serif`;
+                    gctx.textAlign = 'center';
+                    gctx.textBaseline = 'middle';
+                    gctx.fillText('✨', 0, 0);
+                }
+                gctx.restore();
+            }
+
+            if (globalConfettiParticles.length > 0) {
+                confettiAnimId = requestAnimationFrame(animateGlobalConfetti);
+            } else {
+                confettiAnimId = null;
+                gctx.clearRect(0, 0, w, h);
+                globalConfettiCanvas.style.display = 'none';
+            }
         }
 
         // ==========================================
@@ -5669,6 +5811,8 @@
         // ==========================================
         const craneCarriage = document.getElementById('craneCarriage');
         const craneCable = document.getElementById('craneCable');
+        const craneClaw = document.getElementById('craneClaw');
+        const clawPrizeBall = document.getElementById('clawPrizeBall');
         const btnClawLeft = document.getElementById('btnClawLeft');
         const btnClawRight = document.getElementById('btnClawRight');
         const btnClawDrop = document.getElementById('btnClawDrop');
@@ -5691,52 +5835,121 @@
             }
         }
 
+        function resetClawMachine() {
+            clawPosX = 50;
+            updateClawPosition();
+            if (craneCable) craneCable.style.height = '40px';
+            if (craneClaw) craneClaw.style.transform = 'scale(1) rotate(0deg)';
+            if (clawPrizeBall) {
+                clawPrizeBall.style.display = 'none';
+                clawPrizeBall.style.transform = 'scale(0)';
+            }
+            if (btnClawDrop) {
+                btnClawDrop.disabled = false;
+                btnClawDrop.style.opacity = '1';
+            }
+            isClawMoving = false;
+        }
+
+        function moveClaw(delta) {
+            if (isClawMoving) return;
+            clawPosX = Math.max(16, Math.min(84, clawPosX + delta));
+            updateClawPosition();
+            playChimeTone(520, 0.08);
+        }
+
         if (btnClawLeft) {
-            btnClawLeft.addEventListener('click', () => {
-                if (isClawMoving) return;
-                clawPosX = Math.max(18, clawPosX - 12);
-                updateClawPosition();
-            });
+            btnClawLeft.addEventListener('click', () => moveClaw(-12));
+            btnClawLeft.addEventListener('touchend', (e) => { e.preventDefault(); moveClaw(-12); });
         }
 
         if (btnClawRight) {
-            btnClawRight.addEventListener('click', () => {
-                if (isClawMoving) return;
-                clawPosX = Math.min(82, clawPosX + 12);
-                updateClawPosition();
-            });
+            btnClawRight.addEventListener('click', () => moveClaw(12));
+            btnClawRight.addEventListener('touchend', (e) => { e.preventDefault(); moveClaw(12); });
         }
 
-        if (btnClawDrop) {
-            btnClawDrop.addEventListener('click', () => {
-                if (isClawMoving) return;
-                isClawMoving = true;
+        function triggerClawDrop() {
+            if (isClawMoving) return;
+            isClawMoving = true;
+            if (btnClawDrop) {
                 btnClawDrop.disabled = true;
+                btnClawDrop.style.opacity = '0.6';
+            }
 
-                // 1. Drop cable down
-                if (craneCable) craneCable.style.height = '145px';
+            // Pick winning blind box prize
+            const randomPrize = clawPrizes[Math.floor(Math.random() * clawPrizes.length)];
 
+            // 1. Drop cable down to reach balls
+            if (craneCable) craneCable.style.height = '145px';
+            if (craneClaw) craneClaw.style.transform = 'scale(1.15) rotate(4deg)';
+            playChimeTone(440, 0.25);
+
+            setTimeout(() => {
+                // Reached the bottom: claw grasps the prize ball!
+                playChimeTone(880, 0.2);
+                if (clawPrizeBall) {
+                    clawPrizeBall.textContent = randomPrize.icon;
+                    clawPrizeBall.style.display = 'block';
+                    clawPrizeBall.style.transform = 'scale(1)';
+                }
+                if (craneClaw) craneClaw.style.transform = 'scale(0.92) rotate(0deg)';
+
+                // 2. Retract cable lifting the prize ball up
                 setTimeout(() => {
-                    playStoreChime();
-                    // 2. Retract cable
                     if (craneCable) craneCable.style.height = '40px';
 
                     setTimeout(() => {
-                        isClawMoving = false;
-                        btnClawDrop.disabled = false;
-                        triggerCupidConfetti();
+                        // Prize reached the top booth!
+                        playStoreChime();
+                        try {
+                            if (typeof triggerCupidConfetti === 'function') triggerCupidConfetti();
+                        } catch(e) {}
 
-                        // Pick random prize from the 6 confirmed
-                        const randomPrize = clawPrizes[Math.floor(Math.random() * clawPrizes.length)];
+                        // Open modal with guaranteed prize
                         openModal(
                             "🎉 GẮP TRÚNG HỘP MÙ BLIND BOX! " + randomPrize.icon,
                             randomPrize.title,
                             `Chúc mừng công chúa đã bóc được: <strong>${randomPrize.title}</strong>!<br><br>${randomPrize.desc}<br><br><span style="color:#d81b60; font-family:Mali; font-weight:700;">Chồng xin phục vụ vợ vô điều kiện! ❤️</span>`
                         );
-                    }, 900);
-                }, 900);
+
+                        isClawMoving = false;
+                        if (btnClawDrop) {
+                            btnClawDrop.disabled = false;
+                            btnClawDrop.style.opacity = '1';
+                        }
+                        if (craneClaw) craneClaw.style.transform = 'scale(1)';
+                        setTimeout(() => {
+                            if (clawPrizeBall) {
+                                clawPrizeBall.style.transform = 'scale(0)';
+                                setTimeout(() => { clawPrizeBall.style.display = 'none'; }, 250);
+                            }
+                        }, 1200);
+                    }, 850);
+                }, 400);
+            }, 850);
+        }
+
+        if (btnClawDrop) {
+            btnClawDrop.addEventListener('click', triggerClawDrop);
+            btnClawDrop.addEventListener('touchend', (e) => {
+                if (e.cancelable) e.preventDefault();
+                triggerClawDrop();
             });
         }
+
+        // Keyboard controls for Claw Machine
+        window.addEventListener('keydown', (e) => {
+            const clawView = document.getElementById('view-claw');
+            if (!clawView || !clawView.classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') {
+                moveClaw(-12);
+            } else if (e.key === 'ArrowRight') {
+                moveClaw(12);
+            } else if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                triggerClawDrop();
+            }
+        });
 
         // ==========================================
         // 21. VIEW 15: VÒNG QUAY HẸN HÒ DATE NIGHT
@@ -5865,51 +6078,114 @@
         let escapeCount = 0;
         let yesBtnScale = 1;
 
+        function resetEscapeQuiz(isActive) {
+            if (btnEscapeNo) {
+                btnEscapeNo.style.position = 'static';
+                btnEscapeNo.style.left = 'auto';
+                btnEscapeNo.style.top = 'auto';
+                btnEscapeNo.textContent = 'Không nhớ xíu nào 😜';
+            }
+            if (btnEscapeYes) {
+                btnEscapeYes.style.transform = 'scale(1)';
+            }
+            yesBtnScale = 1;
+            escapeCount = 0;
+            if (escapeIconWrap) {
+                escapeIconWrap.textContent = '😻';
+            }
+        }
+
         function runAwayButton(e) {
             if (!btnEscapeNo) return;
+            if (e && e.type === 'touchstart' && e.cancelable) {
+                e.preventDefault();
+            }
+
             const container = document.getElementById('view-escape');
             if (!container) return;
 
-            const cRect = container.getBoundingClientRect();
-            const btnW = btnEscapeNo.offsetWidth || 100;
-            const btnH = btnEscapeNo.offsetHeight || 40;
+            const btnW = btnEscapeNo.offsetWidth || 120;
+            const btnH = btnEscapeNo.offsetHeight || 44;
 
-            const maxW = Math.max(50, cRect.width - btnW - 40);
-            const maxH = Math.max(50, cRect.height - btnH - 120);
+            const padding = 20;
+            const maxW = Math.max(40, window.innerWidth - btnW - padding * 2);
+            const maxH = Math.max(40, window.innerHeight - btnH - 120);
 
-            const randomX = Math.floor(Math.random() * maxW) + 20;
-            const randomY = Math.floor(Math.random() * maxH) + 60;
+            let randomX = Math.floor(Math.random() * maxW) + padding;
+            let randomY = Math.floor(Math.random() * maxH) + 60;
+
+            // Avoid overlapping YES button
+            if (btnEscapeYes) {
+                const yesRect = btnEscapeYes.getBoundingClientRect();
+                if (Math.abs(randomX - yesRect.left) < 110 && Math.abs(randomY - yesRect.top) < 60) {
+                    randomY = (randomY + 140) % maxH + 60;
+                }
+            }
 
             btnEscapeNo.style.position = 'fixed';
             btnEscapeNo.style.left = randomX + 'px';
             btnEscapeNo.style.top = randomY + 'px';
+            btnEscapeNo.style.zIndex = '50';
 
             // Change quote
             btnEscapeNo.textContent = noEscapeQuotes[escapeCount % noEscapeQuotes.length];
             escapeCount++;
 
-            // Grow YES button
-            yesBtnScale += 0.12;
+            // Grow YES button progressively
+            yesBtnScale = Math.min(2.4, yesBtnScale + 0.15);
             if (btnEscapeYes) {
                 btnEscapeYes.style.transform = `scale(${yesBtnScale})`;
             }
+
+            // Play boing chime
+            playChimeTone(420 + (escapeCount % 6) * 70, 0.12);
+        }
+
+        let isYesProcessed = false;
+        function handleEscapeYes(e) {
+            if (e) {
+                if (e.cancelable) e.preventDefault();
+                e.stopPropagation();
+            }
+            if (isYesProcessed) return;
+            isYesProcessed = true;
+            setTimeout(() => { isYesProcessed = false; }, 800);
+
+            playStoreChime();
+            try {
+                if (typeof triggerCupidConfetti === 'function') triggerCupidConfetti();
+            } catch(err) {
+                console.error("Confetti error:", err);
+            }
+
+            if (escapeIconWrap) {
+                escapeIconWrap.textContent = '😽';
+                escapeIconWrap.style.transform = 'scale(1.25) rotate(10deg)';
+                setTimeout(() => {
+                    escapeIconWrap.style.transform = 'scale(1) rotate(0deg)';
+                }, 400);
+            }
+
+            openModal(
+                "BIẾT NGAY MÀ! 🥰",
+                "Chồng Nhớ Vợ Phát Điên Lên Được! ❤️",
+                "Cố lên vợ iuu , chồng yêu em ❤️<br><br>Lúc nào tâm trí của anh cũng ngập tràn hình bóng công chúa nhỏ đáng yêu nhất quả đất! Chồng yêu vợ nhiều nhất trần đời!"
+            );
         }
 
         if (btnEscapeNo) {
-            btnEscapeNo.addEventListener('mouseover', runAwayButton);
-            btnEscapeNo.addEventListener('touchstart', (e) => { e.preventDefault(); runAwayButton(e); }, { passive: false });
+            btnEscapeNo.addEventListener('mouseenter', runAwayButton);
+            btnEscapeNo.addEventListener('touchstart', runAwayButton, { passive: false });
+            btnEscapeNo.addEventListener('click', (e) => {
+                e.preventDefault();
+                runAwayButton(e);
+            });
         }
 
         if (btnEscapeYes) {
-            btnEscapeYes.addEventListener('click', () => {
-                playStoreChime();
-                triggerCupidConfetti();
-                if (escapeIconWrap) escapeIconWrap.textContent = '😽';
-                openModal(
-                    "BIẾT NGAY MÀ! 🥰",
-                    "Chồng Nhớ Vợ Phát Điên Lên Được! ❤️",
-                    "Cố lên vợ iuu , chồng yêu em ❤️<br>Lúc nào tâm trí của anh cũng ngập tràn hình bóng công chúa nhỏ đáng yêu nhất quả đất!"
-                );
+            btnEscapeYes.addEventListener('click', handleEscapeYes);
+            btnEscapeYes.addEventListener('touchend', (e) => {
+                handleEscapeYes(e);
             });
         }
 
