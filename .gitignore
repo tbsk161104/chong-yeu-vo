@@ -7,3 +7,5 @@ video_frames/
 thanhslt_frames/
 *.json
 !vercel.json
+
+.vercel

@@ -251,7 +251,7 @@
 
         /* Main View Wrapper */
         .app-view {
-            display: none;
+            display: none !important;
             width: 100%;
             min-height: 100vh;
             position: relative;
@@ -262,8 +262,16 @@
         }
 
         .app-view.active {
-            display: block;
-            opacity: 1;
+            display: block !important;
+            opacity: 1 !important;
+        }
+
+        #view-lock.active,
+        #view-sofia.active,
+        #view-lily.active,
+        #view-cupid.active,
+        #view-love-tree.active {
+            display: flex !important;
         }
 
         /* Common Buttons */
@@ -856,7 +864,7 @@
             position: relative;
             width: 100%;
             min-height: 100vh;
-            display: flex;
+            
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -1021,14 +1029,14 @@
             width: 100%;
             min-height: 100vh;
             padding-top: 80px;
-            display: flex;
+            
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
         #sofiaCanvas {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -1070,14 +1078,14 @@
             width: 100%;
             min-height: 100vh;
             padding-top: 80px;
-            display: flex;
+            
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
         #lilyCanvas {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -1119,7 +1127,7 @@
             width: 100%;
             min-height: 100vh;
             overflow: hidden;
-            display: flex;
+            
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -1287,7 +1295,7 @@
             min-height: 100vh;
             padding-top: 70px;
             padding-bottom: 100px;
-            display: flex;
+            
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -1295,7 +1303,7 @@
         }
 
         #treeCanvas {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -2158,7 +2166,7 @@
             const activeView = document.getElementById(targetViewId);
             if (activeView) {
                 activeView.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: 'instant' });
             }
 
             dockItems.forEach(item => {
@@ -2182,8 +2190,13 @@
 
             ensureAudioPlaying();
 
-            if (targetViewId === 'view-spirograph') startSpiroDraw();
-            if (targetViewId === 'view-love-tree') startTreeGrowth();
+            if (typeof resizeHeart === 'function' && targetViewId === 'view-heart-3d') resizeHeart();
+            if (typeof resizeCupid === 'function' && targetViewId === 'view-cupid') resizeCupid();
+            if (typeof resizeSpiro === 'function' && targetViewId === 'view-spirograph') { resizeSpiro(); startSpiroDraw(); }
+            if (typeof resizeLantern === 'function' && targetViewId === 'view-lanterns') resizeLantern();
+            if (typeof resizeTree === 'function' && targetViewId === 'view-love-tree') { resizeTree(); startTreeGrowth(); }
+            if (typeof resizeSofia === 'function' && targetViewId === 'view-sofia') resizeSofia();
+            if (typeof resizeLily === 'function' && targetViewId === 'view-lily') resizeLily();
         }
 
         dockItems.forEach(item => {
