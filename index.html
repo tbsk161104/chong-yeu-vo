@@ -270,7 +270,11 @@
         #view-sofia.active,
         #view-lily.active,
         #view-cupid.active,
-        #view-love-tree.active {
+        #view-love-tree.active,
+        #view-scratch.active,
+        #view-counter.active,
+        #view-cassette.active,
+        #view-rose.active {
             display: flex !important;
         }
 
@@ -1522,6 +1526,624 @@
                 font-size: 17px;
             }
         }
+    
+        /* ========================================================
+           VIEW 10: 🎟️ THẺ CÀO TÌNH YÊU (LOVE SCRATCH CARD)
+        ======================================================== */
+        #view-scratch {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 100px;
+            background: radial-gradient(circle at center, #2e1227 0%, #1a0817 60%, #0d030c 100%);
+        }
+
+        .scratch-card-box {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            background: linear-gradient(145deg, #ffffff, #fff5f8);
+            border-radius: 28px;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 105, 180, 0.25);
+            border: 2px solid rgba(255, 215, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .scratch-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #ffd700, #ff8da1);
+            color: #7a1f3d;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .scratch-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #d81b60;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .scratch-card-subtitle {
+            font-size: 12px;
+            color: #8c7379;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .scratch-area-wrap {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.1);
+            border: 2px dashed #f5af19;
+            background: #fff;
+        }
+
+        .scratch-prize-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+        }
+
+        .prize-icon {
+            font-size: 44px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 4px 10px rgba(216, 27, 96, 0.3));
+            animation: pulsePrize 2s infinite ease-in-out;
+        }
+
+        @keyframes pulsePrize {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+
+        .prize-title {
+            font-family: 'Mali', cursive;
+            font-size: 17px;
+            font-weight: 700;
+            color: #d81b60;
+            margin-bottom: 6px;
+        }
+
+        .prize-desc {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #553c44;
+            max-width: 290px;
+        }
+
+        #scratchCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 5;
+            touch-action: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .scratch-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-scratch-switch {
+            background: #fff;
+            color: #d81b60;
+            border: 1.5px solid #ff4b72;
+            border-radius: 50px;
+            padding: 9px 18px;
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.12);
+            transition: all 0.2s;
+        }
+
+        .btn-scratch-switch:hover {
+            background: #ffe4eb;
+            transform: scale(1.05);
+        }
+
+        /* ========================================================
+           VIEW 11: ⏳ ĐỒNG HỒ ĐẾM NGÀY YÊU (LOVE DAYS ORBIT)
+        ======================================================== */
+        #view-counter {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 100px;
+            background: radial-gradient(circle at center, #1b0a2a 0%, #0c0414 70%, #05020a 100%);
+        }
+
+        #counterOrbitCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .counter-card {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 460px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 182, 193, 0.35);
+            border-radius: 32px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 105, 180, 0.2);
+            color: #fff;
+        }
+
+        .counter-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 75, 114, 0.25);
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            border-radius: 30px;
+            padding: 5px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffb6c1;
+            margin-bottom: 12px;
+        }
+
+        .counter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #fff, #ffd1dc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .counter-subtitle {
+            font-size: 13px;
+            color: #e0c8d1;
+            margin-bottom: 22px;
+        }
+
+        .ticker-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .ticker-cell {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 12px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .ticker-number {
+            font-family: 'Mali', cursive;
+            font-size: 26px;
+            font-weight: 700;
+            color: #ff9ebd;
+            line-height: 1.1;
+            text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+        }
+
+        .ticker-unit {
+            font-size: 11px;
+            font-weight: 600;
+            color: #cfb2bc;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .counter-footer {
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            color: #ffd1dc;
+            margin-bottom: 16px;
+        }
+
+        .btn-change-date {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            color: #fff;
+            padding: 7px 18px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-change-date:hover {
+            background: rgba(255, 75, 114, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* ========================================================
+           VIEW 12: 📻 MÁY CASSETTE RETRO & POLAROID KỶ NIỆM
+        ======================================================== */
+        #view-cassette {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 75px 16px 105px;
+            background: linear-gradient(180deg, #fcecee 0%, #fae1e6 50%, #f7d5dc 100%);
+        }
+
+        .cassette-player-box {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 440px;
+            background: linear-gradient(145deg, #ffc0cb, #ff9eb5);
+            border-radius: 28px;
+            padding: 22px;
+            box-shadow: 0 18px 45px rgba(216, 27, 96, 0.25), inset 0 3px 6px rgba(255, 255, 255, 0.6);
+            border: 4px solid #fff;
+            margin-bottom: 24px;
+        }
+
+        .cassette-window {
+            background: #2b1820;
+            border-radius: 18px;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6);
+            border: 2px solid #e88ea4;
+            margin-bottom: 14px;
+        }
+
+        .reel-wheel {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border-radius: 50%;
+            border: 6px solid #4a2835;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .reel-wheel::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 14px;
+            background: #2b1820;
+            border-radius: 50%;
+        }
+
+        .reel-wheel.spinning {
+            animation: spinReel 2.8s linear infinite;
+        }
+
+        @keyframes spinReel {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .tape-strip {
+            flex: 1;
+            height: 10px;
+            background: #5c3242;
+            margin: 0 10px;
+            border-radius: 4px;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cassette-info {
+            text-align: center;
+            color: #70283c;
+            font-family: 'Mali', cursive;
+        }
+
+        .cassette-track-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .cassette-artist {
+            font-size: 11px;
+            color: #9c4d63;
+        }
+
+        /* Equalizer bars */
+        .equalizer-box {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 4px;
+            height: 22px;
+            margin-top: 10px;
+        }
+
+        .eq-bar {
+            width: 5px;
+            background: #fff;
+            border-radius: 3px;
+            height: 6px;
+            transition: height 0.15s ease;
+        }
+
+        .eq-bar.active {
+            animation: bounceEq 0.6s infinite alternate ease-in-out;
+        }
+
+        .eq-bar:nth-child(2) { animation-delay: 0.15s; }
+        .eq-bar:nth-child(3) { animation-delay: 0.3s; }
+        .eq-bar:nth-child(4) { animation-delay: 0.45s; }
+        .eq-bar:nth-child(5) { animation-delay: 0.2s; }
+        .eq-bar:nth-child(6) { animation-delay: 0.35s; }
+
+        @keyframes bounceEq {
+            0% { height: 4px; }
+            100% { height: 22px; }
+        }
+
+        /* Polaroid String Wall */
+        .polaroid-string-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 460px;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .polaroid-card-wrap {
+            perspective: 800px;
+            width: 115px;
+            height: 145px;
+            cursor: pointer;
+        }
+
+        .polaroid-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            border-radius: 10px;
+        }
+
+        .polaroid-card-wrap.flipped .polaroid-inner {
+            transform: rotateY(180deg);
+        }
+
+        .polaroid-front, .polaroid-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            background: #fff;
+            padding: 8px 8px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .polaroid-front img {
+            width: 100%;
+            height: 95px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: #ffdce5;
+        }
+
+        .polaroid-caption {
+            font-family: 'Mali', cursive;
+            font-size: 10px;
+            font-weight: 700;
+            color: #d81b60;
+            margin-top: 6px;
+            text-align: center;
+        }
+
+        .polaroid-back {
+            transform: rotateY(180deg);
+            background: #fff9ea;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ebd9a9;
+        }
+
+        .polaroid-note-text {
+            font-family: 'Mali', cursive;
+            font-size: 10px;
+            line-height: 1.4;
+            color: #61442b;
+            font-weight: 600;
+        }
+
+        /* ========================================================
+           VIEW 13: 🌹 ĐÓA HỒNG PHA LÊ VĨNH CỬU (ENCHANTED ROSE)
+        ======================================================== */
+        #view-rose {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 70px 16px 95px;
+            background: radial-gradient(circle at center, #18091f 0%, #0c0411 65%, #050108 100%);
+        }
+
+        #roseFirefliesCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .rose-stage-box {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .glass-cloche-wrap {
+            position: relative;
+            width: 220px;
+            height: 330px;
+            border-top-left-radius: 110px;
+            border-top-right-radius: 110px;
+            border: 3px solid rgba(255, 255, 255, 0.35);
+            border-bottom: none;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 60%, rgba(255, 182, 193, 0.1) 100%);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 20px;
+        }
+
+        .glass-reflection {
+            position: absolute;
+            top: 15px;
+            left: 18px;
+            width: 16px;
+            height: 180px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+            border-radius: 10px;
+            transform: rotate(-8deg);
+            pointer-events: none;
+        }
+
+        .enchanted-rose-svg {
+            width: 110px;
+            height: 190px;
+            filter: drop-shadow(0 0 16px rgba(255, 43, 101, 0.8));
+            animation: floatRose 3.5s infinite ease-in-out;
+        }
+
+        @keyframes floatRose {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1.5deg); }
+        }
+
+        .cloche-base {
+            width: 260px;
+            height: 38px;
+            background: linear-gradient(to bottom, #4a2a18, #2a150a);
+            border-radius: 16px 16px 20px 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+            border-top: 2px solid #855333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .brass-plaque {
+            background: linear-gradient(135deg, #ffd700, #b8860b);
+            color: #3b2205;
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 14px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .falling-petal-layer {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            height: 80px;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .rose-hud {
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 20;
+        }
+
     </style>
 </head>
 <body>
@@ -1699,6 +2321,62 @@
                     <span>Ngắm hoa ly 3D</span> ➔
                 </button>
             </div>
+            <div class="gift-card" data-target="view-scratch" data-song="cupid_cake_song.mp3" data-title="Love Story">
+                <div>
+                    <span class="card-header-badge">🎟️ May Mắn Trúng 100%</span>
+                    <div class="card-icon-wrap">🎫</div>
+                    <h2 class="card-title">Thẻ Cào Tình Yêu Chiều Vợ</h2>
+                    <p class="card-desc">
+                        Cào lớp nhũ vàng kim sa lấp lánh để mở các phiếu đặc quyền chiều chuộng tối thượng dành riêng cho công chúa của anh!
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Cào thẻ nhận quà</span> ➔
+                </button>
+            </div>
+
+            <div class="gift-card" data-target="view-counter" data-song="thousand_years_song.mp3" data-title="A Thousand Years">
+                <div>
+                    <span class="card-header-badge">⏳ Thời Gian & Vũ Trụ</span>
+                    <div class="card-icon-wrap">🪐</div>
+                    <h2 class="card-title">Đồng Hồ Đếm Ngày Yêu Nhau</h2>
+                    <p class="card-desc">
+                        Đếm chính xác từng giây phút bên nhau cùng quỹ đạo hai vì sao Anh & Em xoay quanh mặt trời trái tim rực cháy.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Xem đồng hồ tình yêu</span> ➔
+                </button>
+            </div>
+
+            <div class="gift-card" data-target="view-cassette" data-song="panbap_audio.mp3" data-title="Lofi Romance">
+                <div>
+                    <span class="card-header-badge">📻 Vintage Retro 90s</span>
+                    <div class="card-icon-wrap">📼</div>
+                    <h2 class="card-title">Máy Cassette & Polaroid 3D</h2>
+                    <p class="card-desc">
+                        Chiếc đài cassette màu hồng pastel với cuộn băng quay thật nhịp nhàng, dây treo ảnh Polaroid 3D chạm lật mặt sau đọc thư tay.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Bật đài nghe nhạc</span> ➔
+                </button>
+            </div>
+
+            <div class="gift-card" data-target="view-rose" data-song="spirograph_heart_song.mp3" data-title="Piano Romance">
+                <div>
+                    <span class="card-header-badge">🌹 Cổ Tích Huyền Bí</span>
+                    <div class="card-icon-wrap">✨</div>
+                    <h2 class="card-title">Đóa Hồng Pha Lê Vĩnh Cửu</h2>
+                    <p class="card-desc">
+                        Cảm hứng Beauty and the Beast — đóa hồng phát sáng trong lồng kính, đàn đom đóm dạ quang bay lượn, chạm rụng cánh hoa tình yêu.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Khám phá đóa hồng</span> ➔
+                </button>
+            </div>
+
         </div>
     </section>
 
@@ -2028,7 +2706,215 @@
         </div>
     </section>
 
-    <!-- Universal Romantic Modal Popup -->
+    
+    <!-- ========================================================
+       VIEW 10: 🎟️ THẺ CÀO TÌNH YÊU (LOVE SCRATCH CARD)
+    ======================================================== -->
+    <section class="app-view" id="view-scratch">
+        <div class="scratch-card-box">
+            <span class="scratch-header-badge">✦ VÉ ĐẶC QUYỀN HOÀNG GIA ✦</span>
+            <h2 class="scratch-card-title">Thẻ Cào Chiều Chuộng Vợ Iuu</h2>
+            <p class="scratch-card-subtitle">Dùng tay hoặc chuột cào nhẹ lớp nhũ vàng bên dưới để mở quà</p>
+
+            <div class="scratch-area-wrap" id="scratchAreaWrap">
+                <div class="scratch-prize-layer">
+                    <div class="prize-icon" id="prizeIcon">💆‍♀️</div>
+                    <h3 class="prize-title" id="prizeTitle">Vé Massage Chân & Lưng Trọn Gói</h3>
+                    <p class="prize-desc" id="prizeDesc">
+                        Đặc quyền yêu cầu chồng đấm lưng, bóp vai và massage thư giãn bất kỳ lúc nào vợ thấy mỏi mệt!
+                    </p>
+                </div>
+                <canvas id="scratchCanvas"></canvas>
+            </div>
+
+            <div class="scratch-controls">
+                <button class="btn-scratch-switch" id="btnNextCoupon">
+                    <span>🔄</span> Đổi Thẻ Khác (<span id="couponIdxLabel">1/3</span>)
+                </button>
+                <button class="btn-action-primary" id="btnClaimCoupon" style="padding: 9px 20px; font-size: 13px;">
+                    <span>💖</span> Nhận Thẻ Này
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 11: ⏳ ĐỒNG HỒ ĐẾM NGÀY YÊU (LOVE DAYS ORBIT)
+    ======================================================== -->
+    <section class="app-view" id="view-counter">
+        <canvas id="counterOrbitCanvas"></canvas>
+        <div class="counter-card">
+            <div class="counter-badge">
+                <span>🪐</span> QUỸ ĐẠO TÌNH YÊU VĨNH CỬU
+            </div>
+            <h2 class="counter-title">Tụi Mình Đã Yêu Nhau Được</h2>
+            <p class="counter-subtitle">Từng giây từng phút bên em đều là phép màu kỳ diệu ✨</p>
+
+            <div class="ticker-grid">
+                <div class="ticker-cell">
+                    <div class="ticker-number" id="tickerDays">0</div>
+                    <div class="ticker-unit">Ngày</div>
+                </div>
+                <div class="ticker-cell">
+                    <div class="ticker-number" id="tickerHours">00</div>
+                    <div class="ticker-unit">Giờ</div>
+                </div>
+                <div class="ticker-cell">
+                    <div class="ticker-number" id="tickerMins">00</div>
+                    <div class="ticker-unit">Phút</div>
+                </div>
+                <div class="ticker-cell">
+                    <div class="ticker-number" id="tickerSecs">00</div>
+                    <div class="ticker-unit">Giây</div>
+                </div>
+            </div>
+
+            <p class="counter-footer">
+                💕 Kỷ niệm bắt đầu từ: <strong id="startDateDisplay" style="color:#ff4b72;">30/06/2023</strong>
+            </p>
+
+            <div style="display:flex; justify-content:center; gap:10px;">
+                <button class="btn-change-date" id="btnChangeStartDate">
+                    <span>📅</span> Đổi Mốc Ngày Kỷ Niệm
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 12: 📻 MÁY CASSETTE RETRO & POLAROID KỶ NIỆM
+    ======================================================== -->
+    <section class="app-view" id="view-cassette">
+        <div class="cassette-player-box">
+            <div class="cassette-window">
+                <div class="reel-wheel spinning" id="leftReel"></div>
+                <div class="tape-strip"></div>
+                <div class="reel-wheel spinning" id="rightReel"></div>
+            </div>
+
+            <div class="cassette-info">
+                <div class="cassette-track-title" id="cassetteTrackName">♫ Giai Điệu Dành Riêng Cho Vợ Iuu</div>
+                <div class="cassette-artist">Acoustic Lofi Romance • Side A</div>
+            </div>
+
+            <div class="equalizer-box" id="cassetteEqualizer">
+                <div class="eq-bar active"></div>
+                <div class="eq-bar active"></div>
+                <div class="eq-bar active"></div>
+                <div class="eq-bar active"></div>
+                <div class="eq-bar active"></div>
+                <div class="eq-bar active"></div>
+                <div class="eq-bar active"></div>
+            </div>
+        </div>
+
+        <!-- Polaroid Photo Wall Hanging on String -->
+        <div class="polaroid-string-container">
+            <div class="polaroid-card-wrap" data-card="1">
+                <div class="polaroid-inner">
+                    <div class="polaroid-front">
+                        <img src="sticker_pair1.png" alt="Couple Note 1">
+                        <div class="polaroid-caption">Vợ xinh nhất trần đời ♡</div>
+                    </div>
+                    <div class="polaroid-back">
+                        <p class="polaroid-note-text">
+                            "Mỗi nụ cười của em đều làm tim anh loạn nhịp. Chồng yêu em nhất quả đất!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="polaroid-card-wrap" data-card="2">
+                <div class="polaroid-inner">
+                    <div class="polaroid-front">
+                        <img src="sticker_pair2.png" alt="Couple Note 2">
+                        <div class="polaroid-caption">Nắm tay anh nhé ♡</div>
+                    </div>
+                    <div class="polaroid-back">
+                        <p class="polaroid-note-text">
+                            "Dù đi qua bao bão giông, bàn tay này sẽ không bao giờ buông em ra!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="polaroid-card-wrap" data-card="3">
+                <div class="polaroid-inner">
+                    <div class="polaroid-front">
+                        <img src="sticker_pair3.png" alt="Couple Note 3">
+                        <div class="polaroid-caption">Cố lên vợ iuu ❤️</div>
+                    </div>
+                    <div class="polaroid-back">
+                        <p class="polaroid-note-text">
+                            "Cố lên vợ iuu , chồng yêu em ❤️ Lúc nào chồng cũng ở ngay phía sau em!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p style="font-family:'Mali', cursive; font-size:12px; color:#a6536b; margin-top:14px; font-weight:700;">
+            ✨ Chạm vào từng tấm ảnh để lật xem lời nhắn bí mật ♡
+        </p>
+    </section>
+
+    <!-- ========================================================
+       VIEW 13: 🌹 ĐÓA HỒNG PHA LÊ VĨNH CỬU (ENCHANTED ROSE)
+    ======================================================== -->
+    <section class="app-view" id="view-rose">
+        <canvas id="roseFirefliesCanvas"></canvas>
+
+        <div class="rose-stage-box" id="enchantedRoseBox" title="Chạm vào vòm kính để nhận thông điệp vĩnh cửu">
+            <div class="glass-cloche-wrap">
+                <div class="glass-reflection"></div>
+                <!-- 3D Layered Enchanted Rose SVG -->
+                <svg class="enchanted-rose-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="roseRedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff4b72" />
+                            <stop offset="50%" stop-color="#e91e63" />
+                            <stop offset="100%" stop-color="#880e4f" />
+                        </linearGradient>
+                        <linearGradient id="roseStemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#1b5e20" />
+                            <stop offset="100%" stop-color="#4caf50" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Stem -->
+                    <path d="M 50 75 Q 45 110 52 145" fill="none" stroke="url(#roseStemGrad)" stroke-width="4.5" stroke-linecap="round"/>
+                    <path d="M 47 105 Q 32 102 26 108 Q 38 116 48 110" fill="#2e7d32" opacity="0.9"/>
+                    <path d="M 51 122 Q 66 116 72 122 Q 62 130 51 126" fill="#2e7d32" opacity="0.9"/>
+                    <!-- Sepal -->
+                    <polygon points="43,76 50,84 57,76 50,72" fill="#1b5e20" />
+                    <!-- Rose Bloom Layers -->
+                    <ellipse cx="50" cy="56" rx="22" ry="20" fill="url(#roseRedGrad)" />
+                    <path d="M 34 50 Q 50 32 66 50 Q 50 72 34 50 Z" fill="#d81b60" />
+                    <path d="M 38 46 Q 50 36 62 46 Q 50 62 38 46 Z" fill="#ff4b72" />
+                    <circle cx="50" cy="46" r="9" fill="#ff80ab" />
+                    <circle cx="50" cy="46" r="4" fill="#ffffff" opacity="0.8" />
+                </svg>
+
+                <div class="falling-petal-layer" id="fallingPetalLayer"></div>
+            </div>
+
+            <div class="cloche-base">
+                <div class="brass-plaque">
+                    ✦ TÌNH YÊU VĨNH CỬU ✦
+                </div>
+            </div>
+        </div>
+
+        <div class="rose-hud">
+            <div class="spiro-tag" id="roseInfoTag" style="color:#ffd700; border-color:rgba(255,215,0,0.4);">
+                ✨ Chạm vào lồng kính để nghe lời thì thầm của đóa hồng...
+            </div>
+            <button class="btn-action-primary" id="btnRespawnRosePetals">
+                <span>🌹</span> Hồi Sinh Đóa Hồng & Gọi Đom Đóm
+            </button>
+        </div>
+    </section>
+
+<!-- Universal Romantic Modal Popup -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
             <h2 class="modal-title" id="modalHeader">Cố lên vợ iuu ❤️</h2>
@@ -2098,6 +2984,27 @@
             <div class="dock-label">Hoa Ly</div>
             <div class="dock-indicator"></div>
         </div>
+        <div class="dock-item" data-target="view-scratch" data-song="cupid_cake_song.mp3" data-title="Love Story" title="Thẻ Cào Tình Yêu">
+            <div class="dock-icon">🎟️</div>
+            <div class="dock-label">Thẻ Cào</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-counter" data-song="thousand_years_song.mp3" data-title="A Thousand Years" title="Đồng Hồ Đếm Ngày Yêu">
+            <div class="dock-icon">⏳</div>
+            <div class="dock-label">Đếm Ngày</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-cassette" data-song="panbap_audio.mp3" data-title="Lofi Romance" title="Máy Cassette & Polaroid">
+            <div class="dock-icon">📻</div>
+            <div class="dock-label">Cassette</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-rose" data-song="spirograph_heart_song.mp3" data-title="Piano Romance" title="Đóa Hồng Vĩnh Cửu">
+            <div class="dock-icon">🌹</div>
+            <div class="dock-label">Hồng Vĩnh Cửu</div>
+            <div class="dock-indicator"></div>
+        </div>
+
     </nav>
 
     <!-- Main JavaScript Logic -->
@@ -2197,6 +3104,9 @@
             if (typeof resizeTree === 'function' && targetViewId === 'view-love-tree') { resizeTree(); startTreeGrowth(); }
             if (typeof resizeSofia === 'function' && targetViewId === 'view-sofia') resizeSofia();
             if (typeof resizeLily === 'function' && targetViewId === 'view-lily') resizeLily();
+            if (targetViewId === 'view-scratch') initScratchFoil();
+            if (typeof resizeCounterOrbit === 'function' && targetViewId === 'view-counter') { resizeCounterOrbit(); updateTickerDisplay(); }
+            if (typeof resizeRose === 'function' && targetViewId === 'view-rose') resizeRose();
         }
 
         dockItems.forEach(item => {
@@ -2229,6 +3139,9 @@
             if (typeof resizeHeart === 'function') resizeHeart();
             if (typeof resizeSofia === 'function') resizeSofia();
             if (typeof resizeLily === 'function') resizeLily();
+            if (typeof resizeCounterOrbit === 'function') resizeCounterOrbit();
+            if (typeof resizeRose === 'function') resizeRose();
+            if (typeof initScratchFoil === 'function' && document.getElementById('view-scratch') && document.getElementById('view-scratch').classList.contains('active')) initScratchFoil();
             if (typeof resizeCupid === 'function') resizeCupid();
             if (typeof resizeSpiro === 'function') resizeSpiro();
             if (typeof resizeLantern === 'function') resizeLantern();
@@ -3389,6 +4302,386 @@
         });
 
         // ==========================================
+        
+        // ==========================================
+        // 15. VIEW 10: THẺ CÀO TÌNH YÊU (SCRATCH CARD)
+        // ==========================================
+        const scratchCanvas = document.getElementById('scratchCanvas');
+        const scratchCtx = scratchCanvas.getContext('2d');
+        const scratchWrap = document.getElementById('scratchAreaWrap');
+        const prizeIcon = document.getElementById('prizeIcon');
+        const prizeTitle = document.getElementById('prizeTitle');
+        const prizeDesc = document.getElementById('prizeDesc');
+        const couponIdxLabel = document.getElementById('couponIdxLabel');
+        const btnNextCoupon = document.getElementById('btnNextCoupon');
+        const btnClaimCoupon = document.getElementById('btnClaimCoupon');
+
+        const loveCoupons = [
+            {
+                icon: "💆‍♀️",
+                title: "Vé Massage Chân & Lưng Trọn Gói",
+                desc: "Đặc quyền yêu cầu chồng đấm lưng, bóp vai và massage thư giãn bất kỳ lúc nào vợ thấy mỏi mệt!"
+            },
+            {
+                icon: "🍲",
+                title: "Vé Bữa Tối Thịnh Soạn Tận Bàn",
+                desc: "Chồng đích thân vào bếp nấu tất cả những món vợ thèm nhất, dọn dẹp sạch sẽ từ A-Z!"
+            },
+            {
+                icon: "🛍️",
+                title: "Vé Mua Sắm Thả Ga Tùy Thích",
+                desc: "Vợ thoải mái chọn đồ yêu thích, mọi hóa đơn thanh toán để chồng tài trợ vô điều kiện!"
+            }
+        ];
+
+        let currentCouponIdx = 0;
+        let isScratching = false;
+        let scratchCleared = false;
+        let scratchMoveCount = 0;
+
+        function initScratchFoil() {
+            const w = scratchWrap.offsetWidth || 350;
+            const h = scratchWrap.offsetHeight || 220;
+            scratchCanvas.width = w;
+            scratchCanvas.height = h;
+            scratchCanvas.style.opacity = '1';
+            scratchCleared = false;
+            scratchMoveCount = 0;
+
+            // Draw luxury gold gradient foil
+            const grad = scratchCtx.createLinearGradient(0, 0, w, h);
+            grad.addColorStop(0, '#f9d423');
+            grad.addColorStop(0.3, '#ff4e50');
+            grad.addColorStop(0.7, '#f9d423');
+            grad.addColorStop(1, '#e17055');
+            scratchCtx.fillStyle = grad;
+            scratchCtx.fillRect(0, 0, w, h);
+
+            // Shimmer pattern
+            scratchCtx.fillStyle = 'rgba(255, 255, 255, 0.25)';
+            for (let i = 0; i < 40; i++) {
+                scratchCtx.beginPath();
+                scratchCtx.arc(Math.random() * w, Math.random() * h, Math.random() * 3 + 1, 0, Math.PI * 2);
+                scratchCtx.fill();
+            }
+
+            // Scratch call to action text
+            scratchCtx.font = 'bold 15px Mali, sans-serif';
+            scratchCtx.fillStyle = '#ffffff';
+            scratchCtx.textAlign = 'center';
+            scratchCtx.textBaseline = 'middle';
+            scratchCtx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+            scratchCtx.shadowBlur = 6;
+            scratchCtx.fillText('✨ CÀO NHẸ TẠI ĐÂY ĐỂ MỞ QUÀ ✨', w / 2, h / 2);
+            scratchCtx.shadowBlur = 0;
+        }
+
+        function checkScratchPercent() {
+            if (scratchCleared) return;
+            try {
+                const w = scratchCanvas.width;
+                const h = scratchCanvas.height;
+                const imgData = scratchCtx.getImageData(0, 0, w, h);
+                const pixels = imgData.data;
+                let transparentPixels = 0;
+                const total = pixels.length / 4;
+                for (let i = 3; i < pixels.length; i += 16) {
+                    if (pixels[i] < 128) transparentPixels++;
+                }
+                const ratio = transparentPixels / (total / 4);
+                if (ratio > 0.45) {
+                    scratchCleared = true;
+                    scratchCanvas.style.opacity = '0';
+                    playStoreChime();
+                    triggerCupidConfetti();
+                    openModal("🎉 Trúng Thưởng 100%!", "Phiếu Chiều Chuộng Vợ Iuu ❤️", `Chúc mừng công chúa của anh đã cào trúng: <strong>${loveCoupons[currentCouponIdx].title}</strong>!<br><br>${loveCoupons[currentCouponIdx].desc}<br><br><span style="color:#d81b60; font-family:Mali; font-weight:700;">Chồng xin phục vụ vợ vô điều kiện!</span>`);
+                }
+            } catch(e) {}
+        }
+
+        function handleScratch(e) {
+            if (!isScratching || scratchCleared) return;
+            const rect = scratchCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
+
+            scratchCtx.globalCompositeOperation = 'destination-out';
+            scratchCtx.beginPath();
+            scratchCtx.arc(x, y, 22, 0, Math.PI * 2);
+            scratchCtx.fill();
+
+            scratchMoveCount++;
+            if (scratchMoveCount % 12 === 0) {
+                checkScratchPercent();
+            }
+        }
+
+        scratchCanvas.addEventListener('mousedown', () => isScratching = true);
+        window.addEventListener('mouseup', () => { isScratching = false; checkScratchPercent(); });
+        scratchCanvas.addEventListener('mousemove', handleScratch);
+
+        scratchCanvas.addEventListener('touchstart', (e) => { isScratching = true; handleScratch(e); }, { passive: false });
+        window.addEventListener('touchend', () => { isScratching = false; checkScratchPercent(); });
+        scratchCanvas.addEventListener('touchmove', (e) => { e.preventDefault(); handleScratch(e); }, { passive: false });
+
+        btnNextCoupon.addEventListener('click', () => {
+            currentCouponIdx = (currentCouponIdx + 1) % loveCoupons.length;
+            const c = loveCoupons[currentCouponIdx];
+            prizeIcon.textContent = c.icon;
+            prizeTitle.textContent = c.title;
+            prizeDesc.textContent = c.desc;
+            couponIdxLabel.textContent = (currentCouponIdx + 1) + "/3";
+            initScratchFoil();
+        });
+
+        btnClaimCoupon.addEventListener('click', () => {
+            playStoreChime();
+            triggerCupidConfetti();
+            const c = loveCoupons[currentCouponIdx];
+            openModal("Đã Nhận Thẻ Thành Công! 💕", c.title, `Chồng đã ghi nhận phiếu: <strong>${c.title}</strong> vào sổ tay yêu thương!<br><br>Vợ có thể sử dụng bất cứ khi nào tùy thích nha! Yêu em ❤️`);
+        });
+
+        // ==========================================
+        // 16. VIEW 11: ĐỒNG HỒ ĐẾM NGÀY YÊU (LOVE ORBIT & COUNTER)
+        // ==========================================
+        const counterOrbitCanvas = document.getElementById('counterOrbitCanvas');
+        const octx = counterOrbitCanvas.getContext('2d');
+        let ow = counterOrbitCanvas.width = window.innerWidth;
+        let oh = counterOrbitCanvas.height = window.innerHeight;
+
+        function resizeCounterOrbit() {
+            ow = counterOrbitCanvas.width = window.innerWidth;
+            oh = counterOrbitCanvas.height = window.innerHeight;
+        }
+
+        let loveStartDate = localStorage.getItem('loveStartDate') || '2023-06-30T00:00:00';
+        const startDateDisplay = document.getElementById('startDateDisplay');
+        const tickerDays = document.getElementById('tickerDays');
+        const tickerHours = document.getElementById('tickerHours');
+        const tickerMins = document.getElementById('tickerMins');
+        const tickerSecs = document.getElementById('tickerSecs');
+
+        function updateTickerDisplay() {
+            try {
+                const start = new Date(loveStartDate).getTime();
+                const now = new Date().getTime();
+                const diff = Math.max(0, now - start);
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const m = Math.floor((diff / (1000 * 60)) % 60);
+                const s = Math.floor((diff / 1000) % 60);
+
+                if (tickerDays) tickerDays.textContent = d;
+                if (tickerHours) tickerHours.textContent = h.toString().padStart(2, '0');
+                if (tickerMins) tickerMins.textContent = m.toString().padStart(2, '0');
+                if (tickerSecs) tickerSecs.textContent = s.toString().padStart(2, '0');
+
+                const dateObj = new Date(loveStartDate);
+                const dayStr = dateObj.getDate().toString().padStart(2, '0');
+                const monthStr = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+                const yearStr = dateObj.getFullYear();
+                if (startDateDisplay) startDateDisplay.textContent = `${dayStr}/${monthStr}/${yearStr}`;
+            } catch(e) {}
+        }
+        setInterval(updateTickerDisplay, 1000);
+        updateTickerDisplay();
+
+        document.getElementById('btnChangeStartDate').addEventListener('click', () => {
+            const current = loveStartDate.split('T')[0];
+            const newDate = prompt("Nhập ngày kỷ niệm tình yêu của tụi mình (Định dạng YYYY-MM-DD):", current);
+            if (newDate && !isNaN(new Date(newDate).getTime())) {
+                loveStartDate = newDate + 'T00:00:00';
+                localStorage.setItem('loveStartDate', loveStartDate);
+                updateTickerDisplay();
+                triggerCupidConfetti();
+                openModal("Đã Cập Nhật Kỷ Niệm! 💖", "Mốc Thời Gian Mới", `Đã lưu ngày bắt đầu: <strong>${newDate}</strong>.<br>Mỗi giây phút bên nhau đều là vô giá!`);
+            }
+        });
+
+        // Orbit Celestial Animation
+        let orbitTime = 0;
+        const orbitParticles = [];
+
+        function animateOrbit() {
+            if (document.getElementById('view-counter').classList.contains('active')) {
+                octx.clearRect(0, 0, ow, oh);
+                const cx = ow / 2;
+                const cy = oh / 2;
+                orbitTime += 0.015;
+
+                // Orbit path ellipse
+                const rx = Math.min(ow, oh) * 0.42;
+                const ry = rx * 0.58;
+
+                octx.save();
+                octx.strokeStyle = 'rgba(255, 182, 193, 0.2)';
+                octx.lineWidth = 1.5;
+                octx.setLineDash([6, 8]);
+                octx.beginPath();
+                octx.ellipse(cx, cy, rx, ry, -Math.PI / 8, 0, Math.PI * 2);
+                octx.stroke();
+                octx.restore();
+
+                // Central Glowing Heart Star
+                const heartPulse = Math.sin(orbitTime * 2.5) * 4;
+                const grad = octx.createRadialGradient(cx, cy, 2, cx, cy, 32 + heartPulse);
+                grad.addColorStop(0, '#ff4b72');
+                grad.addColorStop(0.5, 'rgba(216, 27, 96, 0.5)');
+                grad.addColorStop(1, 'transparent');
+                octx.fillStyle = grad;
+                octx.beginPath();
+                octx.arc(cx, cy, 32 + heartPulse, 0, Math.PI * 2);
+                octx.fill();
+
+                // Planet 1: Anh (Blue-Violet Star)
+                const ang1 = orbitTime * 0.8;
+                const cosA = Math.cos(-Math.PI / 8), sinA = Math.sin(-Math.PI / 8);
+                const rawX1 = rx * Math.cos(ang1), rawY1 = ry * Math.sin(ang1);
+                const p1x = cx + rawX1 * cosA - rawY1 * sinA;
+                const p1y = cy + rawX1 * sinA + rawY1 * cosA;
+
+                // Planet 2: Em (Pink Rose Star)
+                const ang2 = orbitTime * 0.8 + Math.PI;
+                const rawX2 = rx * Math.cos(ang2), rawY2 = ry * Math.sin(ang2);
+                const p2x = cx + rawX2 * cosA - rawY2 * sinA;
+                const p2y = cy + rawX2 * sinA + rawY2 * cosA;
+
+                // Draw Planet Anh
+                octx.fillStyle = '#6c5ce7';
+                octx.shadowColor = '#a29bfe';
+                octx.shadowBlur = 15;
+                octx.beginPath();
+                octx.arc(p1x, p1y, 7, 0, Math.PI * 2);
+                octx.fill();
+                octx.font = 'bold 11px Mali';
+                octx.fillStyle = '#fff';
+                octx.fillText('Anh ♡', p1x + 12, p1y + 4);
+
+                // Draw Planet Em
+                octx.fillStyle = '#ff758c';
+                octx.shadowColor = '#ff4b72';
+                octx.shadowBlur = 15;
+                octx.beginPath();
+                octx.arc(p2x, p2y, 8, 0, Math.PI * 2);
+                octx.fill();
+                octx.fillStyle = '#fff';
+                octx.fillText('Em 💕', p2x + 12, p2y + 4);
+                octx.shadowBlur = 0;
+            }
+            requestAnimationFrame(animateOrbit);
+        }
+        animateOrbit();
+
+        // ==========================================
+        // 17. VIEW 12: MÁY CASSETTE RETRO & POLAROID
+        // ==========================================
+        const polaroidCards = document.querySelectorAll('.polaroid-card-wrap');
+        polaroidCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+                playStoreChime();
+            });
+        });
+
+        // ==========================================
+        // 18. VIEW 13: ĐÓA HỒNG PHA LÊ VĨNH CỬU (ENCHANTED ROSE)
+        // ==========================================
+        const roseCanvas = document.getElementById('roseFirefliesCanvas');
+        const rfctx = roseCanvas.getContext('2d');
+        let rfw = roseCanvas.width = window.innerWidth;
+        let rfh = roseCanvas.height = window.innerHeight;
+
+        function resizeRose() {
+            rfw = roseCanvas.width = window.innerWidth;
+            rfh = roseCanvas.height = window.innerHeight;
+        }
+
+        const roseFireflies = [];
+        for (let i = 0; i < 35; i++) {
+            roseFireflies.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                size: Math.random() * 2.8 + 1.2,
+                speedY: (Math.random() - 0.5) * 0.7,
+                speedX: (Math.random() - 0.5) * 0.7,
+                alpha: Math.random() * 0.7 + 0.3,
+                dAlpha: (Math.random() * 0.02 + 0.01) * (Math.random() > 0.5 ? 1 : -1)
+            });
+        }
+
+        function animateRoseFireflies() {
+            if (document.getElementById('view-rose').classList.contains('active')) {
+                rfctx.clearRect(0, 0, rfw, rfh);
+                for (let f of roseFireflies) {
+                    f.x += f.speedX;
+                    f.y += f.speedY;
+                    f.alpha += f.dAlpha;
+                    if (f.alpha > 0.95 || f.alpha < 0.2) f.dAlpha = -f.dAlpha;
+
+                    if (f.x < 0) f.x = rfw;
+                    if (f.x > rfw) f.x = 0;
+                    if (f.y < 0) f.y = rfh;
+                    if (f.y > rfh) f.y = 0;
+
+                    rfctx.save();
+                    rfctx.fillStyle = '#ffd700';
+                    rfctx.shadowColor = '#fff275';
+                    rfctx.shadowBlur = 10;
+                    rfctx.globalAlpha = f.alpha;
+                    rfctx.beginPath();
+                    rfctx.arc(f.x, f.y, f.size, 0, Math.PI * 2);
+                    rfctx.fill();
+                    rfctx.restore();
+                }
+            }
+            requestAnimationFrame(animateRoseFireflies);
+        }
+        animateRoseFireflies();
+
+        const fallingPetalLayer = document.getElementById('fallingPetalLayer');
+        const enchantedRoseBox = document.getElementById('enchantedRoseBox');
+        const btnRespawnRosePetals = document.getElementById('btnRespawnRosePetals');
+
+        function dropRosePetal() {
+            playStoreChime();
+            const petal = document.createElement('div');
+            petal.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: ${Math.random() * 60 + 20}%;
+                width: 18px;
+                height: 12px;
+                background: linear-gradient(135deg, #ff4b72, #c2185b);
+                border-radius: 50% 50% 50% 0;
+                box-shadow: 0 0 10px rgba(255, 75, 114, 0.8);
+                transition: transform 2.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 2.8s;
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            `;
+            fallingPetalLayer.appendChild(petal);
+
+            setTimeout(() => {
+                petal.style.transform = `translateY(65px) rotate(${Math.random() * 70 - 35}deg)`;
+            }, 50);
+
+            openModal(
+                "Đóa Hồng Pha Lê Vĩnh Cửu 🌹",
+                "Lời Thì Thầm Của Trái Tim ✨",
+                "Từng cánh hoa có thể đong đếm thời gian, nhưng tình cảm và sự cưng chiều chồng dành cho vợ là vĩnh cửu không bao giờ phai tàn!<br><br><strong style='color:#ff4b72; font-family:Mali;'>Cố lên vợ iuu , chồng yêu em ❤️</strong>"
+            );
+        }
+
+        enchantedRoseBox.addEventListener('click', dropRosePetal);
+        btnRespawnRosePetals.addEventListener('click', () => {
+            fallingPetalLayer.innerHTML = '';
+            playStoreChime();
+            triggerCupidConfetti();
+            openModal("Đóa Hồng Hồi Sinh Rực Rỡ! ✨", "Sắc Đỏ Vĩnh Hằng", "Đóa hồng đã được tiếp thêm ngàn tia sáng yêu thương. Mãi mãi tươi thắm dành riêng cho vợ yêu!");
+        });
+
         // 14. URL HASH ROUTING SUPPORT
         // ==========================================
         function handleHashRouting() {
@@ -3411,6 +4704,14 @@
                 switchView('view-sofia', 'cho_chut_remix.mp3', 'Chờ Chút Thôi Remix');
             } else if (hash === 'lily') {
                 switchView('view-lily', 'panbap_audio.mp3', 'Melody Tình Yêu');
+            } else if (hash === 'scratch') {
+                switchView('view-scratch', 'cupid_cake_song.mp3', 'Love Story');
+            } else if (hash === 'counter') {
+                switchView('view-counter', 'thousand_years_song.mp3', 'A Thousand Years');
+            } else if (hash === 'cassette') {
+                switchView('view-cassette', 'panbap_audio.mp3', 'Lofi Romance');
+            } else if (hash === 'rose') {
+                switchView('view-rose', 'spirograph_heart_song.mp3', 'Piano Romance');
             } else {
                 switchView('view-hub', 'flower_shop_song.mp3', 'Là Người Con Gái...');
             }
