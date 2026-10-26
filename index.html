@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cố lên vợ iuu , chồng yêu em ❤️</title>
+    <title>Tiệm hoa chỉ mở một ngày trong năm 🌸</title>
     
-    <!-- Meta tags chống lưu đệm (Anti-cache) -->
+    <!-- Anti-cache meta tags -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta property="og:title" content="Cố lên vợ iuu , chồng yêu em ❤️">
-    <meta property="og:description" content="Trái tim tình yêu 3D phát sáng & món quà dành tặng vợ yêu">
+    <meta property="og:title" content="Tiệm hoa của Bé Iu - Món quà ngọt ngào">
+    <meta property="og:description" content="Tự tay chọn 5 bông hoa xinh đẹp dành tặng người thương nhất">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Playfair Display, Mali, Quicksand -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,500;0,700;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -30,1224 +30,1034 @@
         body, html {
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            overflow-x: hidden;
             font-family: 'Quicksand', sans-serif;
-            background-color: #06020a;
-            color: #fff;
+            background-color: #faf6f0;
+            background-image: 
+                radial-gradient(#e8decb 1px, transparent 1px),
+                radial-gradient(#e8decb 1px, #faf6f0 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: #38312e;
         }
 
-        /* Top Navigation Tabs (Y hệt video Dev Pan) */
-        .top-nav {
+        /* Top Music & Mode Bar */
+        .top-bar {
             position: fixed;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            background: rgba(25, 12, 35, 0.7);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            padding: 5px 8px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 105, 180, 0.25);
-            z-index: 100;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-tab {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 700;
-            font-family: 'Mali', cursive;
-            color: #d1b8d8;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-tab:hover {
-            color: #fff;
-        }
-
-        .nav-tab.active {
-            background: linear-gradient(135deg, #ff4b72, #ff758c);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(255, 75, 114, 0.45);
-        }
-
-        /* Main View Container */
-        #viewport {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background 0.6s ease;
-        }
-
-        #viewport.flower-mode {
-            background: radial-gradient(circle at center, #fff0f3 0%, #fde4ea 50%, #fcd2dc 100%);
-        }
-
-        /* Canvas for 3D Heart & Stars */
-        #heartCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            cursor: grab;
-        }
-
-        #heartCanvas:active {
-            cursor: grabbing;
-        }
-
-        /* Subtitle Hint under Heart / Flower */
-        .hint-text {
-            position: absolute;
-            bottom: 85px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Mali', cursive;
-            font-size: 17px;
-            font-weight: 600;
-            color: #ff9ebd;
-            text-shadow: 0 0 12px rgba(255, 110, 160, 0.65);
-            z-index: 10;
-            cursor: pointer;
-            animation: breatheHint 2.4s ease-in-out infinite;
-            pointer-events: auto;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .flower-mode .hint-text {
-            color: #d84570;
-            text-shadow: 0 2px 8px rgba(216, 69, 112, 0.3);
-        }
-
-        @keyframes breatheHint {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.85; }
-            50% { transform: translateX(-50%) scale(1.08); opacity: 1; }
-        }
-
-        /* Flower Mode: Tulip Bouquet Center */
-        .flower-stage {
-            display: none;
-            position: absolute;
-            top: 48%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 5;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .flower-stage img {
-            width: 270px;
-            max-width: 80vw;
-            filter: drop-shadow(0 15px 30px rgba(230, 80, 120, 0.3));
-            animation: floatBouquet 4s ease-in-out infinite;
-            transition: transform 0.3s ease;
-        }
-
-        .flower-stage:hover img {
-            transform: scale(1.05);
-        }
-
-        @keyframes floatBouquet {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(1.5deg); }
-        }
-
-
-
-        /* Romantic Message Modal (Popup Card) */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-box {
-            background: rgba(28, 14, 38, 0.92);
-            border: 1.5px solid rgba(255, 110, 160, 0.35);
-            box-shadow: 0 20px 60px rgba(255, 45, 117, 0.35);
-            border-radius: 28px;
-            padding: 32px 28px;
-            max-width: 380px;
-            width: 100%;
-            text-align: center;
-            transform: scale(0.85) translateY(20px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-        }
-
-        .flower-mode-modal .modal-box {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1.5px solid rgba(255, 180, 200, 0.5);
-            box-shadow: 0 20px 60px rgba(230, 80, 120, 0.25);
-        }
-
-        .flower-mode-modal .modal-msg {
-            color: #4a2d38;
-        }
-
-        .flower-mode-modal .modal-subtitle {
-            color: #8c5b6e;
-        }
-
-        .modal-overlay.active .modal-box {
-            transform: scale(1) translateY(0);
-        }
-
-        .modal-title {
-            font-family: 'Mali', cursive;
-            font-size: 26px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ff758c, #ff4b72);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
-        }
-
-        .modal-subtitle {
-            font-size: 14px;
-            color: #d8b8e0;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        .modal-msg {
-            font-size: 17px;
-            line-height: 1.6;
-            color: #f7e8f5;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-
-        .modal-btn-close {
-            font-family: 'Mali', cursive;
-            font-size: 16px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ff4b72, #ff758c);
-            color: #fff;
-            border: none;
-            outline: none;
-            padding: 11px 36px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(255, 75, 114, 0.45);
-            transition: all 0.25s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .modal-btn-close:hover {
-            transform: scale(1.06);
-            box-shadow: 0 8px 25px rgba(255, 75, 114, 0.65);
-        }
-
-        .modal-btn-close:active {
-            transform: scale(0.96);
-        }
-
-        /* Play Music Pill (Bottom Left) */
-        .music-pill {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
+            top: 14px;
+            right: 18px;
             display: flex;
             align-items: center;
             gap: 10px;
-            background: rgba(25, 12, 35, 0.75);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            border-radius: 50px;
-            padding: 8px 18px 8px 10px;
-            cursor: pointer;
             z-index: 100;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
         }
 
-        .music-pill:hover {
-            border-color: rgba(255, 105, 180, 0.6);
-            transform: scale(1.04);
-        }
-
-        .music-icon-wrap {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff4b72, #ff758c);
+        .music-btn {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(216, 27, 96, 0.25);
+            border-radius: 50px;
+            padding: 8px 16px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 15px;
-            box-shadow: 0 2px 10px rgba(255, 75, 114, 0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .music-pill.playing .music-icon-wrap {
-            animation: pulseIcon 1.2s infinite;
-        }
-
-        @keyframes pulseIcon {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-
-        .music-label {
-            font-size: 14px;
-            font-weight: 700;
-            color: #ffe6ef;
-            font-family: 'Mali', cursive;
-        }
-    
-        /* Romantic Passcode Lock Screen (iOS Keypad Style) */
-        #lockScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle at center, rgba(38, 14, 48, 0.97) 0%, rgba(10, 3, 16, 0.99) 100%);
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            z-index: 5000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 20px;
-        }
-
-        #lockScreen.unlocked {
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(1.1);
-        }
-
-        .lock-icon-wrap {
-            font-size: 38px;
-            margin-bottom: 12px;
-            filter: drop-shadow(0 0 16px rgba(255, 75, 114, 0.75));
-            animation: pulseLock 2s infinite ease-in-out;
-        }
-
-        @keyframes pulseLock {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.12); }
-        }
-
-        .lock-title {
-            font-family: 'Mali', cursive;
-            font-size: 22px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ff8da1, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin-bottom: 6px;
-        }
-
-        .lock-subtitle {
-            font-size: 13.5px;
-            color: #d8a8cc;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .pin-dots {
-            display: flex;
-            gap: 18px;
-            margin-bottom: 30px;
-        }
-
-        .pin-dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 130, 175, 0.65);
-            background: transparent;
-            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .pin-dot.filled {
-            background: linear-gradient(135deg, #ff4b72, #ff758c);
-            border-color: #ff4b72;
-            box-shadow: 0 0 14px rgba(255, 75, 114, 0.85);
-            transform: scale(1.18);
-        }
-
-        .pin-dot.error {
-            background: #ff3344;
-            border-color: #ff3344;
-            box-shadow: 0 0 14px rgba(255, 50, 70, 0.9);
-        }
-
-        .pin-dots.shake {
-            animation: shakeDots 0.45s ease-in-out;
-        }
-
-        @keyframes shakeDots {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-14px); }
-            40% { transform: translateX(12px); }
-            60% { transform: translateX(-8px); }
-            80% { transform: translateX(6px); }
-        }
-
-        /* Keypad Grid (iOS Style) */
-        .keypad {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px 24px;
-            max-width: 290px;
-            width: 100%;
-        }
-
-        .key-btn {
-            width: 68px;
-            height: 68px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 26px;
-            font-weight: 600;
-            color: #fff;
+            gap: 8px;
             cursor: pointer;
-            transition: all 0.15s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            margin: 0 auto;
-        }
-
-        .key-btn:active {
-            background: rgba(255, 105, 180, 0.4);
-            border-color: #ff69b4;
-            transform: scale(0.92);
-        }
-
-        .key-empty {
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .key-del {
-            font-size: 20px;
-            color: #ff9ebd;
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        .key-del:active {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .lock-toast {
-            margin-top: 18px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.25s ease;
             font-family: 'Mali', cursive;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
-            color: #ff7597;
-            text-align: center;
-            min-height: 22px;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(6px);
+            color: #d81b60;
         }
 
-        .lock-toast.show {
+        .music-btn:hover {
+            transform: scale(1.05);
+            background: #fff;
+        }
+
+        .music-disc {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #d81b60;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 10px;
+        }
+
+        .music-btn.playing .music-disc {
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* App Main Stage Wrapper */
+        .stage-wrapper {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        /* Step Section Container */
+        .step-container {
+            display: none;
+            width: 100%;
+            max-width: 950px;
+            margin: auto;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .step-container.active {
+            display: flex;
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Re-lock Button at top right */
-        .btn-relock {
-            position: fixed;
-            top: 14px;
-            right: 14px;
-            background: rgba(25, 12, 35, 0.65);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 105, 180, 0.25);
-            border-radius: 20px;
-            padding: 6px 12px;
-            font-size: 12px;
+        /* ----------------------------------------------------
+           STEP 1: CỬA TIỆM HOA (STOREFRONT)
+           ---------------------------------------------------- */
+        #step1 {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .storefront-text-col {
+            flex: 1;
+            max-width: 440px;
+        }
+
+        .badge-date {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #7d8b76;
+            margin-bottom: 24px;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .storefront-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 46px;
+            font-weight: 700;
+            line-height: 1.25;
+            color: #2b2623;
+            margin-bottom: 24px;
+        }
+
+        .highlight-script {
             font-family: 'Mali', cursive;
-            color: #ff9ebd;
+            font-style: italic;
+            color: #d81b60;
+            font-weight: 700;
+        }
+
+        .storefront-subtext {
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #8c837b;
+            text-transform: uppercase;
+            line-height: 1.8;
+        }
+
+        .storefront-visual-col {
+            flex: 1;
+            max-width: 440px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .shop-illustration-wrap {
+            width: 100%;
+            max-width: 410px;
             cursor: pointer;
-            z-index: 100;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 15px 35px rgba(100, 80, 60, 0.12));
+        }
+
+        .shop-illustration-wrap:hover {
+            transform: translateY(-6px) scale(1.02);
+        }
+
+        .shop-illustration-wrap:active {
+            transform: scale(0.98);
+        }
+
+        /* Subtitle Lyric Bar (y hệt video) */
+        .lyric-caption {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 13.5px;
+            letter-spacing: 2.5px;
+            color: #756a63;
+            text-transform: uppercase;
+            text-align: center;
+            z-index: 50;
+            opacity: 0.9;
+            white-space: nowrap;
+        }
+
+        /* ----------------------------------------------------
+           STEP 2: BÉ IU CHỌN HOA (PICK 5 FLOWERS)
+           ---------------------------------------------------- */
+        #step2 {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .step-header {
+            margin-bottom: 30px;
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: #2b2623;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: #7a7068;
+            font-weight: 600;
+        }
+
+        .picking-arena {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+            max-width: 880px;
+        }
+
+        /* Flowers Shelf (Left) */
+        .flower-shelf-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .flower-shelf-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 14px;
+            padding-bottom: 12px;
+            border-bottom: 4px solid #d9be9b;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .flower-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .flower-item:hover {
+            transform: translateY(-12px) scale(1.1);
+        }
+
+        .flower-item:active {
+            transform: scale(0.92);
+        }
+
+        .flower-item img, .flower-item svg {
+            width: 60px;
+            height: 140px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
+        }
+
+        .flower-name {
+            font-size: 11px;
+            font-weight: 700;
+            color: #8c7e72;
+            margin-top: 6px;
+        }
+
+        /* Bouquet Wrapper (Right) */
+        .bouquet-wrapper-box {
+            flex: 1;
+            max-width: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .wrapping-cone-container {
+            position: relative;
+            width: 250px;
+            height: 270px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .wrapping-cone-img {
+            position: absolute;
+            bottom: 0;
+            width: 230px;
+            z-index: 5;
+            pointer-events: none;
+            filter: drop-shadow(0 12px 25px rgba(100, 70, 40, 0.15));
+        }
+
+        /* Container where picked flowers nestle inside */
+        .picked-flowers-nest {
+            position: absolute;
+            bottom: 65px;
+            width: 210px;
+            height: 180px;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            pointer-events: none;
+        }
+
+        .nested-flower {
+            position: absolute;
+            bottom: 10px;
+            width: 65px;
+            height: 140px;
+            transform-origin: bottom center;
+            animation: popInFlower 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popInFlower {
+            0% { transform: scale(0) translateY(40px); opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .bouquet-status-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 15px;
+            color: #8c7e75;
+            margin-top: 15px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .counter-badge {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            color: #d81b60;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ----------------------------------------------------
+           STEP 3: THẮT CHIẾC NƠ (TIE THE RIBBON)
+           ---------------------------------------------------- */
+        #step3 {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .ribbon-stage-box {
+            position: relative;
+            width: 270px;
+            height: 310px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .ribbon-prompt-btn {
+            position: absolute;
+            bottom: 60px;
+            z-index: 20;
+            background: linear-gradient(135deg, #ff4081, #f50057);
+            color: #fff;
+            padding: 9px 20px;
+            border-radius: 30px;
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(245, 0, 87, 0.4);
+            animation: pulseBtn 1.8s infinite ease-in-out;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @keyframes pulseBtn {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); box-shadow: 0 6px 25px rgba(245, 0, 87, 0.6); }
+        }
+
+        .ribbon-bow-img {
+            position: absolute;
+            bottom: 45px;
+            width: 150px;
+            z-index: 10;
+            animation: popRibbon 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: none;
+            cursor: pointer;
+        }
+
+        @keyframes popRibbon {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* ----------------------------------------------------
+           STEP 4: BỨC THƯ & BỨC ẢNH KỶ NIỆM (LOVE LETTER)
+           ---------------------------------------------------- */
+        #step4 {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-preview-btn {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-top: 15px;
+            animation: bounceCard 3s infinite ease-in-out;
+        }
+
+        @keyframes bounceCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Parchment Love Letter Modal */
+        .letter-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(30, 22, 18, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .letter-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .letter-card {
+            background: #fffdf9;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+            border: 1px solid #ebd9c8;
+            max-width: 680px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 36px 32px;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: row;
+            gap: 28px;
+            text-align: left;
+        }
+
+        .letter-modal-overlay.active .letter-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .letter-close-btn {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 22px;
+            color: #9c8a7c;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .letter-close-btn:hover {
+            color: #d81b60;
+        }
+
+        .letter-content-col {
+            flex: 1.4;
+        }
+
+        .letter-title {
+            font-family: 'Mali', cursive;
+            font-size: 24px;
+            font-weight: 700;
+            color: #c2185b;
+            margin-bottom: 16px;
+        }
+
+        .letter-body {
+            font-size: 14.5px;
+            line-height: 1.8;
+            color: #4a3e38;
+            font-weight: 500;
+        }
+
+        .letter-body p {
+            margin-bottom: 14px;
+        }
+
+        .letter-sign {
+            font-family: 'Mali', cursive;
+            font-size: 18px;
+            font-weight: 700;
+            color: #c2185b;
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        /* Polaroid Photo Column */
+        .letter-photo-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .polaroid-frame {
+            background: #ffffff;
+            padding: 10px 10px 18px 10px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            border: 1px solid #ebd9c8;
+            transform: rotate(3deg);
+            transition: transform 0.3s ease;
+            text-align: center;
+            max-width: 220px;
+        }
+
+        .polaroid-frame:hover {
+            transform: rotate(0deg) scale(1.04);
+        }
+
+        .polaroid-frame img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .polaroid-caption {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 12px;
+            color: #7a6a5d;
+        }
+
+        /* Reset Button */
+        .btn-restart {
+            margin-top: 25px;
+            background: #fff;
+            border: 1.5px solid #d9be9b;
+            border-radius: 30px;
+            padding: 9px 24px;
+            font-family: 'Mali', cursive;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #68574c;
+            cursor: pointer;
             transition: all 0.25s ease;
         }
 
-        .btn-relock:hover {
-            background: rgba(255, 75, 114, 0.3);
+        .btn-restart:hover {
+            background: #fdf8eb;
             transform: scale(1.05);
         }
 
+        /* Responsive Layout for Mobile */
+        @media (max-width: 768px) {
+            #step1 {
+                flex-direction: column;
+                text-align: center;
+                gap: 25px;
+                padding-top: 20px;
+            }
+
+            .storefront-title {
+                font-size: 34px;
+            }
+
+            .picking-arena {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .flower-shelf-row {
+                gap: 8px;
+            }
+
+            .flower-item img, .flower-item svg {
+                width: 50px;
+                height: 120px;
+            }
+
+            .letter-card {
+                flex-direction: column;
+                padding: 26px 20px;
+            }
+
+            .polaroid-frame {
+                margin: auto;
+            }
+        }
     </style>
 </head>
 <body>
 
-    
-    <!-- Re-lock button -->
-    <div class="btn-relock" id="btnRelock">🔒 Khóa quà</div>
+    <!-- Audio Element: TikTok song from video ("Là Người Con Gái Đứng Trước Mặt Anh Lúc Này") -->
+    <audio id="bgMusic" src="flower_shop_song.mp3" preload="auto" loop></audio>
 
-    <!-- Romantic Passcode Lock Screen -->
-    <div id="lockScreen">
-        <div class="lock-icon-wrap">🔒</div>
-        <h1 class="lock-title">Nhập ngày định mệnh của tụi mình 💕</h1>
-        <p class="lock-subtitle">Gợi ý: Ngày bắt đầu câu chuyện tình yêu (DD/MM)</p>
-
-        <!-- 4 Pin Dots -->
-        <div class="pin-dots" id="pinDots">
-            <div class="pin-dot"></div>
-            <div class="pin-dot"></div>
-            <div class="pin-dot"></div>
-            <div class="pin-dot"></div>
-        </div>
-
-        <!-- Keypad -->
-        <div class="keypad" id="keypad">
-            <div class="key-btn" data-val="1">1</div>
-            <div class="key-btn" data-val="2">2</div>
-            <div class="key-btn" data-val="3">3</div>
-            <div class="key-btn" data-val="4">4</div>
-            <div class="key-btn" data-val="5">5</div>
-            <div class="key-btn" data-val="6">6</div>
-            <div class="key-btn" data-val="7">7</div>
-            <div class="key-btn" data-val="8">8</div>
-            <div class="key-btn" data-val="9">9</div>
-            <div class="key-btn key-empty"></div>
-            <div class="key-btn" data-val="0">0</div>
-            <div class="key-btn key-del" id="btnDel">⌫</div>
-        </div>
-
-        <!-- Sweet Hint/Warning Toast -->
-        <div class="lock-toast" id="lockToast">Quên ngày là bị phạt nha bà xã 😜</div>
-    </div>
-
-    <!-- Audio Element: TikTok song from video (CONGB - Chờ chút remix) -->
-    <audio id="bgMusic" src="panbap_tiktok_song.mp3" preload="auto" loop></audio>
-
-    <!-- Top Navigation Bar (Tabs y hệt video) -->
-    <nav class="top-nav">
-        <div class="nav-tab active" data-mode="myheart">
-            <span>✨</span> Myheart
-        </div>
-        <div class="nav-tab" data-mode="lovely">
-            <span>💖</span> Lovely
-        </div>
-        <div class="nav-tab" data-mode="flower">
-            <span>🌷</span> Flower
-        </div>
-    </nav>
-
-    <!-- Main Viewport -->
-    <div id="viewport">
-        <!-- 3D Heart Canvas -->
-        <canvas id="heartCanvas"></canvas>
-
-        <!-- Flower Mode Center Bouquet -->
-        <div class="flower-stage" id="flowerStage">
-            <img src="tulip_bouquet_clean.png" alt="Bó hoa tulip">
-        </div>
-
-        <!-- Subtitle Hint -->
-        <div class="hint-text" id="hintText">Chạm vào trái tim nha ❤️</div>
-
-
-    </div>
-
-    <!-- Romantic Modal Popup (Card lời nhắn) -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box">
-            <h2 class="modal-title" id="modalHeader">Chào Công Chúa</h2>
-            <p class="modal-subtitle">Gửi người anh yêu thương nhất ✨</p>
-            <p class="modal-msg" id="modalBody">
-                Cố lên vợ iuu , chồng yêu em ❤️<br>
-                Mãi yêu công chúa của anh! Lúc nào cũng có chồng ở đây bên cạnh vợ.
-            </p>
-            <button class="modal-btn-close" id="btnCloseModal">
-                Đóng <span>❤️</span>
-            </button>
+    <!-- Top Music Button -->
+    <div class="top-bar">
+        <div class="music-btn" id="btnMusic">
+            <div class="music-disc">🎵</div>
+            <span id="musicText">Bật nhạc</span>
         </div>
     </div>
 
-    <!-- Play Music Pill Button -->
-    <div class="music-pill" id="btnMusic">
-        <div class="music-icon-wrap">❤️</div>
-        <span class="music-label" id="musicLabel">Play Music</span>
+    <!-- Main App Stage -->
+    <div class="stage-wrapper">
+
+        <!-- ==========================================
+             BƯỚC 1: CỬA TIỆM HOA (STOREFRONT)
+             ========================================== -->
+        <div class="step-container active" id="step1">
+            <div class="storefront-text-col">
+                <span class="badge-date">20 THÁNG 10 · MỘT NGÀY THẬT ĐẶC BIỆT</span>
+                <h1 class="storefront-title">
+                    Tiệm hoa<br>
+                    chỉ mở<br>
+                    <span class="highlight-script">một ngày</span><br>
+                    trong năm.
+                </h1>
+                <p class="storefront-subtext">MỘT CHÚT HOA · MỘT CHÚT THƯƠNG · THẬT NHIỀU YÊU</p>
+            </div>
+
+            <div class="storefront-visual-col">
+                <div class="shop-illustration-wrap" id="shopDoorTrigger" title="Chạm vào để mở cửa tiệm hoa">
+                    <img src="storefront.svg" alt="Tiệm hoa của Bé Iu" style="width:100%; display:block;">
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             BƯỚC 2: BÉ IU CHỌN HOA (PICK 5 FLOWERS)
+             ========================================== -->
+        <div class="step-container" id="step2">
+            <div class="step-header">
+                <h2 class="step-title">
+                    Bé Iu chọn hoa,<br>
+                    <span class="highlight-script">Anh gửi yêu thương.</span>
+                </h2>
+                <p class="step-desc">Chạm từng bông hoa để đặt vào bó. Chọn đủ 5 bông để hoàn thành bó hoa của Bé Iu.</p>
+            </div>
+
+            <div class="picking-arena">
+                <!-- Left Flower Shelf -->
+                <div class="flower-shelf-box">
+                    <div class="flower-shelf-row">
+                        <div class="flower-item" data-type="tulip">
+                            <img src="flower_tulip.svg" alt="Tulip">
+                            <span class="flower-name">Tulip</span>
+                        </div>
+                        <div class="flower-item" data-type="sunflower">
+                            <img src="flower_sunflower.svg" alt="Hướng dương">
+                            <span class="flower-name">Hướng dương</span>
+                        </div>
+                        <div class="flower-item" data-type="rose">
+                            <img src="flower_rose.svg" alt="Hoa hồng">
+                            <span class="flower-name">Hoa hồng</span>
+                        </div>
+                        <div class="flower-item" data-type="daisy">
+                            <img src="flower_daisy.svg" alt="Cúc hoạ mi">
+                            <span class="flower-name">Cúc hoạ mi</span>
+                        </div>
+                        <div class="flower-item" data-type="baby">
+                            <img src="flower_baby.svg" alt="Baby trắng">
+                            <span class="flower-name">Baby trắng</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Bouquet Cone -->
+                <div class="bouquet-wrapper-box">
+                    <div class="wrapping-cone-container">
+                        <div class="picked-flowers-nest" id="pickedFlowersNest">
+                            <!-- Selected flowers appear here -->
+                        </div>
+                        <img src="wrapping_paper.svg" alt="Giấy gói hoa" class="wrapping-cone-img">
+                    </div>
+                    <p class="bouquet-status-text" id="bouquetStatusText">Bó hoa của Bé Iu<br>đang chờ những điều dịu dàng.</p>
+                    <div class="counter-badge"><span id="flowerCount">0</span> / 5 BÔNG HOA</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             BƯỚC 3: THẮT CHIẾC NƠ (TIE THE RIBBON)
+             ========================================== -->
+        <div class="step-container" id="step3">
+            <div class="step-header">
+                <h2 class="step-title">
+                    Thắt một chiếc nơ,<br>
+                    <span class="highlight-script">gửi trọn yêu thương.</span>
+                </h2>
+                <p class="step-desc">Chạm vào dải ruy băng để hoàn thành bó hoa của người anh thương.</p>
+            </div>
+
+            <div class="ribbon-stage-box">
+                <div class="wrapping-cone-container">
+                    <div class="picked-flowers-nest" id="ribbonFlowersNest">
+                        <!-- Cloned 5 flowers -->
+                    </div>
+                    <img src="wrapping_paper.svg" alt="Giấy gói hoa" class="wrapping-cone-img">
+                </div>
+
+                <!-- Pulsing Ribbon Prompt Button -->
+                <button class="ribbon-prompt-btn" id="btnTieRibbon">
+                    <span>🎀</span> Thắt nơ xinh
+                </button>
+
+                <!-- Tied Ribbon Bow Image -->
+                <img src="ribbon_bow.svg" alt="Nơ ruy băng" class="ribbon-bow-img" id="tiedRibbonBow">
+            </div>
+        </div>
+
+        <!-- ==========================================
+             BƯỚC 4: BỨC THƯ TÌNH & THIỆP KỶ NIỆM (FINAL)
+             ========================================== -->
+        <div class="step-container" id="step4">
+            <div class="step-header">
+                <h2 class="step-title">
+                    Một bó hoa,<br>
+                    <span class="highlight-script">cho người Anh thương nhất.</span>
+                </h2>
+                <p class="step-desc">Chạm vào tấm thiệp nhỏ trên bó hoa để mở lời nhắn bí mật.</p>
+            </div>
+
+            <div class="ribbon-stage-box">
+                <div class="wrapping-cone-container">
+                    <div class="picked-flowers-nest" id="finalFlowersNest"></div>
+                    <img src="wrapping_paper.svg" alt="Giấy gói hoa" class="wrapping-cone-img">
+                </div>
+                <img src="ribbon_bow.svg" alt="Nơ ruy băng" class="ribbon-bow-img" style="display:block;" id="finalRibbonBow">
+            </div>
+
+            <button class="btn-restart" id="btnRestart">💐 Cắm lại bó hoa mới</button>
+        </div>
+
     </div>
 
-    <!-- Canvas 3D Heart & Galaxy Script -->
+    <!-- Parchment Love Letter Modal -->
+    <div class="letter-modal-overlay" id="letterModal">
+        <div class="letter-card">
+            <button class="letter-close-btn" id="btnCloseLetter">&times;</button>
+            
+            <div class="letter-content-col">
+                <h3 class="letter-title">Gửi Bé Iu của Anh,</h3>
+                <div class="letter-body">
+                    <p>Chúc mừng ngày đặc biệt của người anh thương nhất!</p>
+                    <p>Anh muốn tặng em một bó hoa thật đặc biệt. Mỗi bông là một điều anh mong cho em: bình an, niềm vui, những ước mơ thành hiện thực và thật nhiều yêu thương.</p>
+                    <p>Cảm ơn em vì những quan tâm nhỏ bé, những lần lắng nghe và nụ cười khiến anh thấy một ngày bình thường cũng trở nên đáng nhớ.</p>
+                    <p>Em cứ tự tin làm những điều mình thích nhé. Có ngày nào mệt thì nghỉ một chút, đừng quên dành sự dịu dàng cho chính mình.</p>
+                    <p>Nếu hôm nay có ai hỏi anh muốn tặng em điều gì, anh sẽ nói: một ngày thật vui, luôn bình an, và thật nhiều ngày sau vẫn luôn được ở bên em.</p>
+                    <p style="font-weight: 700; color: #d81b60;">Cố lên vợ iuu , chồng yêu em ❤️</p>
+                    <p>Anh yêu em rất nhiều. ♡</p>
+                </div>
+                <div class="letter-sign">Thương Bé Iu, Anh ♡</div>
+            </div>
+
+            <div class="letter-photo-col">
+                <div class="polaroid-frame">
+                    <img src="tulip_bouquet_clean.png" alt="Hoa tặng em" id="polaroidImg">
+                    <div class="polaroid-caption">Người anh luôn muốn tặng hoa. ♡</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Subtitle Lyric Caption (y hệt video) -->
+    <div class="lyric-caption" id="lyricCaption">"ĐI QUA BÃO GIÔNG ĐANG CUỘN XOAY"</div>
+
+    <!-- Application Script -->
     <script>
-        const canvas = document.getElementById('heartCanvas');
-        const ctx = canvas.getContext('2d');
         const audio = document.getElementById('bgMusic');
         const btnMusic = document.getElementById('btnMusic');
-        const musicLabel = document.getElementById('musicLabel');
-        const hintText = document.getElementById('hintText');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const btnCloseModal = document.getElementById('btnCloseModal');
-        const flowerStage = document.getElementById('flowerStage');
-        const viewport = document.getElementById('viewport');
-        const modalHeader = document.getElementById('modalHeader');
+        const musicText = document.getElementById('musicText');
+        const lyricCaption = document.getElementById('lyricCaption');
 
-        let currentMode = 'myheart'; // 'myheart', 'lovely', 'flower'
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        // Navigation steps
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        const step4 = document.getElementById('step4');
 
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
+        // Flower picking elements
+        const flowerItems = document.querySelectorAll('.flower-item');
+        const pickedFlowersNest = document.getElementById('pickedFlowersNest');
+        const ribbonFlowersNest = document.getElementById('ribbonFlowersNest');
+        const finalFlowersNest = document.getElementById('finalFlowersNest');
+        const flowerCountEl = document.getElementById('flowerCount');
+        const bouquetStatusText = document.getElementById('bouquetStatusText');
 
-        // ==========================================
-        // 3D PARAMETRIC HEART GENERATION
-        // ==========================================
-        const HEART_PARTICLES_COUNT = 2800;
-        const heartPoints = [];
+        // Ribbon & Letter
+        const btnTieRibbon = document.getElementById('btnTieRibbon');
+        const tiedRibbonBow = document.getElementById('tiedRibbonBow');
+        const finalRibbonBow = document.getElementById('finalRibbonBow');
+        const letterModal = document.getElementById('letterModal');
+        const btnCloseLetter = document.getElementById('btnCloseLetter');
+        const btnRestart = document.getElementById('btnRestart');
 
-        function heartParametric(t) {
-            const x = 16 * Math.pow(Math.sin(t), 3);
-            const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-            return { x, y };
-        }
+        let isPlaying = false;
+        let pickedFlowers = [];
+        const MAX_FLOWERS = 5;
 
-        // Generate dense volume of 3D points in heart shape
-        for (let i = 0; i < HEART_PARTICLES_COUNT; i++) {
-            const t = Math.random() * Math.PI * 2;
-            const hp = heartParametric(t);
-            const scaleFactor = 12 + Math.random() * 2.5;
+        // Subtitles synced with audio lyrics
+        const lyrics = [
+            { time: 0, text: '"ĐI QUA BÃO GIÔNG ĐANG CUỘN XOAY"' },
+            { time: 3, text: '"NHỮNG TÂM TƯ BỦA VÂY NGƯỜI ĐÃ VÌ ANH MÀ ÔM"' },
+            { time: 7, text: '"VÀ GIỜ THÌ CẢ THẾ GIỚI CỦA ANH ĐANG Ở ĐÂY"' },
+            { time: 11, text: '"LÀ NGƯỜI CON GÁI ĐỨNG TRƯỚC MẶT ANH LÚC NÀY"' },
+            { time: 16, text: '"THỜI GIAN NHƯ NGỪNG TRÔI KHI BÊN EM"' }
+        ];
 
-            // Depth calculation: thickness is proportional to heart contour
-            const maxZ = Math.max(3, 16 - Math.abs(hp.y * 0.7));
-            const z = (Math.random() - 0.5) * 2 * maxZ;
-            
-            // Random distribution through heart volume
-            const r = Math.pow(Math.random(), 0.5);
-            const x = hp.x * scaleFactor * r;
-            const y = hp.y * scaleFactor * r;
-
-            // Palette of glowing pinks, crimson, and bright star white
-            const colors = ['#ffffff', '#ff758c', '#ff2e93', '#ff4b72', '#ffb3c6', '#e02479'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            const size = Math.random() < 0.25 ? (2.2 + Math.random() * 1.5) : (1.0 + Math.random() * 1.2);
-
-            heartPoints.push({
-                x, y, z: z * scaleFactor * 0.65,
-                baseX: x, baseY: y, baseZ: z * scaleFactor * 0.65,
-                color, size,
-                speed: 0.8 + Math.random() * 0.4,
-                phase: Math.random() * Math.PI * 2
-            });
-        }
-
-        // ==========================================
-        // BACKGROUND STARS
-        // ==========================================
-        const STAR_COUNT = 180;
-        const stars = [];
-        for (let i = 0; i < STAR_COUNT; i++) {
-            stars.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                size: Math.random() * 1.8 + 0.5,
-                alpha: Math.random(),
-                dAlpha: (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1),
-                color: Math.random() < 0.4 ? '#ffb6c1' : '#ffffff'
-            });
-        }
-
-        // ==========================================
-        // GALAXY RING & 3D ORBITING TEXT (MYHEART MODE)
-        // ==========================================
-        const GALAXY_STARS_COUNT = 450;
-        const galaxyStars = [];
-        for (let i = 0; i < GALAXY_STARS_COUNT; i++) {
-            const angle = Math.random() * Math.PI * 2;
-            const rad = 140 + Math.random() * 170;
-            galaxyStars.push({
-                angle,
-                radius: rad,
-                speed: 0.003 + Math.random() * 0.004,
-                yOffset: (Math.random() - 0.5) * 35,
-                size: Math.random() * 1.6 + 0.6,
-                color: Math.random() < 0.6 ? '#ff758c' : '#ffffff'
-            });
-        }
-
-        // Orbiting phrases along the disk
-        const orbitPhrases = ["Yêu em", "Cố lên vợ iuu", "Mãi bên nhau", "Yêu em", "Chồng yêu vợ", "Hạnh phúc nhé"];
-        const phraseObjects = orbitPhrases.map((text, idx) => ({
-            text,
-            angle: (idx / orbitPhrases.length) * Math.PI * 2,
-            radius: 200,
-            speed: 0.006
-        }));
-
-        // ==========================================
-        // 3D ROTATION & INTERACTION
-        // ==========================================
-        let rotX = 0.15;
-        let rotY = 0;
-        let targetRotX = 0.15;
-        let targetRotY = 0;
-        let isDragging = false;
-        let lastMouseX = 0;
-        let lastMouseY = 0;
-
-        function onPointerDown(e) {
-            isDragging = true;
-            lastMouseX = e.clientX || (e.touches && e.touches[0].clientX);
-            lastMouseY = e.clientY || (e.touches && e.touches[0].clientY);
-            tryPlayAudio();
-        }
-
-        function onPointerMove(e) {
-            if (!isDragging) return;
-            const curX = e.clientX || (e.touches && e.touches[0].clientX);
-            const curY = e.clientY || (e.touches && e.touches[0].clientY);
-            const deltaX = curX - lastMouseX;
-            const deltaY = curY - lastMouseY;
-            targetRotY += deltaX * 0.008;
-            targetRotX -= deltaY * 0.008;
-            targetRotX = Math.max(-0.6, Math.min(0.6, targetRotX));
-            lastMouseX = curX;
-            lastMouseY = curY;
-        }
-
-        function onPointerUp() {
-            isDragging = false;
-        }
-
-        window.addEventListener('mousedown', onPointerDown);
-        window.addEventListener('mousemove', onPointerMove);
-        window.addEventListener('mouseup', onPointerUp);
-        window.addEventListener('touchstart', onPointerDown, { passive: true });
-        window.addEventListener('touchmove', onPointerMove, { passive: true });
-        window.addEventListener('touchend', onPointerUp);
-
-        // ==========================================
-        // AUDIO CONTROLS
-        // ==========================================
-        let isAudioPlaying = false;
-
-        function tryPlayAudio() {
-            if (isAudioPlaying) return;
-            audio.play().then(() => {
-                isAudioPlaying = true;
-                btnMusic.classList.add('playing');
-                musicLabel.textContent = "Pause Music";
-            }).catch(() => {});
-        }
-
-        btnMusic.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (isAudioPlaying) {
-                audio.pause();
-                isAudioPlaying = false;
-                btnMusic.classList.remove('playing');
-                musicLabel.textContent = "Play Music";
-            } else {
-                audio.play().then(() => {
-                    isAudioPlaying = true;
-                    btnMusic.classList.add('playing');
-                    musicLabel.textContent = "Pause Music";
-                });
-            }
-        });
-
-        // ==========================================
-        // MODAL & CARDS INTERACTION
-        // ==========================================
-        function openModal() {
-            tryPlayAudio();
-            if (currentMode === 'flower') {
-                modalOverlay.classList.add('flower-mode-modal');
-            } else {
-                modalOverlay.classList.remove('flower-mode-modal');
-            }
-            modalOverlay.classList.add('active');
-        }
-
-        function closeModal() {
-            modalOverlay.classList.remove('active');
-        }
-
-        // Tap heart or flower or hint opens modal
-        hintText.addEventListener('click', openModal);
-        flowerStage.addEventListener('click', openModal);
-        canvas.addEventListener('click', (e) => {
-            if (currentMode !== 'flower') {
-                const dx = e.clientX - width / 2;
-                const dy = e.clientY - height / 2;
-                if (Math.hypot(dx, dy) < 180) {
-                    openModal();
+        audio.addEventListener('timeupdate', () => {
+            const cur = audio.currentTime;
+            for (let i = lyrics.length - 1; i >= 0; i--) {
+                if (cur >= lyrics[i].time) {
+                    lyricCaption.textContent = lyrics[i].text;
+                    break;
                 }
             }
         });
 
-        btnCloseModal.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) closeModal();
-        });
-
-        // ==========================================
-        // TOP NAVIGATION TAB SWITCHING
-        // ==========================================
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                currentMode = tab.dataset.mode;
-                applyMode(currentMode);
-            });
-        });
-
-        function applyMode(mode) {
-            tryPlayAudio();
-            if (mode === 'myheart') {
-                viewport.classList.remove('flower-mode');
-                canvas.style.display = 'block';
-                flowerStage.style.display = 'none';
-                hintText.textContent = "Cố lên vợ iuu , chồng yêu em ❤️";
-                modalHeader.textContent = "Cố lên vợ iuu";
-            } else if (mode === 'lovely') {
-                viewport.classList.remove('flower-mode');
-                canvas.style.display = 'block';
-                flowerStage.style.display = 'none';
-                hintText.textContent = "Chạm vào trái tim nha ❤️";
-                modalHeader.textContent = "Chào Công Chúa";
-            } else if (mode === 'flower') {
-                viewport.classList.add('flower-mode');
-                canvas.style.display = 'block';
-                flowerStage.style.display = 'block';
-                hintText.textContent = "Chạm vào hoa nhé 🌷";
-                modalHeader.textContent = "Chào em";
-            }
-        }
-
-        // Flower Mode falling petals
-        const FLOWER_PETALS_COUNT = 45;
-        const flowerPetals = [];
-        for (let i = 0; i < FLOWER_PETALS_COUNT; i++) {
-            flowerPetals.push({
-                x: Math.random() * width,
-                y: Math.random() * height - height,
-                vx: (Math.random() - 0.5) * 1.5,
-                vy: Math.random() * 2 + 1.2,
-                rot: Math.random() * 360,
-                vRot: (Math.random() - 0.5) * 2,
-                size: Math.random() * 12 + 10,
-                color: Math.random() < 0.6 ? '#ffb3c6' : '#ffd1dc'
-            });
-        }
-
-        // ==========================================
-        // ANIMATION LOOP (60 FPS 3D ENGINE)
-        // ==========================================
-        let clock = 0;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            clock += 0.035;
-
-            // In Flower Mode: draw falling petals on canvas
-            if (currentMode === 'flower') {
-                ctx.clearRect(0, 0, width, height);
-
-            // Draw Fireworks Sparks if active
-            for (let i = fireworks.length - 1; i >= 0; i--) {
-                const fw = fireworks[i];
-                fw.x += fw.vx;
-                fw.y += fw.vy;
-                fw.vy += 0.08;
-                fw.vx *= 0.96;
-                fw.alpha -= 0.015;
-                if (fw.alpha <= 0) {
-                    fireworks.splice(i, 1);
-                    continue;
-                }
-                ctx.fillStyle = fw.color;
-                ctx.globalAlpha = fw.alpha;
-                ctx.beginPath();
-                ctx.arc(fw.x, fw.y, fw.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-                for (let p of flowerPetals) {
-                    p.y += p.vy;
-                    p.x += Math.sin(clock + p.rot) * 0.8;
-                    p.rot += p.vRot;
-                    if (p.y > height + 30) {
-                        p.y = -30;
-                        p.x = Math.random() * width;
-                    }
-                    ctx.save();
-                    ctx.translate(p.x, p.y);
-                    ctx.rotate(p.rot * Math.PI / 180);
-                    ctx.fillStyle = p.color;
-                    ctx.globalAlpha = 0.7;
-                    ctx.beginPath();
-                    ctx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.restore();
-                }
-                return;
-            }
-
-            ctx.clearRect(0, 0, width, height);
-
-            // Draw Fireworks Sparks if active
-            for (let i = fireworks.length - 1; i >= 0; i--) {
-                const fw = fireworks[i];
-                fw.x += fw.vx;
-                fw.y += fw.vy;
-                fw.vy += 0.08;
-                fw.vx *= 0.96;
-                fw.alpha -= 0.015;
-                if (fw.alpha <= 0) {
-                    fireworks.splice(i, 1);
-                    continue;
-                }
-                ctx.fillStyle = fw.color;
-                ctx.globalAlpha = fw.alpha;
-                ctx.beginPath();
-                ctx.arc(fw.x, fw.y, fw.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-
-            // 1. Draw Twinkling Background Stars
-            for (let s of stars) {
-                s.alpha += s.dAlpha;
-                if (s.alpha > 1 || s.alpha < 0.15) s.dAlpha = -s.dAlpha;
-                ctx.fillStyle = s.color;
-                ctx.globalAlpha = Math.max(0.1, Math.min(1, s.alpha));
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-            // 2. Smooth Rotations (Slow auto-rotate + inertia)
-            targetRotY += 0.0035;
-            rotX += (targetRotX - rotX) * 0.08;
-            rotY += (targetRotY - rotY) * 0.08;
-
-            const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
-            const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
-
-            // Realistic Human Double-Pulse Heartbeat
-            // lub-dub beat cycle: beat 1, pause, beat 2, long pause
-            const beatCycle = (clock * 1.8) % (Math.PI * 2);
-            let pulse = 0;
-            if (beatCycle < 0.8) {
-                pulse = Math.sin(beatCycle * Math.PI / 0.8) * 0.14;
-            } else if (beatCycle > 1.0 && beatCycle < 1.6) {
-                pulse = Math.sin((beatCycle - 1.0) * Math.PI / 0.6) * 0.09;
-            }
-            const heartScale = 1 + pulse;
-
-            const cx = width / 2;
-            const cy = height / 2 - 25;
-            const focalLength = 650;
-
-            // 3. Draw Galaxy Ring (Only in Myheart Mode)
-            if (currentMode === 'myheart') {
-                // Galaxy Star Ring
-                for (let gs of galaxyStars) {
-                    gs.angle += gs.speed;
-                    const gx = Math.cos(gs.angle) * gs.radius;
-                    const gz = Math.sin(gs.angle) * gs.radius;
-                    const gy = gs.yOffset + 140;
-
-                    // 3D Rotation
-                    const x1 = gx * cosY + gz * sinY;
-                    const z1 = -gx * sinY + gz * cosY;
-                    const y2 = gy * cosX - z1 * sinX;
-                    const z2 = gy * sinX + z1 * cosX;
-
-                    const scale = focalLength / (focalLength + z2 + 200);
-                    const screenX = cx + x1 * scale;
-                    const screenY = cy + y2 * scale;
-
-                    ctx.fillStyle = gs.color;
-                    ctx.globalAlpha = Math.max(0.2, Math.min(0.9, (z2 + 250) / 450));
-                    ctx.beginPath();
-                    ctx.arc(screenX, screenY, gs.size * scale, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
-                // 3D Orbiting Text along the ring
-                ctx.font = "bold 14px 'Mali', cursive";
-                ctx.textAlign = "center";
-                for (let p of phraseObjects) {
-                    p.angle += p.speed;
-                    const px = Math.cos(p.angle) * p.radius;
-                    const pz = Math.sin(p.angle) * p.radius;
-                    const py = 135;
-
-                    const x1 = px * cosY + pz * sinY;
-                    const z1 = -px * sinY + pz * cosY;
-                    const y2 = py * cosX - z1 * sinX;
-                    const z2 = py * sinX + z1 * cosX;
-
-                    const scale = focalLength / (focalLength + z2 + 200);
-                    const screenX = cx + x1 * scale;
-                    const screenY = cy + y2 * scale;
-
-                    const alpha = Math.max(0.2, Math.min(1.0, (z2 + 220) / 400));
-                    ctx.fillStyle = `rgba(255, 175, 205, ${alpha})`;
-                    ctx.shadowColor = "rgba(255, 105, 180, 0.8)";
-                    ctx.shadowBlur = 10 * scale;
-                    ctx.save();
-                    ctx.translate(screenX, screenY);
-                    ctx.scale(scale, scale);
-                    ctx.fillText(p.text, 0, 0);
-                    ctx.restore();
-                    ctx.shadowBlur = 0;
-                }
-            }
-
-            // 4. Draw 3D Particle Heart
-            // Render particles sorted by depth Z for correct layering
-            const projectedPoints = [];
-            for (let i = 0; i < heartPoints.length; i++) {
-                const p = heartPoints[i];
-
-                // Flutter / pulsation
-                const curX = p.baseX * heartScale;
-                const curY = p.baseY * heartScale;
-                const curZ = p.baseZ * heartScale;
-
-                // 3D Rotate around Y then X
-                const x1 = curX * cosY + curZ * sinY;
-                const z1 = -curX * sinY + curZ * cosY;
-                const y2 = curY * cosX - z1 * sinX;
-                const z2 = curY * sinX + z1 * cosX;
-
-                const scale = focalLength / (focalLength + z2 + 120);
-                const screenX = cx + x1 * scale;
-                const screenY = cy + y2 * scale;
-
-                projectedPoints.push({
-                    screenX, screenY, z2, scale,
-                    color: p.color,
-                    size: p.size * scale * (1 + pulse * 1.5)
-                });
-            }
-
-            // Depth sorting
-            projectedPoints.sort((a, b) => a.z2 - b.z2);
-
-            // Draw composite glow
-            ctx.globalCompositeOperation = 'lighter';
-            for (let i = 0; i < projectedPoints.length; i++) {
-                const pt = projectedPoints[i];
-                const alpha = Math.max(0.25, Math.min(1, (pt.z2 + 180) / 360));
-
-                ctx.fillStyle = pt.color;
-                ctx.globalAlpha = alpha;
-                ctx.beginPath();
-                ctx.arc(pt.screenX, pt.screenY, pt.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-            ctx.globalCompositeOperation = 'source-over';
-            ctx.globalAlpha = 1;
-        }
-
-        
-        // ==========================================
-        // ROMANTIC PASSCODE LOCK SCREEN LOGIC
-        // Passcode: 3006 (Ngày 30/06 kỷ niệm yêu nhau)
-        // ==========================================
-        const CORRECT_PASSCODE = "3006";
-        let currentPasscode = "";
-        let isLocked = true;
-
-        const lockScreen = document.getElementById('lockScreen');
-        const pinDots = document.getElementById('pinDots');
-        const dots = pinDots.querySelectorAll('.pin-dot');
-        const lockToast = document.getElementById('lockToast');
-        const btnDel = document.getElementById('btnDel');
-        const btnRelock = document.getElementById('btnRelock');
-
-        // Tactile sound synthesizer via Web Audio API
+        // Web Audio Synthesizer for soft chime
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-        function playKeySound(freq = 520, duration = 0.04) {
+        function playChime(freq = 600) {
             try {
                 if (audioCtx.state === 'suspended') audioCtx.resume();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
                 osc.start();
-                osc.stop(audioCtx.currentTime + duration);
+                osc.stop(audioCtx.currentTime + 0.35);
             } catch(e) {}
         }
 
-        function playSuccessChime() {
-            [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
-                setTimeout(() => playKeySound(freq, 0.18), idx * 75);
+        function playDoorChime() {
+            [523.25, 659.25, 783.99].forEach((f, i) => {
+                setTimeout(() => playChime(f), i * 120);
             });
         }
 
-        // Fireworks Explosion Effect on Unlock
-        const fireworks = [];
-        function triggerHeartFireworks() {
-            const numSparks = 140;
-            for (let i = 0; i < numSparks; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 8 + 3;
-                fireworks.push({
-                    x: width / 2,
-                    y: height / 2,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed,
-                    alpha: 1,
-                    size: Math.random() * 4 + 2,
-                    color: Math.random() < 0.5 ? '#ff2e93' : (Math.random() < 0.5 ? '#ffffff' : '#ffd1dc')
-                });
-            }
+        function playMusic() {
+            audio.play().then(() => {
+                isPlaying = true;
+                btnMusic.classList.add('playing');
+                musicText.textContent = "Tắt nhạc";
+            }).catch(() => {});
         }
 
-        function updateDots() {
-            dots.forEach((dot, idx) => {
-                if (idx < currentPasscode.length) {
-                    dot.classList.add('filled');
-                } else {
-                    dot.classList.remove('filled');
-                    dot.classList.remove('error');
-                }
-            });
-        }
-
-        function handleKeyPress(val) {
-            if (!isLocked) return;
-            if (currentPasscode.length < 4) {
-                currentPasscode += val;
-                playKeySound(500 + currentPasscode.length * 60, 0.05);
-                updateDots();
-
-                if (currentPasscode.length === 4) {
-                    setTimeout(checkPasscode, 180);
-                }
-            }
-        }
-
-        function handleDelete() {
-            if (!isLocked) return;
-            if (currentPasscode.length > 0) {
-                currentPasscode = currentPasscode.slice(0, -1);
-                playKeySound(380, 0.04);
-                updateDots();
-                lockToast.classList.remove('show');
-            }
-        }
-
-        function checkPasscode() {
-            if (currentPasscode === CORRECT_PASSCODE) {
-                // SUCCESS!
-                isLocked = false;
-                playSuccessChime();
-                triggerHeartFireworks();
-
-                // Auto-play music (approved because user interacted with keypad)
-                tryPlayAudio();
-
-                // Unlock animation
-                lockScreen.classList.add('unlocked');
-
-                // Automatically pop open the love card modal
-                setTimeout(() => {
-                    openModal();
-                }, 850);
+        btnMusic.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                btnMusic.classList.remove('playing');
+                musicText.textContent = "Bật nhạc";
             } else {
-                // WRONG PASSCODE
-                playKeySound(220, 0.15);
-                dots.forEach(dot => dot.classList.add('error'));
-                pinDots.classList.add('shake');
-                lockToast.textContent = "Quên ngày là bị phạt nha bà xã 😜 Hãy thử lại nè!";
-                lockToast.classList.add('show');
-
-                setTimeout(() => {
-                    pinDots.classList.remove('shake');
-                    currentPasscode = "";
-                    updateDots();
-                }, 750);
+                playMusic();
             }
+        });
+
+        // ----------------------------------------------------
+        // BƯỚC 1: Chạm vào cửa tiệm hoa -> Mở cửa sang bước 2
+        // ----------------------------------------------------
+        document.getElementById('shopDoorTrigger').addEventListener('click', () => {
+            playDoorChime();
+            playMusic();
+
+            step1.classList.remove('active');
+            setTimeout(() => {
+                step1.style.display = 'none';
+                step2.style.display = 'flex';
+                setTimeout(() => step2.classList.add('active'), 40);
+            }, 500);
+        });
+
+        // ----------------------------------------------------
+        // BƯỚC 2: Bé Iu chọn hoa (5 bông)
+        // ----------------------------------------------------
+        const flowerSVGs = {
+            tulip: 'flower_tulip.svg',
+            sunflower: 'flower_sunflower.svg',
+            rose: 'flower_rose.svg',
+            daisy: 'flower_daisy.svg',
+            baby: 'flower_baby.svg'
+        };
+
+        const flowerAngles = [-24, -12, 0, 12, 24];
+
+        flowerItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (pickedFlowers.length >= MAX_FLOWERS) return;
+
+                const type = item.dataset.type;
+                pickedFlowers.push(type);
+                playChime(500 + pickedFlowers.length * 70);
+
+                renderBouquetFlowers();
+
+                flowerCountEl.textContent = pickedFlowers.length;
+
+                if (pickedFlowers.length === MAX_FLOWERS) {
+                    bouquetStatusText.innerHTML = "Bó hoa đã đủ 5 bông rực rỡ!<br>Hãy thắt chiếc nơ gửi yêu thương.";
+                    
+                    // Transition to Step 3 after 0.8s
+                    setTimeout(() => {
+                        step2.classList.remove('active');
+                        setTimeout(() => {
+                            step2.style.display = 'none';
+                            step3.style.display = 'flex';
+                            renderRibbonFlowers();
+                            setTimeout(() => step3.classList.add('active'), 40);
+                        }, 500);
+                    }, 850);
+                }
+            });
+        });
+
+        function renderBouquetFlowers() {
+            pickedFlowersNest.innerHTML = '';
+            pickedFlowers.forEach((fType, idx) => {
+                const img = document.createElement('img');
+                img.src = flowerSVGs[fType];
+                img.className = 'nested-flower';
+                const angle = flowerAngles[idx] || 0;
+                img.style.transform = `rotate(${angle}deg) translateY(-${Math.abs(angle)*0.5}px)`;
+                img.style.zIndex = idx + 1;
+                pickedFlowersNest.appendChild(img);
+            });
         }
 
-        // Attach keypad listeners
-        document.querySelectorAll('#keypad .key-btn[data-val]').forEach(btn => {
-            btn.addEventListener('click', () => handleKeyPress(btn.dataset.val));
+        function renderRibbonFlowers() {
+            ribbonFlowersNest.innerHTML = pickedFlowersNest.innerHTML;
+        }
+
+        // ----------------------------------------------------
+        // BƯỚC 3: Thắt nơ ruy băng
+        // ----------------------------------------------------
+        btnTieRibbon.addEventListener('click', () => {
+            playChime(880);
+            btnTieRibbon.style.display = 'none';
+            tiedRibbonBow.style.display = 'block';
+
+            // Transition to Step 4 after 0.9s
+            setTimeout(() => {
+                step3.classList.remove('active');
+                setTimeout(() => {
+                    step3.style.display = 'none';
+                    step4.style.display = 'flex';
+                    finalFlowersNest.innerHTML = pickedFlowersNest.innerHTML;
+                    setTimeout(() => step4.classList.add('active'), 40);
+                }, 500);
+            }, 900);
         });
 
-        btnDel.addEventListener('click', handleDelete);
+        // ----------------------------------------------------
+        // BƯỚC 4: Chạm vào tấm thiệp mở thư tình
+        // ----------------------------------------------------
+        finalRibbonBow.addEventListener('click', openLetter);
+        document.querySelector('#step4 .wrapping-cone-container').addEventListener('click', openLetter);
 
-        // Keyboard support (0-9 and Backspace)
-        window.addEventListener('keydown', (e) => {
-            if (!isLocked) return;
-            if (e.key >= '0' && e.key <= '9') {
-                handleKeyPress(e.key);
-            } else if (e.key === 'Backspace') {
-                handleDelete();
-            }
+        function openLetter() {
+            playDoorChime();
+            letterModal.classList.add('active');
+        }
+
+        btnCloseLetter.addEventListener('click', () => {
+            letterModal.classList.remove('active');
         });
 
-        // Re-lock button
-        btnRelock.addEventListener('click', () => {
-            isLocked = true;
-            currentPasscode = "";
-            updateDots();
-            lockToast.classList.remove('show');
-            lockScreen.classList.remove('unlocked');
-            closeModal();
+        letterModal.addEventListener('click', (e) => {
+            if (e.target === letterModal) letterModal.classList.remove('active');
         });
 
-        animate();
+        // Restart button
+        btnRestart.addEventListener('click', () => {
+            pickedFlowers = [];
+            pickedFlowersNest.innerHTML = '';
+            flowerCountEl.textContent = '0';
+            bouquetStatusText.innerHTML = 'Bó hoa của Bé Iu<br>đang chờ những điều dịu dàng.';
+            btnTieRibbon.style.display = 'flex';
+            tiedRibbonBow.style.display = 'none';
+            letterModal.classList.remove('active');
+
+            step4.classList.remove('active');
+            setTimeout(() => {
+                step4.style.display = 'none';
+                step2.style.display = 'flex';
+                setTimeout(() => step2.classList.add('active'), 40);
+            }, 450);
+        });
+
+        // First click anywhere starts audio
+        window.addEventListener('click', () => {
+            if (!isPlaying) playMusic();
+        }, { once: true });
     </script>
 </body>
 </html>

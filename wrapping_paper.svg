@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 220" width="240" height="220">
+  <defs>
+    <filter id="wrapShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#5a4535" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <g filter="url(#wrapShadow)">
+    <!-- Back inner folds (cream mint) -->
+    <path d="M 40,30 Q 120,55 200,30 L 175,120 L 65,120 Z" fill="#e5efe3" opacity="0.9"/>
+    
+    <!-- Outer Kraft Paper Cone -->
+    <path d="M 25,25 Q 120,70 215,25 L 140,165 Q 120,180 100,165 Z" fill="#f4dea9" stroke="#dfc488" stroke-width="2"/>
+    
+    <!-- Paper Crease Highlights & Shading -->
+    <path d="M 25,25 Q 85,90 100,165 L 140,165 Q 155,90 215,25 Q 120,55 25,25 Z" fill="#f9ebd0" opacity="0.45"/>
+    
+    <!-- Lower Stem Wrap / Base Handle -->
+    <path d="M 98,165 L 90,205 Q 120,215 150,205 L 142,165 Z" fill="#ebd299" stroke="#ceb273" stroke-width="2"/>
+    
+    <!-- Waist Accent Band (Pink) -->
+    <path d="M 92,160 Q 120,172 148,160 Q 120,168 92,160 Z" fill="#e91e63" stroke="#c2185b" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

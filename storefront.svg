@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 350" width="100%" height="100%">
+  <defs>
+    <filter id="shopShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#5a4535" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Shadow -->
+  <ellipse cx="210" cy="328" rx="180" ry="14" fill="#d9cebd" opacity="0.45"/>
+
+  <g filter="url(#shopShadow)">
+    <!-- Main Wall Building -->
+    <rect x="65" y="75" width="290" height="240" rx="3" fill="#fbf6ee" stroke="#ebdccb" stroke-width="2"/>
+
+    <!-- Green Roof Eaves -->
+    <path d="M 45,75 L 62,24 L 358,24 L 375,75 Z" fill="#84a176" stroke="#68845a" stroke-width="2"/>
+    <path d="M 58,75 L 68,32 L 352,32 L 362,75 Z" fill="#9db990" opacity="0.4"/>
+
+    <!-- Signboard -->
+    <rect x="95" y="34" width="230" height="42" rx="4" fill="#fffefb" stroke="#9bb38f" stroke-width="2"/>
+    <text x="210" y="55" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="14" font-weight="700" fill="#385230" letter-spacing="2">TIỆM HOA CỦA BÉ IU</text>
+    <text x="210" y="68" text-anchor="middle" font-family="'Quicksand', sans-serif" font-size="7.5" font-weight="600" fill="#758e6c" letter-spacing="1.5">FLOWERS &amp; LITTLE LOVE NOTES</text>
+
+    <!-- Striped Awning (Canopy) -->
+    <g id="awning">
+      <path d="M 45,75 L 375,75 L 380,118 C 380,118 365,128 350,118 C 335,128 320,118 305,128 C 290,118 275,128 260,118 C 245,128 230,118 215,128 C 200,118 185,128 170,118 C 155,128 140,118 125,128 C 110,118 95,128 80,118 C 65,128 50,118 40,118 Z" fill="#fce4ec"/>
+      
+      <!-- Alternating Rose Pink Stripes -->
+      <path d="M 45,75 L 78,75 L 72,118 C 56,128 40,118 40,118 Z" fill="#e95085"/>
+      <path d="M 111,75 L 144,75 L 148,118 C 132,120 118,126 104,118 Z" fill="#e95085"/>
+      <path d="M 177,75 L 210,75 L 212,124 C 196,118 184,124 170,118 Z" fill="#e95085"/>
+      <path d="M 243,75 L 276,75 L 274,124 C 258,118 248,124 236,118 Z" fill="#e95085"/>
+      <path d="M 309,75 L 342,75 L 348,118 C 334,120 322,126 312,118 Z" fill="#e95085"/>
+      <path d="M 375,75 L 380,118 C 368,122 360,118 355,118 Z" fill="#e95085"/>
+    </g>
+
+    <!-- Left Arched Window with Flowers -->
+    <g id="window">
+      <path d="M 85,205 A 46,46 0 0 1 177,205 L 177,268 L 85,268 Z" fill="#c3dec0" stroke="#688c5a" stroke-width="3.5"/>
+      <!-- Window Panes Dividers -->
+      <line x1="131" y1="159" x2="131" y2="268" stroke="#688c5a" stroke-width="3"/>
+      <line x1="85" y1="210" x2="177" y2="210" stroke="#688c5a" stroke-width="3"/>
+      <!-- Glass Glare Reflection -->
+      <path d="M 95,195 A 36,36 0 0 1 128,168 L 128,185 A 18,18 0 0 0 105,205 Z" fill="#ffffff" opacity="0.45"/>
+      <!-- Flower Box Sill -->
+      <rect x="78" y="265" width="106" height="15" rx="3" fill="#cf8656" stroke="#b36939" stroke-width="1.5"/>
+      <!-- Window Box Little Blossoms -->
+      <circle cx="95" cy="260" r="6" fill="#f06292"/>
+      <circle cx="112" cy="258" r="5" fill="#fff" stroke="#fbc02d" stroke-width="2"/>
+      <circle cx="131" cy="260" r="7" fill="#e91e63"/>
+      <circle cx="150" cy="258" r="5" fill="#fff" stroke="#fbc02d" stroke-width="2"/>
+      <circle cx="168" cy="260" r="6" fill="#f06292"/>
+    </g>
+
+    <!-- Sage Green Boutique Door -->
+    <g id="door" style="cursor: pointer;">
+      <rect x="210" y="150" width="115" height="165" rx="4" fill="#58804d" stroke="#406336" stroke-width="3"/>
+      <rect x="218" y="158" width="99" height="150" rx="3" fill="#67915b"/>
+      
+      <!-- Upper Glass Arch -->
+      <path d="M 228,205 A 40,40 0 0 1 308,205 L 308,228 L 228,228 Z" fill="#b9dcaf" stroke="#4a6e3e" stroke-width="2.5"/>
+      
+      <!-- Lower Wooden Panel -->
+      <rect x="228" y="238" width="80" height="62" rx="3" fill="#58804d" stroke="#47693b" stroke-width="2"/>
+      
+      <!-- Brass Door Knob -->
+      <circle cx="232" cy="235" r="5" fill="#f1c40f" stroke="#d4ac0d" stroke-width="1"/>
+
+      <!-- Hanging Wooden Sign "Mở cửa ♡" -->
+      <rect x="242" y="190" width="54" height="25" rx="4" fill="#fffdf6" stroke="#d5ccba" stroke-width="1.5"/>
+      <text x="269" y="206" text-anchor="middle" font-family="'Mali', cursive" font-size="9.5" font-weight="700" fill="#c2185b">Mở cửa ♡</text>
+    </g>
+
+    <!-- Left Planter: Sunflower & Tulip -->
+    <g id="potLeft">
+      <path d="M 32,278 L 40,318 L 76,318 L 84,278 Z" fill="#d97f50" stroke="#b86032" stroke-width="2"/>
+      <!-- Sunflower stem & petals -->
+      <path d="M 56,278 Q 48,245 56,215" stroke="#689f38" stroke-width="3.5" fill="none"/>
+      <ellipse cx="44" cy="250" rx="9" ry="4.5" fill="#7cb342" transform="rotate(-30 44 250)"/>
+      <ellipse cx="68" cy="238" rx="9" ry="4.5" fill="#7cb342" transform="rotate(25 68 238)"/>
+      <!-- Sunflower Blossom -->
+      <g transform="translate(56, 210)">
+        <circle cx="0" cy="0" r="18" fill="#fbc02d"/>
+        <!-- 10 petals ring -->
+        <circle cx="0" cy="0" r="9" fill="#6d4c41"/>
+        <circle cx="0" cy="0" r="4" fill="#553a32"/>
+      </g>
+      <!-- Tulip next to sunflower -->
+      <path d="M 66,278 Q 78,252 80,230" stroke="#689f38" stroke-width="3" fill="none"/>
+      <path d="M 73,232 C 70,220 76,215 80,215 C 84,215 90,220 87,232 Z" fill="#e91e63"/>
+      <path d="M 77,232 C 75,222 80,218 80,218 C 80,218 85,222 83,232 Z" fill="#f48fb1"/>
+    </g>
+
+    <!-- Right Planter: Blooming Pink Rose -->
+    <g id="potRight">
+      <rect x="330" y="282" width="48" height="36" rx="2" fill="#779d6b" stroke="#5a7e50" stroke-width="2"/>
+      <path d="M 354,282 Q 358,252 354,232" stroke="#558b2f" stroke-width="3.5" fill="none"/>
+      <ellipse cx="344" cy="258" rx="8" ry="4.5" fill="#689f38" transform="rotate(-25 344 258)"/>
+      <ellipse cx="366" cy="248" rx="8" ry="4.5" fill="#689f38" transform="rotate(20 366 248)"/>
+      <!-- Rose Flower Blossom -->
+      <g transform="translate(354, 226)">
+        <circle cx="0" cy="0" r="15" fill="#e91e63"/>
+        <path d="M -9,-4 C -5,-12 5,-12 9,-4 C 12,4 4,12 -4,11 C -10,10 -12,2 -9,-4 Z" fill="#f06292"/>
+        <circle cx="0" cy="0" r="5" fill="#ad1457"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" width="160" height="120">
+  <!-- Left Ribbon Loop -->
+  <path d="M 80,45 C 55,20 20,25 22,48 C 24,70 65,55 80,45 Z" fill="#f06292" stroke="#d81b60" stroke-width="2"/>
+  <path d="M 75,45 C 58,28 32,32 34,48 C 36,60 65,52 75,45 Z" fill="#f8bbd0" opacity="0.6"/>
+  
+  <!-- Right Ribbon Loop -->
+  <path d="M 80,45 C 105,20 140,25 138,48 C 136,70 95,55 80,45 Z" fill="#f06292" stroke="#d81b60" stroke-width="2"/>
+  <path d="M 85,45 C 102,28 128,32 126,48 C 124,60 95,52 85,45 Z" fill="#f8bbd0" opacity="0.6"/>
+
+  <!-- Left Streamer Tail -->
+  <path d="M 75,48 Q 50,75 35,105 Q 52,98 62,108 Q 72,75 78,52 Z" fill="#e91e63"/>
+  
+  <!-- Right Streamer Tail -->
+  <path d="M 85,48 Q 110,75 125,105 Q 108,98 98,108 Q 88,75 82,52 Z" fill="#e91e63"/>
+
+  <!-- Center Knot -->
+  <circle cx="80" cy="46" r="10" fill="#d81b60" stroke="#ad1457" stroke-width="2"/>
+  <circle cx="80" cy="46" r="6" fill="#f48fb1"/>
+
+  <!-- Gift Card Attached to Bow -->
+  <g transform="translate(90, 48) rotate(12)" style="cursor: pointer;">
+    <rect x="0" y="0" width="58" height="34" rx="4" fill="#fffdfa" stroke="#d5c8b5" stroke-width="1.5" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.15))"/>
+    <text x="29" y="16" text-anchor="middle" font-family="'Mali', cursive" font-size="7.5" font-weight="700" fill="#ad1457">Gửi người</text>
+    <text x="29" y="27" text-anchor="middle" font-family="'Mali', cursive" font-size="7.5" font-weight="700" fill="#ad1457">Anh thương ♡</text>
+    <!-- Red heart stamp -->
+    <circle cx="6" cy="6" r="2.5" fill="#e91e63"/>
+  </g>
+</svg>
