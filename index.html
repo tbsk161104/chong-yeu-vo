@@ -2326,6 +2326,8 @@
 
         btnOpenDoor.addEventListener('click', openStorefront);
         doorClickArea.addEventListener('click', openStorefront);
+        const storefrontCard = document.querySelector('.storefront-card');
+        if (storefrontCard) storefrontCard.addEventListener('click', openStorefront);
 
         document.querySelectorAll('.shelf-flower-item').forEach(item => {
             item.addEventListener('click', () => {
