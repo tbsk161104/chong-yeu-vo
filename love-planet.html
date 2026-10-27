@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Our 3D Love Planet 🪐 • Hành Tinh Kỷ Niệm Của Hai Đứa</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪐</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Mali:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js & Libraries from fast CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #06020e;
+            font-family: 'Quicksand', sans-serif;
+            color: #fff;
+        }
+
+        #webgl-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Ambient Cosmic Background Overlay */
+        .cosmic-nebula {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 20% 25%, rgba(217, 70, 239, 0.12) 0%, transparent 45%),
+                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+            z-index: 2;
+        }
+
+        /* Top Bar */
+        .planet-top-bar {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: calc(100% - 30px);
+            max-width: 960px;
+            padding: 10px 18px;
+            background: rgba(18, 9, 36, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(244, 114, 182, 0.35);
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(236, 72, 153, 0.2);
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #fce7f3;
+            font-size: 13px;
+            font-weight: 700;
+            background: rgba(236, 72, 153, 0.22);
+            border: 1px solid rgba(244, 114, 182, 0.4);
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.25s ease;
+        }
+        .brand-link:hover {
+            background: rgba(236, 72, 153, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 0 12px rgba(236, 72, 153, 0.5);
+        }
+
+        .planet-title-box {
+            text-align: center;
+            pointer-events: none;
+        }
+        .planet-main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fbcfe8, #f472b6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(244, 114, 182, 0.6);
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        .planet-sub-title {
+            font-size: 10px;
+            color: #d8b4fe;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 600;
+        }
+
+        .audio-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(192, 132, 252, 0.35);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .audio-pill:hover {
+            background: rgba(168, 85, 247, 0.38);
+        }
+        .audio-icon {
+            font-size: 14px;
+            animation: pulse-ring 2s infinite;
+        }
+        .audio-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #f3e8ff;
+        }
+
+        /* Bottom Floating HUD */
+        .bottom-hud {
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 95vw;
+        }
+
+        .hud-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 18px;
+            background: rgba(22, 10, 44, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(244, 114, 182, 0.4);
+            border-radius: 30px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 0 10px rgba(236, 72, 153, 0.15);
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hud-btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            background: rgba(45, 18, 77, 0.88);
+            border-color: #f472b6;
+            box-shadow: 0 12px 28px rgba(236, 72, 153, 0.45);
+        }
+        .hud-btn.active {
+            background: linear-gradient(135deg, #d946ef, #ec4899);
+            border-color: #ffd1dc;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.7);
+        }
+        .hud-btn-icon {
+            font-size: 15px;
+        }
+
+        /* Floating Pin Quick Picker Bar (Top Center Sub) */
+        .pin-quick-bar {
+            position: absolute;
+            top: 76px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 18;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            max-width: calc(100% - 30px);
+            padding: 6px 12px;
+            background: rgba(15, 6, 32, 0.55);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            scrollbar-width: none;
+        }
+        .pin-quick-bar::-webkit-scrollbar { display: none; }
+        .pin-chip {
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(244, 114, 182, 0.25);
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fbcfe8;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .pin-chip:hover, .pin-chip.active {
+            background: rgba(236, 72, 153, 0.35);
+            border-color: #f472b6;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(244, 114, 182, 0.4);
+        }
+
+        /* Guide Hint Toast */
+        .guide-toast {
+            position: absolute;
+            bottom: 84px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
+            background: rgba(14, 7, 28, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #e9d5ff;
+            pointer-events: none;
+            transition: opacity 1.5s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            white-space: nowrap;
+        }
+
+        /* Glassmorphism Memory Card Modal */
+        .memory-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            background: rgba(6, 2, 14, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .memory-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .memory-card {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            background: linear-gradient(145deg, rgba(30, 14, 58, 0.88), rgba(16, 7, 34, 0.94));
+            border: 1.5px solid rgba(244, 114, 182, 0.5);
+            border-radius: 28px;
+            padding: 24px 22px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(236, 72, 153, 0.35);
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .memory-modal-overlay.active .memory-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .card-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .card-close-btn:hover {
+            background: rgba(236, 72, 153, 0.5);
+            transform: rotate(90deg);
+        }
+
+        .card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #f472b6;
+            background: rgba(244, 114, 182, 0.15);
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-city-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #fbcfe8, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            line-height: 1.1;
+        }
+
+        .card-date-badge {
+            font-size: 12px;
+            color: #c084fc;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .card-image-box {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            background: #150928;
+        }
+        .card-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .card-image-box:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-note-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #fce7f3;
+        }
+
+        .card-signature {
+            text-align: center;
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            font-weight: 700;
+            color: #f472b6;
+            margin-bottom: 16px;
+            text-shadow: 0 0 10px rgba(244, 114, 182, 0.5);
+        }
+
+        .card-nav-row {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        .card-nav-btn {
+            flex: 1;
+            padding: 8px 12px;
+            background: rgba(244, 114, 182, 0.2);
+            border: 1px solid rgba(244, 114, 182, 0.4);
+            border-radius: 16px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .card-nav-btn:hover {
+            background: rgba(244, 114, 182, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Drawer / Modal: Add Pin */
+        .add-pin-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 60;
+            background: rgba(6, 2, 14, 0.7);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .add-pin-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .add-pin-form {
+            width: 100%;
+            max-width: 420px;
+            background: #170b2c;
+            border: 1.5px solid #d946ef;
+            border-radius: 26px;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(217, 70, 239, 0.4);
+        }
+        .form-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 26px;
+            color: #fbcfe8;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #d8b4fe;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 13px;
+            outline: none;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: #f472b6;
+            box-shadow: 0 0 10px rgba(244, 114, 182, 0.5);
+        }
+        .form-textarea {
+            resize: none;
+            height: 70px;
+            font-family: 'Mali', cursive;
+        }
+        .form-submit-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, #ec4899, #a855f7);
+            border: none;
+            border-radius: 18px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+            transition: all 0.2s ease;
+        }
+        .form-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(236, 72, 153, 0.6);
+        }
+
+        /* 2D HTML Floating Labels on 3D Globe */
+        .globe-pin-label {
+            position: absolute;
+            z-index: 10;
+            pointer-events: none;
+            transform: translate(-50%, -100%);
+            white-space: nowrap;
+            background: rgba(22, 10, 44, 0.85);
+            border: 1px solid rgba(244, 114, 182, 0.6);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #fbcfe8;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.2s ease;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 640px) {
+            .planet-main-title { font-size: 20px; }
+            .brand-link { font-size: 11px; padding: 5px 10px; }
+            .audio-label { display: none; }
+            .audio-pill { padding: 6px 10px; }
+            .pin-quick-bar { top: 72px; }
+            .hud-btn { font-size: 11px; padding: 8px 12px; }
+            .memory-card { padding: 18px 16px; border-radius: 22px; }
+            .card-city-name { font-size: 26px; }
+            .card-image-box { height: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 3D WebGL Canvas Layer -->
+    <div id="webgl-container"></div>
+    <div class="cosmic-nebula"></div>
+    <div id="labels-container"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="planet-top-bar">
+        <a href="/" class="brand-link" title="Quay về Vương Quốc 30 Món Quà">
+            <span>🏰</span>
+            <span>30 Món Quà</span>
+        </a>
+
+        <div class="planet-title-box">
+            <h1 class="planet-main-title">Our 3D Love Planet</h1>
+            <div class="planet-sub-title">✦ Hành Tinh Kỷ Niệm ✦</div>
+        </div>
+
+        <div class="audio-pill" id="musicToggleBtn" title="Bật/Tắt Nhạc Vũ Trụ Lãng Mạn">
+            <span class="audio-icon" id="musicIcon">🎵</span>
+            <span class="audio-label" id="musicLabel">Bật Nhạc</span>
+        </div>
+    </header>
+
+    <!-- Pin Quick Selector Bar -->
+    <nav class="pin-quick-bar" id="pinQuickBar">
+        <!-- Rendered by JS -->
+    </nav>
+
+    <!-- Guide Toast -->
+    <div class="guide-toast" id="guideToast">
+        ✨ Chạm & vuốt để xoay hành tinh • Nhấp vào ghim để mở kỷ niệm ✨
+    </div>
+
+    <!-- Bottom HUD Controls -->
+    <div class="bottom-hud">
+        <button class="hud-btn" id="btnToggleRotate" title="Bật/Tắt xoay tự động">
+            <span class="hud-btn-icon">💫</span>
+            <span>Tự Động Xoay</span>
+        </button>
+
+        <button class="hud-btn" id="btnToggleConstellation" title="Vẽ vệt sáng nối các điểm hẹn thành chòm sao trái tim">
+            <span class="hud-btn-icon">💖</span>
+            <span>Chòm Sao Trái Tim</span>
+        </button>
+
+        <button class="hud-btn" id="btnOpenAddPin" title="Thêm một địa điểm kỷ niệm mới vào quả cầu">
+            <span class="hud-btn-icon">📍</span>
+            <span>Thêm Điểm Hẹn</span>
+        </button>
+    </div>
+
+    <!-- Glassmorphism Memory Card Modal -->
+    <div class="memory-modal-overlay" id="memoryModal">
+        <div class="memory-card">
+            <button class="card-close-btn" id="btnCloseModal" title="Đóng thẻ">✕</button>
+            <div class="card-badge" id="cardBadge">📍 KỶ NIỆM TÌNH YÊU</div>
+            <h2 class="card-city-name" id="cardCity">Hà Nội</h2>
+            <div class="card-date-badge" id="cardDate">Mùa Thu Hẹn Hò</div>
+            <div class="card-image-box">
+                <img src="memory_photo1.png" alt="Memory" id="cardImg">
+            </div>
+            <div class="card-note-box" id="cardNote">
+                Lời nhắn yêu thương...
+            </div>
+            <div class="card-signature">
+                Cố lên vợ iuu , chồng yêu em ❤️
+            </div>
+            <div class="card-nav-row">
+                <button class="card-nav-btn" id="btnPrevPin">← Điểm Trước</button>
+                <button class="card-nav-btn" id="btnNextPin">Điểm Kế Tiếp →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Memory Pin Modal -->
+    <div class="add-pin-modal" id="addPinModal">
+        <div class="add-pin-form">
+            <h3 class="form-title">✦ Thêm Điểm Hẹn Kỷ Niệm ✦</h3>
+            <div class="form-group">
+                <label class="form-label">Chọn Thành Phố Hoặc Tùy Biến</label>
+                <select class="form-select" id="inputCitySelect">
+                    <option value="Hà Nội|21.0285|105.8542">Hà Nội (21.03°N, 105.85°E)</option>
+                    <option value="Đà Lạt|11.9404|108.4583">Đà Lạt (11.94°N, 108.46°E)</option>
+                    <option value="Đà Nẵng|16.0544|108.2022">Đà Nẵng (16.05°N, 108.20°E)</option>
+                    <option value="TP. Hồ Chí Minh|10.8231|106.6297">TP. Hồ Chí Minh (10.82°N, 106.63°E)</option>
+                    <option value="Hội An|15.8801|108.3380">Hội An (15.88°N, 108.34°E)</option>
+                    <option value="Phú Quốc|10.2899|103.9840">Phú Quốc (10.29°N, 103.98°E)</option>
+                    <option value="Sa Pa|22.3364|103.8438">Sa Pa (22.34°N, 103.84°E)</option>
+                    <option value="Hạ Long|20.9505|107.0734">Hạ Long (20.95°N, 107.07°E)</option>
+                    <option value="Nha Trang|12.2388|109.1967">Nha Trang (12.24°N, 109.20°E)</option>
+                    <option value="Vũng Tàu|10.3460|107.0843">Vũng Tàu (10.35°N, 107.08°E)</option>
+                    <option value="Paris|48.8566|2.3522">Paris, Pháp (48.86°N, 2.35°E)</option>
+                    <option value="Tokyo|35.6762|139.6503">Tokyo, Nhật Bản (35.68°N, 139.65°E)</option>
+                    <option value="custom">-- Nhập Tọa Độ Khác --</option>
+                </select>
+            </div>
+            <div class="form-group" id="customCoordsRow" style="display:none;">
+                <label class="form-label">Tên & Tọa Độ (Lat, Lon)</label>
+                <div style="display:flex; gap:6px;">
+                    <input type="text" class="form-input" id="customCityName" placeholder="Tên nơi hẹn...">
+                    <input type="number" class="form-input" id="customLat" placeholder="Lat" step="0.01" style="width:70px;">
+                    <input type="number" class="form-input" id="customLon" placeholder="Lon" step="0.01" style="width:70px;">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Ngày / Mùa Kỷ Niệm</label>
+                <input type="text" class="form-input" id="inputDate" placeholder="VD: Mùa Thu Đẹp Nhất, 20/10...">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Ảnh Kỷ Niệm</label>
+                <select class="form-select" id="inputImgSelect">
+                    <option value="memory_photo1.png">Khoảnh Khắc 1: Nụ Cười Công Chúa 🌸</option>
+                    <option value="memory_photo2.png">Khoảnh Khắc 2: Ánh Mắt Tỏa Sáng ✨</option>
+                    <option value="memory_photo3.png">Khoảnh Khắc 3: Nắm Tay Bình Yên 💕</option>
+                    <option value="sofia_hydrangea.jpg">Bó Hoa Cẩm Tú Cầu Sofia 💐</option>
+                    <option value="thiep_tang_vo.png">Bức Thiệp Tình Yêu Vợ Iuu 💌</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Lời Nhắn Yêu Thương Của Chồng</label>
+                <textarea class="form-textarea" id="inputNote" placeholder="Cùng em đi đến nơi này là niềm hạnh phúc lớn nhất của anh..."></textarea>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button type="button" class="form-submit-btn" style="background:#4b5563; flex:1;" id="btnCancelAddPin">Hủy</button>
+                <button type="button" class="form-submit-btn" style="flex:2;" id="btnSaveAddPin">Lưu Vào Quả Cầu 🪐</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Background Audio -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="thousand_years_song.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- JavaScript 3D Application -->
+    <script>
+        // ==========================================================
+        // 1. DATA: MEMORY PINS (PRESETS + LOCAL STORAGE)
+        // ==========================================================
+        const defaultPins = [
+            {
+                id: "pin-hanoi",
+                name: "Hà Nội",
+                lat: 21.0285,
+                lon: 105.8542,
+                date: "Mùa Thu Đẹp Nhất • Nơi Khởi Đầu",
+                img: "memory_photo1.png",
+                note: "Thủ đô ngàn năm - Nơi bắt đầu câu chuyện tình yêu ngọt ngào nhất của chúng mình. Cùng em lượn hồ Tây, đón gió thu se lạnh và ăn kem Tràng Tiền là kỷ niệm anh sẽ ghi khắc mãi mãi trong tim."
+            },
+            {
+                id: "pin-dalat",
+                name: "Đà Lạt",
+                lat: 11.9404,
+                lon: 108.4583,
+                date: "Thành Phố Ngàn Hoa Sương Mù",
+                img: "memory_photo2.png",
+                note: "Cái lạnh của Đà Lạt chỉ làm cho bàn tay hai đứa nắm nhau thêm chặt. Từng góc dốc hoa dã quỳ, từng ly sữa đậu nành nóng hổi bên em đều ấm áp hơn ngàn mặt trời."
+            },
+            {
+                id: "pin-danang",
+                name: "Đà Nẵng & Hội An",
+                lat: 15.8801,
+                lon: 108.3380,
+                date: "Đêm Thả Hoa Đăng Sông Hoài",
+                img: "memory_photo3.png",
+                note: "Dưới ánh đèn lồng lung linh của phố cổ, ngắm hoa đăng trôi trên dòng sông Hoài, anh chỉ nguyện ước một điều duy nhất: Được yêu thương, che chở và cưng chiều công chúa nhỏ trọn đời trọn kiếp."
+            },
+            {
+                id: "pin-saigon",
+                name: "TP. Hồ Chí Minh",
+                lat: 10.8231,
+                lon: 106.6297,
+                date: "Phố Thị Rực Rỡ Không Ngủ",
+                img: "sofia_hydrangea.jpg",
+                note: "Giữa dòng người tấp nập của Sài Gòn phồn hoa, chỉ cần có em bên cạnh, mọi ồn ào đều hóa thành bình yên. Những buổi tối cà phê ngắm phố, những vòng xe chở em sau lưng là báu vật của anh."
+            },
+            {
+                id: "pin-phuquoc",
+                name: "Phú Quốc",
+                lat: 10.2899,
+                lon: 103.9840,
+                date: "Đảo Ngọc Hoàng Hôn Rực Đỏ",
+                img: "thiep_tang_vo.png",
+                note: "Ngắm hoàng hôn nhuộm tím biển Phú Quốc, nghe sóng vỗ rì rào và thấy nụ cười rạng rỡ của em. Anh biết rằng hạnh phúc đích thực không phải ở chân trời xa xôi, mà chính là ở ngay bên cạnh em."
+            },
+            {
+                id: "pin-paris",
+                name: "Paris (Lời Hẹn Ước)",
+                lat: 48.8566,
+                lon: 2.3522,
+                date: "Điểm Hẹn Tương Lai Của Hai Đứa",
+                img: "memory_photo1.png",
+                note: "Thành phố của tình yêu và tháp Eiffel rực rỡ ánh đèn - Anh hứa sẽ nỗ lực hết mình để một ngày gần nhất dắt tay công chúa đến đây, cùng em uống cà phê bên bờ sông Seine thơ mộng!"
+            }
+        ];
+
+        let memoryPins = [];
+        try {
+            const saved = localStorage.getItem('ourLovePlanetPins');
+            memoryPins = saved ? JSON.parse(saved) : defaultPins;
+        } catch(e) {
+            memoryPins = defaultPins;
+        }
+
+        function savePinsToStorage() {
+            try {
+                localStorage.setItem('ourLovePlanetPins', JSON.stringify(memoryPins));
+            } catch(e) {}
+        }
+
+        // ==========================================================
+        // 2. THREE.JS SCENE, CAMERA, LIGHTS & RENDERER SETUP
+        // ==========================================================
+        const container = document.getElementById('webgl-container');
+        const labelsContainer = document.getElementById('labels-container');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x06020e, 0.015);
+
+        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+        camera.position.set(0, 3, 14);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.25;
+        container.appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.rotateSpeed = 0.65;
+        controls.zoomSpeed = 0.8;
+        controls.minDistance = 6.2;
+        controls.maxDistance = 22;
+        controls.enablePan = false;
+
+        // Ambient & Directional Lights
+        const ambientLight = new THREE.AmbientLight(0xd8b4fe, 0.9);
+        scene.add(ambientLight);
+
+        const sunLight = new THREE.DirectionalLight(0xffd1dc, 1.4);
+        sunLight.position.set(12, 10, 15);
+        scene.add(sunLight);
+
+        const rimLight = new THREE.DirectionalLight(0xc084fc, 1.2);
+        rimLight.position.set(-15, -10, -12);
+        scene.add(rimLight);
+
+        // ==========================================================
+        // 3. DREAMY COSMIC GLOBE TEXTURE GENERATOR
+        // ==========================================================
+        const GLOBE_RADIUS = 5;
+
+        function createDreamyCosmicTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 2048;
+            canvas.height = 1024;
+            const ctx = canvas.getContext('2d');
+
+            // Deep cosmic ocean gradient
+            const oceanGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            oceanGrad.addColorStop(0, '#100522');
+            oceanGrad.addColorStop(0.5, '#1e0b3c');
+            oceanGrad.addColorStop(1, '#0e041d');
+            ctx.fillStyle = oceanGrad;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Subtle latitude / longitude graticule lines
+            ctx.strokeStyle = 'rgba(236, 72, 153, 0.12)';
+            ctx.lineWidth = 1;
+            // Latitudes
+            for (let lat = -80; lat <= 80; lat += 20) {
+                const y = ((90 - lat) / 180) * canvas.height;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            // Longitudes
+            for (let lon = -180; lon <= 180; lon += 30) {
+                const x = ((lon + 180) / 360) * canvas.width;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+
+            // Draw Continents (Simplified Geo-Polygons in Dreamy Magenta/Violet)
+            const continents = [
+                // Eurasia & Africa
+                [
+                    [-10, 36], [0, 42], [15, 45], [30, 40], [40, 42], [50, 40], [60, 45], [75, 40], [90, 45], [105, 50],
+                    [120, 52], [140, 50], [142, 35], [130, 32], [122, 30], [120, 22], [108, 16], [105, 10], [100, 5],
+                    [98, 10], [90, 22], [80, 15], [75, 8], [72, 20], [60, 25], [50, 27], [45, 12], [50, 8], [40, -5],
+                    [35, -20], [28, -34], [18, -34], [12, -15], [10, 0], [15, 12], [-15, 15], [-17, 28], [-10, 36]
+                ],
+                // North America
+                [
+                    [-168, 65], [-140, 70], [-95, 70], [-80, 60], [-60, 50], [-70, 42], [-80, 32], [-82, 25], [-97, 26],
+                    [-85, 20], [-80, 8], [-77, 8], [-85, 15], [-105, 20], [-115, 30], [-125, 40], [-125, 50], [-140, 60],
+                    [-165, 60], [-168, 65]
+                ],
+                // South America
+                [
+                    [-77, 8], [-60, 8], [-50, -2], [-35, -5], [-38, -15], [-45, -24], [-55, -35], [-65, -55], [-75, -50],
+                    [-72, -40], [-70, -20], [-80, -5], [-77, 8]
+                ],
+                // Australia
+                [
+                    [115, -22], [125, -15], [135, -12], [142, -10], [148, -20], [152, -28], [150, -38], [138, -35],
+                    [130, -32], [115, -35], [113, -25], [115, -22]
+                ]
+            ];
+
+            continents.forEach(poly => {
+                ctx.save();
+                ctx.beginPath();
+                poly.forEach((pt, idx) => {
+                    const cx = ((pt[0] + 180) / 360) * canvas.width;
+                    const cy = ((90 - pt[1]) / 180) * canvas.height;
+                    if (idx === 0) ctx.moveTo(cx, cy);
+                    else ctx.lineTo(cx, cy);
+                });
+                ctx.closePath();
+
+                // Dreamy continent fill
+                const landGrad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                landGrad.addColorStop(0, 'rgba(192, 132, 252, 0.45)');
+                landGrad.addColorStop(0.5, 'rgba(236, 72, 153, 0.55)');
+                landGrad.addColorStop(1, 'rgba(244, 114, 182, 0.45)');
+                ctx.fillStyle = landGrad;
+                ctx.fill();
+
+                ctx.strokeStyle = 'rgba(244, 114, 182, 0.8)';
+                ctx.lineWidth = 3;
+                ctx.shadowColor = '#f472b6';
+                ctx.shadowBlur = 12;
+                ctx.stroke();
+                ctx.restore();
+            });
+
+            // Golden Twinkling City Lights on Land
+            ctx.fillStyle = '#fef08a';
+            ctx.shadowColor = '#ffd700';
+            ctx.shadowBlur = 8;
+            for (let i = 0; i < 400; i++) {
+                const rx = Math.random() * canvas.width;
+                const ry = Math.random() * canvas.height;
+                const r = Math.random() * 1.6 + 0.6;
+                ctx.beginPath();
+                ctx.arc(rx, ry, r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        // 3D Planet Mesh
+        const globeGeometry = new THREE.SphereGeometry(GLOBE_RADIUS, 64, 64);
+        const globeMaterial = new THREE.MeshStandardMaterial({
+            map: createDreamyCosmicTexture(),
+            roughness: 0.65,
+            metalness: 0.25,
+            emissive: new THREE.Color(0x351147),
+            emissiveIntensity: 0.45
+        });
+        const globeMesh = new THREE.Mesh(globeGeometry, globeMaterial);
+        scene.add(globeMesh);
+
+        // Atmosphere Glow Aura (Inverted Outer Sphere)
+        const atmosphereGeometry = new THREE.SphereGeometry(GLOBE_RADIUS * 1.15, 48, 48);
+        const atmosphereMaterial = new THREE.ShaderMaterial({
+            vertexShader: `
+                varying vec3 vNormal;
+                void main() {
+                    vNormal = normalize(normalMatrix * normal);
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                varying vec3 vNormal;
+                void main() {
+                    float intensity = pow(0.68 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.6);
+                    gl_FragColor = vec4(0.96, 0.45, 0.72, 1.0) * intensity * 0.95;
+                }
+            `,
+            blending: THREE.AdditiveBlending,
+            side: THREE.BackSide,
+            transparent: true
+        });
+        const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+        scene.add(atmosphereMesh);
+
+        // Orbiting Clouds Layer
+        const cloudGeometry = new THREE.SphereGeometry(GLOBE_RADIUS * 1.025, 48, 48);
+        const cloudMaterial = new THREE.MeshStandardMaterial({
+            color: 0xffe4e6,
+            transparent: true,
+            opacity: 0.18,
+            blending: THREE.AdditiveBlending,
+            wireframe: false
+        });
+        const cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
+        scene.add(cloudMesh);
+
+        // Orbiting Heart Satellite
+        const satelliteGroup = new THREE.Group();
+        const heartShape = new THREE.Shape();
+        const x = -0.15, y = -0.15;
+        heartShape.moveTo(x + 0.15, y + 0.15);
+        heartShape.bezierCurveTo(x + 0.15, y + 0.15, x + 0.1, y, x, y);
+        heartShape.bezierCurveTo(x - 0.2, y, x - 0.2, y + 0.25, x - 0.2, y + 0.25);
+        heartShape.bezierCurveTo(x - 0.2, y + 0.4, x - 0.05, y + 0.55, x + 0.15, y + 0.7);
+        heartShape.bezierCurveTo(x + 0.35, y + 0.55, x + 0.5, y + 0.4, x + 0.5, y + 0.25);
+        heartShape.bezierCurveTo(x + 0.5, y + 0.25, x + 0.5, y, x + 0.3, y);
+        heartShape.bezierCurveTo(x + 0.2, y, x + 0.15, y + 0.15, x + 0.15, y + 0.15);
+
+        const heartGeom = new THREE.ExtrudeGeometry(heartShape, { depth: 0.08, bevelEnabled: true, bevelSegments: 3, steps: 1, bevelSize: 0.02, bevelThickness: 0.02 });
+        const heartMat = new THREE.MeshStandardMaterial({ color: 0xff2a85, emissive: 0xff1493, emissiveIntensity: 0.8, roughness: 0.2 });
+        const satelliteHeart = new THREE.Mesh(heartGeom, heartMat);
+        satelliteHeart.scale.set(0.65, 0.65, 0.65);
+        satelliteHeart.rotation.z = Math.PI;
+        satelliteGroup.add(satelliteHeart);
+        scene.add(satelliteGroup);
+
+        // ==========================================================
+        // 4. TWINKLING STARFIELD & SHOOTING METEORS
+        // ==========================================================
+        const starCount = 2200;
+        const starGeom = new THREE.BufferGeometry();
+        const starPositions = new Float32Array(starCount * 3);
+        const starColors = new Float32Array(starCount * 3);
+
+        const starPalette = [
+            new THREE.Color(0xffd1dc),
+            new THREE.Color(0xfbcfe8),
+            new THREE.Color(0xd8b4fe),
+            new THREE.Color(0xffffff),
+            new THREE.Color(0x93c5fd)
+        ];
+
+        for (let i = 0; i < starCount; i++) {
+            const rad = 40 + Math.random() * 80;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(Math.random() * 2 - 1);
+
+            starPositions[i * 3] = rad * Math.sin(phi) * Math.cos(theta);
+            starPositions[i * 3 + 1] = rad * Math.sin(phi) * Math.sin(theta);
+            starPositions[i * 3 + 2] = rad * Math.cos(phi);
+
+            const col = starPalette[Math.floor(Math.random() * starPalette.length)];
+            starColors[i * 3] = col.r;
+            starColors[i * 3 + 1] = col.g;
+            starColors[i * 3 + 2] = col.b;
+        }
+
+        starGeom.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+        starGeom.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
+
+        const starMaterial = new THREE.PointsMaterial({
+            size: 0.55,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.85
+        });
+        const starField = new THREE.Points(starGeom, starMaterial);
+        scene.add(starField);
+
+        // Shooting Star Particle
+        const shootingStarGeom = new THREE.BufferGeometry();
+        const shootingStarPositions = new Float32Array(6);
+        shootingStarGeom.setAttribute('position', new THREE.BufferAttribute(shootingStarPositions, 3));
+        const shootingStarMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 });
+        const shootingStarLine = new THREE.Line(shootingStarGeom, shootingStarMat);
+        scene.add(shootingStarLine);
+
+        let shootingStarActive = false;
+        let shootingStarPos = new THREE.Vector3();
+        let shootingStarVel = new THREE.Vector3();
+
+        function triggerShootingStar() {
+            if (shootingStarActive) return;
+            shootingStarActive = true;
+            shootingStarPos.set(
+                (Math.random() - 0.5) * 40,
+                15 + Math.random() * 10,
+                (Math.random() - 0.5) * 40
+            );
+            shootingStarVel.set(-0.8 - Math.random() * 0.5, -0.6 - Math.random() * 0.4, 0.4);
+            shootingStarMat.opacity = 1;
+        }
+        setInterval(triggerShootingStar, 6500);
+
+        // ==========================================================
+        // 5. COORDINATE MAPPING & GLOWING MEMORY PINS
+        // ==========================================================
+        function latLonToVector3(lat, lon, radius) {
+            const phi = (90 - lat) * (Math.PI / 180);
+            const theta = (lon + 180) * (Math.PI / 180);
+            const x = -(radius * Math.sin(phi) * Math.cos(theta));
+            const z = radius * Math.sin(phi) * Math.sin(theta);
+            const y = radius * Math.cos(phi);
+            return new THREE.Vector3(x, y, z);
+        }
+
+        const pinsGroup = new THREE.Group();
+        scene.add(pinsGroup);
+        const pinMeshes = [];
+        const labelElements = [];
+
+        function buildPinMesh(pinData) {
+            const group = new THREE.Group();
+            const surfacePos = latLonToVector3(pinData.lat, pinData.lon, GLOBE_RADIUS);
+            const normal = surfacePos.clone().normalize();
+
+            // Pin Stem (Glowing line/cylinder extending outward)
+            const stemHeight = 0.55;
+            const stemGeom = new THREE.CylinderGeometry(0.025, 0.025, stemHeight, 8);
+            stemGeom.translate(0, stemHeight / 2, 0);
+            const stemMat = new THREE.MeshBasicMaterial({ color: 0xf472b6 });
+            const stem = new THREE.Mesh(stemGeom, stemMat);
+            stem.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+            stem.position.copy(surfacePos);
+            group.add(stem);
+
+            // Diamond / Crystal Head on top
+            const headGeom = new THREE.OctahedronGeometry(0.16, 0);
+            const headMat = new THREE.MeshStandardMaterial({
+                color: 0xff2a85,
+                emissive: 0xff1493,
+                emissiveIntensity: 0.9,
+                roughness: 0.1
+            });
+            const head = new THREE.Mesh(headGeom, headMat);
+            const headPos = surfacePos.clone().add(normal.clone().multiplyScalar(stemHeight));
+            head.position.copy(headPos);
+            head.userData = { pinData };
+            group.add(head);
+
+            // Base Pulsing Halo Ring on surface
+            const ringGeom = new THREE.RingGeometry(0.08, 0.16, 16);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0xff69b4, side: THREE.DoubleSide, transparent: true, opacity: 0.8 });
+            const ring = new THREE.Mesh(ringGeom, ringMat);
+            ring.position.copy(surfacePos.clone().add(normal.clone().multiplyScalar(0.02)));
+            ring.lookAt(surfacePos.clone().add(normal));
+            group.add(ring);
+
+            // Create 2D DOM Billboard Label
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'globe-pin-label';
+            labelDiv.textContent = `📍 ${pinData.name}`;
+            labelsContainer.appendChild(labelDiv);
+
+            pinMeshes.push({ group, head, ring, labelDiv, normal, headPos, pinData });
+            pinsGroup.add(group);
+        }
+
+        function refreshAllPins() {
+            // Clear existing
+            pinMeshes.forEach(p => {
+                pinsGroup.remove(p.group);
+                if (p.labelDiv && p.labelDiv.parentElement) p.labelDiv.remove();
+            });
+            pinMeshes.length = 0;
+
+            // Rebuild
+            memoryPins.forEach(p => buildPinMesh(p));
+            renderPinQuickBar();
+        }
+
+        function renderPinQuickBar() {
+            const bar = document.getElementById('pinQuickBar');
+            bar.innerHTML = '';
+            memoryPins.forEach((p, idx) => {
+                const chip = document.createElement('div');
+                chip.className = 'pin-chip';
+                chip.textContent = `📍 ${p.name}`;
+                chip.addEventListener('click', () => {
+                    flyToPinByIndex(idx);
+                });
+                bar.appendChild(chip);
+            });
+        }
+
+        // ==========================================================
+        // 6. HEART CONSTELLATION ARCS (VẼ CHÒM SAO TÌNH YÊU)
+        // ==========================================================
+        const constellationGroup = new THREE.Group();
+        scene.add(constellationGroup);
+        let constellationActive = false;
+
+        function createCurvedArc(posA, posB, heightMultiplier = 1.35) {
+            const mid = posA.clone().lerp(posB, 0.5);
+            const dist = posA.distanceTo(posB);
+            const midLength = mid.length();
+            mid.normalize().multiplyScalar(midLength + dist * 0.28 * heightMultiplier);
+
+            const curve = new THREE.QuadraticBezierCurve3(posA, mid, posB);
+            const points = curve.getPoints(50);
+            const geom = new THREE.BufferGeometry().setFromPoints(points);
+
+            const mat = new THREE.LineBasicMaterial({
+                color: 0xff69b4,
+                transparent: true,
+                opacity: 0.85,
+                linewidth: 2
+            });
+            return new THREE.Line(geom, mat);
+        }
+
+        function toggleConstellationArcs() {
+            const btn = document.getElementById('btnToggleConstellation');
+            constellationActive = !constellationActive;
+
+            if (constellationActive) {
+                btn.classList.add('active');
+                constellationGroup.clear();
+
+                // Connect adjacent pins in a romantic circuit
+                for (let i = 0; i < memoryPins.length; i++) {
+                    const pinA = memoryPins[i];
+                    const pinB = memoryPins[(i + 1) % memoryPins.length];
+                    const posA = latLonToVector3(pinA.lat, pinA.lon, GLOBE_RADIUS + 0.2);
+                    const posB = latLonToVector3(pinB.lat, pinB.lon, GLOBE_RADIUS + 0.2);
+                    const arc = createCurvedArc(posA, posB);
+                    constellationGroup.add(arc);
+                }
+
+                // Heart Confetti Explosion
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 60,
+                        spread: 80,
+                        origin: { y: 0.6 },
+                        colors: ['#ff69b4', '#d946ef', '#ffd1dc', '#ffffff']
+                    });
+                }
+                playChimeAudio(880);
+            } else {
+                btn.classList.remove('active');
+                constellationGroup.clear();
+            }
+        }
+
+        // ==========================================================
+        // 7. CAMERA FLY-TO ANIMATION WITH TWEEN.JS
+        // ==========================================================
+        let currentPinIdx = 0;
+        let isCameraFlying = false;
+
+        function flyToPinByIndex(idx) {
+            if (idx < 0 || idx >= memoryPins.length) return;
+            currentPinIdx = idx;
+            const targetPin = memoryPins[idx];
+            const targetPos = latLonToVector3(targetPin.lat, targetPin.lon, GLOBE_RADIUS);
+
+            // Compute ideal camera position in front of this pin
+            const cameraTargetPos = targetPos.clone().normalize().multiplyScalar(10.5);
+
+            isCameraFlying = true;
+            controls.enabled = false;
+
+            // Highlight chip in quick bar
+            document.querySelectorAll('.pin-chip').forEach((c, i) => {
+                c.classList.toggle('active', i === idx);
+            });
+
+            new TWEEN.Tween(camera.position)
+                .to(cameraTargetPos, 1400)
+                .easing(TWEEN.Easing.Cubic.InOut)
+                .onUpdate(() => camera.lookAt(scene.position))
+                .onComplete(() => {
+                    controls.enabled = true;
+                    isCameraFlying = false;
+                    openMemoryModal(targetPin);
+                })
+                .start();
+
+            playChimeAudio(650);
+        }
+
+        // ==========================================================
+        // 8. INTERACTIVE RAYCASTING (HOVER & TAP)
+        // ==========================================================
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        function checkPinIntersection(clientX, clientY) {
+            mouse.x = (clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+            raycaster.setFromCamera(mouse, camera);
+
+            const heads = pinMeshes.map(p => p.head);
+            const intersects = raycaster.intersectObjects(heads, false);
+
+            if (intersects.length > 0) {
+                const hit = intersects[0];
+                const pinData = hit.object.userData.pinData;
+                const idx = memoryPins.findIndex(p => p.id === pinData.id);
+                if (idx !== -1) flyToPinByIndex(idx);
+            }
+        }
+
+        window.addEventListener('click', (e) => {
+            // Avoid raycasting if clicking on UI
+            if (e.target.closest('.planet-top-bar, .bottom-hud, .pin-quick-bar, .memory-modal-overlay, .add-pin-modal')) return;
+            checkPinIntersection(e.clientX, e.clientY);
+        });
+
+        // ==========================================================
+        // 9. MEMORY MODAL CONTROLS
+        // ==========================================================
+        const memoryModal = document.getElementById('memoryModal');
+        const cardBadge = document.getElementById('cardBadge');
+        const cardCity = document.getElementById('cardCity');
+        const cardDate = document.getElementById('cardDate');
+        const cardImg = document.getElementById('cardImg');
+        const cardNote = document.getElementById('cardNote');
+
+        function openMemoryModal(pin) {
+            cardBadge.textContent = `📍 ${pin.lat.toFixed(2)}°N, ${pin.lon.toFixed(2)}°E`;
+            cardCity.textContent = pin.name;
+            cardDate.textContent = `📅 ${pin.date}`;
+            cardImg.src = pin.img || 'memory_photo1.png';
+            cardNote.textContent = pin.note;
+
+            memoryModal.classList.add('active');
+
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 35,
+                    spread: 60,
+                    origin: { y: 0.7 },
+                    colors: ['#f472b6', '#d946ef', '#fbcfe8']
+                });
+            }
+        }
+
+        document.getElementById('btnCloseModal').addEventListener('click', () => {
+            memoryModal.classList.remove('active');
+        });
+
+        document.getElementById('btnPrevPin').addEventListener('click', () => {
+            const nextIdx = (currentPinIdx - 1 + memoryPins.length) % memoryPins.length;
+            memoryModal.classList.remove('active');
+            flyToPinByIndex(nextIdx);
+        });
+
+        document.getElementById('btnNextPin').addEventListener('click', () => {
+            const nextIdx = (currentPinIdx + 1) % memoryPins.length;
+            memoryModal.classList.remove('active');
+            flyToPinByIndex(nextIdx);
+        });
+
+        // ==========================================================
+        // 10. ADD PIN MODAL CONTROLS
+        // ==========================================================
+        const addPinModal = document.getElementById('addPinModal');
+        const inputCitySelect = document.getElementById('inputCitySelect');
+        const customCoordsRow = document.getElementById('customCoordsRow');
+        const customCityName = document.getElementById('customCityName');
+        const customLat = document.getElementById('customLat');
+        const customLon = document.getElementById('customLon');
+        const inputDate = document.getElementById('inputDate');
+        const inputImgSelect = document.getElementById('inputImgSelect');
+        const inputNote = document.getElementById('inputNote');
+
+        document.getElementById('btnOpenAddPin').addEventListener('click', () => {
+            addPinModal.classList.add('active');
+        });
+
+        document.getElementById('btnCancelAddPin').addEventListener('click', () => {
+            addPinModal.classList.remove('active');
+        });
+
+        inputCitySelect.addEventListener('change', () => {
+            if (inputCitySelect.value === 'custom') {
+                customCoordsRow.style.display = 'block';
+            } else {
+                customCoordsRow.style.display = 'none';
+            }
+        });
+
+        document.getElementById('btnSaveAddPin').addEventListener('click', () => {
+            let name = "", lat = 0, lon = 0;
+            if (inputCitySelect.value === 'custom') {
+                name = customCityName.value.trim() || "Điểm Hẹn Mới";
+                lat = parseFloat(customLat.value) || 16.0;
+                lon = parseFloat(customLon.value) || 108.0;
+            } else {
+                const parts = inputCitySelect.value.split('|');
+                name = parts[0];
+                lat = parseFloat(parts[1]);
+                lon = parseFloat(parts[2]);
+            }
+
+            const date = inputDate.value.trim() || "Ngày Kỷ Niệm Ngọt Ngào";
+            const img = inputImgSelect.value || "memory_photo1.png";
+            const note = inputNote.value.trim() || "Cố lên vợ iuu , chồng yêu em ❤️";
+
+            const newPin = {
+                id: "pin-" + Date.now(),
+                name,
+                lat,
+                lon,
+                date,
+                img,
+                note
+            };
+
+            memoryPins.push(newPin);
+            savePinsToStorage();
+            refreshAllPins();
+            addPinModal.classList.remove('active');
+
+            // Fly immediately to the newly created pin
+            flyToPinByIndex(memoryPins.length - 1);
+        });
+
+        // ==========================================================
+        // 11. AUDIO ENGINE & CHIMES
+        // ==========================================================
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggleBtn = document.getElementById('musicToggleBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicLabel = document.getElementById('musicLabel');
+        let isMusicPlaying = false;
+
+        musicToggleBtn.addEventListener('click', () => {
+            if (!isMusicPlaying) {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicIcon.textContent = '⏸️';
+                    musicLabel.textContent = 'Dừng Nhạc';
+                }).catch(() => {});
+            } else {
+                bgMusic.pause();
+                isMusicPlaying = false;
+                musicIcon.textContent = '🎵';
+                musicLabel.textContent = 'Bật Nhạc';
+            }
+        });
+
+        // Gentle Web Audio API synthesizer chimes for pin interactions
+        let audioCtx = null;
+        function playChimeAudio(freq = 700) {
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(freq * 1.5, audioCtx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.35);
+            } catch(e) {}
+        }
+
+        // ==========================================================
+        // 12. CONTROLS HUD (AUTO-ROTATE & TOAST)
+        // ==========================================================
+        let autoRotate = true;
+        const btnToggleRotate = document.getElementById('btnToggleRotate');
+        btnToggleRotate.classList.add('active');
+
+        btnToggleRotate.addEventListener('click', () => {
+            autoRotate = !autoRotate;
+            btnToggleRotate.classList.toggle('active', autoRotate);
+        });
+
+        document.getElementById('btnToggleConstellation').addEventListener('click', toggleConstellationArcs);
+
+        // Auto-fade guide toast after 5s
+        setTimeout(() => {
+            const toast = document.getElementById('guideToast');
+            if (toast) toast.style.opacity = '0';
+        }, 5000);
+
+        // ==========================================================
+        // 13. ANIMATION LOOP & RESIZE HANDLER
+        // ==========================================================
+        let satAngle = 0;
+        let clock = new THREE.Clock();
+
+        function update2DLabels() {
+            const tempV = new THREE.Vector3();
+            pinMeshes.forEach(p => {
+                tempV.copy(p.headPos);
+                // Calculate position relative to globe rotation
+                tempV.applyAxisAngle(new THREE.Vector3(0, 1, 0), globeMesh.rotation.y);
+
+                // Determine if facing camera
+                const toCam = camera.position.clone().sub(tempV).normalize();
+                const worldNormal = p.normal.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), globeMesh.rotation.y);
+                const dot = worldNormal.dot(toCam);
+
+                if (dot > 0.25) {
+                    tempV.project(camera);
+                    const sx = (tempV.x * 0.5 + 0.5) * window.innerWidth;
+                    const sy = (-tempV.y * 0.5 + 0.5) * window.innerHeight;
+                    p.labelDiv.style.display = 'block';
+                    p.labelDiv.style.left = `${sx}px`;
+                    p.labelDiv.style.top = `${sy - 14}px`;
+                    p.labelDiv.style.opacity = Math.min(1, (dot - 0.25) * 2.5);
+                } else {
+                    p.labelDiv.style.display = 'none';
+                }
+            });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            TWEEN.update();
+            const delta = clock.getDelta();
+
+            // Auto-rotation of Globe, Clouds & Pins
+            if (autoRotate && !isCameraFlying) {
+                globeMesh.rotation.y += 0.0018;
+                pinsGroup.rotation.y = globeMesh.rotation.y;
+                constellationGroup.rotation.y = globeMesh.rotation.y;
+                cloudMesh.rotation.y += 0.0024;
+            }
+
+            // Twinkle Starfield rotation
+            starField.rotation.y += 0.0003;
+
+            // Orbiting Heart Satellite
+            satAngle += 0.012;
+            const satRadius = GLOBE_RADIUS + 1.6;
+            satelliteGroup.position.set(
+                Math.cos(satAngle) * satRadius,
+                Math.sin(satAngle * 0.7) * 2.2,
+                Math.sin(satAngle) * satRadius
+            );
+            satelliteGroup.rotation.y = satAngle + Math.PI / 2;
+
+            // Pulsing pin halos
+            const pulseScale = 1 + Math.sin(Date.now() * 0.005) * 0.25;
+            pinMeshes.forEach(p => {
+                p.ring.scale.set(pulseScale, pulseScale, pulseScale);
+            });
+
+            // Shooting star animation
+            if (shootingStarActive) {
+                shootingStarPos.add(shootingStarVel);
+                const tailPos = shootingStarPos.clone().sub(shootingStarVel.clone().multiplyScalar(4));
+                const positions = shootingStarGeom.attributes.position.array;
+                positions[0] = shootingStarPos.x;
+                positions[1] = shootingStarPos.y;
+                positions[2] = shootingStarPos.z;
+                positions[3] = tailPos.x;
+                positions[4] = tailPos.y;
+                positions[5] = tailPos.z;
+                shootingStarGeom.attributes.position.needsUpdate = true;
+
+                shootingStarMat.opacity -= 0.015;
+                if (shootingStarMat.opacity <= 0) {
+                    shootingStarActive = false;
+                }
+            }
+
+            controls.update();
+            update2DLabels();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        });
+
+        // Initialize
+        refreshAllPins();
+        animate();
+    </script>
+</body>
+</html>
