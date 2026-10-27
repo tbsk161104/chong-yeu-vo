@@ -27,22 +27,10 @@
       ]
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/planet",
-      "dest": "/love-planet.html"
-    },
-    {
-      "src": "/love-planet",
-      "dest": "/love-planet.html"
-    },
-    {
-      "src": "/love-planet.html",
-      "dest": "/love-planet.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/planet",
+      "destination": "/love-planet"
     }
   ]
 }
