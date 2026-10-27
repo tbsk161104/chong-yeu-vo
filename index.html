@@ -285,7 +285,13 @@
         #view-foggy.active,
         #view-boba.active,
         #view-waxletter.active,
-        #view-vinyl.active {
+        #view-vinyl.active,
+        #view-radio.active,
+        #view-cinema.active,
+        #view-chocolate.active,
+        #view-telescope.active,
+        #view-tarot.active,
+        #view-bonsai.active {
             display: flex !important;
         }
 
@@ -3515,6 +3521,619 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
 
+        /* ========================================================
+           VIEW 25: 📻 ĐÀI RADIO ĐÊM MUỘN FM 30.6 (LATE NIGHT RADIO)
+        ======================================================== */
+        #view-radio {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 75px 16px 115px;
+            background: radial-gradient(circle at center, #23192b 0%, #110b17 70%, #060309 100%);
+        }
+
+        .radio-cabinet {
+            position: relative;
+            width: 100%;
+            max-width: 390px;
+            background: linear-gradient(145deg, #442a27, #241412);
+            border-radius: 28px;
+            padding: 22px 18px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), inset 0 0 25px rgba(0,0,0,0.5);
+            border: 4px solid #7d4d38;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .radio-antenna {
+            position: absolute;
+            top: -55px;
+            right: 35px;
+            width: 5px;
+            height: 60px;
+            background: linear-gradient(90deg, #d4af37, #aa820a);
+            border-radius: 3px;
+            transform-origin: bottom center;
+            transform: rotate(20deg);
+        }
+
+        .radio-antenna::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -4px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #ffd700;
+            box-shadow: 0 0 8px #ffd700;
+        }
+
+        .radio-dial-glass {
+            position: relative;
+            width: 100%;
+            height: 75px;
+            background: #181016;
+            border-radius: 14px;
+            border: 2px solid #a3694f;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 8px 12px;
+        }
+
+        .radio-freq-scale {
+            display: flex;
+            justify-content: space-between;
+            color: #d4af37;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            user-select: none;
+        }
+
+        .radio-needle {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            width: 3px;
+            background: #ff3366;
+            box-shadow: 0 0 10px #ff3366;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: left 0.15s ease-out;
+            pointer-events: none;
+        }
+
+        .radio-magic-led {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #444;
+            transition: all 0.3s;
+        }
+
+        .radio-magic-led.locked {
+            background: #00ff88;
+            box-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88;
+        }
+
+        .radio-waveform-wrap {
+            width: 100%;
+            height: 48px;
+            margin: 14px 0 8px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 0 12px;
+        }
+
+        .radio-wave-bar {
+            width: 6px;
+            height: 10px;
+            background: #ff758c;
+            border-radius: 3px;
+            transition: height 0.1s;
+        }
+
+        .radio-controls-grid {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            gap: 12px;
+        }
+
+        .radio-knob-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .radio-tuning-knob {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #8a573e, #4a291b);
+            border: 3px solid #d4af37;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s;
+        }
+
+        .radio-tuning-knob::after {
+            content: '';
+            width: 6px;
+            height: 18px;
+            background: #ffd700;
+            border-radius: 3px;
+            margin-top: -16px;
+        }
+
+        /* ========================================================
+           VIEW 26: 🎬 RẠP CHIẾU PHIM SÂN THƯỢNG (ROOFTOP CINEMA)
+        ======================================================== */
+        #view-cinema {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 75px 16px 115px;
+            background: radial-gradient(circle at center, #1b203a 0%, #0a0d17 70%, #030408 100%);
+        }
+
+        .cinema-fairy-lights {
+            position: absolute;
+            top: 65px;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            display: flex;
+            justify-content: space-around;
+            pointer-events: none;
+            z-index: 12;
+        }
+
+        .fairy-bulb {
+            width: 12px;
+            height: 16px;
+            border-radius: 50% 50% 35% 35%;
+            background: #ffd166;
+            box-shadow: 0 0 12px #ffd166, 0 0 20px #ffb703;
+            animation: bulbFlicker 2.5s infinite ease-in-out alternate;
+        }
+
+        @keyframes bulbFlicker {
+            0%, 100% { opacity: 0.9; transform: scale(1); }
+            50% { opacity: 0.55; transform: scale(0.92); }
+        }
+
+        .cinema-screen-wall {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            height: 250px;
+            background: #0f1422;
+            border-radius: 18px;
+            border: 4px solid #fff;
+            box-shadow: 0 0 45px rgba(255, 209, 102, 0.25), 0 20px 50px rgba(0,0,0,0.8);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .cinema-film-slide {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s;
+        }
+
+        .cinema-slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+            padding: 20px 14px 10px;
+            color: #fff;
+            text-align: center;
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .cinema-projector-deck {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            margin-top: 18px;
+            background: #1e172a;
+            border-radius: 20px;
+            padding: 14px 18px;
+            border: 2px solid #473269;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+        .projector-reels-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .projector-reel {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px dashed #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffd700;
+            font-size: 14px;
+        }
+
+        .projector-reel.spinning {
+            animation: spinVinyl 2s infinite linear;
+        }
+
+        /* ========================================================
+           VIEW 27: 🍫 HỘP SOCOLA VALENTINE 6 VỊ (CHOCOLATE BOX)
+        ======================================================== */
+        #view-chocolate {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 75px 16px 115px;
+            background: radial-gradient(circle at center, #38141e 0%, #1a080d 70%, #080204 100%);
+        }
+
+        .chocolate-heart-box {
+            position: relative;
+            width: 100%;
+            max-width: 390px;
+            background: linear-gradient(135deg, #a61c38, #6a0d20);
+            border-radius: 36px;
+            padding: 22px 16px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), inset 0 0 25px rgba(255,215,0,0.3);
+            border: 3px solid #ffd700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .chocolate-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            width: 100%;
+            margin: 14px 0;
+        }
+
+        .bonbon-card {
+            background: #fffdfa;
+            border-radius: 18px;
+            padding: 12px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+            border: 2px solid #f3e5d8;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .bonbon-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 24px rgba(255, 75, 114, 0.35);
+            border-color: #ff4b72;
+        }
+
+        .bonbon-card.opened {
+            background: #ffe4eb;
+            border-color: #d81b60;
+        }
+
+        .bonbon-icon {
+            font-size: 34px;
+            margin-bottom: 4px;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+        }
+
+        .bonbon-name {
+            font-size: 11px;
+            font-family: 'Mali', cursive;
+            font-weight: 700;
+            color: #4a2835;
+        }
+
+        /* ========================================================
+           VIEW 28: 🔭 KÍNH THIÊN VĂN SOI MƯA SAO BĂNG (TELESCOPE)
+        ======================================================== */
+        #view-telescope {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 75px 16px 115px;
+            background: radial-gradient(circle at center, #0a1128 0%, #03071e 70%, #000208 100%);
+        }
+
+        .telescope-viewfinder {
+            position: relative;
+            width: 310px;
+            height: 310px;
+            border-radius: 50%;
+            border: 8px solid #c9933b;
+            box-shadow: 0 0 45px rgba(201, 147, 59, 0.4), inset 0 0 30px rgba(0,0,0,0.9), 0 25px 60px rgba(0,0,0,0.9);
+            overflow: hidden;
+            cursor: grab;
+            z-index: 10;
+        }
+
+        .telescope-viewfinder:active {
+            cursor: grabbing;
+        }
+
+        #telescopeSkyCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .crosshair-h {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(201, 147, 59, 0.45);
+            pointer-events: none;
+        }
+
+        .crosshair-v {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: rgba(201, 147, 59, 0.45);
+            pointer-events: none;
+        }
+
+        /* ========================================================
+           VIEW 29: 🔮 BỘ BÀI TAROT TÌNH YÊU ĐỊNH MỆNH (TAROT DECK)
+        ======================================================== */
+        #view-tarot {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 75px 16px 115px;
+            background: radial-gradient(circle at center, #23122c 0%, #0f0514 70%, #050107 100%);
+        }
+
+        .tarot-cloth-board {
+            position: relative;
+            width: 100%;
+            max-width: 410px;
+            background: #1f1127;
+            border-radius: 28px;
+            padding: 22px 14px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), inset 0 0 35px rgba(168, 85, 247, 0.2);
+            border: 3px solid #7c3aed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .tarot-cards-spread {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            width: 100%;
+            margin: 16px 0;
+            perspective: 800px;
+        }
+
+        .tarot-card {
+            position: relative;
+            height: 135px;
+            border-radius: 12px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .tarot-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .tarot-card-front, .tarot-card-back {
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .tarot-card-back {
+            background: linear-gradient(135deg, #4c1d95, #2e1065);
+            border: 2px solid #ffd700;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+            color: #ffd700;
+            font-size: 26px;
+        }
+
+        .tarot-card-front {
+            background: #fffbf5;
+            border: 2px solid #7c3aed;
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+            transform: rotateY(180deg);
+        }
+
+        .tarot-symbol {
+            font-size: 32px;
+            margin-bottom: 4px;
+        }
+
+        .tarot-title {
+            font-size: 11px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #581c87;
+        }
+
+        /* ========================================================
+           VIEW 30: 🌱 KHU VƯỜN NUÔI CÂY TÌNH YÊU (VIRTUAL LOVE BONSAI)
+        ======================================================== */
+        #view-bonsai {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 75px 16px 115px;
+            background: radial-gradient(circle at center, #132a1f 0%, #07150e 70%, #020704 100%);
+        }
+
+        .bonsai-garden-deck {
+            position: relative;
+            width: 100%;
+            max-width: 390px;
+            background: #11261b;
+            border-radius: 28px;
+            padding: 22px 18px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), inset 0 0 25px rgba(74, 222, 128, 0.2);
+            border: 3px solid #22c55e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .bonsai-tree-stage {
+            position: relative;
+            width: 220px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            margin: 10px 0;
+        }
+
+        .bonsai-pot {
+            position: relative;
+            width: 140px;
+            height: 50px;
+            background: linear-gradient(180deg, #d97706, #92400e);
+            border-radius: 6px 6px 20px 20px;
+            border: 3px solid #fde047;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .bonsai-soil {
+            width: 90%;
+            height: 10px;
+            background: #38220f;
+            border-radius: 5px;
+            margin-top: 3px;
+        }
+
+        .bonsai-plant-display {
+            font-size: 75px;
+            margin-bottom: -15px;
+            filter: drop-shadow(0 0 18px rgba(74, 222, 128, 0.8));
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .bonsai-care-actions {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .btn-bonsai-care {
+            flex: 1;
+            padding: 10px 4px;
+            border-radius: 16px;
+            border: none;
+            font-family: 'Mali', cursive;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            transition: transform 0.2s;
+        }
+
+        .btn-bonsai-care:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+
     </style>
 </head>
 <body>
@@ -3532,7 +4151,7 @@
                 <span>🏠</span> Về Hub
             </button>
             <button class="btn-grid-menu" id="btnOpenGridMenu">
-                <span>🗂️</span> 24 Món Quà
+                <span>🗂️</span> 30 Món Quà
             </button>
         </div>
         <div class="top-right-actions">
@@ -3907,6 +4526,96 @@
                 </div>
                 <button class="card-btn">
                     <span>Hạ kim nghe đĩa</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 25: Đài Radio Đêm Muộn FM 30.6 -->
+            <div class="gift-card" data-target="view-radio" data-song="panbap_audio.mp3" data-title="Lofi Romance">
+                <div>
+                    <span class="card-header-badge" style="background:#fef3c7; color:#b45309;">📻 Chill Đêm Muộn</span>
+                    <div class="card-icon-wrap">🎙️</div>
+                    <h2 class="card-title">Đài Radio Đêm Muộn FM 30.6</h2>
+                    <p class="card-desc">
+                        Vặn núm rà đài về tần số ngày kỷ niệm 30.6 MHz để lắng nghe những lời thì thầm ngọt ngào giữa đêm khuya.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Dò sóng radio</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 26: Rạp Chiếu Phim Sân Thượng Rooftop -->
+            <div class="gift-card" data-target="view-cinema" data-song="flower_shop_song.mp3" data-title="Là Người Con Gái...">
+                <div>
+                    <span class="card-header-badge" style="background:#e0e7ff; color:#4338ca;">🎬 Rooftop Cinema</span>
+                    <div class="card-icon-wrap">🎞️</div>
+                    <h2 class="card-title">Rạp Chiếu Phim Sân Thượng</h2>
+                    <p class="card-desc">
+                        Góc sân thượng ngập ánh đèn fairy lights, bật máy chiếu phim mini thưởng thức cuộn phim kỷ niệm của hai đứa.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Bật máy chiếu phim</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 27: Hộp Socola Valentine 6 Vị Đặc Quyền -->
+            <div class="gift-card" data-target="view-chocolate" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix">
+                <div>
+                    <span class="card-header-badge" style="background:#ffe4e6; color:#e11d48;">🍫 Sweet Valentine</span>
+                    <div class="card-icon-wrap">🍬</div>
+                    <h2 class="card-title">Hộp Socola Valentine 6 Vị</h2>
+                    <p class="card-desc">
+                        Mở nắp hộp quà nhung đỏ, cắn viên socola bonbon nghệ thuật giòn rụm để mở ra những phiếu đặc quyền yêu thương.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Mở hộp socola</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 28: Kính Thiên Văn Soi Mưa Sao Băng -->
+            <div class="gift-card" data-target="view-telescope" data-song="thousand_years_song.mp3" data-title="A Thousand Years">
+                <div>
+                    <span class="card-header-badge" style="background:#e0f2fe; color:#0284c7;">🔭 Bầu Trời Sao Băng</span>
+                    <div class="card-icon-wrap">🌠</div>
+                    <h2 class="card-title">Kính Thiên Văn Soi Sao Băng</h2>
+                    <p class="card-desc">
+                        Rê ống kính thiên văn nối liền 2 chòm sao của hai đứa, kích hoạt mưa sao băng rực rỡ và hứng điều ước may mắn.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Ngắm sao băng</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 29: Bộ Bài Tarot Tình Yêu Định Mệnh -->
+            <div class="gift-card" data-target="view-tarot" data-song="spirograph_heart_song.mp3" data-title="Piano Romance">
+                <div>
+                    <span class="card-header-badge" style="background:#f3e8ff; color:#7e22ce;">🔮 Tarot Định Mệnh</span>
+                    <div class="card-icon-wrap">🃏</div>
+                    <h2 class="card-title">Bộ Bài Tarot Tình Yêu</h2>
+                    <p class="card-desc">
+                        Rút 1 lá bài Tarot viền vàng ánh kim lật mở 3D để giải mã thông điệp duyên phận ngọt ngào dành riêng cho hôm nay.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Rút bài tarot</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 30: Khu Vườn Nuôi Cây Tình Yêu -->
+            <div class="gift-card" data-target="view-bonsai" data-song="cupid_cake_song.mp3" data-title="Love Story">
+                <div>
+                    <span class="card-header-badge" style="background:#dcfce7; color:#15803d;">🌱 Mầm Cây Hạnh Phúc</span>
+                    <div class="card-icon-wrap">🌳</div>
+                    <h2 class="card-title">Khu Vườn Nuôi Cây Tình Yêu</h2>
+                    <p class="card-desc">
+                        Tưới nước, sưởi nắng, hát cho cây nghe để hạt mầm tình yêu lớn dần, nở hoa rực rỡ và hái trái tim điều ước.
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Chăm sóc cây mầm</span> ➔
                 </button>
             </div>
 
@@ -4825,19 +5534,215 @@
         </div>
     </section>
 
-<!-- Fullscreen Grid Menu Modal (Bản Đồ 24 Món Quà) -->
+    <!-- ========================================================
+       VIEW 25: 📻 ĐÀI RADIO ĐÊM MUỘN FM 30.6 (LATE NIGHT RADIO)
+    ======================================================== -->
+    <section class="app-view" id="view-radio">
+        <div class="radio-cabinet">
+            <div class="radio-antenna"></div>
+            <div class="scratch-header-badge" style="background:#5e3626; color:#fde68a; border-color:#d4af37;">✦ LATE NIGHT LOVE RADIO ✦</div>
+            <h2 class="scratch-card-title" style="color:#fff; margin-bottom:2px;">Đài Radio Đêm Muộn FM 30.6</h2>
+            <p class="scratch-card-subtitle" style="color:#ffd1dc; margin-bottom:12px;">Dò sóng về 30.6 MHz để nghe lời thì thầm của chồng ♡</p>
+
+            <div class="radio-dial-glass">
+                <div class="radio-freq-scale">
+                    <span>88</span>
+                    <span>94</span>
+                    <span>100</span>
+                    <span style="color:#ff3366; font-weight:900;">30.6 MHz</span>
+                    <span>104</span>
+                    <span>108</span>
+                </div>
+                <div class="radio-needle" id="radioNeedle"></div>
+                <div class="radio-magic-led" id="radioLed"></div>
+            </div>
+
+            <div class="radio-waveform-wrap" id="radioWaveform">
+                <!-- dynamic wave bars -->
+            </div>
+
+            <div style="width:100%; text-align:center; font-family:'Mali', cursive; font-size:13px; color:#fef3c7; min-height:42px;" id="radioBroadcastMsg">
+                ♫ Đang dò sóng radio... (Hãy vặn núm rà đài ở dưới)
+            </div>
+
+            <div class="radio-controls-grid">
+                <div class="radio-knob-box">
+                    <span style="font-size:11px; color:#d4af37; font-family:'Mali'; font-weight:bold;">Tần số FM</span>
+                    <div class="radio-tuning-knob" id="radioTuningKnob" title="Vặn rà đài"></div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:6px; flex:1; margin-left:14px;">
+                    <button class="btn-action-primary" id="btnRadioPreset306" style="padding:8px 16px; font-size:12px; background:linear-gradient(135deg, #d97706, #b45309);">
+                        <span>📻</span> Khóa Sóng 30.6 MHz
+                    </button>
+                    <button class="btn-scratch-switch" id="btnEditRadioMsg" style="padding:6px 14px; font-size:11px; border-color:#d4af37; color:#fef3c7; background:rgba(212,175,55,0.15);">
+                        <span>✏️</span> Sửa Lời Thì Thầm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 26: 🎬 RẠP CHIẾU PHIM SÂN THƯỢNG (ROOFTOP CINEMA)
+    ======================================================== -->
+    <section class="app-view" id="view-cinema">
+        <div class="cinema-fairy-lights">
+            <div class="fairy-bulb"></div>
+            <div class="fairy-bulb" style="animation-delay:0.4s;"></div>
+            <div class="fairy-bulb" style="animation-delay:0.8s;"></div>
+            <div class="fairy-bulb" style="animation-delay:1.2s;"></div>
+            <div class="fairy-bulb" style="animation-delay:1.6s;"></div>
+            <div class="fairy-bulb" style="animation-delay:2.0s;"></div>
+        </div>
+
+        <div class="firefly-jar-card">
+            <div class="scratch-header-badge" style="background:rgba(255,209,102,0.2); color:#ffd166; border-color:#ffd166;">✦ ROOFTOP MOVIE NIGHT ✦</div>
+            <h2 class="scratch-card-title" style="color:#fff; margin-bottom:2px;">Rạp Chiếu Phim Sân Thượng Của Hai Đứa</h2>
+            <p class="scratch-card-subtitle" style="color:#e2e8f0; margin-bottom:12px;">Ngắm cuộn phim kỷ niệm dưới bầu trời ngàn sao lấp lánh ♡</p>
+
+            <div class="cinema-screen-wall">
+                <img src="memory_photo1.png" alt="Phim kỷ niệm" class="cinema-film-slide" id="cinemaSlideImg">
+                <div class="cinema-slide-caption" id="cinemaSlideCaption">
+                    Cuộn phim 1: Ngày đầu tiên gặp gỡ công chúa nhỏ ♡
+                </div>
+            </div>
+
+            <div class="cinema-projector-deck">
+                <div class="projector-reels-wrap">
+                    <div class="projector-reel spinning" id="cinemaReel1">✦</div>
+                    <div class="projector-reel spinning" id="cinemaReel2" style="animation-duration:1.5s;">✦</div>
+                    <span style="font-size:11px; font-family:'Mali'; color:#ffd166; font-weight:bold;">Máy chiếu 35mm</span>
+                </div>
+
+                <div style="display:flex; gap:8px;">
+                    <button class="btn-action-primary" id="btnNextCinemaSlide" style="padding:8px 16px; font-size:12px; margin:0;">
+                        <span>🎞️</span> Đổi Phim
+                    </button>
+                    <button class="btn-scratch-switch" id="btnEditCinemaCaption" style="padding:6px 12px; font-size:11px; border-color:#ffd166; color:#ffd166; background:rgba(255,209,102,0.15); margin:0;">
+                        <span>✏️</span> Sửa Lời
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 27: 🍫 HỘP SOCOLA VALENTINE 6 VỊ (CHOCOLATE BOX)
+    ======================================================== -->
+    <section class="app-view" id="view-chocolate">
+        <div class="chocolate-heart-box">
+            <div class="scratch-header-badge" style="background:#590d1a; color:#ffd700; border-color:#ffd700;">✦ VALENTINE CHOCOLATE BOX ✦</div>
+            <h2 class="scratch-card-title" style="color:#fff; margin-bottom:2px;">Hộp Socola Valentine 6 Vị Đặc Quyền</h2>
+            <p class="scratch-card-subtitle" style="color:#fbcfe8; margin-bottom:10px;">Chạm vào từng viên socola để bẻ đôi & nhận đặc quyền chiều chuộng!</p>
+
+            <div class="chocolate-grid" id="chocolateGrid">
+                <!-- 6 bonbons rendered dynamically -->
+            </div>
+
+            <button class="btn-action-primary" id="btnResetChocolates" style="margin-top:6px; background:linear-gradient(135deg, #d97706, #b45309);">
+                <span>🔄</span> Đóng Nắp & Tái Sinh Hộp Socola
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 28: 🔭 KÍNH THIÊN VĂN SOI MƯA SAO BĂNG (TELESCOPE)
+    ======================================================== -->
+    <section class="app-view" id="view-telescope">
+        <div class="firefly-jar-card">
+            <div class="scratch-header-badge" style="background:rgba(201,147,59,0.2); color:#ffd700; border-color:#c9933b;">✦ CELESTIAL STARRY SKY ✦</div>
+            <h2 class="scratch-card-title" style="color:#fff; margin-bottom:2px;">Kính Thiên Văn Soi Mưa Sao Băng</h2>
+            <p class="scratch-card-subtitle" style="color:#93c5fd; margin-bottom:12px;">Rê kính thiên văn tìm 2 chòm sao để kích hoạt mưa sao băng ♡</p>
+
+            <div class="telescope-viewfinder" id="telescopeViewfinder">
+                <canvas id="telescopeSkyCanvas"></canvas>
+                <div class="crosshair-h"></div>
+                <div class="crosshair-v"></div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:14px; z-index:20;">
+                <button class="btn-action-primary" id="btnTriggerMeteorShower" style="background:linear-gradient(135deg, #2563eb, #1d4ed8);">
+                    <span>🌠</span> Bắn Mưa Sao Băng Tình Yêu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 29: 🔮 BỘ BÀI TAROT TÌNH YÊU ĐỊNH MỆNH (TAROT DECK)
+    ======================================================== -->
+    <section class="app-view" id="view-tarot">
+        <div class="tarot-cloth-board">
+            <div class="scratch-header-badge" style="background:#3b145a; color:#c084fc; border-color:#a855f7;">✦ MYSTICAL LOVE TAROT ✦</div>
+            <h2 class="scratch-card-title" style="color:#fff; margin-bottom:2px;">Bộ Bài Tarot Tình Yêu Định Mệnh</h2>
+            <p class="scratch-card-subtitle" style="color:#e9d5ff; margin-bottom:8px;">Hít thở sâu & chọn 1 lá bài định mệnh của công chúa hôm nay ♡</p>
+
+            <div class="tarot-cards-spread" id="tarotCardsSpread">
+                <!-- 6 tarot cards rendered dynamically -->
+            </div>
+
+            <button class="btn-action-primary" id="btnShuffleTarot" style="background:linear-gradient(135deg, #7c3aed, #581c87);">
+                <span>🔀</span> Xào Bài & Rút Lại
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================================
+       VIEW 30: 🌱 KHU VƯỜN NUÔI CÂY TÌNH YÊU (VIRTUAL LOVE BONSAI)
+    ======================================================== -->
+    <section class="app-view" id="view-bonsai">
+        <div class="bonsai-garden-deck">
+            <div class="scratch-header-badge" style="background:#064e3b; color:#86efac; border-color:#22c55e;">✦ VIRTUAL LOVE BONSAI ✦</div>
+            <h2 class="scratch-card-title" style="color:#fff; margin-bottom:2px;">Cây Mầm Tình Yêu Của Hai Đứa</h2>
+            <p class="scratch-card-subtitle" style="color:#bbf7d0; margin-bottom:8px;">Cùng chăm sóc để cây mầm nở hoa trái tim rực rỡ nhé!</p>
+
+            <div class="bonsai-tree-stage">
+                <div class="bonsai-plant-display" id="bonsaiPlantEmoji">🌱</div>
+                <div class="bonsai-pot">
+                    <div class="bonsai-soil"></div>
+                </div>
+            </div>
+
+            <div style="font-family:'Mali', cursive; font-size:13px; color:#fef08a; margin:6px 0; text-align:center;" id="bonsaiLevelText">
+                Cấp độ 1: Mầm non mới nhú (Cần tình thương để lớn)
+            </div>
+
+            <div class="bonsai-care-actions">
+                <button class="btn-bonsai-care" id="btnBonsaiWater" style="background:#0284c7;">
+                    <span style="font-size:18px;">💧</span>
+                    <span>Tưới Nước</span>
+                </button>
+                <button class="btn-bonsai-care" id="btnBonsaiSun" style="background:#ea580c;">
+                    <span style="font-size:18px;">☀️</span>
+                    <span>Sưởi Nắng</span>
+                </button>
+                <button class="btn-bonsai-care" id="btnBonsaiSing" style="background:#db2777;">
+                    <span style="font-size:18px;">🎵</span>
+                    <span>Hát Cho Cây</span>
+                </button>
+                <button class="btn-bonsai-care" id="btnBonsaiHarvest" style="background:#16a34a;">
+                    <span style="font-size:18px;">💖</span>
+                    <span>Hái Quả Tim</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+<!-- Fullscreen Grid Menu Modal (Bản Đồ 30 Món Quà) -->
     <div class="grid-modal-overlay" id="gridMenuModal">
         <div class="grid-modal-content">
             <div class="grid-modal-header">
                 <div>
-                    <h2 class="grid-modal-title">✦ Vương Quốc 24 Món Quà ✦</h2>
+                    <h2 class="grid-modal-title">✦ Vương Quốc 30 Món Quà ✦</h2>
                     <p class="grid-modal-sub">Chạm vào bất kỳ món quà nào để khám phá ngay ♡</p>
                 </div>
                 <button id="btnCloseGridMenu" style="background:#ffe4eb; border:none; border-radius:50%; width:36px; height:36px; font-size:18px; color:#d81b60; cursor:pointer;">✕</button>
             </div>
 
             <div class="grid-tabs-bar">
-                <button class="grid-tab-btn active" data-cat="all">Tất Cả (24)</button>
+                <button class="grid-tab-btn active" data-cat="all">Tất Cả (30)</button>
+                <button class="grid-tab-btn" data-cat="chill">☕ Hẹn Hò & Chill (6)</button>
                 <button class="grid-tab-btn" data-cat="trend">🔥 Hot Trend (6)</button>
                 <button class="grid-tab-btn" data-cat="games">🎮 Game & Quà (6)</button>
                 <button class="grid-tab-btn" data-cat="flowers">🌸 Vườn Hoa (4)</button>
@@ -4845,7 +5750,7 @@
             </div>
 
             <div class="grid-items-container" id="gridItemsContainer">
-                <!-- 24 Project Cards dynamically rendered -->
+                <!-- 30 Project Cards dynamically rendered -->
             </div>
         </div>
     </div>
@@ -4998,6 +5903,36 @@
             <div class="dock-label">Đĩa Than</div>
             <div class="dock-indicator"></div>
         </div>
+        <div class="dock-item" data-target="view-radio" data-song="panbap_audio.mp3" data-title="Lofi Romance" title="Đài Radio Đêm Muộn FM 30.6">
+            <div class="dock-icon">📻</div>
+            <div class="dock-label">Radio</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-cinema" data-song="flower_shop_song.mp3" data-title="Là Người Con Gái..." title="Rạp Chiếu Phim Sân Thượng">
+            <div class="dock-icon">🎬</div>
+            <div class="dock-label">Rạp Phim</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-chocolate" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix" title="Hộp Socola Valentine">
+            <div class="dock-icon">🍫</div>
+            <div class="dock-label">Socola</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-telescope" data-song="thousand_years_song.mp3" data-title="A Thousand Years" title="Kính Thiên Văn Sao Băng">
+            <div class="dock-icon">🔭</div>
+            <div class="dock-label">Kính Sao</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-tarot" data-song="spirograph_heart_song.mp3" data-title="Piano Romance" title="Bộ Bài Tarot Tình Yêu">
+            <div class="dock-icon">🔮</div>
+            <div class="dock-label">Bài Tarot</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-bonsai" data-song="cupid_cake_song.mp3" data-title="Love Story" title="Khu Vườn Cây Tình Yêu">
+            <div class="dock-icon">🌱</div>
+            <div class="dock-label">Cây Yêu</div>
+            <div class="dock-indicator"></div>
+        </div>
 
 
     </nav>
@@ -5110,6 +6045,10 @@
             if (targetViewId === 'view-boba' && typeof resetBobaMaker === 'function') resetBobaMaker();
             if (targetViewId === 'view-waxletter' && typeof resetWaxLetter === 'function') resetWaxLetter();
             if (targetViewId !== 'view-vinyl' && typeof stopVinylPlayer === 'function') stopVinylPlayer();
+            if (targetViewId === 'view-radio' && typeof resetRadioView === 'function') resetRadioView();
+            if (targetViewId === 'view-telescope' && typeof resizeTelescopeSky === 'function') resizeTelescopeSky();
+            if (targetViewId === 'view-tarot' && typeof initTarotCards === 'function') initTarotCards();
+            if (targetViewId === 'view-chocolate' && typeof initChocolateBonbons === 'function') initChocolateBonbons();
 
             // Reset Escape Quiz View
             if (typeof resetEscapeQuiz === 'function') {
@@ -6820,7 +7759,7 @@
 
         
         // ==========================================
-        // 19. GRID MODAL MENU (BẢN ĐỒ 24 MÓN QUÀ)
+        // 19. GRID MODAL MENU (BẢN ĐỒ 30 MÓN QUÀ)
         // ==========================================
         const allProjectsData = [
             { id: "view-tiem-hoa", name: "Tiệm Hoa Bé Iu", icon: "🌸", cat: "flowers", song: "flower_shop_song.mp3", title: "Tiệm Hoa Bé Iu" },
@@ -6846,7 +7785,13 @@
             { id: "view-foggy", name: "Lau Kính Sương Mù", icon: "🌫️", cat: "trend", song: "thousand_years_song.mp3", title: "A Thousand Years" },
             { id: "view-boba", name: "Tiệm Trà Sữa Tình Yêu", icon: "🧋", cat: "trend", song: "cho_chut_remix.mp3", title: "Chờ Chút Thôi Remix" },
             { id: "view-waxletter", name: "Thư Niêm Phong Sáp", icon: "📜", cat: "trend", song: "panbap_audio.mp3", title: "Lofi Romance" },
-            { id: "view-vinyl", name: "Mâm Đĩa Than Cổ Điển", icon: "📀", cat: "trend", song: "spirograph_heart_song.mp3", title: "Piano Romance" }
+            { id: "view-vinyl", name: "Mâm Đĩa Than Cổ Điển", icon: "📀", cat: "trend", song: "spirograph_heart_song.mp3", title: "Piano Romance" },
+            { id: "view-radio", name: "Đài Radio FM 30.6", icon: "📻", cat: "chill", song: "panbap_audio.mp3", title: "Lofi Romance" },
+            { id: "view-cinema", name: "Rạp Phim Rooftop", icon: "🎬", cat: "chill", song: "flower_shop_song.mp3", title: "Là Người Con Gái..." },
+            { id: "view-chocolate", name: "Hộp Socola 6 Vị", icon: "🍫", cat: "chill", song: "cho_chut_remix.mp3", title: "Chờ Chút Thôi Remix" },
+            { id: "view-telescope", name: "Kính Thiên Văn Sao Băng", icon: "🔭", cat: "chill", song: "thousand_years_song.mp3", title: "A Thousand Years" },
+            { id: "view-tarot", name: "Bộ Bài Tarot Tình Yêu", icon: "🔮", cat: "chill", song: "spirograph_heart_song.mp3", title: "Piano Romance" },
+            { id: "view-bonsai", name: "Cây Mầm Tình Yêu", icon: "🌱", cat: "chill", song: "cupid_cake_song.mp3", title: "Love Story" }
         ];
 
         const gridMenuModal = document.getElementById('gridMenuModal');
@@ -8102,6 +9047,474 @@
         if (vinylTonearm) vinylTonearm.addEventListener('click', toggleVinylPlayer);
         if (vinylRecord) vinylRecord.addEventListener('click', toggleVinylPlayer);
 
+        // ==========================================
+        // 31. VIEW 25: ĐÀI RADIO ĐÊM MUỘN FM 30.6 (LATE NIGHT RADIO)
+        // ==========================================
+        const radioNeedle = document.getElementById('radioNeedle');
+        const radioLed = document.getElementById('radioLed');
+        const radioWaveform = document.getElementById('radioWaveform');
+        const radioBroadcastMsg = document.getElementById('radioBroadcastMsg');
+        const radioTuningKnob = document.getElementById('radioTuningKnob');
+        const btnRadioPreset306 = document.getElementById('btnRadioPreset306');
+        const btnEditRadioMsg = document.getElementById('btnEditRadioMsg');
+
+        let radioFreqPos = 20; // 0 to 100 percentage
+        let isRadioTuned = false;
+        let radioKnobAngle = 0;
+        let radioWaveTimer = null;
+
+        let radioCustomWhisper = "Đêm nay trời nhiều sao lắm vợ nhỉ... Cảm ơn em vì đã luôn ở bên anh, thấu hiểu và sưởi ấm trái tim anh. Chúc công chúa ngủ thật ngon và mơ về anh nhé! Cố lên vợ iuu , chồng yêu em ❤️";
+        try {
+            const savedWhisper = localStorage.getItem('radioCustomWhisper');
+            if (savedWhisper) radioCustomWhisper = savedWhisper;
+        } catch(e) {}
+
+        function initRadioWaveform() {
+            if (!radioWaveform) return;
+            radioWaveform.innerHTML = '';
+            for (let i = 0; i < 24; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'radio-wave-bar';
+                radioWaveform.appendChild(bar);
+            }
+        }
+        initRadioWaveform();
+
+        function animateRadioWave(isActive) {
+            const bars = document.querySelectorAll('.radio-wave-bar');
+            bars.forEach((b, i) => {
+                if (isActive) {
+                    const h = Math.sin(Date.now() * 0.008 + i * 0.4) * 16 + 20;
+                    b.style.height = Math.max(6, h) + 'px';
+                    b.style.background = '#00ff88';
+                } else {
+                    b.style.height = (Math.random() * 8 + 4) + 'px';
+                    b.style.background = '#64748b';
+                }
+            });
+        }
+
+        function checkRadioTune() {
+            // 30.6 MHz is tuned around 58%
+            const target = 58;
+            const diff = Math.abs(radioFreqPos - target);
+
+            if (diff < 3.5) {
+                if (!isRadioTuned) {
+                    isRadioTuned = true;
+                    if (radioLed) radioLed.classList.add('locked');
+                    playStoreChime();
+                    triggerCupidConfetti();
+                    ensureAudioPlaying();
+                    if (radioBroadcastMsg) {
+                        radioBroadcastMsg.innerHTML = `<span style="color:#00ff88; font-weight:bold;">✦ ĐÃ KHÓA SÓNG FM 30.6 MHz ✦</span><br>${radioCustomWhisper}`;
+                    }
+                    if (!radioWaveTimer) {
+                        radioWaveTimer = setInterval(() => animateRadioWave(true), 80);
+                    }
+                }
+            } else {
+                if (isRadioTuned) {
+                    isRadioTuned = false;
+                    if (radioLed) radioLed.classList.remove('locked');
+                    if (radioBroadcastMsg) {
+                        radioBroadcastMsg.innerHTML = '♫ Đang dò sóng radio... (Hãy vặn núm rà đài ở dưới)';
+                    }
+                    if (radioWaveTimer) {
+                        clearInterval(radioWaveTimer);
+                        radioWaveTimer = null;
+                        animateRadioWave(false);
+                    }
+                }
+            }
+        }
+
+        function setRadioPos(pos) {
+            radioFreqPos = Math.max(5, Math.min(95, pos));
+            if (radioNeedle) radioNeedle.style.left = radioFreqPos + '%';
+            checkRadioTune();
+        }
+
+        function resetRadioView() {
+            setRadioPos(58); // default to 30.6 MHz directly for instant sweet experience!
+        }
+
+        if (radioTuningKnob) {
+            radioTuningKnob.addEventListener('click', () => {
+                radioKnobAngle = (radioKnobAngle + 35) % 360;
+                radioTuningKnob.style.transform = `rotate(${radioKnobAngle}deg)`;
+                playChimeTone(450 + Math.random() * 300, 0.05);
+                setRadioPos((radioFreqPos + 8) % 95 + 5);
+            });
+        }
+
+        if (btnRadioPreset306) {
+            btnRadioPreset306.addEventListener('click', () => {
+                setRadioPos(58);
+                playChimeTone(880, 0.2);
+            });
+        }
+
+        if (btnEditRadioMsg) {
+            btnEditRadioMsg.addEventListener('click', () => {
+                const newMsg = prompt("Nhập lời thì thầm Radio đêm muộn gửi vợ:", radioCustomWhisper);
+                if (newMsg && newMsg.trim().length > 0) {
+                    radioCustomWhisper = newMsg.trim();
+                    localStorage.setItem('radioCustomWhisper', radioCustomWhisper);
+                    if (isRadioTuned && radioBroadcastMsg) {
+                        radioBroadcastMsg.innerHTML = `<span style="color:#00ff88; font-weight:bold;">✦ ĐÃ KHÓA SÓNG FM 30.6 MHz ✦</span><br>${radioCustomWhisper}`;
+                    }
+                    openModal("Đã Cập Nhật Đài Radio! 📻", "FM 30.6 MHz", "Lời thì thầm yêu thương mới đã được phát sóng!");
+                }
+            });
+        }
+
+        // ==========================================
+        // 32. VIEW 26: RẠP CHIẾU PHIM SÂN THƯỢNG (ROOFTOP CINEMA)
+        // ==========================================
+        const cinemaSlideImg = document.getElementById('cinemaSlideImg');
+        const cinemaSlideCaption = document.getElementById('cinemaSlideCaption');
+        const btnNextCinemaSlide = document.getElementById('btnNextCinemaSlide');
+        const btnEditCinemaCaption = document.getElementById('btnEditCinemaCaption');
+
+        const cinemaSlides = [
+            { img: "memory_photo1.png", caption: "Cuộn phim 1: Ngày đầu tiên gặp gỡ công chúa nhỏ đáng yêu ♡" },
+            { img: "memory_photo2.png", caption: "Cuộn phim 2: Nụ cười rạng rỡ của em sưởi ấm cả thế giới của anh ✨" },
+            { img: "memory_photo3.png", caption: "Cuộn phim 3: Từng giây phút bình yên bên cạnh vợ là báu vật vô giá 💕" },
+            { img: "thiep_tang_vo.png", caption: "Cuộn phim 4: Cố lên vợ iuu , chồng yêu em nhiều nhất trần đời ❤️" }
+        ];
+
+        let cinemaSlideIdx = 0;
+
+        function updateCinemaSlide() {
+            const slide = cinemaSlides[cinemaSlideIdx];
+            if (cinemaSlideImg) {
+                cinemaSlideImg.style.opacity = '0';
+                setTimeout(() => {
+                    cinemaSlideImg.src = slide.img;
+                    cinemaSlideImg.style.opacity = '1';
+                }, 200);
+            }
+            if (cinemaSlideCaption) cinemaSlideCaption.textContent = slide.caption;
+        }
+
+        if (btnNextCinemaSlide) {
+            btnNextCinemaSlide.addEventListener('click', () => {
+                playChimeTone(180, 0.08);
+                setTimeout(() => playChimeTone(650, 0.1), 80);
+                cinemaSlideIdx = (cinemaSlideIdx + 1) % cinemaSlides.length;
+                updateCinemaSlide();
+            });
+        }
+
+        if (btnEditCinemaCaption) {
+            btnEditCinemaCaption.addEventListener('click', () => {
+                const current = cinemaSlides[cinemaSlideIdx].caption;
+                const newCap = prompt("Nhập phụ đề cho cuộn phim này:", current);
+                if (newCap && newCap.trim().length > 0) {
+                    cinemaSlides[cinemaSlideIdx].caption = newCap.trim();
+                    if (cinemaSlideCaption) cinemaSlideCaption.textContent = newCap.trim();
+                    openModal("Đã Lưu Cuộn Phim! 🎬", "Rạp Phim Sân Thượng", "Phụ đề mới đã được lưu thành công!");
+                }
+            });
+        }
+
+        // ==========================================
+        // 33. VIEW 27: HỘP SOCOLA VALENTINE 6 VỊ (CHOCOLATE BOX)
+        // ==========================================
+        const chocolateGrid = document.getElementById('chocolateGrid');
+        const btnResetChocolates = document.getElementById('btnResetChocolates');
+
+        const chocolateBonbons = [
+            { id: 'b1', icon: '🍓', name: 'Tim Dâu Ngọt Ngào', voucher: '100 Nụ Hôn Nồng Nàn Bất Kỳ Khi Nào Vợ Muốn! 💋' },
+            { id: 'b2', icon: '🍯', name: 'Caramel Muối', voucher: 'Ôm Ấp Chặt Không Buông Đến Khi Vợ Hết Dỗi! 🤗' },
+            { id: 'b3', icon: '🍵', name: 'Matcha Béo Ngậy', voucher: '1 Ngày Làm Công Chúa: Chồng Phục Vụ Tận Răng Từ A-Z! 👑' },
+            { id: 'b4', icon: '🌰', name: 'Hạnh Nhân Bùi', voucher: 'Massage Lưng & Bóp Vai Cực Phê Cho Vợ Yêu! 💆‍♀️' },
+            { id: 'b5', icon: '🍷', name: 'Truffle Rượu Vang', voucher: 'Đặc Quyền Dỗi Vô Cớ Mà Chồng Vẫn Phải Cưng Nựng! 🥺' },
+            { id: 'b6', icon: '✨', name: 'Ngọc Trai Trắng', voucher: '1 Điều Ước Tối Thượng: Chồng Thực Hiện Vô Điều Kiện! 🌟' }
+        ];
+
+        function initChocolateBonbons() {
+            if (!chocolateGrid) return;
+            chocolateGrid.innerHTML = '';
+            chocolateBonbons.forEach((b) => {
+                const card = document.createElement('div');
+                card.className = 'bonbon-card';
+                card.innerHTML = `
+                    <div class="bonbon-icon">${b.icon}</div>
+                    <div class="bonbon-name">${b.name}</div>
+                `;
+                card.addEventListener('click', () => {
+                    playChimeTone(950, 0.08);
+                    setTimeout(() => playStoreChime(), 100);
+                    card.classList.add('opened');
+                    triggerCupidConfetti();
+                    openModal(
+                        "🍫 BẺ ĐÔI SOCOLA NHẬN ĐẶC QUYỀN! " + b.icon,
+                        b.name,
+                        `Công chúa đã thưởng thức viên socola <strong>${b.name}</strong>!<br><br>🎁 <strong>PHIẾU ĐẶC QUYỀN:</strong><br><span style="color:#d81b60; font-family:Mali; font-size:15px; font-weight:700;">${b.voucher}</span><br><br><em>Chồng xin thực hiện ngay vô điều kiện! Cố lên vợ iuu , chồng yêu em ❤️</em>`
+                    );
+                });
+                chocolateGrid.appendChild(card);
+            });
+        }
+        initChocolateBonbons();
+
+        if (btnResetChocolates) {
+            btnResetChocolates.addEventListener('click', () => {
+                playChimeTone(600, 0.15);
+                initChocolateBonbons();
+                openModal("Hộp Socola Đã Tươi Mới! ✨", "Sẵn Sàng Thưởng Thức", "Cả 6 viên socola đặc quyền đã được làm mới để vợ khám phá!");
+            });
+        }
+
+        // ==========================================
+        // 34. VIEW 28: KÍNH THIÊN VĂN SOI MƯA SAO BĂNG (TELESCOPE)
+        // ==========================================
+        const telescopeSkyCanvas = document.getElementById('telescopeSkyCanvas');
+        const tsctx = telescopeSkyCanvas ? telescopeSkyCanvas.getContext('2d') : null;
+        let tsw = 310, tsh = 310;
+        const telescopeMeteors = [];
+        let isDraggingTelescope = false;
+        let telescopePanX = 0, telescopePanY = 0;
+
+        function resizeTelescopeSky() {
+            if (!telescopeSkyCanvas || !telescopeSkyCanvas.parentElement) return;
+            tsw = telescopeSkyCanvas.width = telescopeSkyCanvas.parentElement.clientWidth || 310;
+            tsh = telescopeSkyCanvas.height = telescopeSkyCanvas.parentElement.clientHeight || 310;
+        }
+
+        function spawnMeteorShower() {
+            playChimeTone(1200, 0.25);
+            triggerCupidConfetti();
+            for (let i = 0; i < 28; i++) {
+                setTimeout(() => {
+                    telescopeMeteors.push({
+                        x: Math.random() * tsw * 1.2 - 30,
+                        y: -20,
+                        len: Math.random() * 50 + 40,
+                        speed: Math.random() * 9 + 6,
+                        alpha: 1
+                    });
+                }, i * 90);
+            }
+        }
+
+        function animateTelescopeSky() {
+            if (document.getElementById('view-telescope') && document.getElementById('view-telescope').classList.contains('active') && tsctx) {
+                tsctx.clearRect(0, 0, tsw, tsh);
+
+                // Deep space gradient
+                const grad = tsctx.createRadialGradient(tsw/2, tsh/2, 20, tsw/2, tsh/2, tsw/2);
+                grad.addColorStop(0, '#101c42');
+                grad.addColorStop(1, '#020617');
+                tsctx.fillStyle = grad;
+                tsctx.fillRect(0, 0, tsw, tsh);
+
+                // Constellation Star 1: ANH
+                const star1X = tsw * 0.35 + telescopePanX;
+                const star1Y = tsh * 0.45 + telescopePanY;
+                // Constellation Star 2: EM
+                const star2X = tsw * 0.65 + telescopePanX;
+                const star2Y = tsh * 0.45 + telescopePanY;
+
+                // Connecting glowing celestial line
+                tsctx.save();
+                tsctx.strokeStyle = 'rgba(255, 105, 180, 0.8)';
+                tsctx.lineWidth = 2.5;
+                tsctx.setLineDash([5, 5]);
+                tsctx.beginPath();
+                tsctx.moveTo(star1X, star1Y);
+                tsctx.quadraticCurveTo((star1X+star2X)/2, star1Y - 40, star2X, star2Y);
+                tsctx.stroke();
+
+                // Draw Stars
+                [ {x: star1X, y: star1Y, label: 'Star Anh 💙'}, {x: star2X, y: star2Y, label: 'Star Em 💖'} ].forEach(s => {
+                    tsctx.fillStyle = '#ffd700';
+                    tsctx.shadowColor = '#ffd700';
+                    tsctx.shadowBlur = 15;
+                    tsctx.beginPath();
+                    tsctx.arc(s.x, s.y, 6, 0, Math.PI * 2);
+                    tsctx.fill();
+
+                    tsctx.fillStyle = '#fff';
+                    tsctx.font = '10px Mali';
+                    tsctx.textAlign = 'center';
+                    tsctx.fillText(s.label, s.x, s.y + 16);
+                });
+                tsctx.restore();
+
+                // Meteors animation
+                for (let i = telescopeMeteors.length - 1; i >= 0; i--) {
+                    const m = telescopeMeteors[i];
+                    m.x += m.speed * 0.8;
+                    m.y += m.speed;
+                    m.alpha -= 0.015;
+
+                    if (m.alpha <= 0 || m.y > tsh + 50) {
+                        telescopeMeteors.splice(i, 1);
+                        continue;
+                    }
+
+                    tsctx.save();
+                    tsctx.strokeStyle = `rgba(255, 255, 255, ${m.alpha})`;
+                    tsctx.lineWidth = 2;
+                    tsctx.beginPath();
+                    tsctx.moveTo(m.x, m.y);
+                    tsctx.lineTo(m.x - m.len * 0.8, m.y - m.len);
+                    tsctx.stroke();
+                    tsctx.restore();
+                }
+            }
+            requestAnimationFrame(animateTelescopeSky);
+        }
+        animateTelescopeSky();
+
+        const btnTriggerMeteorShower = document.getElementById('btnTriggerMeteorShower');
+        if (btnTriggerMeteorShower) {
+            btnTriggerMeteorShower.addEventListener('click', () => {
+                spawnMeteorShower();
+                setTimeout(() => {
+                    openModal(
+                        "🌠 MƯA SAO BĂNG ĐỊNH MỆNH TRÊN BẦU TRỜI ĐÊM! ✨",
+                        "Ước Nguyện Gửi Đến Các Vì Sao",
+                        `Dưới ngàn vì sao băng rực rỡ, anh chỉ ước duy nhất một điều:<br><br><strong>Công chúa nhỏ của anh luôn bình an, vui vẻ và hạnh phúc trọn đời bên anh!</strong><br><br><span style="color:#d81b60; font-family:Mali; font-weight:700;">Cố lên vợ iuu , chồng yêu em ❤️</span>`
+                    );
+                }, 1000);
+            });
+        }
+
+        // ==========================================
+        // 35. VIEW 29: BỘ BÀI TAROT TÌNH YÊU ĐỊNH MỆNH (TAROT DECK)
+        // ==========================================
+        const tarotCardsSpread = document.getElementById('tarotCardsSpread');
+        const btnShuffleTarot = document.getElementById('btnShuffleTarot');
+
+        const tarotCardsData = [
+            { sym: '💑', name: 'The Lovers', pred: 'Tình Yêu Bất Diệt: Mối lương duyên định mệnh bền chặt ngàn năm không gì chia cắt!' },
+            { sym: '☀️', name: 'The Sun', pred: 'Mặt Trời Rực Rỡ: Nụ cười của công chúa là ánh nắng xua tan mọi âu lo trong lòng chồng!' },
+            { sym: '👑', name: 'The Empress', pred: 'Nữ Hoàng Của Đời Anh: Vợ mãi mãi là người phụ nữ quyền lực và được cưng chiều nhất!' },
+            { sym: '⭐', name: 'The Star', pred: 'Ngôi Sao May Mắn: Mọi ước mơ và dự định của vợ trong tương lai đều sẽ thành hiện thực rực rỡ!' },
+            { sym: '🎡', name: 'Wheel of Fortune', pred: 'Vòng Quay Duyên Phận: Cuộc đời đưa anh gặp em là may mắn lớn nhất của đời anh!' },
+            { sym: '🏆', name: 'Ace of Cups', pred: 'Chiếc Cốc Yêu Thương: Tình cảm dạt dào, mỗi ngày bên nhau đều ngọt ngào như ngày mới yêu!' }
+        ];
+
+        function initTarotCards() {
+            if (!tarotCardsSpread) return;
+            tarotCardsSpread.innerHTML = '';
+            tarotCardsData.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'tarot-card';
+                card.innerHTML = `
+                    <div class="tarot-card-back">✦</div>
+                    <div class="tarot-card-front">
+                        <div class="tarot-symbol">${c.sym}</div>
+                        <div class="tarot-title">${c.name}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => {
+                    if (card.classList.contains('flipped')) return;
+                    card.classList.add('flipped');
+                    playChimeTone(1050, 0.2);
+                    triggerCupidConfetti();
+                    setTimeout(() => {
+                        openModal(
+                            "🔮 GIẢI MÃ LÁ BÀI TAROT: " + c.name + " " + c.sym,
+                            "Thông Điệp Tình Yêu 100% Định Mệnh",
+                            `✦ <strong>Ý NGHĨA LÁ BÀI:</strong><br><br>${c.pred}<br><br><span style="color:#7c3aed; font-family:Mali; font-weight:700;">Chồng mãi mãi thuộc về công chúa! Cố lên vợ iuu , chồng yêu em ❤️</span>`
+                        );
+                    }, 450);
+                });
+                tarotCardsSpread.appendChild(card);
+            });
+        }
+        initTarotCards();
+
+        if (btnShuffleTarot) {
+            btnShuffleTarot.addEventListener('click', () => {
+                playChimeTone(450, 0.15);
+                initTarotCards();
+                openModal("Đã Xào Bài Mới! 🔀", "Tarot Định Mệnh", "Bộ bài Tarot tình yêu đã sẵn sàng cho lần bói tiếp theo!");
+            });
+        }
+
+        // ==========================================
+        // 36. VIEW 30: KHU VƯỜN NUÔI CÂY TÌNH YÊU (VIRTUAL LOVE BONSAI)
+        // ==========================================
+        const bonsaiPlantEmoji = document.getElementById('bonsaiPlantEmoji');
+        const bonsaiLevelText = document.getElementById('bonsaiLevelText');
+        const btnBonsaiWater = document.getElementById('btnBonsaiWater');
+        const btnBonsaiSun = document.getElementById('btnBonsaiSun');
+        const btnBonsaiSing = document.getElementById('btnBonsaiSing');
+        const btnBonsaiHarvest = document.getElementById('btnBonsaiHarvest');
+
+        let bonsaiGrowthLevel = 1; // 1 to 4
+        const bonsaiStages = [
+            { lvl: 1, emoji: '🌱', desc: 'Cấp độ 1: Mầm non mới nhú (Cần tình thương để lớn)' },
+            { lvl: 2, emoji: '🌿', desc: 'Cấp độ 2: Nhánh cây xanh tươi (Tình cảm đâm chồi nảy lộc)' },
+            { lvl: 3, emoji: '🌸', desc: 'Cấp độ 3: Nở hoa lộng lẫy (Hương thơm hạnh phúc ngập tràn)' },
+            { lvl: 4, emoji: '💖', desc: 'Cấp độ 4: Kết trái tim yêu thương (Đã sẵn sàng để hái quà!)' }
+        ];
+
+        function growBonsai(amount) {
+            bonsaiGrowthLevel = Math.min(4, bonsaiGrowthLevel + amount);
+            const stage = bonsaiStages[bonsaiGrowthLevel - 1];
+            if (bonsaiPlantEmoji) {
+                bonsaiPlantEmoji.style.transform = 'scale(1.25)';
+                setTimeout(() => {
+                    bonsaiPlantEmoji.textContent = stage.emoji;
+                    bonsaiPlantEmoji.style.transform = 'scale(1)';
+                }, 200);
+            }
+            if (bonsaiLevelText) bonsaiLevelText.textContent = stage.desc;
+
+            if (bonsaiGrowthLevel === 4) {
+                triggerCupidConfetti();
+                playStoreChime();
+            }
+        }
+
+        if (btnBonsaiWater) {
+            btnBonsaiWater.addEventListener('click', () => {
+                playChimeTone(1100, 0.08);
+                growBonsai(1);
+            });
+        }
+
+        if (btnBonsaiSun) {
+            btnBonsaiSun.addEventListener('click', () => {
+                playChimeTone(850, 0.12);
+                growBonsai(1);
+            });
+        }
+
+        if (btnBonsaiSing) {
+            btnBonsaiSing.addEventListener('click', () => {
+                playStoreChime();
+                growBonsai(1);
+            });
+        }
+
+        if (btnBonsaiHarvest) {
+            btnBonsaiHarvest.addEventListener('click', () => {
+                if (bonsaiGrowthLevel >= 4) {
+                    playStoreChime();
+                    triggerCupidConfetti();
+                    openModal(
+                        "💖 THU HOẠCH TRÁI TIM TÌNH YÊU VI DIỆU! 🎉",
+                        "Quả Ngọt Từ Sự Chăm Sóc Của Công Chúa",
+                        `Cây tình yêu của hai đứa đã nở hoa kết trái ngọt ngào nhất thế gian!<br><br>Chúc công chúa nhỏ của anh mãi luôn hạnh phúc, rạng rỡ và bình an!<br><br><span style="color:#d81b60; font-family:Mali; font-weight:700;">Cố lên vợ iuu , chồng yêu em ❤️</span>`
+                    );
+                    bonsaiGrowthLevel = 1;
+                    const stage = bonsaiStages[0];
+                    if (bonsaiPlantEmoji) bonsaiPlantEmoji.textContent = stage.emoji;
+                    if (bonsaiLevelText) bonsaiLevelText.textContent = stage.desc;
+                } else {
+                    openModal("Cây Đang Lớn Dần! 🌱", "Cần Thêm Chút Yêu Thương", "Hãy bấm tưới nước, tắm nắng hoặc hát cho cây nghe để cây kết trái tim nhé!");
+                }
+            });
+        }
+
         // 14. URL HASH ROUTING SUPPORT
         // ==========================================
         function handleHashRouting() {
@@ -8154,6 +9567,18 @@
                 switchView('view-waxletter', 'panbap_audio.mp3', 'Lofi Romance');
             } else if (hash === 'vinyl') {
                 switchView('view-vinyl', 'spirograph_heart_song.mp3', 'Piano Romance');
+            } else if (hash === 'radio') {
+                switchView('view-radio', 'panbap_audio.mp3', 'Lofi Romance');
+            } else if (hash === 'cinema') {
+                switchView('view-cinema', 'flower_shop_song.mp3', 'Là Người Con Gái...');
+            } else if (hash === 'chocolate') {
+                switchView('view-chocolate', 'cho_chut_remix.mp3', 'Chờ Chút Thôi Remix');
+            } else if (hash === 'telescope') {
+                switchView('view-telescope', 'thousand_years_song.mp3', 'A Thousand Years');
+            } else if (hash === 'tarot') {
+                switchView('view-tarot', 'spirograph_heart_song.mp3', 'Piano Romance');
+            } else if (hash === 'bonsai') {
+                switchView('view-bonsai', 'cupid_cake_song.mp3', 'Love Story');
             } else {
                 switchView('view-hub', 'flower_shop_song.mp3', 'Là Người Con Gái...');
             }
