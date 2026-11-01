@@ -291,7 +291,8 @@
         #view-chocolate.active,
         #view-telescope.active,
         #view-tarot.active,
-        #view-bonsai.active {
+        #view-bonsai.active,
+        #view-memory-flowers.active {
             display: flex !important;
         }
 
@@ -4134,6 +4135,509 @@
             transform: translateY(-3px) scale(1.05);
         }
 
+    
+        /* =========================================
+         * 31. STYLES CHO VƯỜN HOA KỶ NIỆM (VIEW 31)
+         * ========================================= */
+        #view-memory-flowers {
+            background: linear-gradient(180deg, #18091e 0%, #2a0820 40%, #150517 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 16px 120px;
+            position: relative;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .falling-petals-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .memory-flowers-header {
+            text-align: center;
+            max-width: 680px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .memory-flowers-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: rgba(225, 29, 72, 0.2);
+            border: 1px solid rgba(251, 113, 133, 0.45);
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fecdd3;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 15px rgba(225, 29, 72, 0.35);
+        }
+
+        .memory-flowers-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #fda4af, #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            text-shadow: 0 0 25px rgba(244, 63, 94, 0.5);
+        }
+
+        .memory-flowers-sub {
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            color: #ffe4e6;
+            line-height: 1.6;
+            max-width: 580px;
+            margin: 0 auto 16px;
+            opacity: 0.95;
+        }
+
+        .memory-flowers-toolbar {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-flower-tool {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(251, 113, 133, 0.35);
+            border-radius: 20px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.25s ease;
+        }
+        .btn-flower-tool:hover {
+            background: rgba(225, 29, 72, 0.35);
+            border-color: #f43f5e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(225, 29, 72, 0.4);
+        }
+
+        /* VIP Memory Banner on Top of Hub */
+        .vip-memory-banner {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 28px;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.35), rgba(168, 85, 247, 0.35));
+            border: 1.5px solid rgba(251, 113, 133, 0.6);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 25px rgba(225, 29, 72, 0.35);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        .vip-memory-banner:hover {
+            transform: translateY(-3px) scale(1.02);
+            border-color: #fda4af;
+            box-shadow: 0 14px 40px rgba(225, 29, 72, 0.6);
+        }
+        .vip-banner-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .vip-banner-thumb {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 2px solid #fda4af;
+            box-shadow: 0 0 14px rgba(244, 63, 94, 0.6);
+        }
+        .vip-banner-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 3px;
+        }
+        .vip-banner-desc {
+            font-size: 12.5px;
+            color: #fecdd3;
+            font-weight: 600;
+        }
+        .vip-banner-btn {
+            padding: 8px 18px;
+            background: linear-gradient(135deg, #e11d48, #be185d);
+            border: 1px solid #fda4af;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 12.5px;
+            font-weight: 700;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.45);
+        }
+
+        /* Polaroid Memory Flowers Grid */
+        .memory-flowers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 22px;
+            width: 100%;
+            max-width: 1080px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .flower-card {
+            background: rgba(30, 12, 38, 0.88);
+            border: 1.5px solid rgba(251, 113, 133, 0.35);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 15px rgba(225, 29, 72, 0.15);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        .flower-card:hover {
+            transform: translateY(-6px);
+            border-color: #fda4af;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(244, 63, 94, 0.4);
+        }
+
+        .flower-card-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 270px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #100414;
+        }
+        .flower-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .flower-card:hover .flower-card-img {
+            transform: scale(1.08);
+        }
+
+        .flower-card-overlay-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(15, 5, 20, 0.78);
+            border: 1px solid rgba(251, 113, 133, 0.4);
+            backdrop-filter: blur(6px);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fda4af;
+        }
+
+        .flower-card-zoom-hint {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(15, 5, 20, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            opacity: 0.85;
+            transition: all 0.2s ease;
+        }
+        .flower-card-img-wrap:hover .flower-card-zoom-hint {
+            transform: scale(1.15);
+            background: rgba(225, 29, 72, 0.8);
+            opacity: 1;
+        }
+
+        .flower-card-body {
+            padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .flower-card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .flower-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #fda4af;
+            background: rgba(225, 29, 72, 0.18);
+            padding: 3px 9px;
+            border-radius: 8px;
+            border: 1px solid rgba(251, 113, 133, 0.3);
+        }
+        .flower-date {
+            font-size: 11px;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .flower-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .flower-story {
+            font-family: 'Mali', cursive;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #ffe4e6;
+            flex: 1;
+            margin-bottom: 16px;
+            opacity: 0.92;
+        }
+
+        .flower-card-footer {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 14px;
+        }
+
+        .btn-flower-action {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(251, 113, 133, 0.3);
+            border-radius: 12px;
+            color: #ffe4e6;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-flower-action:hover {
+            background: rgba(225, 29, 72, 0.25);
+            border-color: #fda4af;
+            color: #fff;
+        }
+
+        /* Lightbox Modal */
+        .flower-lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background: rgba(10, 2, 14, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .flower-lightbox-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .flower-lightbox-content {
+            position: relative;
+            max-width: 650px;
+            width: 100%;
+            background: #1b0922;
+            border: 2px solid #fda4af;
+            border-radius: 26px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(225, 29, 72, 0.45);
+            transform: scale(0.92);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+        .flower-lightbox-modal.active .flower-lightbox-content {
+            transform: scale(1);
+        }
+        .flower-lightbox-img-box {
+            position: relative;
+            width: 100%;
+            max-height: 55vh;
+            background: #09020d;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flower-lightbox-img {
+            width: 100%;
+            height: 100%;
+            max-height: 55vh;
+            object-fit: contain;
+        }
+        .flower-lightbox-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.2s ease;
+        }
+        .flower-lightbox-close:hover {
+            background: #e11d48;
+            transform: rotate(90deg);
+        }
+        .flower-lightbox-info {
+            padding: 18px 22px;
+            overflow-y: auto;
+        }
+        .flower-lightbox-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .flower-lightbox-story {
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ffe4e6;
+            margin-bottom: 12px;
+        }
+        .flower-lightbox-quote {
+            text-align: center;
+            font-family: 'Mali', cursive;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #f43f5e;
+            text-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+        }
+
+        /* Edit/Add Modal */
+        .flower-edit-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1001;
+            background: rgba(10, 2, 14, 0.85);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .flower-edit-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .flower-edit-card {
+            width: 100%;
+            max-width: 440px;
+            background: #1e0925;
+            border: 2px solid #fda4af;
+            border-radius: 26px;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(225, 29, 72, 0.4);
+        }
+        .flower-edit-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .flower-form-group {
+            margin-bottom: 12px;
+        }
+        .flower-form-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fda4af;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .flower-form-input, .flower-form-textarea {
+            width: 100%;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(251, 113, 133, 0.35);
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 13px;
+            outline: none;
+        }
+        .flower-form-input:focus, .flower-form-textarea:focus {
+            border-color: #f43f5e;
+            box-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+        }
+        .flower-form-textarea {
+            resize: none;
+            height: 75px;
+            font-family: 'Mali', cursive;
+        }
     </style>
 </head>
 <body>
@@ -4151,7 +4655,7 @@
                 <span>🏠</span> Về Hub
             </button>
             <button class="btn-grid-menu" id="btnOpenGridMenu">
-                <span>🗂️</span> 30 Món Quà
+                <span>🗂️</span> 31 Món Quà
             </button>
             <a href="/love-planet" class="btn-grid-menu" style="text-decoration:none; background:linear-gradient(135deg, #d946ef, #8b5cf6); color:#fff; border-color:#f472b6; box-shadow:0 0 12px rgba(217,70,239,0.5);" title="Du hành tới Hành Tinh Kỷ Niệm 3D">
                 <span>🪐</span> Hành Tinh 3D
@@ -4180,6 +4684,18 @@
             <div class="hub-signature">
                 Mãi yêu em ♡
             </div>
+        </div>
+
+        <!-- VIP Memory Flower Banner -->
+        <div class="vip-memory-banner" onclick="switchView('view-memory-flowers', 'thousand_years_song.mp3', 'A Thousand Years')">
+            <div class="vip-banner-content">
+                <img src="flower_mem_1.jpg" alt="Vườn Hoa Kỷ Niệm" class="vip-banner-thumb">
+                <div>
+                    <div class="vip-banner-title">🌸 Vườn Hoa Kỷ Niệm Của Hai Đứa 💐</div>
+                    <div class="vip-banner-desc">Ngắm nhìn trọn vẹn những bó hoa thật đong đầy yêu thương & lời nhắn chân thành ♡</div>
+                </div>
+            </div>
+            <div class="vip-banner-btn">Khám Phá Ngay ✨</div>
         </div>
 
         <div class="hub-cards-grid">
@@ -4619,6 +5135,21 @@
                 </div>
                 <button class="card-btn">
                     <span>Chăm sóc cây mầm</span> ➔
+                </button>
+            </div>
+
+            <!-- Card 31: Vườn Hoa Kỷ Niệm Thực Tế -->
+            <div class="gift-card" data-target="view-memory-flowers" data-song="thousand_years_song.mp3" data-title="A Thousand Years">
+                <div>
+                    <span class="card-header-badge" style="background:#ffe4e6; color:#e11d48;">💐 Kỷ Niệm Thực Tế</span>
+                    <div class="card-icon-wrap">🌸</div>
+                    <h2 class="card-title">Vườn Hoa Kỷ Niệm</h2>
+                    <p class="card-desc">
+                        Góc lưu giữ trọn vẹn những bó hoa thật đong đầy tình cảm, tấm thiệp viết tay và câu chuyện yêu thương của hai đứa ♡
+                    </p>
+                </div>
+                <button class="card-btn">
+                    <span>Vào ngắm hoa</span> ➔
                 </button>
             </div>
 
@@ -5732,12 +6263,93 @@
         </div>
     </section>
 
+<!-- ==========================================
+     * VIEW 31: VƯỜN HOA KỶ NIỆM CỦA HAI ĐỨA (REAL FLOWER MEMORIES)
+     * ========================================== -->
+    <section class="app-view" id="view-memory-flowers">
+        <!-- Falling Petals Canvas -->
+        <canvas id="petalsCanvas" class="falling-petals-canvas"></canvas>
+
+        <div class="memory-flowers-header">
+            <div class="memory-flowers-badge">✦ SWEET FLOWER MEMORIES ✦</div>
+            <h1 class="memory-flowers-title">Vườn Hoa Kỷ Niệm Của Hai Đứa</h1>
+            <p class="memory-flowers-sub">Mỗi đóa hoa trao tay là một khoảnh khắc đong đầy chân thành, nghiêm túc và tình yêu sâu sắc anh dành riêng cho công chúa nhỏ ♡</p>
+            
+            <div class="memory-flowers-toolbar">
+                <button class="btn-flower-tool" id="btnTogglePetals">🌸 Bật/Tắt Cánh Hoa Rơi</button>
+                <button class="btn-flower-tool" id="btnAddFlower">➕ Thêm Bó Hoa Mới</button>
+                <button class="btn-flower-tool" id="btnResetFlowerData">↺ Khôi Phục Mặc Định</button>
+            </div>
+        </div>
+
+        <!-- Flowers Grid -->
+        <div class="memory-flowers-grid" id="memoryFlowersGrid">
+            <!-- Dynamic Cards generated by JavaScript -->
+        </div>
+
+        <!-- Permanent Love Signature Card -->
+        <div style="margin-top:40px; text-align:center; position:relative; z-index:10; background:rgba(30,12,38,0.7); border:1px solid rgba(251,113,133,0.3); border-radius:20px; padding:16px 28px; backdrop-filter:blur(8px);">
+            <div style="font-family:'Mali',cursive; font-size:16px; font-weight:700; color:#fda4af; text-shadow:0 0 12px rgba(244,63,94,0.6);">
+                Cố lên vợ iuu , chồng yêu em ❤️
+            </div>
+            <div style="font-size:12px; color:#cbd5e1; margin-top:4px;">
+                Mỗi nhành hoa sẽ tàn, nhưng tình yêu của anh dành cho em thì mãi mãi vẹn nguyên ✨
+            </div>
+        </div>
+
+        <!-- Lightbox Modal for Full Image Viewing -->
+        <div class="flower-lightbox-modal" id="flowerLightboxModal">
+            <div class="flower-lightbox-content">
+                <button class="flower-lightbox-close" id="btnCloseLightbox">✕</button>
+                <div class="flower-lightbox-img-box">
+                    <img src="" alt="Hoa Kỷ Niệm" class="flower-lightbox-img" id="lightboxImg">
+                </div>
+                <div class="flower-lightbox-info">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <span class="flower-tag" id="lightboxTag">Tag</span>
+                        <span class="flower-date" id="lightboxDate">Date</span>
+                    </div>
+                    <h2 class="flower-lightbox-title" id="lightboxTitle">Tên Bó Hoa</h2>
+                    <p class="flower-lightbox-story" id="lightboxStory">Câu chuyện kỷ niệm...</p>
+                    <div class="flower-lightbox-quote">Cố lên vợ iuu , chồng yêu em ❤️</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Flower Card Modal -->
+        <div class="flower-edit-modal" id="flowerEditModal">
+            <div class="flower-edit-card">
+                <h3 class="flower-edit-title" id="editModalTitle">✦ Chỉnh Sửa Kỷ Niệm Hoa ✦</h3>
+                <div class="flower-form-group">
+                    <label class="flower-form-label">Tên Bó Hoa / Dịp Kỷ Niệm</label>
+                    <input type="text" class="flower-form-input" id="editFlowerTitle" placeholder="VD: Bó Hồng Tỉ Muội...">
+                </div>
+                <div class="flower-form-group">
+                    <label class="flower-form-label">Tag Ý Nghĩa</label>
+                    <input type="text" class="flower-form-input" id="editFlowerTag" placeholder="VD: Nụ Cười Của Em...">
+                </div>
+                <div class="flower-form-group">
+                    <label class="flower-form-label">Thời Gian / Ngày Kỷ Niệm</label>
+                    <input type="text" class="flower-form-input" id="editFlowerDate" placeholder="VD: 20/10, Mùa Thu Kỷ Niệm...">
+                </div>
+                <div class="flower-form-group">
+                    <label class="flower-form-label">Tâm Sự / Lời Nhắn Của Chồng</label>
+                    <textarea class="flower-form-textarea" id="editFlowerStory" placeholder="Ghi lại cảm xúc ngọt ngào của hai bạn..."></textarea>
+                </div>
+                <div style="display:flex; gap:10px; margin-top:16px;">
+                    <button type="button" class="btn-flower-tool" style="flex:1; justify-content:center;" id="btnCancelEditFlower">Hủy</button>
+                    <button type="button" class="btn-flower-tool" style="flex:2; justify-content:center; background:linear-gradient(135deg, #e11d48, #be185d);" id="btnSaveEditFlower">Lưu Kỷ Niệm 💾</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <!-- Fullscreen Grid Menu Modal (Bản Đồ 30 Món Quà) -->
     <div class="grid-modal-overlay" id="gridMenuModal">
         <div class="grid-modal-content">
             <div class="grid-modal-header">
                 <div>
-                    <h2 class="grid-modal-title">✦ Vương Quốc 30 Món Quà ✦</h2>
+                    <h2 class="grid-modal-title">✦ Vương Quốc 31 Món Quà ✦</h2>
                     <p class="grid-modal-sub">Chạm vào bất kỳ món quà nào để khám phá ngay ♡</p>
                 </div>
                 <button id="btnCloseGridMenu" style="background:#ffe4eb; border:none; border-radius:50%; width:36px; height:36px; font-size:18px; color:#d81b60; cursor:pointer;">✕</button>
@@ -5936,6 +6548,11 @@
             <div class="dock-label">Cây Yêu</div>
             <div class="dock-indicator"></div>
         </div>
+        <div class="dock-item" data-target="view-memory-flowers" data-song="thousand_years_song.mp3" data-title="A Thousand Years" title="Vườn Hoa Kỷ Niệm Của Hai Đứa">
+            <div class="dock-icon">💐</div>
+            <div class="dock-label">Hoa Kỷ Niệm</div>
+            <div class="dock-indicator"></div>
+        </div>
 
 
     </nav>
@@ -6051,6 +6668,7 @@
             if (targetViewId === 'view-radio' && typeof resetRadioView === 'function') resetRadioView();
             if (targetViewId === 'view-telescope' && typeof resizeTelescopeSky === 'function') resizeTelescopeSky();
             if (targetViewId === 'view-tarot' && typeof initTarotCards === 'function') initTarotCards();
+            if (targetViewId === 'view-memory-flowers' && typeof initMemoryFlowersView === 'function') initMemoryFlowersView();
             if (targetViewId === 'view-chocolate' && typeof initChocolateBonbons === 'function') initChocolateBonbons();
 
             // Reset Escape Quiz View
@@ -7794,7 +8412,8 @@
             { id: "view-chocolate", name: "Hộp Socola 6 Vị", icon: "🍫", cat: "chill", song: "cho_chut_remix.mp3", title: "Chờ Chút Thôi Remix" },
             { id: "view-telescope", name: "Kính Thiên Văn Sao Băng", icon: "🔭", cat: "chill", song: "thousand_years_song.mp3", title: "A Thousand Years" },
             { id: "view-tarot", name: "Bộ Bài Tarot Tình Yêu", icon: "🔮", cat: "chill", song: "spirograph_heart_song.mp3", title: "Piano Romance" },
-            { id: "view-bonsai", name: "Cây Mầm Tình Yêu", icon: "🌱", cat: "chill", song: "cupid_cake_song.mp3", title: "Love Story" }
+            { id: "view-bonsai", name: "Cây Mầm Tình Yêu", icon: "🌱", cat: "chill", song: "cupid_cake_song.mp3", title: "Love Story" },
+            { id: "view-memory-flowers", name: "Vườn Hoa Kỷ Niệm", icon: "💐", cat: "flowers", song: "thousand_years_song.mp3", title: "A Thousand Years" }
         ];
 
         const gridMenuModal = document.getElementById('gridMenuModal');
@@ -9582,10 +10201,358 @@
                 switchView('view-tarot', 'spirograph_heart_song.mp3', 'Piano Romance');
             } else if (hash === 'bonsai') {
                 switchView('view-bonsai', 'cupid_cake_song.mp3', 'Love Story');
+            } else if (hash === 'flowers' || hash === 'memory-flowers') {
+                switchView('view-memory-flowers', 'thousand_years_song.mp3', 'A Thousand Years');
             } else {
                 switchView('view-hub', 'flower_shop_song.mp3', 'Là Người Con Gái...');
             }
         }
+
+        
+        // ==========================================
+        // 37. VIEW 31: VƯỜN HOA KỶ NIỆM (REAL FLOWER MEMORIES LOGIC)
+        // ==========================================
+        const defaultMemoryFlowers = [
+            {
+                id: "flower-1",
+                img: "flower_mem_1.jpg",
+                title: "Bình Hoa Sen Bách Diệp",
+                tag: "Tình Yêu Thuần Khiết",
+                date: "Ngày Bình Yên Bên Nhau",
+                story: "Từng cánh hoa sen gấp tỉ mỉ gửi tặng công chúa nhỏ. Mong tình yêu của hai đứa mình mãi nhẹ nhàng, thanh tao và bình yên như hương sen thoang thoảng."
+            },
+            {
+                id: "flower-2",
+                img: "flower_mem_2.jpg",
+                title: "Bó Hoa Ly Hồng Tỏa Ngát",
+                tag: "Nàng Thơ Dịu Dàng",
+                date: "Đêm Hẹn Hò Dưới Ánh Đèn",
+                story: "Dưới ánh đèn đêm rực rỡ, nụ cười của em còn ngát hương và rạng rỡ hơn cả những đóa hoa ly này. Cảm ơn em đã xuất hiện và sưởi ấm cả thế giới của anh."
+            },
+            {
+                id: "flower-3",
+                img: "flower_mem_3.jpg",
+                title: "Bó Hồng Tỉ Muội Sum Vầy",
+                tag: "Bữa Tối Hạnh Phúc",
+                date: "Những Niềm Vui Nhỏ Bé",
+                story: "Từng bông hồng tỉ muội nhỏ xinh chúm chím như những niềm vui nho nhỏ mỗi ngày khi được ở bên em. Chỉ cần em vui, chồng sẵn sàng hái cả vườn hoa tặng vợ!"
+            },
+            {
+                id: "flower-4",
+                img: "flower_mem_4.jpg",
+                title: "Hương Sắc Song Đôi",
+                tag: "Gắn Kết Trọn Đời",
+                date: "Bộ Đôi Hoàn Hảo",
+                story: "Bình hồng thắm cùng bó hoa cẩm chướng tinh khôi — Đôi hoa như hai đứa mình luôn bên nhau, hòa quyện tạo nên bức tranh tình yêu đẹp nhất."
+            },
+            {
+                id: "flower-5",
+                img: "flower_mem_5.jpg",
+                title: "Bình Hồng Nơ Mộc Để Bàn",
+                tag: "Góc Nhỏ Ấm Cúng",
+                date: "Yêu Thương Giản Dị",
+                story: "Chiếc nơ dây thừng mộc mạc ôm trọn những cành hồng thắm, nhắc nhở anh về những điều giản dị nhưng thiêng liêng nhất: Tình yêu chân thành của hai đứa mình."
+            },
+            {
+                id: "flower-6",
+                img: "flower_mem_6.jpg",
+                title: "Bó Hồng Cúc Họa Mi Trắng",
+                tag: "Nụ Cười Tinh Khôi",
+                date: "Tươi Tắn Mỗi Ngày",
+                story: "Những đóa cúc họa mi nhỏ li ti e ấp bên sắc hồng tươi, trong trẻo như ánh mắt và nụ cười ngây thơ của công chúa nhỏ lúc được chồng yêu chiều."
+            },
+            {
+                id: "flower-7",
+                img: "flower_mem_7.jpg",
+                title: "Bó Cẩm Chướng Chuông Xanh",
+                tag: "Buổi Chiều Bình Yên",
+                date: "Hẹn Hò Ghế Gỗ",
+                story: "Đặt bó hoa trên chiếc ghế gỗ ngoài trời, hương hoa cẩm chướng hòa cùng sắc xanh biếc, mang lại cảm giác an yên tuyệt đối mỗi khi nhớ về em."
+            },
+            {
+                id: "flower-8",
+                img: "flower_mem_8.jpg",
+                title: "Bó Hoa Tròn & Trà Sữa",
+                tag: "Khoảnh Khắc Ngọt Ngào",
+                date: "Vị Ngọt Tình Yêu",
+                story: "Một bó hoa tươi thắm cùng hai ly trà sữa quen thuộc — Công thức ngọt ngào nhất cho buổi hẹn hò ngập tràn tiếng cười của hai đứa."
+            },
+            {
+                id: "flower-9",
+                img: "flower_mem_9.jpg",
+                title: "Bình Hoa Ánh Nắng Chiều",
+                tag: "Ánh Nắng Trong Tim",
+                date: "Hoàng Hôn Ấm Áp",
+                story: "Ánh nắng vàng ấm áp chiếu qua từng cánh hoa rực rỡ, nhưng đối với anh, ánh nắng đẹp nhất và rực rỡ nhất trong cuộc đời chính là nụ cười của em."
+            },
+            {
+                id: "flower-10",
+                img: "flower_mem_10.jpg",
+                title: "Lời Hứa Nghiêm Túc Trọn Đời",
+                tag: "Thiệp Tay & Gấu Bông",
+                date: "Tình Yêu Sâu Sắc",
+                story: "Tấm thiệp viết tay chân thành nhất: 'Anh không chỉ đến với một bó hoa, mà anh đến với cả sự nghiêm túc. Cho anh cơ hội được chăm sóc và yêu em nhé ❤️'. Chồng mãi mãi giữ trọn lời hứa này!"
+            }
+        ];
+
+        let memoryFlowersList = [];
+        try {
+            const savedFlowers = localStorage.getItem('userMemoryFlowers');
+            memoryFlowersList = savedFlowers ? JSON.parse(savedFlowers) : defaultMemoryFlowers;
+        } catch(e) {
+            memoryFlowersList = defaultMemoryFlowers;
+        }
+
+        function saveMemoryFlowersList() {
+            try {
+                localStorage.setItem('userMemoryFlowers', JSON.stringify(memoryFlowersList));
+            } catch(e) {}
+        }
+
+        const memoryFlowersGrid = document.getElementById('memoryFlowersGrid');
+        const flowerLightboxModal = document.getElementById('flowerLightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxTag = document.getElementById('lightboxTag');
+        const lightboxDate = document.getElementById('lightboxDate');
+        const lightboxStory = document.getElementById('lightboxStory');
+        const btnCloseLightbox = document.getElementById('btnCloseLightbox');
+
+        const flowerEditModal = document.getElementById('flowerEditModal');
+        const editModalTitle = document.getElementById('editModalTitle');
+        const editFlowerTitle = document.getElementById('editFlowerTitle');
+        const editFlowerTag = document.getElementById('editFlowerTag');
+        const editFlowerDate = document.getElementById('editFlowerDate');
+        const editFlowerStory = document.getElementById('editFlowerStory');
+        const btnCancelEditFlower = document.getElementById('btnCancelEditFlower');
+        const btnSaveEditFlower = document.getElementById('btnSaveEditFlower');
+        let currentEditFlowerIdx = -1;
+
+        function renderMemoryFlowers() {
+            if (!memoryFlowersGrid) return;
+            memoryFlowersGrid.innerHTML = '';
+
+            memoryFlowersList.forEach((flower, idx) => {
+                const card = document.createElement('div');
+                card.className = 'flower-card';
+                card.innerHTML = `
+                    <div class="flower-card-img-wrap" data-idx="${idx}">
+                        <img src="${flower.img}" alt="${flower.title}" class="flower-card-img" loading="lazy">
+                        <div class="flower-card-overlay-badge">Kỷ Niệm #${idx + 1}</div>
+                        <div class="flower-card-zoom-hint" title="Phóng to ảnh">🔍</div>
+                    </div>
+                    <div class="flower-card-body">
+                        <div class="flower-card-meta">
+                            <span class="flower-tag">${flower.tag || 'Kỷ Niệm'}</span>
+                            <span class="flower-date">📅 ${flower.date || 'Ngày Hẹn'}</span>
+                        </div>
+                        <h3 class="flower-title">${flower.title}</h3>
+                        <p class="flower-story">${flower.story}</p>
+                        <div class="flower-card-footer">
+                            <button class="btn-flower-action btn-view-full" data-idx="${idx}">🔍 Phóng To</button>
+                            <button class="btn-flower-action btn-edit-flower" data-idx="${idx}">✏️ Chỉnh Sửa</button>
+                        </div>
+                    </div>
+                `;
+
+                // Event: Click on image or Zoom button
+                card.querySelector('.flower-card-img-wrap').addEventListener('click', () => {
+                    openFlowerLightbox(idx);
+                });
+                card.querySelector('.btn-view-full').addEventListener('click', () => {
+                    openFlowerLightbox(idx);
+                });
+
+                // Event: Click on edit button
+                card.querySelector('.btn-edit-flower').addEventListener('click', () => {
+                    openFlowerEditModal(idx);
+                });
+
+                memoryFlowersGrid.appendChild(card);
+            });
+        }
+
+        function openFlowerLightbox(idx) {
+            const f = memoryFlowersList[idx];
+            if (!f || !flowerLightboxModal) return;
+            lightboxImg.src = f.img;
+            lightboxTitle.textContent = f.title;
+            lightboxTag.textContent = f.tag || 'Kỷ Niệm';
+            lightboxDate.textContent = '📅 ' + (f.date || '');
+            lightboxStory.textContent = f.story;
+            flowerLightboxModal.classList.add('active');
+            playChimeTone(900, 0.1);
+        }
+
+        if (btnCloseLightbox) {
+            btnCloseLightbox.addEventListener('click', () => {
+                flowerLightboxModal.classList.remove('active');
+            });
+        }
+        if (flowerLightboxModal) {
+            flowerLightboxModal.addEventListener('click', (e) => {
+                if (e.target === flowerLightboxModal) flowerLightboxModal.classList.remove('active');
+            });
+        }
+
+        function openFlowerEditModal(idx) {
+            currentEditFlowerIdx = idx;
+            const f = memoryFlowersList[idx];
+            if (!f || !flowerEditModal) return;
+            editModalTitle.textContent = '✦ Chỉnh Sửa: ' + f.title + ' ✦';
+            editFlowerTitle.value = f.title;
+            editFlowerTag.value = f.tag || '';
+            editFlowerDate.value = f.date || '';
+            editFlowerStory.value = f.story || '';
+            flowerEditModal.classList.add('active');
+        }
+
+        if (btnCancelEditFlower) {
+            btnCancelEditFlower.addEventListener('click', () => {
+                flowerEditModal.classList.remove('active');
+            });
+        }
+
+        if (btnSaveEditFlower) {
+            btnSaveEditFlower.addEventListener('click', () => {
+                if (currentEditFlowerIdx >= 0 && currentEditFlowerIdx < memoryFlowersList.length) {
+                    memoryFlowersList[currentEditFlowerIdx].title = editFlowerTitle.value.trim() || memoryFlowersList[currentEditFlowerIdx].title;
+                    memoryFlowersList[currentEditFlowerIdx].tag = editFlowerTag.value.trim() || 'Kỷ Niệm';
+                    memoryFlowersList[currentEditFlowerIdx].date = editFlowerDate.value.trim() || 'Ngày Hẹn';
+                    memoryFlowersList[currentEditFlowerIdx].story = editFlowerStory.value.trim() || memoryFlowersList[currentEditFlowerIdx].story;
+                    saveMemoryFlowersList();
+                    renderMemoryFlowers();
+                    flowerEditModal.classList.remove('active');
+                    openModal("Đã Lưu Kỷ Niệm Hoa! 🌸", "Vườn Hoa Kỷ Niệm", "Thông tin kỷ niệm mới đã được lưu thành công trên máy của hai bạn!");
+                    playStoreChime();
+                    triggerCupidConfetti();
+                }
+            });
+        }
+
+        // Add New Flower Button
+        const btnAddFlower = document.getElementById('btnAddFlower');
+        if (btnAddFlower) {
+            btnAddFlower.addEventListener('click', () => {
+                const newTitle = prompt("Nhập tên bó hoa hoặc dịp kỷ niệm mới:", "Bó Hoa Tình Yêu Mới");
+                if (newTitle && newTitle.trim().length > 0) {
+                    const newFlower = {
+                        id: "flower-" + Date.now(),
+                        img: "flower_mem_1.jpg",
+                        title: newTitle.trim(),
+                        tag: "Kỷ Niệm Mới",
+                        date: "Ngày Hạnh Phúc",
+                        story: "Cố lên vợ iuu , chồng yêu em ❤️"
+                    };
+                    memoryFlowersList.push(newFlower);
+                    saveMemoryFlowersList();
+                    renderMemoryFlowers();
+                    openFlowerEditModal(memoryFlowersList.length - 1);
+                }
+            });
+        }
+
+        // Reset Flower Data
+        const btnResetFlowerData = document.getElementById('btnResetFlowerData');
+        if (btnResetFlowerData) {
+            btnResetFlowerData.addEventListener('click', () => {
+                if (confirm("Khôi phục lại toàn bộ 10 bức ảnh hoa kỷ niệm ban đầu?")) {
+                    memoryFlowersList = JSON.parse(JSON.stringify(defaultMemoryFlowers));
+                    saveMemoryFlowersList();
+                    renderMemoryFlowers();
+                    openModal("Đã Khôi Phục Kỷ Niệm! 💐", "Vườn Hoa Kỷ Niệm", "Danh sách 10 bức ảnh hoa thật đã được khôi phục nguyên bản!");
+                }
+            });
+        }
+
+        // Falling Petals Canvas Simulation
+        const petalsCanvas = document.getElementById('petalsCanvas');
+        let petalsCtx = petalsCanvas ? petalsCanvas.getContext('2d') : null;
+        let petalsArray = [];
+        let petalsAnimId = null;
+        let isPetalsEnabled = true;
+
+        function resizePetalsCanvas() {
+            if (!petalsCanvas) return;
+            petalsCanvas.width = window.innerWidth;
+            petalsCanvas.height = window.innerHeight;
+        }
+
+        function createPetal() {
+            return {
+                x: Math.random() * (petalsCanvas ? petalsCanvas.width : 500),
+                y: -20 - Math.random() * 50,
+                size: Math.random() * 9 + 8,
+                speedY: Math.random() * 1.6 + 1.1,
+                speedX: Math.random() * 1.5 - 0.75,
+                angle: Math.random() * 360,
+                angleSpeed: (Math.random() - 0.5) * 2,
+                color: Math.random() > 0.4 ? 'rgba(255, 182, 193, 0.75)' : 'rgba(244, 63, 94, 0.65)'
+            };
+        }
+
+        function initPetals() {
+            petalsArray = [];
+            for (let i = 0; i < 35; i++) {
+                petalsArray.push(createPetal());
+            }
+        }
+
+        function animatePetals() {
+            if (!isPetalsEnabled || !petalsCtx || !document.getElementById('view-memory-flowers').classList.contains('active')) {
+                petalsAnimId = null;
+                return;
+            }
+
+            petalsCtx.clearRect(0, 0, petalsCanvas.width, petalsCanvas.height);
+
+            petalsArray.forEach(p => {
+                p.y += p.speedY;
+                p.x += Math.sin(p.y * 0.015) * 1.2 + p.speedX;
+                p.angle += p.angleSpeed;
+
+                if (p.y > petalsCanvas.height + 20) {
+                    p.y = -20;
+                    p.x = Math.random() * petalsCanvas.width;
+                }
+
+                petalsCtx.save();
+                petalsCtx.translate(p.x, p.y);
+                petalsCtx.rotate((p.angle * Math.PI) / 180);
+                petalsCtx.fillStyle = p.color;
+                petalsCtx.beginPath();
+                petalsCtx.ellipse(0, 0, p.size * 0.7, p.size, Math.PI / 4, 0, 2 * Math.PI);
+                petalsCtx.fill();
+                petalsCtx.restore();
+            });
+
+            petalsAnimId = requestAnimationFrame(animatePetals);
+        }
+
+        const btnTogglePetals = document.getElementById('btnTogglePetals');
+        if (btnTogglePetals) {
+            btnTogglePetals.addEventListener('click', () => {
+                isPetalsEnabled = !isPetalsEnabled;
+                btnTogglePetals.textContent = isPetalsEnabled ? '🌸 Tắt Cánh Hoa Rơi' : '🌸 Bật Cánh Hoa Rơi';
+                if (isPetalsEnabled && !petalsAnimId) {
+                    animatePetals();
+                } else if (!isPetalsEnabled && petalsCtx) {
+                    petalsCtx.clearRect(0, 0, petalsCanvas.width, petalsCanvas.height);
+                }
+            });
+        }
+
+        function initMemoryFlowersView() {
+            renderMemoryFlowers();
+            resizePetalsCanvas();
+            initPetals();
+            if (isPetalsEnabled && !petalsAnimId) {
+                animatePetals();
+            }
+            triggerCupidConfetti();
+        }
+
+        window.addEventListener('resize', resizePetalsCanvas);
 
         window.addEventListener('load', handleHashRouting);
     </script>
