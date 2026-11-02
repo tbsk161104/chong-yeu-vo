@@ -292,7 +292,13 @@
         #view-telescope.active,
         #view-tarot.active,
         #view-bonsai.active,
-        #view-memory-flowers.active {
+        #view-memory-flowers.active,
+        #view-cozy-room.active,
+        #view-bottle-ocean.active,
+        #view-love-passport.active,
+        #view-love-monopoly.active,
+        #view-star-map.active,
+        #view-love-receipt.active {
             display: flex !important;
         }
 
@@ -4638,6 +4644,356 @@
             height: 75px;
             font-family: 'Mali', cursive;
         }
+    
+        /* =========================================
+         * 32-37. STYLES CHO 6 DỰ ÁN NỔI BẬT MỚI
+         * ========================================= */
+        
+        /* VIEW 32: COZY ROOM */
+        #view-cozy-room {
+            background: linear-gradient(180deg, #1f112a 0%, #2e1038 50%, #150920 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 16px 120px;
+            width: 100%;
+            transition: background 0.8s ease;
+        }
+        #view-cozy-room.night-mode {
+            background: linear-gradient(180deg, #090314 0%, #120626 50%, #06020c 100%);
+        }
+        .cozy-room-stage {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            background: rgba(38, 16, 52, 0.7);
+            border: 2px solid rgba(244, 114, 182, 0.4);
+            border-radius: 30px;
+            padding: 24px 20px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(244, 114, 182, 0.15);
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+        .cozy-window {
+            width: 100%;
+            height: 90px;
+            background: linear-gradient(180deg, #38bdf8 0%, #bae6fd 100%);
+            border: 3px solid #fbcfe8;
+            border-radius: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.6);
+            margin-bottom: 20px;
+            transition: background 0.8s ease;
+        }
+        #view-cozy-room.night-mode .cozy-window {
+            background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+            box-shadow: inset 0 0 15px rgba(216, 180, 254, 0.4);
+        }
+        .cozy-sun-moon {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .cozy-furniture-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 18px;
+        }
+        .cozy-item {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(244, 114, 182, 0.3);
+            border-radius: 18px;
+            padding: 14px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .cozy-item:hover {
+            transform: translateY(-4px) scale(1.05);
+            background: rgba(244, 114, 182, 0.25);
+            border-color: #f472b6;
+            box-shadow: 0 8px 20px rgba(244, 114, 182, 0.35);
+        }
+        .cozy-item-icon {
+            font-size: 34px;
+            margin-bottom: 6px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+        .cozy-item-name {
+            font-size: 11px;
+            font-weight: 700;
+            color: #fce7f3;
+            text-align: center;
+        }
+
+        /* VIEW 33: BOTTLE OCEAN */
+        #view-bottle-ocean {
+            background: linear-gradient(180deg, #2e0854 0%, #7e22ce 35%, #ec4899 65%, #1e1b4b 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 16px 120px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .ocean-waves-box {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            height: 280px;
+            border-radius: 30px;
+            background: linear-gradient(180deg, rgba(236, 72, 153, 0.2) 0%, rgba(30, 27, 75, 0.85) 100%);
+            border: 2px solid rgba(251, 113, 133, 0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .floating-bottle {
+            font-size: 72px;
+            filter: drop-shadow(0 15px 25px rgba(236, 72, 153, 0.6));
+            animation: bottle-bob 3.5s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .floating-bottle:hover {
+            transform: scale(1.15) rotate(8deg);
+        }
+        @keyframes bottle-bob {
+            0%, 100% { transform: translateY(0) rotate(-4deg); }
+            50% { transform: translateY(-16px) rotate(6deg); }
+        }
+        .ocean-letter-parchment {
+            background: #fef3c7;
+            color: #78350f;
+            border: 2px dashed #b45309;
+            border-radius: 20px;
+            padding: 20px;
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            line-height: 1.6;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            max-width: 400px;
+            margin-top: 14px;
+            display: none;
+        }
+
+        /* VIEW 34: LOVE PASSPORT */
+        #view-love-passport {
+            background: linear-gradient(180deg, #0b1329 0%, #1e1b4b 50%, #060913 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 16px 120px;
+            width: 100%;
+        }
+        .first-class-ticket {
+            width: 100%;
+            max-width: 430px;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 60%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 22px;
+            padding: 18px 20px;
+            color: #78350f;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 20px rgba(217, 119, 6, 0.3);
+            margin-bottom: 22px;
+            position: relative;
+        }
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px dashed #b45309;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+        .passport-booklet {
+            width: 100%;
+            max-width: 430px;
+            background: #1e1b4b;
+            border: 2px solid #f59e0b;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.6);
+        }
+        .stamp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .rubber-stamp {
+            border: 2px dashed #f472b6;
+            border-radius: 14px;
+            padding: 10px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            background: rgba(244, 114, 182, 0.1);
+            transition: all 0.2s ease;
+        }
+        .rubber-stamp:hover {
+            background: rgba(244, 114, 182, 0.3);
+            transform: scale(1.06) rotate(-2deg);
+        }
+
+        /* VIEW 35: LOVE MONOPOLY */
+        #view-love-monopoly {
+            background: linear-gradient(180deg, #1e0925 0%, #3b0d3e 50%, #120417 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 14px 120px;
+            width: 100%;
+        }
+        .monopoly-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            width: 100%;
+            max-width: 430px;
+            background: rgba(25, 8, 33, 0.9);
+            border: 2px solid #ec4899;
+            border-radius: 24px;
+            padding: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            margin-bottom: 18px;
+        }
+        .board-square {
+            background: rgba(255,255,255,0.08);
+            border: 1.5px solid rgba(244, 114, 182, 0.3);
+            border-radius: 14px;
+            padding: 8px 4px;
+            min-height: 72px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 700;
+            color: #fce7f3;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        .board-square.active-pawn {
+            background: linear-gradient(135deg, #e11d48, #be185d);
+            border-color: #ffd1dc;
+            box-shadow: 0 0 16px rgba(225, 29, 72, 0.8);
+            transform: scale(1.08);
+            z-index: 5;
+        }
+        .board-dice-btn {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            border: 2px solid #fda4af;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(236, 72, 153, 0.5);
+            transition: all 0.2s ease;
+        }
+        .board-dice-btn:hover {
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        /* VIEW 36: STAR MAP */
+        #view-star-map {
+            background: radial-gradient(circle at center, #0f172a 0%, #030712 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 16px 120px;
+            width: 100%;
+        }
+        .star-map-plate {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #172554 0%, #090d16 80%);
+            border: 4px solid #f59e0b;
+            box-shadow: 0 0 40px rgba(245, 158, 11, 0.4), inset 0 0 30px rgba(59, 130, 246, 0.5);
+            margin-bottom: 22px;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        .star-map-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* VIEW 37: LOVE RECEIPT */
+        #view-love-receipt {
+            background: linear-gradient(180deg, #1c0f24 0%, #291034 50%, #100615 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 16px 120px;
+            width: 100%;
+        }
+        .receipt-printer-slot {
+            width: 100%;
+            max-width: 380px;
+            height: 48px;
+            background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
+            border: 2px solid #94a3b8;
+            border-radius: 18px 18px 6px 6px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        .receipt-paper {
+            width: 100%;
+            max-width: 350px;
+            background: #fafaf9;
+            color: #1c1917;
+            font-family: 'Courier New', monospace;
+            padding: 24px 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border-bottom: 4px dashed #78716c;
+            transform-origin: top;
+            animation: receipt-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: -6px;
+        }
+        @keyframes receipt-slide {
+            0% { transform: scaleY(0.1); opacity: 0; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+        .receipt-item-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
     </style>
 </head>
 <body>
@@ -4655,7 +5011,7 @@
                 <span>🏠</span> Về Hub
             </button>
             <button class="btn-grid-menu" id="btnOpenGridMenu">
-                <span>🗂️</span> 31 Món Quà
+                <span>🗂️</span> 37 Món Quà
             </button>
             <a href="/love-planet" class="btn-grid-menu" style="text-decoration:none; background:linear-gradient(135deg, #d946ef, #8b5cf6); color:#fff; border-color:#f472b6; box-shadow:0 0 12px rgba(217,70,239,0.5);" title="Du hành tới Hành Tinh Kỷ Niệm 3D">
                 <span>🪐</span> Hành Tinh 3D
@@ -5151,6 +5507,72 @@
                 <button class="card-btn">
                     <span>Vào ngắm hoa</span> ➔
                 </button>
+            </div>
+
+            <!-- Card 32: Căn Phòng 3D Cozy Room -->
+            <div class="gift-card" data-target="view-cozy-room" data-song="panbap_audio.mp3" data-title="Lofi Romance">
+                <div>
+                    <span class="card-header-badge" style="background:#fce7f3; color:#db2777;">🏡 Căn Phòng Hạnh Phúc</span>
+                    <div class="card-icon-wrap">🧸</div>
+                    <h2 class="card-title">Our 3D Cozy Room</h2>
+                    <p class="card-desc">Căn phòng mini ấm cúng, bật đèn ngủ lãng mạn, ôm chú gấu bông hồng và nghe lời thì thầm ngọt ngào ♡</p>
+                </div>
+                <button class="card-btn"><span>Vào phòng</span> ➔</button>
+            </div>
+
+            <!-- Card 33: Chiếc Lọ Thủy Tinh Ước Nguyện -->
+            <div class="gift-card" data-target="view-bottle-ocean" data-song="thousand_years_song.mp3" data-title="A Thousand Years">
+                <div>
+                    <span class="card-header-badge" style="background:#f3e8ff; color:#9333ea;">🌊 Biển Hoàng Hôn 3D</span>
+                    <div class="card-icon-wrap">📜</div>
+                    <h2 class="card-title">Message In A Bottle</h2>
+                    <p class="card-desc">Rút nút bần đọc bức thư cổ kính trôi dạt trên sóng biển và thả chiếc lọ điều ước ra đại dương ♡</p>
+                </div>
+                <button class="card-btn"><span>Vớt lọ ước</span> ➔</button>
+            </div>
+
+            <!-- Card 34: Hộ Chiếu Tình Yêu & Vé First Class -->
+            <div class="gift-card" data-target="view-love-passport" data-song="cupid_cake_song.mp3" data-title="Love Story">
+                <div>
+                    <span class="card-header-badge" style="background:#fef3c7; color:#d97706;">✈️ Vé Bay First Class</span>
+                    <div class="card-icon-wrap">🛂</div>
+                    <h2 class="card-title">Our Love Passport</h2>
+                    <p class="card-desc">Vé máy bay hạng VIP chuyến bay LOVE-3006, lật mở hộ chiếu đóng dấu thị thực các chuyến đi kỷ niệm ♡</p>
+                </div>
+                <button class="card-btn"><span>Soi vé bay</span> ➔</button>
+            </div>
+
+            <!-- Card 35: Cờ Tỷ Phú Tình Yêu -->
+            <div class="gift-card" data-target="view-love-monopoly" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix">
+                <div>
+                    <span class="card-header-badge" style="background:#ffe4e6; color:#e11d48;">🎲 Board Game Vui Nhộn</span>
+                    <div class="card-icon-wrap">🏆</div>
+                    <h2 class="card-title">The Love Monopoly</h2>
+                    <p class="card-desc">Tung xúc xắc nhận thẻ đặc quyền: dỗi vô cớ 24h, chồng bao trà sữa, massage lưng và ngày làm công chúa ♡</p>
+                </div>
+                <button class="card-btn"><span>Tung xúc xắc</span> ➔</button>
+            </div>
+
+            <!-- Card 36: Bản Đồ Sao Đêm Định Mệnh -->
+            <div class="gift-card" data-target="view-star-map" data-song="spirograph_heart_song.mp3" data-title="Piano Romance">
+                <div>
+                    <span class="card-header-badge" style="background:#dbeafe; color:#2563eb;">✨ Thiên Văn Vũ Trụ</span>
+                    <div class="card-icon-wrap">🌌</div>
+                    <h2 class="card-title">Custom Star Map</h2>
+                    <p class="card-desc">Tái hiện chính xác bầu trời sao lúc hai đứa gặp nhau, kính lúp soi ngôi sao mang tên em và mưa sao băng ♡</p>
+                </div>
+                <button class="card-btn"><span>Ngắm sao đêm</span> ➔</button>
+            </div>
+
+            <!-- Card 37: Máy In Hóa Đơn Tình Yêu -->
+            <div class="gift-card" data-target="view-love-receipt" data-song="flower_shop_song.mp3" data-title="Là Người Con Gái...">
+                <div>
+                    <span class="card-header-badge" style="background:#f1f5f9; color:#475569;">🧾 Máy In Nhiệt Analog</span>
+                    <div class="card-icon-wrap">🖨️</div>
+                    <h2 class="card-title">The Love Receipt</h2>
+                    <p class="card-desc">Máy in kêu rè rè chạy ra dải hóa đơn tình yêu 0đ, thanh toán bằng cả trái tim và quét mã QR tải về ♡</p>
+                </div>
+                <button class="card-btn"><span>In hóa đơn</span> ➔</button>
             </div>
 
 
@@ -6344,12 +6766,200 @@
         </div>
     </section>
 
+<!-- ==========================================
+     * 32. VIEW 32: OUR 3D COZY ROOM
+     * ========================================== -->
+    <section class="app-view" id="view-cozy-room">
+        <div class="scratch-header-badge" style="background:#3b134a; color:#f472b6; border-color:#f472b6;">✦ OUR 3D COZY LOVE ROOM ✦</div>
+        <h2 class="scratch-card-title" style="color:#fff; margin-bottom:4px;">Căn Phòng Hạnh Phúc Của Hai Đứa</h2>
+        <p class="scratch-card-sub" style="color:#fbcfe8; margin-bottom:16px;">Chạm vào các đồ vật trong phòng để khám phá những điều bất ngờ ♡</p>
+
+        <div class="cozy-room-stage" id="cozyRoomStage">
+            <div class="cozy-window">
+                <div class="cozy-sun-moon" id="cozySunMoon">☀️</div>
+            </div>
+
+            <div class="cozy-furniture-grid">
+                <div class="cozy-item" id="cozyPlushie" title="Gấu Bông Hồng">
+                    <div class="cozy-item-icon">🧸</div>
+                    <div class="cozy-item-name">Gấu Bông</div>
+                </div>
+                <div class="cozy-item" id="cozyVase" title="Bình Hoa Thơm">
+                    <div class="cozy-item-icon">🌸</div>
+                    <div class="cozy-item-name">Bình Hoa</div>
+                </div>
+                <div class="cozy-item" id="cozyBoba" title="Trà Sữa Vợ Mê">
+                    <div class="cozy-item-icon">🧋</div>
+                    <div class="cozy-item-name">Trà Sữa</div>
+                </div>
+                <div class="cozy-item" id="cozyGramophone" title="Máy Hát Cổ Điển">
+                    <div class="cozy-item-icon">📻</div>
+                    <div class="cozy-item-name">Máy Hát</div>
+                </div>
+                <div class="cozy-item" id="cozyFrame" title="Khung Ảnh Kỷ Niệm">
+                    <div class="cozy-item-icon">🖼️</div>
+                    <div class="cozy-item-name">Ảnh Kỷ Niệm</div>
+                </div>
+                <div class="cozy-item" id="cozyLamp" title="Đèn Ngủ Ấm Áp">
+                    <div class="cozy-item-icon">💡</div>
+                    <div class="cozy-item-name">Đèn Ngủ</div>
+                </div>
+            </div>
+
+            <button class="card-btn" id="btnToggleRoomLight" style="margin-top:10px; width:100%; justify-content:center;">
+                <span>💡 Bật / Tắt Đèn Ngủ</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ==========================================
+     * 33. VIEW 33: MESSAGE IN A BOTTLE
+     * ========================================== -->
+    <section class="app-view" id="view-bottle-ocean">
+        <div class="scratch-header-badge" style="background:#581c87; color:#fbcfe8; border-color:#d8b4fe;">✦ MESSAGE IN A BOTTLE ✦</div>
+        <h2 class="scratch-card-title" style="color:#fff; margin-bottom:4px;">Chiếc Lọ Thủy Tinh Ước Nguyện</h2>
+        <p class="scratch-card-sub" style="color:#fbcfe8; margin-bottom:16px;">Chiếc lọ dập dềnh trên sóng biển hoàng hôn mang theo bức thư tình yêu ♡</p>
+
+        <div class="ocean-waves-box">
+            <div class="floating-bottle" id="floatingBottle" title="Nhấp vào để mở nắp lọ!">🍾</div>
+            <div style="font-size:12px; color:#fbcfe8; font-weight:700; margin-top:8px;">Chạm vào lọ để kéo nút bần ✨</div>
+        </div>
+
+        <div class="ocean-letter-parchment" id="oceanLetterParchment">
+            <h3 style="font-family:'Dancing Script',cursive; font-size:24px; color:#92400e; margin-bottom:8px; text-align:center;">✦ Bức Thư Tình Trong Chiếc Lọ Thủy Tinh ✦</h3>
+            <p>Gửi công chúa nhỏ của anh,<br><br>Giữa biển đời rộng lớn, anh đã may mắn vớt được kho báu quý giá nhất thế gian — chính là em. Chiếc lọ này gửi trao lời ước hẹn: Dù phong ba bão táp, bàn tay này vẫn mãi nắm chặt tay em.</p>
+            <div style="text-align:right; font-weight:bold; margin-top:10px; color:#b45309;">Cố lên vợ iuu , chồng yêu em ❤️</div>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:16px; width:100%; max-width:400px;">
+            <button class="card-btn" id="btnOpenBottle" style="flex:1; justify-content:center;"><span>📜 Mở Bức Thư</span></button>
+            <button class="card-btn" id="btnSendWishBottle" style="flex:1; justify-content:center; background:#7e22ce;"><span>🌊 Thả Ước Nguyện</span></button>
+        </div>
+    </section>
+
+    <!-- ==========================================
+     * 34. VIEW 34: OUR LOVE PASSPORT
+     * ========================================== -->
+    <section class="app-view" id="view-love-passport">
+        <div class="scratch-header-badge" style="background:#78350f; color:#fde68a; border-color:#f59e0b;">✦ FIRST CLASS LOVE PASSPORT ✦</div>
+        <h2 class="scratch-card-title" style="color:#fff; margin-bottom:4px;">Hộ Chiếu & Vé Bay First Class</h2>
+        <p class="scratch-card-sub" style="color:#fde68a; margin-bottom:16px;">Chuyến bay định mệnh đưa em đến bến đỗ hạnh phúc trọn đời ♡</p>
+
+        <div class="first-class-ticket">
+            <div class="ticket-header">
+                <div>
+                    <div style="font-size:10px; font-weight:800; letter-spacing:1px; color:#b45309;">BOARDING PASS • VIP FIRST CLASS</div>
+                    <div style="font-family:'Dancing Script',cursive; font-size:22px; font-weight:700;">HÃNG HÀNG KHÔNG TÌNH YÊU ✈️</div>
+                </div>
+                <div style="font-size:22px; font-weight:800; color:#d97706;">LOVE-3006</div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:12px; margin-bottom:8px;">
+                <div><strong>HÀNH KHÁCH:</strong> Vợ Iuu Xinh Đẹp</div>
+                <div><strong>GHẾ NGỒI:</strong> 01A (Trong Tim)</div>
+                <div><strong>NƠI ĐI:</strong> Trái Tim Anh</div>
+                <div><strong>NƠI ĐẾN:</strong> Bên Em Mãi Mãi</div>
+            </div>
+            <div style="font-size:10px; color:#b45309; text-align:center; border-top:1px dashed #d97706; padding-top:6px;">
+                Cố lên vợ iuu , chồng yêu em ❤️ • KHÔNG THỂ HOÀN / HỦY VÉ
+            </div>
+        </div>
+
+        <div class="passport-booklet">
+            <div style="text-align:center; color:#fde68a; font-family:'Dancing Script',cursive; font-size:24px; margin-bottom:6px;">✦ CÁC CON DẤU KỶ NIỆM ✦</div>
+            <p style="text-align:center; font-size:11px; color:#cbd5e1; margin-bottom:12px;">Chạm vào từng con dấu thị thực để xem kỷ niệm:</p>
+            <div class="stamp-grid">
+                <div class="rubber-stamp" data-city="Hà Nội"><span>📍 Hà Nội</span><small>Mùa Thu</small></div>
+                <div class="rubber-stamp" data-city="Đà Lạt"><span>🌸 Đà Lạt</span><small>Sương Mù</small></div>
+                <div class="rubber-stamp" data-city="Đà Nẵng"><span>🌉 Đà Nẵng</span><small>Cầu Rồng</small></div>
+                <div class="rubber-stamp" data-city="Hội An"><span>🏮 Hội An</span><small>Đèn Lồng</small></div>
+                <div class="rubber-stamp" data-city="Phú Quốc"><span>🏝️ Phú Quốc</span><small>Hoàng Hôn</small></div>
+                <div class="rubber-stamp" data-city="Paris"><span>🗼 Paris</span><small>Hẹn Ước</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+     * 35. VIEW 35: THE LOVE MONOPOLY
+     * ========================================== -->
+    <section class="app-view" id="view-love-monopoly">
+        <div class="scratch-header-badge" style="background:#831843; color:#fbcfe8; border-color:#f472b6;">✦ THE LOVE MONOPOLY ✦</div>
+        <h2 class="scratch-card-title" style="color:#fff; margin-bottom:4px;">Cờ Tỷ Phú Tình Yêu Của Hai Đứa</h2>
+        <p class="scratch-card-sub" style="color:#fbcfe8; margin-bottom:14px;">Tung xúc xắc để di chuyển và thu thập các đặc quyền cưng nựng ♡</p>
+
+        <div class="monopoly-board" id="monopolyBoard">
+            <!-- Rendered by JS -->
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+            <button class="board-dice-btn" id="btnRollDice">🎲 Tung Xúc Xắc (Đang ở ô #1)</button>
+            <div id="monopolyStatusText" style="font-family:'Mali',cursive; font-size:13px; color:#fda4af; text-align:center;">Bấm tung xúc xắc để nhận quà!</div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+     * 36. VIEW 36: CUSTOM STAR MAP
+     * ========================================== -->
+    <section class="app-view" id="view-star-map">
+        <div class="scratch-header-badge" style="background:#1e3a8a; color:#bfdbfe; border-color:#60a5fa;">✦ CELESTIAL LOVE STAR MAP ✦</div>
+        <h2 class="scratch-card-title" style="color:#fff; margin-bottom:4px;">Bản Đồ Sao Đêm Định Mệnh</h2>
+        <p class="scratch-card-sub" style="color:#bfdbfe; margin-bottom:16px;">Vị trí chính xác các vì sao trên bầu trời lúc tình yêu bắt đầu ♡</p>
+
+        <div class="star-map-plate" id="starMapPlate">
+            <canvas id="starMapCanvas" class="star-map-canvas"></canvas>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:400px;">
+            <button class="card-btn" id="btnConnectStars"><span>✨ Nối Chòm Sao Đôi</span></button>
+            <button class="card-btn" id="btnStarShower"><span>🌠 Gọi Mưa Sao Băng</span></button>
+        </div>
+    </section>
+
+    <!-- ==========================================
+     * 37. VIEW 37: THE LOVE RECEIPT
+     * ========================================== -->
+    <section class="app-view" id="view-love-receipt">
+        <div class="scratch-header-badge" style="background:#334155; color:#cbd5e1; border-color:#94a3b8;">✦ VINTAGE LOVE RECEIPT PRINTER ✦</div>
+        <h2 class="scratch-card-title" style="color:#fff; margin-bottom:4px;">Chiếc Máy In Hóa Đơn Tình Yêu</h2>
+        <p class="scratch-card-sub" style="color:#cbd5e1; margin-bottom:16px;">Hóa đơn đặc biệt thanh toán bằng 100% tình yêu của chồng ♡</p>
+
+        <div class="receipt-printer-slot">
+            <div style="font-size:11px; font-weight:800; color:#cbd5e1; letter-spacing:2px;">✦ RECEIPT PRINTER ✦</div>
+        </div>
+
+        <div class="receipt-paper" id="receiptPaper">
+            <div style="text-align:center; font-weight:bold; font-size:16px; margin-bottom:4px;">TIỆM TÌNH YÊU 24/7</div>
+            <div style="text-align:center; font-size:11px; margin-bottom:10px;">Đ/C: Trong Trái Tim Công Chúa • Hotline: YÊU-EM</div>
+            <div style="border-bottom:1px dashed #78716c; margin-bottom:10px;"></div>
+            <div class="receipt-item-row"><span>Thu Ngân:</span><strong>Chồng Chung Thủy</strong></div>
+            <div class="receipt-item-row"><span>Khách Hàng:</span><strong>Vợ Iuu Xinh Đẹp</strong></div>
+            <div class="receipt-item-row"><span>Thời Gian:</span><strong>Mỗi Ngày • Trọn Đời</strong></div>
+            <div style="border-bottom:1px dashed #78716c; margin:10px 0;"></div>
+            
+            <div class="receipt-item-row"><span>1. Yêu Thương & Cưng Nựng</span><span>VÔ GIÁ</span></div>
+            <div class="receipt-item-row"><span>2. Ôm Ấp Lúc Mệt Mỏi</span><span>0 đ</span></div>
+            <div class="receipt-item-row"><span>3. Nấu Ăn & Dắt Đi Chơi</span><span>0 đ</span></div>
+            <div class="receipt-item-row"><span>4. Nhường Nhịn Khi Vợ Dỗi</span><span>0 đ</span></div>
+            <div class="receipt-item-row"><span>5. Bảo Vệ & Che Chở Trọn Đời</span><span>0 đ</span></div>
+            
+            <div style="border-bottom:1px dashed #78716c; margin:10px 0;"></div>
+            <div class="receipt-item-row" style="font-weight:bold;"><span>TỔNG CỘNG:</span><span>VÔ GIÁ</span></div>
+            <div class="receipt-item-row" style="color:#dc2626;"><span>Voucher [Em Đẹp Nhất]:</span><span>-100%</span></div>
+            <div class="receipt-item-row" style="font-size:15px; font-weight:900; margin-top:6px;"><span>TIỀN PHẢI TRẢ:</span><span>0 ĐỒNG</span></div>
+            <div style="text-align:center; font-size:11px; margin-top:12px; font-style:italic;">(Đã thanh toán bằng cả trái tim của chồng ❤️)</div>
+            <div style="text-align:center; font-weight:bold; font-size:12px; margin-top:8px; color:#e11d48;">Cố lên vợ iuu , chồng yêu em ❤️</div>
+        </div>
+
+        <button class="card-btn" id="btnPrintReceiptAgain" style="margin-top:18px;">
+            <span>🖨️ In Lại Hóa Đơn Tình Yêu</span>
+        </button>
+    </section>
+
 <!-- Fullscreen Grid Menu Modal (Bản Đồ 30 Món Quà) -->
     <div class="grid-modal-overlay" id="gridMenuModal">
         <div class="grid-modal-content">
             <div class="grid-modal-header">
                 <div>
-                    <h2 class="grid-modal-title">✦ Vương Quốc 31 Món Quà ✦</h2>
+                    <h2 class="grid-modal-title">✦ Vương Quốc 37 Món Quà ✦</h2>
                     <p class="grid-modal-sub">Chạm vào bất kỳ món quà nào để khám phá ngay ♡</p>
                 </div>
                 <button id="btnCloseGridMenu" style="background:#ffe4eb; border:none; border-radius:50%; width:36px; height:36px; font-size:18px; color:#d81b60; cursor:pointer;">✕</button>
@@ -6553,6 +7163,36 @@
             <div class="dock-label">Hoa Kỷ Niệm</div>
             <div class="dock-indicator"></div>
         </div>
+        <div class="dock-item" data-target="view-cozy-room" data-song="panbap_audio.mp3" data-title="Lofi Romance" title="Căn Phòng 3D Cozy Room">
+            <div class="dock-icon">🏡</div>
+            <div class="dock-label">Phòng Yêu</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-bottle-ocean" data-song="thousand_years_song.mp3" data-title="A Thousand Years" title="Chiếc Lọ Thủy Tinh Ước Nguyện">
+            <div class="dock-icon">🌊</div>
+            <div class="dock-label">Lọ Ước</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-love-passport" data-song="cupid_cake_song.mp3" data-title="Love Story" title="Hộ Chiếu Tình Yêu First Class">
+            <div class="dock-icon">✈️</div>
+            <div class="dock-label">Hộ Chiếu</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-love-monopoly" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix" title="Cờ Tỷ Phú Tình Yêu">
+            <div class="dock-icon">🎲</div>
+            <div class="dock-label">Cờ Tình Yêu</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-star-map" data-song="spirograph_heart_song.mp3" data-title="Piano Romance" title="Bản Đồ Sao Đêm Định Mệnh">
+            <div class="dock-icon">✨</div>
+            <div class="dock-label">Bản Đồ Sao</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-love-receipt" data-song="flower_shop_song.mp3" data-title="Là Người Con Gái..." title="Máy In Hóa Đơn Tình Yêu">
+            <div class="dock-icon">🧾</div>
+            <div class="dock-label">Hóa Đơn</div>
+            <div class="dock-indicator"></div>
+        </div>
 
 
     </nav>
@@ -6669,6 +7309,11 @@
             if (targetViewId === 'view-telescope' && typeof resizeTelescopeSky === 'function') resizeTelescopeSky();
             if (targetViewId === 'view-tarot' && typeof initTarotCards === 'function') initTarotCards();
             if (targetViewId === 'view-memory-flowers' && typeof initMemoryFlowersView === 'function') initMemoryFlowersView();
+            if (targetViewId === 'view-cozy-room' && typeof initCozyRoomView === 'function') initCozyRoomView();
+            if (targetViewId === 'view-bottle-ocean' && typeof initBottleOceanView === 'function') initBottleOceanView();
+            if (targetViewId === 'view-love-monopoly' && typeof initMonopolyView === 'function') initMonopolyView();
+            if (targetViewId === 'view-star-map' && typeof initStarMapView === 'function') initStarMapView();
+            if (targetViewId === 'view-love-receipt' && typeof initReceiptView === 'function') initReceiptView();
             if (targetViewId === 'view-chocolate' && typeof initChocolateBonbons === 'function') initChocolateBonbons();
 
             // Reset Escape Quiz View
@@ -8413,7 +9058,13 @@
             { id: "view-telescope", name: "Kính Thiên Văn Sao Băng", icon: "🔭", cat: "chill", song: "thousand_years_song.mp3", title: "A Thousand Years" },
             { id: "view-tarot", name: "Bộ Bài Tarot Tình Yêu", icon: "🔮", cat: "chill", song: "spirograph_heart_song.mp3", title: "Piano Romance" },
             { id: "view-bonsai", name: "Cây Mầm Tình Yêu", icon: "🌱", cat: "chill", song: "cupid_cake_song.mp3", title: "Love Story" },
-            { id: "view-memory-flowers", name: "Vườn Hoa Kỷ Niệm", icon: "💐", cat: "flowers", song: "thousand_years_song.mp3", title: "A Thousand Years" }
+            { id: "view-memory-flowers", name: "Vườn Hoa Kỷ Niệm", icon: "💐", cat: "flowers", song: "thousand_years_song.mp3", title: "A Thousand Years" },
+            { id: "view-cozy-room", name: "Our 3D Cozy Room", icon: "🏡", cat: "chill", song: "panbap_audio.mp3", title: "Lofi Romance" },
+            { id: "view-bottle-ocean", name: "Message In A Bottle", icon: "🌊", cat: "chill", song: "thousand_years_song.mp3", title: "A Thousand Years" },
+            { id: "view-love-passport", name: "Our Love Passport", icon: "✈️", cat: "trend", song: "cupid_cake_song.mp3", title: "Love Story" },
+            { id: "view-love-monopoly", name: "The Love Monopoly", icon: "🎲", cat: "games", song: "cho_chut_remix.mp3", title: "Chờ Chút Thôi Remix" },
+            { id: "view-star-map", name: "Custom Star Map", icon: "✨", cat: "cosmic", song: "spirograph_heart_song.mp3", title: "Piano Romance" },
+            { id: "view-love-receipt", name: "The Love Receipt", icon: "🧾", cat: "trend", song: "flower_shop_song.mp3", title: "Là Người Con Gái..." }
         ];
 
         const gridMenuModal = document.getElementById('gridMenuModal');
@@ -10203,6 +10854,18 @@
                 switchView('view-bonsai', 'cupid_cake_song.mp3', 'Love Story');
             } else if (hash === 'flowers' || hash === 'memory-flowers') {
                 switchView('view-memory-flowers', 'thousand_years_song.mp3', 'A Thousand Years');
+            } else if (hash === 'cozyroom' || hash === 'room') {
+                switchView('view-cozy-room', 'panbap_audio.mp3', 'Lofi Romance');
+            } else if (hash === 'bottle' || hash === 'ocean') {
+                switchView('view-bottle-ocean', 'thousand_years_song.mp3', 'A Thousand Years');
+            } else if (hash === 'passport' || hash === 'flight') {
+                switchView('view-love-passport', 'cupid_cake_song.mp3', 'Love Story');
+            } else if (hash === 'monopoly' || hash === 'game') {
+                switchView('view-love-monopoly', 'cho_chut_remix.mp3', 'Chờ Chút Thôi Remix');
+            } else if (hash === 'starmap' || hash === 'star') {
+                switchView('view-star-map', 'spirograph_heart_song.mp3', 'Piano Romance');
+            } else if (hash === 'receipt' || hash === 'bill') {
+                switchView('view-love-receipt', 'flower_shop_song.mp3', 'Là Người Con Gái...');
             } else {
                 switchView('view-hub', 'flower_shop_song.mp3', 'Là Người Con Gái...');
             }
@@ -10553,6 +11216,320 @@
         }
 
         window.addEventListener('resize', resizePetalsCanvas);
+
+        
+        // ==========================================
+        // 38. VIEW 32: OUR 3D COZY ROOM LOGIC
+        // ==========================================
+        let isRoomNight = false;
+        function initCozyRoomView() {
+            // Setup initial room state
+        }
+        const btnToggleRoomLight = document.getElementById('btnToggleRoomLight');
+        const viewCozyRoom = document.getElementById('view-cozy-room');
+        const cozySunMoon = document.getElementById('cozySunMoon');
+        if (btnToggleRoomLight) {
+            btnToggleRoomLight.addEventListener('click', () => {
+                isRoomNight = !isRoomNight;
+                viewCozyRoom.classList.toggle('night-mode', isRoomNight);
+                cozySunMoon.textContent = isRoomNight ? '🌙' : '☀️';
+                playChimeTone(isRoomNight ? 520 : 880, 0.15);
+            });
+        }
+        const cozyPlushie = document.getElementById('cozyPlushie');
+        if (cozyPlushie) {
+            cozyPlushie.addEventListener('click', () => {
+                playStoreChime();
+                triggerCupidConfetti();
+                openModal(
+                    "🧸 LỜI THÌ THẦM TỪ GẤU BÔNG HỒNG!",
+                    "Vòng Tay Ấm Áp Của Chồng",
+                    "Vợ ơi, chú gấu bông này ôm ấm lắm, nhưng vòng tay của chồng còn ấm hơn ngàn lần nhé!<br><br>Bất kể khi nào em mệt mỏi, luôn có anh ở đây chờ ôm em thật chặt.<br><br><span style='color:#f472b6; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>"
+                );
+            });
+        }
+        const cozyVase = document.getElementById('cozyVase');
+        if (cozyVase) {
+            cozyVase.addEventListener('click', () => {
+                playChimeTone(980, 0.15);
+                openModal(
+                    "🌸 BÌNH HOA SEN THANH TAO ĐỂ BÀN",
+                    "Góc Thư Giãn Của Công Chúa",
+                    "Bình hoa sen thơm ngát trên bàn làm việc giúp em luôn cảm thấy thư thái và tràn đầy năng lượng mỗi ngày!<br><br><span style='color:#f472b6; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>"
+                );
+            });
+        }
+        const cozyBoba = document.getElementById('cozyBoba');
+        if (cozyBoba) {
+            cozyBoba.addEventListener('click', () => {
+                playChimeTone(650, 0.1);
+                openModal(
+                    "🧋 TRÀ SỮA ĐƯỜNG ĐEN FULL TOPPING!",
+                    "Ngọt Ngào Cho Bé Iuu",
+                    "Một ly trà sữa siêu to khổng lồ dành riêng cho em! Uống một ngụm là mọi muộn phiền tan biến hết trơn luôn nha!<br><br><span style='color:#f472b6; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>"
+                );
+            });
+        }
+        const cozyGramophone = document.getElementById('cozyGramophone');
+        if (cozyGramophone) {
+            cozyGramophone.addEventListener('click', () => {
+                playChimeTone(440, 0.2);
+                ensureAudioPlaying();
+                openModal(
+                    "📻 MÁY PHÁT ĐĨA THAN LOFI CHILL",
+                    "Giai Điệu Tình Yêu",
+                    "Âm nhạc du dương sưởi ấm căn phòng nhỏ của hai đứa mình. Chúc công chúa luôn an yên bên anh!"
+                );
+            });
+        }
+        const cozyFrame = document.getElementById('cozyFrame');
+        if (cozyFrame) {
+            cozyFrame.addEventListener('click', () => {
+                openModal(
+                    "🖼️ BỨC ẢNH KỶ NIỆM ĐÓNG KHUNG",
+                    "Khoảnh Khắc Vô Giá",
+                    "Mỗi tấm ảnh là một mẩu chuyện tình ngọt ngào. Anh muốn cùng em lấp đầy những khung ảnh kỷ niệm suốt cuộc đời này!"
+                );
+            });
+        }
+        const cozyLamp = document.getElementById('cozyLamp');
+        if (cozyLamp) {
+            cozyLamp.addEventListener('click', () => {
+                if (btnToggleRoomLight) btnToggleRoomLight.click();
+            });
+        }
+
+        // ==========================================
+        // 39. VIEW 33: MESSAGE IN A BOTTLE LOGIC
+        // ==========================================
+        const floatingBottle = document.getElementById('floatingBottle');
+        const oceanLetterParchment = document.getElementById('oceanLetterParchment');
+        const btnOpenBottle = document.getElementById('btnOpenBottle');
+        const btnSendWishBottle = document.getElementById('btnSendWishBottle');
+        function initBottleOceanView() {
+            // Setup bottle ocean
+        }
+        function popBottleLetter() {
+            if (oceanLetterParchment) {
+                oceanLetterParchment.style.display = 'block';
+                oceanLetterParchment.scrollIntoView({ behavior: 'smooth' });
+                playChimeTone(720, 0.2);
+                triggerCupidConfetti();
+            }
+        }
+        if (floatingBottle) floatingBottle.addEventListener('click', popBottleLetter);
+        if (btnOpenBottle) btnOpenBottle.addEventListener('click', popBottleLetter);
+        if (btnSendWishBottle) {
+            btnSendWishBottle.addEventListener('click', () => {
+                const wish = prompt("Nhập điều ước của em gửi tới đại dương ngàn sao:", "Ước hai đứa luôn hạnh phúc bên nhau mãi mãi!");
+                if (wish && wish.trim().length > 0) {
+                    try {
+                        let wishes = JSON.parse(localStorage.getItem('userOceanWishes') || '[]');
+                        wishes.push({ wish: wish.trim(), date: new Date().toLocaleDateString() });
+                        localStorage.setItem('userOceanWishes', JSON.stringify(wishes));
+                    } catch(e) {}
+                    playStoreChime();
+                    triggerCupidConfetti();
+                    openModal(
+                        "🌊 ĐÃ THẢ CHIẾC LỌ ƯỚC NGUYỆN!",
+                        "Gửi Tới Đại Dương Ngàn Sao",
+                        `Điều ước: "<strong>${wish.trim()}</strong>" đã được cuộn chặt trong lọ thủy tinh phát sáng trôi ra biển cả.<br><br>Chồng xin hứa sẽ biến mọi điều ước của công chúa thành hiện thực!<br><br><span style='color:#e11d48; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>`
+                    );
+                }
+            });
+        }
+
+        // ==========================================
+        // 40. VIEW 34: LOVE PASSPORT LOGIC
+        // ==========================================
+        const stamps = document.querySelectorAll('.rubber-stamp');
+        stamps.forEach(stamp => {
+            stamp.addEventListener('click', () => {
+                const city = stamp.dataset.city || 'Thành Phố Tình Yêu';
+                playChimeTone(280, 0.08);
+                setTimeout(() => playStoreChime(), 80);
+                triggerCupidConfetti();
+                openModal(
+                    "✈️ THỊ THỰC TÌNH YÊU: " + city.toUpperCase(),
+                    "Con Dấu Kỷ Niệm Chính Thức",
+                    `Chúc mừng hành khách <strong>Vợ Iuu</strong> đã thông hành tới <strong>${city}</strong>!<br><br>Dù đi bất cứ chân trời nào, tấm vé máy bay cuộc đời này vẫn chỉ có duy nhất một điểm đến: Trái tim anh.<br><br><span style='color:#d97706; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>`
+                );
+            });
+        });
+
+        // ==========================================
+        // 41. VIEW 35: THE LOVE MONOPOLY LOGIC
+        // ==========================================
+        const monopolySquaresData = [
+            { id: 0, icon: '💋', name: 'Bắt Đầu', desc: 'Nhận ngay 10 nụ hôn nồng cháy từ chồng!' },
+            { id: 1, icon: '🧋', name: 'Tiệm Trà Sữa', desc: 'Chồng bao trà sữa full topping bất kỳ lúc nào vợ thèm!' },
+            { id: 2, icon: '🎁', name: 'Khí Vận', desc: 'Rút thẻ: Đặc quyền dỗi vô cớ 24h mà chồng vẫn phải ôm!' },
+            { id: 3, icon: '🎬', name: 'Rạp Phim', desc: 'Một buổi tối xem phim tự chọn, chồng phục vụ bắp rang!' },
+            { id: 4, icon: '🔒', name: 'Nhà Tù Tim', desc: 'Bị giam giữ trong tim chồng trọn đời trọn kiếp!' },
+            { id: 5, icon: '💆‍♀️', name: 'Spa Bóp Vai', desc: 'Phiếu massage lưng và bóp vai 30 phút cực kỳ thư giãn!' },
+            { id: 6, icon: '🌙', name: 'Dạo Phố Đêm', desc: 'Chở em đi hóng gió hồ Tây và ăn kem Tràng Tiền!' },
+            { id: 7, icon: '🌟', name: 'Cơ Hội Vàng', desc: 'Phiếu miễn rửa chén và dọn dẹp trong 3 ngày!' },
+            { id: 8, icon: '🍳', name: 'Nấu Bữa Tối', desc: 'Chồng vào bếp nấu những món ăn vợ yêu thích nhất!' },
+            { id: 9, icon: '👑', name: 'Làm Công Chúa', desc: '1 ngày làm nữ hoàng: Chồng cung phụng từ A đến Z!' },
+            { id: 10, icon: '🛍️', name: 'Quẹt Thẻ', desc: 'Mua sắm món đồ vợ thích, chồng xin thanh toán ngay!' },
+            { id: 11, icon: '💖', name: 'Điều Ước VIP', desc: '1 Điều ước tối thượng: Chồng thực hiện vô điều kiện!' }
+        ];
+        let currentPawnPos = 0;
+        const monopolyBoard = document.getElementById('monopolyBoard');
+        const btnRollDice = document.getElementById('btnRollDice');
+        const monopolyStatusText = document.getElementById('monopolyStatusText');
+
+        function renderMonopolyBoard() {
+            if (!monopolyBoard) return;
+            monopolyBoard.innerHTML = '';
+            monopolySquaresData.forEach((sq, idx) => {
+                const div = document.createElement('div');
+                div.className = 'board-square' + (idx === currentPawnPos ? ' active-pawn' : '');
+                div.innerHTML = `
+                    <div style="font-size:20px; margin-bottom:2px;">${sq.icon}</div>
+                    <div>${sq.name}</div>
+                    ${idx === currentPawnPos ? '<div style="font-size:8px; color:#ffd1dc; margin-top:2px;">💖 Vợ Ở Đây</div>' : ''}
+                `;
+                monopolyBoard.appendChild(div);
+            });
+        }
+        function initMonopolyView() {
+            renderMonopolyBoard();
+        }
+        if (btnRollDice) {
+            btnRollDice.addEventListener('click', () => {
+                const roll = Math.floor(Math.random() * 6) + 1;
+                playChimeTone(400 + roll * 100, 0.15);
+                currentPawnPos = (currentPawnPos + roll) % monopolySquaresData.length;
+                renderMonopolyBoard();
+                const landed = monopolySquaresData[currentPawnPos];
+                if (btnRollDice) btnRollDice.textContent = `🎲 Xúc Xắc Ra ${roll} Điểm (Ô #${currentPawnPos + 1})`;
+                if (monopolyStatusText) monopolyStatusText.textContent = `Vợ đã đặt chân tới ô: ${landed.name}!`;
+                triggerCupidConfetti();
+                setTimeout(() => {
+                    openModal(
+                        "🎲 Ô SỐ " + (currentPawnPos + 1) + ": " + landed.name + " " + landed.icon,
+                        "Phần Thưởng Cờ Tỷ Phú Tình Yêu",
+                        `Công chúa đã quay trúng:<br><br><span style='color:#e11d48; font-family:Mali; font-size:15px; font-weight:700;'>${landed.desc}</span><br><br>Chồng xin thực hiện ngay vô điều kiện!<br><br><span style='color:#f472b6; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>`
+                    );
+                }, 400);
+            });
+        }
+
+        // ==========================================
+        // 42. VIEW 36: CUSTOM STAR MAP LOGIC
+        // ==========================================
+        const starMapCanvas = document.getElementById('starMapCanvas');
+        let smCtx = starMapCanvas ? starMapCanvas.getContext('2d') : null;
+        let smStars = [];
+        let isConnectedStars = false;
+
+        function initStarMapView() {
+            if (!starMapCanvas) return;
+            const size = 320;
+            starMapCanvas.width = size;
+            starMapCanvas.height = size;
+            smStars = [];
+            for (let i = 0; i < 90; i++) {
+                smStars.push({
+                    x: Math.random() * size,
+                    y: Math.random() * size,
+                    r: Math.random() * 2 + 0.8,
+                    alpha: Math.random() * 0.7 + 0.3,
+                    speed: Math.random() * 0.02 + 0.01
+                });
+            }
+            drawStarMap();
+        }
+
+        function drawStarMap() {
+            if (!smCtx || !starMapCanvas) return;
+            const w = starMapCanvas.width, h = starMapCanvas.height;
+            smCtx.clearRect(0, 0, w, h);
+
+            // Stars
+            smStars.forEach(s => {
+                s.alpha += s.speed;
+                if (s.alpha > 1 || s.alpha < 0.2) s.speed = -s.speed;
+                smCtx.fillStyle = `rgba(255, 255, 255, ${Math.abs(s.alpha)})`;
+                smCtx.beginPath();
+                smCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                smCtx.fill();
+            });
+
+            // If connected
+            if (isConnectedStars) {
+                smCtx.save();
+                smCtx.strokeStyle = 'rgba(244, 114, 182, 0.85)';
+                smCtx.lineWidth = 2.5;
+                smCtx.beginPath();
+                // Draw heart constellation in center
+                const cx = w/2, cy = h/2;
+                smCtx.moveTo(cx, cy - 25);
+                smCtx.bezierCurveTo(cx - 35, cy - 55, cx - 60, cy - 10, cx, cy + 45);
+                smCtx.bezierCurveTo(cx + 60, cy - 10, cx + 35, cy - 55, cx, cy - 25);
+                smCtx.stroke();
+                smCtx.fillStyle = '#ffd700';
+                smCtx.font = 'bold 12px Mali';
+                smCtx.textAlign = 'center';
+                smCtx.fillText('★ Chòm Sao: Anh & Em ★', cx, cy + 65);
+                smCtx.restore();
+            }
+
+            if (document.getElementById('view-star-map').classList.contains('active')) {
+                requestAnimationFrame(drawStarMap);
+            }
+        }
+
+        const btnConnectStars = document.getElementById('btnConnectStars');
+        if (btnConnectStars) {
+            btnConnectStars.addEventListener('click', () => {
+                isConnectedStars = !isConnectedStars;
+                playChimeTone(1050, 0.2);
+                triggerCupidConfetti();
+                openModal(
+                    "✨ ĐÃ NỐI CHÒM SAO ĐÔI ANH & EM!",
+                    "Chòm Sao Vĩnh Cửu Trên Bầu Trời",
+                    "Hai vì sao sáng nhất trên bầu trời đêm đã hội tụ và kết nối thành hình trái tim rực rỡ mang tên hai đứa mình!<br><br><span style='color:#60a5fa; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>"
+                );
+            });
+        }
+        const btnStarShower = document.getElementById('btnStarShower');
+        if (btnStarShower) {
+            btnStarShower.addEventListener('click', () => {
+                playStoreChime();
+                triggerCupidConfetti();
+                openModal(
+                    "🌠 MƯA SAO BĂNG ĐANG RƠI QUA BẦU TRỜI!",
+                    "Lời Ước Nguyện Gửi Tới Các Vì Sao",
+                    "Dưới cơn mưa sao băng lung linh, chúc công chúa nhỏ của anh luôn luôn bình an, vui vẻ và mãi mãi hạnh phúc bên anh!<br><br><span style='color:#60a5fa; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>"
+                );
+            });
+        }
+
+        // ==========================================
+        // 43. VIEW 37: THE LOVE RECEIPT LOGIC
+        // ==========================================
+        const btnPrintReceiptAgain = document.getElementById('btnPrintReceiptAgain');
+        const receiptPaper = document.getElementById('receiptPaper');
+        function initReceiptView() {
+            // Trigger receipt print animation
+        }
+        if (btnPrintReceiptAgain && receiptPaper) {
+            btnPrintReceiptAgain.addEventListener('click', () => {
+                playChimeTone(350, 0.1);
+                setTimeout(() => playChimeTone(700, 0.15), 100);
+                receiptPaper.style.animation = 'none';
+                receiptPaper.offsetHeight; // trigger reflow
+                receiptPaper.style.animation = 'receipt-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+                triggerCupidConfetti();
+                openModal(
+                    "🖨️ ĐÃ IN HÓA ĐƠN TÌNH YÊU MỚI!",
+                    "Thanh Toán Bằng Cả Trái Tim",
+                    "Hóa đơn tình yêu 0đ đã được in thành công! Toàn bộ dịch vụ yêu thương, cưng nựng và che chở đều được chồng bảo hành trọn đời!<br><br><span style='color:#e11d48; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>"
+                );
+            });
+        }
 
         window.addEventListener('load', handleHashRouting);
     </script>
