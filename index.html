@@ -298,7 +298,10 @@
         #view-love-passport.active,
         #view-love-monopoly.active,
         #view-star-map.active,
-        #view-love-receipt.active {
+        #view-love-receipt.active,
+        #view-sincere-letter.active,
+        #view-mood-firstaid.active,
+        #view-apology-contract.active {
             display: flex !important;
         }
 
@@ -4994,6 +4997,128 @@
             margin-bottom: 6px;
         }
 
+    
+        /* =========================================
+         * 38-40. STYLES CHO 3 DỰ ÁN XIN LỖI VỢ
+         * ========================================= */
+        
+        /* Emergency Banner on Top of Hub */
+        .vip-apology-banner {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 16px;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.4), rgba(190, 18, 60, 0.5));
+            border: 2px solid #fda4af;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            cursor: pointer;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(244, 63, 94, 0.45);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulse-apology 2.5s infinite;
+        }
+        @keyframes pulse-apology {
+            0%, 100% { box-shadow: 0 0 20px rgba(244, 63, 94, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(244, 63, 94, 0.75); }
+        }
+        .vip-apology-banner:hover {
+            transform: translateY(-3px) scale(1.02);
+            border-color: #ffe4e6;
+        }
+
+        /* VIEW 38: SINCERE LETTER & ANGER METER */
+        #view-sincere-letter {
+            background: linear-gradient(180deg, #18051e 0%, #29082c 40%, #15031b 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 16px 120px;
+            width: 100%;
+        }
+
+        /* VIEW 39: MOOD FIRST-AID */
+        #view-mood-firstaid {
+            background: linear-gradient(180deg, #240925 0%, #3a0a38 45%, #15031b 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 16px 120px;
+            width: 100%;
+        }
+
+        /* VIEW 40: APOLOGY CONTRACT & DODGING BUTTON */
+        #view-apology-contract {
+            background: linear-gradient(180deg, #1c0a24 0%, #300c37 50%, #130419 100%);
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 85px 16px 120px;
+            width: 100%;
+        }
+
+        .apology-card-box {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(35, 12, 44, 0.88);
+            border: 1.5px solid rgba(251, 113, 133, 0.4);
+            border-radius: 28px;
+            padding: 24px 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* Reusable Apology Elements */
+        .apology-scroll {
+            background: #fffaf0;
+            color: #4a1525;
+            border: 2px dashed #fda4af;
+            border-radius: 20px;
+            padding: 20px;
+            font-family: 'Mali', cursive;
+            font-size: 13.5px;
+            line-height: 1.7;
+            box-shadow: inset 0 0 15px rgba(251, 113, 133, 0.15);
+        }
+        .apology-par {
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        .apology-par.hidden { display: none; }
+
+        .dodging-arena {
+            position: relative;
+            min-height: 160px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            overflow: hidden;
+            margin-top: 14px;
+        }
+        .btn-dodging-hub {
+            position: relative;
+            padding: 10px 22px;
+            background: rgba(239, 68, 68, 0.25);
+            border: 1.5px solid #ef4444;
+            border-radius: 24px;
+            color: #fca5a5;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
     </style>
 </head>
 <body>
@@ -5011,7 +5136,7 @@
                 <span>🏠</span> Về Hub
             </button>
             <button class="btn-grid-menu" id="btnOpenGridMenu">
-                <span>🗂️</span> 37 Món Quà
+                <span>🗂️</span> 40 Món Quà
             </button>
             <a href="/love-planet" class="btn-grid-menu" style="text-decoration:none; background:linear-gradient(135deg, #d946ef, #8b5cf6); color:#fff; border-color:#f472b6; box-shadow:0 0 12px rgba(217,70,239,0.5);" title="Du hành tới Hành Tinh Kỷ Niệm 3D">
                 <span>🪐</span> Hành Tinh 3D
@@ -5040,6 +5165,18 @@
             <div class="hub-signature">
                 Mãi yêu em ♡
             </div>
+        </div>
+
+        <!-- Emergency Apology VIP Banner -->
+        <div class="vip-apology-banner" onclick="switchView('view-sincere-letter', 'thousand_years_song.mp3', 'A Thousand Years')">
+            <div class="vip-banner-content">
+                <div style="font-size:36px; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.4));">🥺</div>
+                <div>
+                    <div class="vip-banner-title" style="color:#fda4af; font-size:24px;">🚨 Góc Xin Lỗi & Chuộc Lỗi Với Vợ Iuu ❤️</div>
+                    <div class="vip-banner-desc" style="color:#fecdd3;">Chồng biết lỗi rồi ạ! Bấm vào đây để hạ hỏa, nhận quà chuộc lỗi & làm hòa với anh nhé ♡</div>
+                </div>
+            </div>
+            <div class="vip-banner-btn" style="background:linear-gradient(135deg, #f43f5e, #be123c);">Vào Làm Hòa Ngay ✨</div>
         </div>
 
         <!-- VIP Memory Flower Banner -->
@@ -5573,6 +5710,39 @@
                     <p class="card-desc">Máy in kêu rè rè chạy ra dải hóa đơn tình yêu 0đ, thanh toán bằng cả trái tim và quét mã QR tải về ♡</p>
                 </div>
                 <button class="card-btn"><span>In hóa đơn</span> ➔</button>
+            </div>
+
+            <!-- Card 38: Thước Đo Hạ Hỏa & Thư Tay Tự Kiểm Điểm -->
+            <div class="gift-card" data-target="view-sincere-letter" data-song="thousand_years_song.mp3" data-title="A Thousand Years">
+                <div>
+                    <span class="card-header-badge" style="background:#ffe4e6; color:#be123c;">📜 Chân Thành & Sâu Lắng</span>
+                    <div class="card-icon-wrap">🥺</div>
+                    <h2 class="card-title">Thước Đo Hạ Hỏa & Thư Tay</h2>
+                    <p class="card-desc">Kéo thanh trượt từ 100% giận về 0% để mở dần bức thư nhận lỗi 1000% chân thành của chồng ♡</p>
+                </div>
+                <button class="card-btn"><span>Mở thư tạ lỗi</span> ➔</button>
+            </div>
+
+            <!-- Card 39: Hộp Cứu Thương & Tiệm Thuốc Chuộc Lỗi -->
+            <div class="gift-card" data-target="view-mood-firstaid" data-song="cupid_cake_song.mp3" data-title="Love Story">
+                <div>
+                    <span class="card-header-badge" style="background:#fce7f3; color:#db2777;">🩹 Chuộc Lỗi Bằng Hành Động</span>
+                    <div class="card-icon-wrap">💊</div>
+                    <h2 class="card-title">Hộp Cứu Thương Tâm Trạng</h2>
+                    <p class="card-desc">5 liều thuốc đặc trị giận: trà sữa, massage, miễn việc nhà, 100 nụ hôn & avatar đấm yêu xả bực ♡</p>
+                </div>
+                <button class="card-btn"><span>Mở hộp thuốc</span> ➔</button>
+            </div>
+
+            <!-- Card 40: Bản Cam Kết & Nút Không Thể Từ Chối -->
+            <div class="gift-card" data-target="view-apology-contract" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix">
+                <div>
+                    <span class="card-header-badge" style="background:#dcfce7; color:#15803d;">💖 Hài Hước & Đáng Yêu</span>
+                    <div class="card-icon-wrap">🤝</div>
+                    <h2 class="card-title">Bản Cam Kết Làm Hòa</h2>
+                    <p class="card-desc">Nút 'Vẫn giận' tự né tránh mượt mà, ép công chúa phải bấm nút 'Tha thứ cho chồng' để bắn pháo hoa ♡</p>
+                </div>
+                <button class="card-btn"><span>Ký cam kết</span> ➔</button>
             </div>
 
 
@@ -6954,12 +7124,126 @@
         </button>
     </section>
 
+<!-- ==========================================
+     * 38. VIEW 38: THƯỚC ĐO HẠ HỎA & BỨC THƯ TỰ KIỂM ĐIỂM
+     * ========================================== -->
+    <section class="app-view" id="view-sincere-letter">
+        <div class="scratch-header-badge" style="background:#581c87; color:#fbcfe8; border-color:#d8b4fe;">✦ SINCERE APOLOGY LETTER ✦</div>
+        <h2 class="scratch-card-title" style="color:#fff; margin-bottom:4px;">Thước Đo Hạ Hỏa & Thư Tự Kiểm Điểm</h2>
+        <p class="scratch-card-sub" style="color:#fbcfe8; margin-bottom:16px;">Kéo thanh trượt về bên trái để hạ hỏa và mở thư tay chân thành của chồng ♡</p>
+
+        <div class="apology-card-box">
+            <div class="anger-meter-box" style="margin-bottom:16px; background:rgba(20,6,26,0.65); border:1.5px solid rgba(244,114,182,0.35); border-radius:20px; padding:16px; text-align:center;">
+                <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:12px;">
+                    <div id="hubAngerEmoji" style="font-size:42px;">😡</div>
+                    <div style="text-align:left;">
+                        <div id="hubAngerPercent" style="font-size:22px; font-weight:800; color:#f43f5e;">Mức Độ Giận: 100%</div>
+                        <div id="hubAngerDesc" style="font-family:'Mali',cursive; font-size:12px; color:#fecdd3;">Vợ đang giận đùng đùng, chồng sợ run người! 🥺</div>
+                    </div>
+                </div>
+
+                <input type="range" min="0" max="100" value="100" class="anger-slider" id="hubAngerSlider" style="width:100%; height:10px; border-radius:6px; outline:none;">
+                <div style="display:flex; justify-content:space-between; font-size:11px; font-weight:700; color:#fda4af; margin-top:6px;">
+                    <span>0% Hết Giận 🥰</span>
+                    <span>50% Nguôi Nguôi 🥺</span>
+                    <span>100% Rất Giận 😡</span>
+                </div>
+            </div>
+
+            <!-- Unfolding Letter -->
+            <div class="apology-scroll">
+                <div style="font-family:'Dancing Script',cursive; font-size:24px; font-weight:700; color:#be123c; text-align:center; margin-bottom:10px;">✦ Lời Tạ Lỗi Từ Đáy Lòng Của Chồng ✦</div>
+                <div class="apology-par" id="hubPar1">
+                    <strong>Gửi công chúa nhỏ đáng yêu nhất trần đời của anh,</strong><br>
+                    Chồng thừa nhận mình đã sai 1000%, không có lời ngụy biện nào cả. Nhìn em im lặng hay cau mày giận dỗi, lòng anh cồn cào và xót xa lắm.
+                </div>
+                <div class="apology-par hidden" id="hubPar2">
+                    Anh biết mình đôi lúc còn vô tâm, vụng về hoặc chưa tinh tế lắng nghe hết những tâm tư của em. Nhưng xin em hãy tin rằng, cả thế giới của anh chỉ có nụ cười của em là quan trọng nhất.
+                </div>
+                <div class="apology-par hidden" id="hubPar3">
+                    Anh hứa từ nay sẽ ngoan hơn, luôn thấu hiểu, quan tâm và cưng chiều công chúa từng li từng tí. Dù có chuyện gì xảy ra, anh cũng không bao giờ buông tay em.
+                </div>
+                <div class="apology-par hidden" id="hubPar4">
+                    Hãy nở một nụ cười thật rạng rỡ và tha lỗi cho anh lần này nhé! Anh nhớ nụ cười của em nhiều lắm.<br>
+                    <div style="text-align:right; margin-top:8px; font-weight:bold; color:#be123c;">
+                        Cố lên vợ iuu , chồng yêu em ❤️
+                    </div>
+                </div>
+
+                <button class="card-btn" id="btnHubEditLetter" style="margin-top:10px; width:100%; justify-content:center; font-size:12px;">
+                    <span>✏️ Nhập Thêm Lời Nhắn Riêng</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+     * 39. VIEW 39: HỘP CỨU THƯƠNG TÂM TRẠNG
+     * ========================================== -->
+    <section class="app-view" id="view-mood-firstaid">
+        <div class="scratch-header-badge" style="background:#be123c; color:#fecdd3; border-color:#f43f5e;">✦ EMERGENCY MOOD FIRST-AID ✦</div>
+        <h2 class="scratch-card-title" style="color:#fff; margin-bottom:4px;">Hộp Cứu Thương Tâm Trạng & Tiệm Thuốc</h2>
+        <p class="scratch-card-sub" style="color:#fbcfe8; margin-bottom:16px;">5 liều thuốc đặc trị cơn giận & chú gấu bông chịu đấm xả giận ♡</p>
+
+        <div class="apology-card-box">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+                <button class="card-btn btn-hub-pill" data-pill="1" style="justify-content:center; font-size:12px;"><span>💊 Hạ Hỏa Cấp Tốc</span></button>
+                <button class="card-btn btn-hub-pill" data-pill="2" style="justify-content:center; font-size:12px;"><span>🧋 Trà Sữa Chuộc Lỗi</span></button>
+                <button class="card-btn btn-hub-pill" data-pill="3" style="justify-content:center; font-size:12px;"><span>💆 Spa Bóp Vai</span></button>
+                <button class="card-btn btn-hub-pill" data-pill="4" style="justify-content:center; font-size:12px;"><span>🧹 Miễn Việc Nhà</span></button>
+            </div>
+            <button class="card-btn btn-hub-pill" data-pill="5" style="width:100%; justify-content:center; font-size:12px; background:linear-gradient(135deg, #e11d48, #9333ea);">
+                <span>👑 Quyền Nữ Hoàng Tối Thượng</span>
+            </button>
+
+            <!-- Punch Plushie -->
+            <div style="margin-top:18px; background:rgba(20,6,26,0.65); border:1.5px solid rgba(244,114,182,0.35); border-radius:18px; padding:14px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+                <div>
+                    <div style="font-weight:700; color:#fff; font-size:13px;">Gấu Bông Chịu Phạt 🧸</div>
+                    <div style="font-size:11px; color:#fecdd3; font-family:'Mali',cursive;">Bấm đấm/véo chú gấu để xả giận nè!</div>
+                    <div id="hubPunchCountText" style="font-size:10px; color:#fda4af; font-weight:bold; margin-top:2px;">Đã chịu đấm: 0 phát</div>
+                </div>
+                <button id="btnHubPunch" style="width:65px; height:65px; border-radius:50%; background:linear-gradient(135deg, #f43f5e, #be123c); border:2px solid #fda4af; font-size:32px; cursor:pointer; flex-shrink:0;">
+                    🤪
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+     * 40. VIEW 40: BẢN CAM KẾT & NÚT NÉ TRÁNH
+     * ========================================== -->
+    <section class="app-view" id="view-apology-contract">
+        <div class="scratch-header-badge" style="background:#065f46; color:#a7f3d0; border-color:#10b981;">✦ OFFICIAL RECONCILIATION CONTRACT ✦</div>
+        <h2 class="scratch-card-title" style="color:#fff; margin-bottom:4px;">Bản Cam Kết Làm Hòa Định Mệnh</h2>
+        <p class="scratch-card-sub" style="color:#a7f3d0; margin-bottom:16px;">Nút 'Vẫn giận' bị lỗi rồi, vợ hãy bấm nút màu xanh tha lỗi nhé ♡</p>
+
+        <div class="apology-card-box">
+            <div style="background:linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%); color:#78350f; border:2px solid #d97706; border-radius:18px; padding:16px; margin-bottom:16px; font-family:'Mali',cursive; font-size:12.5px; line-height:1.6;">
+                <div style="font-family:'Dancing Script',cursive; font-size:22px; font-weight:700; color:#b45309; text-align:center; margin-bottom:6px;">✦ BẢN CAM KẾT HẠNH PHÚC ✦</div>
+                <div>✔ <strong>Bên A (Vợ Iuu):</strong> Luôn luôn đúng 100%, có đặc quyền cưng nựng trọn đời.</div>
+                <div>✔ <strong>Bên B (Chồng Ngốc):</strong> Nhận lỗi sâu sắc, cam kết yêu thương vợ gấp đôi mỗi ngày.</div>
+            </div>
+
+            <!-- Dodging Arena -->
+            <div class="dodging-arena" id="hubDodgingArena">
+                <button class="card-btn" id="btnHubForgive" style="background:linear-gradient(135deg, #10b981, #059669); border:2px solid #a7f3d0; font-size:16px; padding:14px 28px; z-index:10;">
+                    <span>❤️ Tha Thứ Cho Chồng Iuu!</span>
+                </button>
+
+                <button class="btn-dodging-hub" id="btnHubDodgingAnger">
+                    😤 Còn Lâu Mới Hết Giận!
+                </button>
+            </div>
+        </div>
+    </section>
+
 <!-- Fullscreen Grid Menu Modal (Bản Đồ 30 Món Quà) -->
     <div class="grid-modal-overlay" id="gridMenuModal">
         <div class="grid-modal-content">
             <div class="grid-modal-header">
                 <div>
-                    <h2 class="grid-modal-title">✦ Vương Quốc 37 Món Quà ✦</h2>
+                    <h2 class="grid-modal-title">✦ Vương Quốc 40 Món Quà ✦</h2>
                     <p class="grid-modal-sub">Chạm vào bất kỳ món quà nào để khám phá ngay ♡</p>
                 </div>
                 <button id="btnCloseGridMenu" style="background:#ffe4eb; border:none; border-radius:50%; width:36px; height:36px; font-size:18px; color:#d81b60; cursor:pointer;">✕</button>
@@ -7191,6 +7475,21 @@
         <div class="dock-item" data-target="view-love-receipt" data-song="flower_shop_song.mp3" data-title="Là Người Con Gái..." title="Máy In Hóa Đơn Tình Yêu">
             <div class="dock-icon">🧾</div>
             <div class="dock-label">Hóa Đơn</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-sincere-letter" data-song="thousand_years_song.mp3" data-title="A Thousand Years" title="Thước Đo Hạ Hỏa & Thư Tay">
+            <div class="dock-icon">📜</div>
+            <div class="dock-label">Thư Xin Lỗi</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-mood-firstaid" data-song="cupid_cake_song.mp3" data-title="Love Story" title="Hộp Cứu Thương Tâm Trạng">
+            <div class="dock-icon">🩹</div>
+            <div class="dock-label">Cứu Thương</div>
+            <div class="dock-indicator"></div>
+        </div>
+        <div class="dock-item" data-target="view-apology-contract" data-song="cho_chut_remix.mp3" data-title="Chờ Chút Thôi Remix" title="Bản Cam Kết Làm Hòa">
+            <div class="dock-icon">💖</div>
+            <div class="dock-label">Làm Hòa</div>
             <div class="dock-indicator"></div>
         </div>
 
@@ -9064,7 +9363,10 @@
             { id: "view-love-passport", name: "Our Love Passport", icon: "✈️", cat: "trend", song: "cupid_cake_song.mp3", title: "Love Story" },
             { id: "view-love-monopoly", name: "The Love Monopoly", icon: "🎲", cat: "games", song: "cho_chut_remix.mp3", title: "Chờ Chút Thôi Remix" },
             { id: "view-star-map", name: "Custom Star Map", icon: "✨", cat: "cosmic", song: "spirograph_heart_song.mp3", title: "Piano Romance" },
-            { id: "view-love-receipt", name: "The Love Receipt", icon: "🧾", cat: "trend", song: "flower_shop_song.mp3", title: "Là Người Con Gái..." }
+            { id: "view-love-receipt", name: "The Love Receipt", icon: "🧾", cat: "trend", song: "flower_shop_song.mp3", title: "Là Người Con Gái..." },
+            { id: "view-sincere-letter", name: "Thư Xin Lỗi & Hạ Hỏa", icon: "📜", cat: "chill", song: "thousand_years_song.mp3", title: "A Thousand Years" },
+            { id: "view-mood-firstaid", name: "Hộp Cứu Thương Chuộc Lỗi", icon: "🩹", cat: "games", song: "cupid_cake_song.mp3", title: "Love Story" },
+            { id: "view-apology-contract", name: "Bản Cam Kết Làm Hòa", icon: "💖", cat: "trend", song: "cho_chut_remix.mp3", title: "Chờ Chút Thôi Remix" }
         ];
 
         const gridMenuModal = document.getElementById('gridMenuModal');
@@ -10866,6 +11168,12 @@
                 switchView('view-star-map', 'spirograph_heart_song.mp3', 'Piano Romance');
             } else if (hash === 'receipt' || hash === 'bill') {
                 switchView('view-love-receipt', 'flower_shop_song.mp3', 'Là Người Con Gái...');
+            } else if (hash === 'sorry' || hash === 'apology') {
+                switchView('view-apology-contract', 'cho_chut_remix.mp3', 'Chờ Chút Thôi Remix');
+            } else if (hash === 'letter' || hash === 'sincere') {
+                switchView('view-sincere-letter', 'thousand_years_song.mp3', 'A Thousand Years');
+            } else if (hash === 'firstaid' || hash === 'medicine') {
+                switchView('view-mood-firstaid', 'cupid_cake_song.mp3', 'Love Story');
             } else {
                 switchView('view-hub', 'flower_shop_song.mp3', 'Là Người Con Gái...');
             }
@@ -11527,6 +11835,170 @@
                     "🖨️ ĐÃ IN HÓA ĐƠN TÌNH YÊU MỚI!",
                     "Thanh Toán Bằng Cả Trái Tim",
                     "Hóa đơn tình yêu 0đ đã được in thành công! Toàn bộ dịch vụ yêu thương, cưng nựng và che chở đều được chồng bảo hành trọn đời!<br><br><span style='color:#e11d48; font-family:Mali; font-weight:700;'>Cố lên vợ iuu , chồng yêu em ❤️</span>"
+                );
+            });
+        }
+
+        
+        // ==========================================
+        // 44. VIEW 38: SINCERE LETTER & ANGER METER LOGIC
+        // ==========================================
+        const hubAngerSlider = document.getElementById('hubAngerSlider');
+        const hubAngerEmoji = document.getElementById('hubAngerEmoji');
+        const hubAngerPercent = document.getElementById('hubAngerPercent');
+        const hubAngerDesc = document.getElementById('hubAngerDesc');
+
+        const hubPar1 = document.getElementById('hubPar1');
+        const hubPar2 = document.getElementById('hubPar2');
+        const hubPar3 = document.getElementById('hubPar3');
+        const hubPar4 = document.getElementById('hubPar4');
+
+        if (hubAngerSlider) {
+            hubAngerSlider.addEventListener('input', () => {
+                const val = parseInt(hubAngerSlider.value);
+                if (hubAngerPercent) hubAngerPercent.textContent = `Mức Độ Giận: ${val}%`;
+
+                if (val > 75) {
+                    if (hubAngerEmoji) hubAngerEmoji.textContent = '😡';
+                    if (hubAngerDesc) hubAngerDesc.textContent = 'Vợ đang giận đùng đùng, chồng sợ run người! 🥺';
+                    if (hubPar2) hubPar2.classList.add('hidden');
+                    if (hubPar3) hubPar3.classList.add('hidden');
+                    if (hubPar4) hubPar4.classList.add('hidden');
+                } else if (val > 50) {
+                    if (hubAngerEmoji) hubAngerEmoji.textContent = '😤';
+                    if (hubAngerDesc) hubAngerDesc.textContent = 'Vẫn còn dỗi lắm, chồng phải dỗ thật khéo mới được...';
+                    if (hubPar2) hubPar2.classList.remove('hidden');
+                    if (hubPar3) hubPar3.classList.add('hidden');
+                    if (hubPar4) hubPar4.classList.add('hidden');
+                } else if (val > 25) {
+                    if (hubAngerEmoji) hubAngerEmoji.textContent = '🥺';
+                    if (hubAngerDesc) hubAngerDesc.textContent = 'Bắt đầu nguôi ngoai rồi nè, sắp chịu tha lỗi cho chồng rồi!';
+                    if (hubPar2) hubPar2.classList.remove('hidden');
+                    if (hubPar3) hubPar3.classList.remove('hidden');
+                    if (hubPar4) hubPar4.classList.add('hidden');
+                } else if (val > 0) {
+                    if (hubAngerEmoji) hubAngerEmoji.textContent = '😌';
+                    if (hubAngerDesc) hubAngerDesc.textContent = 'Hạ hỏa gần hết rồi, chuẩn bị nở nụ cười xinh nhé công chúa!';
+                    if (hubPar2) hubPar2.classList.remove('hidden');
+                    if (hubPar3) hubPar3.classList.remove('hidden');
+                    if (hubPar4) hubPar4.classList.remove('hidden');
+                } else {
+                    if (hubAngerEmoji) hubAngerEmoji.textContent = '🥰';
+                    if (hubAngerDesc) hubAngerDesc.textContent = 'HẾT GIẬN 100%! Công chúa của anh lại rạng rỡ nhất trần đời!';
+                    if (hubPar2) hubPar2.classList.remove('hidden');
+                    if (hubPar3) hubPar3.classList.remove('hidden');
+                    if (hubPar4) hubPar4.classList.remove('hidden');
+                    triggerCupidConfetti();
+                    playChimeTone(880, 0.3);
+                }
+            });
+        }
+
+        const btnHubEditLetter = document.getElementById('btnHubEditLetter');
+        if (btnHubEditLetter) {
+            btnHubEditLetter.addEventListener('click', () => {
+                const extra = prompt("Nhập lời nhắn nhủ / tâm sự riêng mà chồng muốn gửi tới vợ:", "");
+                if (extra && extra.trim().length > 0) {
+                    openModal("Đã Lưu Lời Nhắn Của Chồng! 💌", "Tâm Sự Từ Đáy Lòng", extra.trim() + "<br><br><span style='color:#e11d48; font-weight:bold;'>Cố lên vợ iuu , chồng yêu em ❤️</span>");
+                }
+            });
+        }
+
+        // ==========================================
+        // 45. VIEW 39: MOOD FIRST-AID LOGIC
+        // ==========================================
+        const hubMedicineData = {
+            1: { title: "Thuốc Hạ Hỏa Cấp Tốc 💊", desc: "Đặc quyền nhận 100 cái ôm thật chặt và 100 nụ hôn bù đắp bất cứ lúc nào vợ muốn! Chồng xin ngoan ngoãn phục tùng vô điều kiện!" },
+            2: { title: "Trà Sữa Cắt Cơn Giận 🧋", desc: "Voucher ăn uống trị giá vô hạn! Bất kể món gì vợ thèm, chồng xin lập tức đặt ship hoặc dẫn công chúa đi ăn ngay!" },
+            3: { title: "Spa Massage Bóp Vai Tại Gia 💆", desc: "Phiếu 1 giờ massage chuyên nghiệp: Bóp vai, đấm lưng, xoa bóp bàn chân cho công chúa thư giãn!" },
+            4: { title: "Thẻ Miễn Làm Việc Nhà 1 Tuần 🧹", desc: "Chồng tự nguyện thầu trọn gói: Rửa chén bát, quét nhà, phơi đồ, đổ rác... Vợ chỉ việc làm nữ hoàng!" },
+            5: { title: "Quyền Lực Nữ Hoàng Tối Thượng 👑", desc: "1 ngày làm Nữ hoàng tối cao: Chồng phục vụ từ A đến Z, răm rắp nghe lời không dám cãi nửa lời!" }
+        };
+
+        document.querySelectorAll('.btn-hub-pill').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.dataset.pill;
+                const m = hubMedicineData[id];
+                if (m) {
+                    playChimeTone(750, 0.15);
+                    openModal("🎁 " + m.title, "Phiếu Chuộc Lỗi Của Chồng", m.desc + "<br><br><span style='color:#e11d48; font-weight:bold;'>Cố lên vợ iuu , chồng yêu em ❤️</span>");
+                }
+            });
+        });
+
+        let hubPunchCount = 0;
+        const btnHubPunch = document.getElementById('btnHubPunch');
+        const hubPunchCountText = document.getElementById('hubPunchCountText');
+        if (btnHubPunch) {
+            btnHubPunch.addEventListener('click', () => {
+                hubPunchCount++;
+                if (hubPunchCountText) hubPunchCountText.textContent = `Đã chịu đấm: ${hubPunchCount} phát (Vợ bớt giận xíu nào chưa?)`;
+                playChimeTone(300 + Math.random() * 200, 0.08);
+
+                btnHubPunch.textContent = hubPunchCount % 2 === 0 ? '😵' : '🤕';
+                setTimeout(() => btnHubPunch.textContent = '🤪', 400);
+
+                if (hubPunchCount % 5 === 0) {
+                    openModal("🧸 Tiếng Kêu Của Gấu Bông!", "Đấm Yêu Xả Giận", "Ui da! Chồng biết lỗi rồi mà, vợ đừng giận nữa nha!<br><br><span style='color:#e11d48; font-weight:bold;'>Cố lên vợ iuu , chồng yêu em ❤️</span>");
+                }
+            });
+        }
+
+        // ==========================================
+        // 46. VIEW 40: APOLOGY CONTRACT & DODGING BUTTON LOGIC
+        // ==========================================
+        const btnHubDodgingAnger = document.getElementById('btnHubDodgingAnger');
+        const btnHubForgive = document.getElementById('btnHubForgive');
+        const hubDodgingArena = document.getElementById('hubDodgingArena');
+        let hubDodgeCount = 0;
+        let hubForgiveScale = 1;
+
+        function dodgeHubButton(e) {
+            if (e) e.preventDefault();
+            hubDodgeCount++;
+            hubForgiveScale += 0.08;
+            if (btnHubForgive) btnHubForgive.style.transform = `scale(${hubForgiveScale})`;
+
+            if (hubDodgingArena && btnHubDodgingAnger) {
+                const arenaRect = hubDodgingArena.getBoundingClientRect();
+                const btnRect = btnHubDodgingAnger.getBoundingClientRect();
+
+                const maxX = arenaRect.width - btnRect.width - 20;
+                const maxY = arenaRect.height - btnRect.height - 20;
+
+                const rx = Math.max(10, Math.random() * maxX);
+                const ry = Math.max(10, Math.random() * maxY);
+
+                btnHubDodgingAnger.style.position = 'absolute';
+                btnHubDodgingAnger.style.left = `${rx}px`;
+                btnHubDodgingAnger.style.top = `${ry}px`;
+
+                playChimeTone(500, 0.06);
+
+                const funnyTexts = [
+                    "Nút này bị kẹt rùi vợ ơi! 😜",
+                    "Chồng chạy nhanh lắm, không bấm được đâu! 🏃‍♂️",
+                    "Tha thứ cho anh đi mà công chúa 🥺",
+                    "Bấm nút xanh to đùng bên cạnh đi mà! ❤️"
+                ];
+                btnHubDodgingAnger.textContent = funnyTexts[hubDodgeCount % funnyTexts.length];
+            }
+        }
+
+        if (btnHubDodgingAnger) {
+            btnHubDodgingAnger.addEventListener('mouseenter', dodgeHubButton);
+            btnHubDodgingAnger.addEventListener('touchstart', dodgeHubButton);
+            btnHubDodgingAnger.addEventListener('click', dodgeHubButton);
+        }
+
+        if (btnHubForgive) {
+            btnHubForgive.addEventListener('click', () => {
+                playChimeTone(1050, 0.3);
+                triggerCupidConfetti();
+                openModal(
+                    "🎉 CHÍNH THỨC LÀM HÒA RỒI NHA! ❤️",
+                    "Hạnh Phúc Vỡ Òa",
+                    "Cảm ơn công chúa vì đã luôn bao dung và tha lỗi cho anh!<br><br>Anh hứa sẽ không bao giờ làm em buồn nữa, luôn yêu thương, cưng chiều và bảo vệ em trọn đời!<br><br><span style='color:#e11d48; font-family:Mali; font-size:16px; font-weight:800;'>Cố lên vợ iuu , chồng yêu em ❤️</span>"
                 );
             });
         }

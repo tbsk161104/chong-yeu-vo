@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Công Chúa Đừng Giận Chồng Nữa Nhé! 🥺 • Lời Xin Lỗi Chân Thành</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥺</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Mali:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            background: linear-gradient(180deg, #18051e 0%, #29082c 40%, #15031b 100%);
+            min-height: 100vh;
+            font-family: 'Quicksand', sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 16px 80px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient floating hearts */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 20% 20%, rgba(244, 63, 94, 0.12) 0%, transparent 45%),
+                        radial-gradient(circle at 80% 80%, rgba(217, 70, 239, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            width: 100%;
+            max-width: 680px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .btn-nav-hub {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(251, 113, 133, 0.4);
+            border-radius: 20px;
+            color: #ffe4e6;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            backdrop-filter: blur(8px);
+            transition: all 0.25s ease;
+        }
+        .btn-nav-hub:hover {
+            background: rgba(225, 29, 72, 0.3);
+            border-color: #fda4af;
+            transform: translateY(-2px);
+        }
+
+        .music-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(217, 70, 239, 0.2);
+            border: 1px solid rgba(244, 114, 182, 0.4);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fce7f3;
+            transition: all 0.2s ease;
+        }
+        .music-pill:hover {
+            background: rgba(217, 70, 239, 0.4);
+        }
+
+        /* Header Card */
+        .sorry-header-card {
+            width: 100%;
+            max-width: 680px;
+            text-align: center;
+            background: rgba(38, 14, 48, 0.85);
+            border: 2px solid rgba(251, 113, 133, 0.5);
+            border-radius: 30px;
+            padding: 28px 22px;
+            margin-bottom: 24px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(225, 29, 72, 0.3);
+            backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .urgent-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: rgba(225, 29, 72, 0.25);
+            border: 1.5px solid #f43f5e;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #fecdd3;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            animation: pulse-border 1.8s infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.5); }
+            50% { box-shadow: 0 0 0 10px rgba(244, 63, 94, 0); }
+        }
+
+        .sorry-main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 38px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #fda4af, #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .sorry-sub-title {
+            font-family: 'Mali', cursive;
+            font-size: 14.5px;
+            color: #ffe4e6;
+            line-height: 1.6;
+            max-width: 540px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* SECTION 1: ANGER METER & SINCERE LETTER */
+        .card-section {
+            width: 100%;
+            max-width: 680px;
+            background: rgba(35, 12, 44, 0.88);
+            border: 1.5px solid rgba(251, 113, 133, 0.4);
+            border-radius: 28px;
+            padding: 24px 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+        }
+        .section-icon {
+            font-size: 26px;
+        }
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 26px;
+            font-weight: 700;
+            color: #fda4af;
+        }
+
+        /* Anger Meter Controls */
+        .anger-meter-box {
+            background: rgba(20, 6, 26, 0.65);
+            border: 1.5px solid rgba(244, 114, 182, 0.35);
+            border-radius: 22px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .anger-status-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .anger-emoji {
+            font-size: 48px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+        }
+        .anger-info-text {
+            text-align: left;
+        }
+        .anger-percentage {
+            font-size: 24px;
+            font-weight: 800;
+            color: #f43f5e;
+            line-height: 1.1;
+        }
+        .anger-desc {
+            font-family: 'Mali', cursive;
+            font-size: 13px;
+            color: #fecdd3;
+        }
+
+        .anger-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 12px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #10b981 0%, #f59e0b 50%, #ef4444 100%);
+            outline: none;
+            cursor: pointer;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .anger-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #fff;
+            border: 3px solid #e11d48;
+            cursor: grab;
+            box-shadow: 0 0 15px rgba(225, 29, 72, 0.8);
+            transition: transform 0.15s ease;
+        }
+        .anger-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fda4af;
+            margin-top: 8px;
+        }
+
+        /* Unfolding Letter */
+        .letter-scroll {
+            background: #fffaf0;
+            color: #4a1525;
+            border: 2px dashed #fda4af;
+            border-radius: 20px;
+            padding: 22px 20px;
+            box-shadow: inset 0 0 20px rgba(251, 113, 133, 0.15);
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            line-height: 1.7;
+            position: relative;
+        }
+        .letter-scroll-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            font-weight: 700;
+            color: #be123c;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .letter-par {
+            margin-bottom: 12px;
+            transition: all 0.4s ease;
+        }
+        .letter-par.hidden {
+            display: none;
+        }
+        .btn-edit-letter {
+            padding: 6px 14px;
+            background: rgba(225, 29, 72, 0.15);
+            border: 1px solid #f43f5e;
+            border-radius: 14px;
+            color: #be123c;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* SECTION 2: FIRST-AID MEDICINE BOX */
+        .medicine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .medicine-pill-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(251, 113, 133, 0.35);
+            border-radius: 18px;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .medicine-pill-card:hover {
+            transform: translateY(-4px) scale(1.04);
+            background: rgba(225, 29, 72, 0.25);
+            border-color: #fda4af;
+            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.4);
+        }
+        .pill-icon {
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+        .pill-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffe4e6;
+            margin-bottom: 4px;
+        }
+        .pill-benefit {
+            font-size: 10px;
+            color: #fbcfe8;
+            opacity: 0.85;
+        }
+
+        /* Punch Plushie */
+        .plushie-box {
+            background: rgba(20, 6, 26, 0.65);
+            border: 1.5px solid rgba(244, 114, 182, 0.35);
+            border-radius: 20px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .punch-avatar-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f43f5e, #be123c);
+            border: 3px solid #fda4af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.5);
+            transition: transform 0.1s ease;
+            flex-shrink: 0;
+        }
+        .punch-avatar-btn:active {
+            transform: scale(0.85) rotate(-10deg);
+        }
+
+        /* SECTION 3: APOLOGY CONTRACT & DODGING BUTTON */
+        .contract-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+            color: #78350f;
+            border: 2px solid #d97706;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            font-family: 'Mali', cursive;
+        }
+        .contract-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 26px;
+            font-weight: 700;
+            color: #b45309;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .contract-clause {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        /* Interactive Buttons Arena */
+        .decision-arena {
+            position: relative;
+            min-height: 180px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .btn-forgive {
+            padding: 16px 36px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: 2px solid #a7f3d0;
+            border-radius: 36px;
+            color: #fff;
+            font-size: 17px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.6);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+        }
+        .btn-forgive:hover {
+            transform: scale(1.08);
+            box-shadow: 0 14px 40px rgba(16, 185, 129, 0.8);
+        }
+
+        .btn-dodging-anger {
+            position: relative;
+            padding: 10px 22px;
+            background: rgba(239, 68, 68, 0.25);
+            border: 1.5px solid #ef4444;
+            border-radius: 24px;
+            color: #fca5a5;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 5;
+        }
+
+        /* Pop-up Modals */
+        .sorry-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background: rgba(10, 2, 14, 0.85);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .sorry-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .sorry-modal-card {
+            width: 100%;
+            max-width: 440px;
+            background: #23082c;
+            border: 2px solid #fda4af;
+            border-radius: 28px;
+            padding: 26px 22px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 35px rgba(225, 29, 72, 0.45);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .sorry-modal.active .sorry-modal-card {
+            transform: scale(1);
+        }
+        .modal-icon {
+            font-size: 52px;
+            margin-bottom: 12px;
+        }
+        .modal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 30px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .modal-body {
+            font-family: 'Mali', cursive;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ffe4e6;
+            margin-bottom: 18px;
+        }
+        .modal-btn-close {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            border: 1px solid #fda4af;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(225, 29, 72, 0.45);
+        }
+
+        /* Permanent Signature */
+        .permanent-signature {
+            text-align: center;
+            margin-top: 24px;
+            font-family: 'Mali', cursive;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fda4af;
+            text-shadow: 0 0 15px rgba(244, 63, 94, 0.7);
+        }
+
+        @media (max-width: 500px) {
+            .sorry-main-title { font-size: 30px; }
+            .anger-emoji { font-size: 40px; }
+            .btn-forgive { font-size: 15px; padding: 14px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg"></div>
+
+    <!-- Top Navigation -->
+    <header class="top-nav">
+        <a href="/" class="btn-nav-hub">
+            <span>🏰</span>
+            <span>40 Món Quà</span>
+        </a>
+        <div class="music-pill" id="musicToggleBtn" title="Bật/Tắt Nhạc Làm Hòa">
+            <span id="musicIcon">🎵</span>
+            <span id="musicLabel">Bật Nhạc</span>
+        </div>
+    </header>
+
+    <!-- Header Card -->
+    <div class="sorry-header-card">
+        <div class="urgent-badge">🚨 KHẨN CẤP • CHỒNG ĐANG NHẬN LỖI 100% 🥺</div>
+        <h1 class="sorry-main-title">Công Chúa Đừng Giận Chồng Nữa Nhé! ♡</h1>
+        <p class="sorry-sub-title">
+            Chồng biết mình đã sai rồi... Nhìn công chúa buồn lòng, tim anh cồn cào và xót xa lắm. Hãy cho anh cơ hội được chuộc lỗi và dỗ dành em nhé!
+        </p>
+    </div>
+
+    <!-- ==========================================
+         DỰ ÁN 1: THƯỚC ĐO HẠ HỎA & THƯ TỰ KIỂM ĐIỂM
+         ========================================== -->
+    <div class="card-section">
+        <div class="section-header">
+            <span class="section-icon">📜</span>
+            <h2 class="section-title">Thước Đo Hạ Hỏa & Bức Thư Tự Kiểm Điểm</h2>
+        </div>
+
+        <div class="anger-meter-box">
+            <div class="anger-status-row">
+                <div class="anger-emoji" id="angerEmoji">😡</div>
+                <div class="anger-info-text">
+                    <div class="anger-percentage" id="angerPercentText">Mức Độ Giận: 100%</div>
+                    <div class="anger-desc" id="angerDescText">Vợ đang giận đùng đùng, chồng sợ run người! 🥺</div>
+                </div>
+            </div>
+
+            <input type="range" min="0" max="100" value="100" class="anger-slider" id="angerSlider">
+            <div class="slider-labels">
+                <span>0% Hết Giận 🥰</span>
+                <span>50% Nguôi Nguôi 🥺</span>
+                <span>100% Rất Giận 😡</span>
+            </div>
+            <p style="font-size:11px; color:#fda4af; margin-top:8px;">(Kéo thanh trượt về bên trái để hạ hỏa và mở thư tay nhé ♡)</p>
+        </div>
+
+        <!-- Sincere Letter -->
+        <div class="letter-scroll" id="letterScroll">
+            <div class="letter-scroll-title">✦ Bức Thư Tự Kiểm Điểm Viết Tay Của Chồng ✦</div>
+            <div class="letter-par" id="par1">
+                <strong>Gửi công chúa nhỏ đáng yêu nhất thế gian của anh,</strong><br>
+                Chồng thừa nhận mình đã sai 1000%, không có lời ngụy biện nào cả. Nhìn em im lặng hay cau mày giận dỗi, lòng anh như thắt lại.
+            </div>
+            <div class="letter-par hidden" id="par2">
+                Anh biết mình đôi lúc còn vụng về, vô tâm hoặc chưa thấu hiểu hết những cảm xúc nhạy cảm của em. Nhưng xin em hãy tin rằng, trong tim anh, em luôn là người quan trọng và được nâng niu nhất.
+            </div>
+            <div class="letter-par hidden" id="par3">
+                Anh hứa từ nay sẽ luôn lắng nghe, chia sẻ và cưng chiều công chúa nhiều hơn nữa. Dù có chuyện gì xảy ra, anh cũng không bao giờ buông tay em.
+            </div>
+            <div class="letter-par hidden" id="par4">
+                Hãy nở một nụ cười thật rạng rỡ và tha lỗi cho anh lần này nhé! Anh nhớ nụ cười của em nhiều lắm.<br>
+                <div style="text-align:right; margin-top:8px; font-weight:bold; color:#be123c;">
+                    Cố lên vợ iuu , chồng yêu em ❤️
+                </div>
+            </div>
+
+            <button class="btn-edit-letter" id="btnEditLetter">✏️ Nhập Thêm Tâm Sự Riêng Của Chồng</button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         DỰ ÁN 2: HỘP CỨU THƯƠNG TÂM TRẠNG & VOUCHER CHUỘC LỖI
+         ========================================== -->
+    <div class="card-section">
+        <div class="section-header">
+            <span class="section-icon">🩹</span>
+            <h2 class="section-title">Hộp Cứu Thương Tâm Trạng & Tiệm Thuốc Chuộc Lỗi</h2>
+        </div>
+        <p style="font-size:12px; color:#fbcfe8; margin-bottom:14px;">Chạm vào từng liều thuốc dưới đây để kích hoạt các đặc quyền chuộc lỗi:</p>
+
+        <div class="medicine-grid">
+            <div class="medicine-pill-card" data-pill="1">
+                <div class="pill-icon">💊</div>
+                <div class="pill-name">Hạ Hỏa Cấp Tốc</div>
+                <div class="pill-benefit">100 nụ hôn & ôm chặt</div>
+            </div>
+            <div class="medicine-pill-card" data-pill="2">
+                <div class="pill-icon">🧋</div>
+                <div class="pill-name">Trà Sữa Cắt Cơn</div>
+                <div class="pill-benefit">Chồng ship đồ ăn ngay</div>
+            </div>
+            <div class="medicine-pill-card" data-pill="3">
+                <div class="pill-icon">💆</div>
+                <div class="pill-name">Spa Bóp Vai</div>
+                <div class="pill-benefit">1 giờ massage tại gia</div>
+            </div>
+            <div class="medicine-pill-card" data-pill="4">
+                <div class="pill-icon">🧹</div>
+                <div class="pill-name">Miễn Việc Nhà</div>
+                <div class="pill-benefit">Chồng bao trọn 1 tuần</div>
+            </div>
+            <div class="medicine-pill-card" data-pill="5">
+                <div class="pill-icon">👑</div>
+                <div class="pill-name">Quyền Nữ Hoàng</div>
+                <div class="pill-benefit">Chồng nghe lời 100%</div>
+            </div>
+        </div>
+
+        <!-- Punch Plushie -->
+        <div class="plushie-box">
+            <div>
+                <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:4px;">Gấu Bông Chịu Phạt Của Vợ 🧸</div>
+                <div style="font-size:12px; color:#fecdd3; font-family:'Mali',cursive;">Nếu vẫn còn bực, vợ cứ bấm đấm/véo chú gấu này để xả giận nhé!</div>
+                <div id="punchCountText" style="font-size:11px; color:#fda4af; font-weight:bold; margin-top:4px;">Đã chịu đấm: 0 phát</div>
+            </div>
+            <button class="punch-avatar-btn" id="btnPunchPlushie" title="Đấm yêu xả giận!">
+                🤪
+            </button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         DỰ ÁN 3: BẢN CAM KẾT & NÚT NÉ TRÁNH
+         ========================================== -->
+    <div class="card-section">
+        <div class="section-header">
+            <span class="section-icon">💖</span>
+            <h2 class="section-title">Bản Cam Kết Làm Hòa & Lựa Chọn Định Mệnh</h2>
+        </div>
+
+        <div class="contract-box">
+            <div class="contract-title">✦ BẢN CAM KẾT HẠNH PHÚC ✦</div>
+            <div class="contract-clause"><span>✔</span> <span><strong>Bên A (Công Chúa):</strong> Luôn luôn đúng trong mọi trường hợp, có quyền được cưng chiều vô điều kiện.</span></div>
+            <div class="contract-clause"><span>✔</span> <span><strong>Bên B (Chồng Ngốc):</strong> Nhận thức sâu sắc lỗi lầm, cam kết chuộc lỗi và yêu thương Bên A gấp đôi mỗi ngày.</span></div>
+            <div class="contract-clause"><span>✔</span> <span><strong>Hiệu lực:</strong> Trọn đời, không một điều khoản hủy bỏ!</span></div>
+        </div>
+
+        <!-- Decision Arena with Dodging Button -->
+        <div class="decision-arena" id="decisionArena">
+            <button class="btn-forgive" id="btnForgive">
+                <span>❤️</span>
+                <span id="btnForgiveText">Tha Thứ Cho Chồng Iuu Rùi!</span>
+            </button>
+
+            <button class="btn-dodging-anger" id="btnDodgingAnger">
+                😤 Còn Lâu Mới Hết Giận!
+            </button>
+        </div>
+    </div>
+
+    <div class="permanent-signature">
+        Cố lên vợ iuu , chồng yêu em ❤️
+    </div>
+
+    <!-- Pop-up Modals -->
+    <div class="sorry-modal" id="sorryModal">
+        <div class="sorry-modal-card">
+            <div class="modal-icon" id="modalIcon">🎉</div>
+            <h3 class="modal-title" id="modalTitle">Tiêu Đề</h3>
+            <p class="modal-body" id="modalBody">Nội dung...</p>
+            <button class="modal-btn-close" id="btnModalClose">Đồng Ý Ngay ♡</button>
+        </div>
+    </div>
+
+    <!-- Background Audio -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="thousand_years_song.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        // ==========================================
+        // AUDIO & CHIMES SYNTHESIZER
+        // ==========================================
+        let audioCtx = null;
+        function playChime(freq = 600, duration = 0.2) {
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(freq * 1.4, audioCtx.currentTime + duration);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggleBtn = document.getElementById('musicToggleBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicLabel = document.getElementById('musicLabel');
+        let isMusicPlaying = false;
+
+        musicToggleBtn.addEventListener('click', () => {
+            if (!isMusicPlaying) {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicIcon.textContent = '⏸️';
+                    musicLabel.textContent = 'Dừng Nhạc';
+                }).catch(() => {});
+            } else {
+                bgMusic.pause();
+                isMusicPlaying = false;
+                musicIcon.textContent = '🎵';
+                musicLabel.textContent = 'Bật Nhạc';
+            }
+        });
+
+        // Modal Handler
+        const sorryModal = document.getElementById('sorryModal');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const btnModalClose = document.getElementById('btnModalClose');
+
+        function openModal(icon, title, body) {
+            modalIcon.textContent = icon;
+            modalTitle.textContent = title;
+            modalBody.innerHTML = body;
+            sorryModal.classList.add('active');
+        }
+        btnModalClose.addEventListener('click', () => {
+            sorryModal.classList.remove('active');
+        });
+        sorryModal.addEventListener('click', (e) => {
+            if (e.target === sorryModal) sorryModal.classList.remove('active');
+        });
+
+        // ==========================================
+        // DỰ ÁN 1: ANGER SLIDER & SINCERE LETTER
+        // ==========================================
+        const angerSlider = document.getElementById('angerSlider');
+        const angerEmoji = document.getElementById('angerEmoji');
+        const angerPercentText = document.getElementById('angerPercentText');
+        const angerDescText = document.getElementById('angerDescText');
+
+        const par1 = document.getElementById('par1');
+        const par2 = document.getElementById('par2');
+        const par3 = document.getElementById('par3');
+        const par4 = document.getElementById('par4');
+
+        angerSlider.addEventListener('input', () => {
+            const val = parseInt(angerSlider.value);
+            angerPercentText.textContent = `Mức Độ Giận: ${val}%`;
+
+            if (val > 75) {
+                angerEmoji.textContent = '😡';
+                angerDescText.textContent = 'Vợ đang giận đùng đùng, chồng sợ run người! 🥺';
+                par2.classList.add('hidden');
+                par3.classList.add('hidden');
+                par4.classList.add('hidden');
+            } else if (val > 50) {
+                angerEmoji.textContent = '😤';
+                angerDescText.textContent = 'Vẫn còn dỗi lắm, chồng phải dỗ thật khéo mới được...';
+                par2.classList.remove('hidden');
+                par3.classList.add('hidden');
+                par4.classList.add('hidden');
+            } else if (val > 25) {
+                angerEmoji.textContent = '🥺';
+                angerDescText.textContent = 'Bắt đầu nguôi ngoai rồi nè, sắp chịu tha lỗi cho chồng rồi!';
+                par2.classList.remove('hidden');
+                par3.classList.remove('hidden');
+                par4.classList.add('hidden');
+            } else if (val > 0) {
+                angerEmoji.textContent = '😌';
+                angerDescText.textContent = 'Hạ hỏa gần hết rồi, chuẩn bị nở nụ cười xinh nhé công chúa!';
+                par2.classList.remove('hidden');
+                par3.classList.remove('hidden');
+                par4.classList.remove('hidden');
+            } else {
+                angerEmoji.textContent = '🥰';
+                angerDescText.textContent = 'HẾT GIẬN 100%! Công chúa của anh lại rạng rỡ nhất trần đời!';
+                par2.classList.remove('hidden');
+                par3.classList.remove('hidden');
+                par4.classList.remove('hidden');
+
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 40, spread: 60, origin: { y: 0.6 } });
+                }
+                playChime(880, 0.3);
+            }
+        });
+
+        // Edit Letter Modal
+        const btnEditLetter = document.getElementById('btnEditLetter');
+        btnEditLetter.addEventListener('click', () => {
+            const extra = prompt("Nhập lời nhắn nhủ / tâm sự riêng mà chồng muốn gửi tới vợ:", "");
+            if (extra && extra.trim().length > 0) {
+                const newP = document.createElement('div');
+                newP.className = 'letter-par';
+                newP.style.color = '#e11d48';
+                newP.style.fontWeight = 'bold';
+                newP.innerHTML = `💌 <strong>Lời thì thầm bổ sung:</strong> ${extra.trim()}`;
+                document.getElementById('letterScroll').insertBefore(newP, btnEditLetter);
+                openModal("Đã Lưu Thêm Lời Nhắn! 💌", "Tâm Sự Của Chồng", "Lời xin lỗi của chồng đã được khắc ghi vào bức thư!");
+            }
+        });
+
+        // ==========================================
+        // DỰ ÁN 2: MEDICINE FIRST AID & PUNCH PLUSHIE
+        // ==========================================
+        const medicineData = {
+            1: {
+                title: "Thuốc Hạ Hỏa Cấp Tốc 💊",
+                desc: "Đặc quyền nhận 100 cái ôm thật chặt và 100 nụ hôn bù đắp bất cứ lúc nào vợ muốn! Chồng xin ngoan ngoãn phục tùng vô điều kiện!"
+            },
+            2: {
+                title: "Trà Sữa Cắt Cơn Giận 🧋",
+                desc: "Voucher ăn uống trị giá vô hạn! Bất kể món gì vợ thèm (trà sữa, bánh ngọt, đồ nướng, kem), chồng xin lập tức đặt ship hoặc dẫn công chúa đi ăn ngay!"
+            },
+            3: {
+                title: "Spa Massage Bóp Vai Tại Gia 💆",
+                desc: "Phiếu 1 giờ massage chuyên nghiệp: Bóp vai, đấm lưng, xoa bóp bàn chân cho công chúa thư giãn sau những giờ phút mệt mỏi!"
+            },
+            4: {
+                title: "Thẻ Miễn Làm Việc Nhà 1 Tuần 🧹",
+                desc: "Chồng tự nguyện thầu trọn gói: Rửa chén bát, quét nhà, phơi đồ, đổ rác... Vợ chỉ việc nằm bấm điện thoại và làm nữ hoàng!"
+            },
+            5: {
+                title: "Quyền Lực Nữ Hoàng Tối Thượng 👑",
+                desc: "1 ngày làm Nữ hoàng tối cao: Chồng phục vụ từ A đến Z, răm rắp nghe lời không bao giờ dám cãi nửa lời!"
+            }
+        };
+
+        document.querySelectorAll('.medicine-pill-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.dataset.pill;
+                const m = medicineData[id];
+                if (m) {
+                    playChime(750, 0.15);
+                    openModal("🎁 " + m.title, "Phiếu Chuộc Lỗi Của Chồng", m.desc + "<br><br><span style='color:#e11d48; font-weight:bold;'>Cố lên vợ iuu , chồng yêu em ❤️</span>");
+                }
+            });
+        });
+
+        // Punch Plushie Counter
+        let punchCount = 0;
+        const btnPunchPlushie = document.getElementById('btnPunchPlushie');
+        const punchCountText = document.getElementById('punchCountText');
+        const punchSounds = ["Ui da! Chồng chừa rồi mà! 😭", "Đau quá vợ ơi, nhưng vợ hả giận là anh vui rùi 🥺", "Thêm một phát nữa là hết giận nha công chúa! 💕"];
+
+        btnPunchPlushie.addEventListener('click', () => {
+            punchCount++;
+            punchCountText.textContent = `Đã chịu đấm: ${punchCount} phát (Vợ bớt giận xíu nào chưa nè?)`;
+            playChime(300 + Math.random() * 200, 0.08);
+
+            btnPunchPlushie.textContent = punchCount % 2 === 0 ? '😵' : '🤕';
+            setTimeout(() => btnPunchPlushie.textContent = '🤪', 400);
+
+            if (punchCount % 5 === 0) {
+                const s = punchSounds[Math.floor(Math.random() * punchSounds.length)];
+                openModal("🧸 Tiếng Kêu Của Gấu Bông!", "Đấm Yêu Xả Giận", s + "<br><br><span style='color:#e11d48; font-weight:bold;'>Cố lên vợ iuu , chồng yêu em ❤️</span>");
+            }
+        });
+
+        // ==========================================
+        // DỰ ÁN 3: DODGING BUTTON & FORGIVENESS
+        // ==========================================
+        const btnDodgingAnger = document.getElementById('btnDodgingAnger');
+        const btnForgive = document.getElementById('btnForgive');
+        const decisionArena = document.getElementById('decisionArena');
+        let dodgeCount = 0;
+        let forgiveScale = 1;
+
+        function dodgeButton(e) {
+            if (e) e.preventDefault();
+            dodgeCount++;
+
+            // Grow the forgive button
+            forgiveScale += 0.08;
+            btnForgive.style.transform = `scale(${forgiveScale})`;
+
+            // Calculate random coordinates inside decisionArena
+            const arenaRect = decisionArena.getBoundingClientRect();
+            const btnRect = btnDodgingAnger.getBoundingClientRect();
+
+            const maxX = arenaRect.width - btnRect.width - 20;
+            const maxY = arenaRect.height - btnRect.height - 20;
+
+            const randomX = Math.max(10, Math.random() * maxX);
+            const randomY = Math.max(10, Math.random() * maxY);
+
+            btnDodgingAnger.style.position = 'absolute';
+            btnDodgingAnger.style.left = `${randomX}px`;
+            btnDodgingAnger.style.top = `${randomY}px`;
+
+            playChime(500, 0.06);
+
+            const funnyTexts = [
+                "Nút này bị kẹt rùi vợ ơi! 😜",
+                "Chồng chạy nhanh lắm, bấm không được đâu nè! 🏃‍♂️",
+                "Tha thứ cho anh đi mà công chúa 🥺",
+                "Nút xanh bên kia to đùng kìa vợ ơi! ❤️"
+            ];
+            btnDodgingAnger.textContent = funnyTexts[dodgeCount % funnyTexts.length];
+        }
+
+        btnDodgingAnger.addEventListener('mouseenter', dodgeButton);
+        btnDodgingAnger.addEventListener('touchstart', dodgeButton);
+        btnDodgingAnger.addEventListener('click', dodgeButton);
+
+        btnForgive.addEventListener('click', () => {
+            playChime(1050, 0.3);
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 120,
+                    spread: 90,
+                    origin: { y: 0.5 },
+                    colors: ['#f43f5e', '#ec4899', '#10b981', '#fbbf24', '#ffffff']
+                });
+            }
+
+            openModal(
+                "🎉 CHÍNH THỨC LÀM HÒA RỒI NHA! ❤️",
+                "Hạnh Phúc Vỡ Òa",
+                "Cảm ơn công chúa vì đã luôn bao dung và tha lỗi cho anh!<br><br>Anh hứa sẽ không bao giờ làm em buồn nữa, luôn yêu thương, cưng chiều và bảo vệ em trọn đời!<br><br><span style='color:#e11d48; font-family:Mali; font-size:16px; font-weight:800;'>Cố lên vợ iuu , chồng yêu em ❤️</span>"
+            );
+        });
+    </script>
+</body>
+</html>
